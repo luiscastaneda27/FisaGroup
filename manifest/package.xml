@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
-        <name>ApexClass</name>
+        <members>FS_AtencionN1</members>
+        <members>FS_AtencionN2</members>
+        <name>Queue</name>
     </types>
-    <types>
-        <members>*</members>
-        <name>ApexComponent</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexPage</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexTestSuite</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexTrigger</name>
+     <types>
+        <members>FS_AgenteReleases</members>
+        <members>FS_AgenteQAOmnia</members>
+        <members>FS_AgenteN2Omnia</members>
+        <members>FS_AgenteN1Omnia</members>
+        <members>FS_AgenteQACore</members>
+        <members>FS_AgenteN2Core</members>
+        <members>FS_AgenteN1Core</members>
+        <members>FS_SupervisorReleases</members>
+        <members>FS_SupervisorOmnia</members>
+        <members>FS_SupervisorCore</members>
+        <members>FS_ClienteFISA</members>
+        <name>Role</name>
     </types>
     <version>57.0</version>
 </Package>
