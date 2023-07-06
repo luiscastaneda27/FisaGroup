@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FS_SubEstado__c</fullName>
+    <externalId>false</externalId>
+    <label>Sub Estado</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Apertura de caso</fullName>
+                <default>false</default>
+                <label>Apertura de caso</label>
+            </value>
+            <value>
+                <fullName>Entrega 1a respuesta</fullName>
+                <default>false</default>
+                <label>Entrega 1a respuesta</label>
+            </value>
+            <value>
+                <fullName>Información validada</fullName>
+                <default>false</default>
+                <label>Información validada</label>
+            </value>
+            <value>
+                <fullName>Análisis Consulta N1</fullName>
+                <default>false</default>
+                <label>Análisis Consulta N1</label>
+            </value>
+            <value>
+                <fullName>Escalado a N2</fullName>
+                <default>false</default>
+                <label>Escalado a N2</label>
+            </value>
+            <value>
+                <fullName>Análisis Consulta N2</fullName>
+                <default>false</default>
+                <label>Análisis Consulta N2</label>
+            </value>
+            <value>
+                <fullName>Envío de respuesta</fullName>
+                <default>false</default>
+                <label>Envío de respuesta</label>
+            </value>
+            <value>
+                <fullName>Respuesta aceptada</fullName>
+                <default>false</default>
+                <label>Respuesta aceptada</label>
+            </value>
+            <value>
+                <fullName>Respuesta rechazada</fullName>
+                <default>false</default>
+                <label>Respuesta rechazada</label>
+            </value>
+            <value>
+                <fullName>En reproceso por rechazo</fullName>
+                <default>false</default>
+                <label>En reproceso por rechazo</label>
+            </value>
+            <value>
+                <fullName>En Espera de Respuesta del Cliente</fullName>
+                <default>false</default>
+                <label>En Espera de Respuesta del Cliente</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
