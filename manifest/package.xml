@@ -4,7 +4,9 @@
 		<members>Case.FS_CSATCaso__c</members>
 		<members>Case.FS_ComentariosInternos__c</members>
 		<members>Case.FS_EncuestaEnviada__c</members>
+		<members>Case.FS_Modulo__c</members>
 		<members>Case.FS_NotasReunionSatisfaccion__c</members>
+		<members>Case.FS_Producto__c</members>
 		<members>Case.FS_ResultadoEncuesta__c</members>
 		<members>Case.FS_SubEstado__c</members>
 		<name>CustomField</name>

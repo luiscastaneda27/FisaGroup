@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FS_Modulo__c</fullName>
+    <externalId>false</externalId>
+    <label>Módulo</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>GENERALES</fullName>
+                <default>false</default>
+                <label>GENERALES</label>
+            </value>
+            <value>
+                <fullName>CLIENTES</fullName>
+                <default>false</default>
+                <label>CLIENTES</label>
+            </value>
+            <value>
+                <fullName>CAJA Y SERVICIOS</fullName>
+                <default>false</default>
+                <label>CAJA Y SERVICIOS</label>
+            </value>
+            <value>
+                <fullName>CAPTACIONES VISTA</fullName>
+                <default>false</default>
+                <label>CAPTACIONES VISTA</label>
+            </value>
+            <value>
+                <fullName>CAPTACIONES A PLAZO</fullName>
+                <default>false</default>
+                <label>CAPTACIONES A PLAZO</label>
+            </value>
+            <value>
+                <fullName>COLOCACIONES</fullName>
+                <default>false</default>
+                <label>COLOCACIONES</label>
+            </value>
+            <value>
+                <fullName>ESTABLECIMIENTOS</fullName>
+                <default>false</default>
+                <label>ESTABLECIMIENTOS</label>
+            </value>
+            <value>
+                <fullName>TARJETA DE CREDITO</fullName>
+                <default>false</default>
+                <label>TARJETA DE CREDITO</label>
+            </value>
+            <value>
+                <fullName>COMERCIO EXTERIOR</fullName>
+                <default>false</default>
+                <label>COMERCIO EXTERIOR</label>
+            </value>
+            <value>
+                <fullName>MESA DE DINERO</fullName>
+                <default>false</default>
+                <label>MESA DE DINERO</label>
+            </value>
+            <value>
+                <fullName>SERVICIOS</fullName>
+                <default>false</default>
+                <label>SERVICIOS</label>
+            </value>
+            <value>
+                <fullName>TARJETA DE DEBITO</fullName>
+                <default>false</default>
+                <label>TARJETA DE DEBITO</label>
+            </value>
+            <value>
+                <fullName>INF. MANAGEMEN SYST. (IMS)</fullName>
+                <default>false</default>
+                <label>INF. MANAGEMEN SYST. (IMS)</label>
+            </value>
+            <value>
+                <fullName>CHECK CLEARING (ECCO)</fullName>
+                <default>false</default>
+                <label>CHECK CLEARING (ECCO)</label>
+            </value>
+            <value>
+                <fullName>PROCESO DE DOCUMENTO (DIPS)</fullName>
+                <default>false</default>
+                <label>PROCESO DE DOCUMENTO (DIPS)</label>
+            </value>
+            <value>
+                <fullName>CONTABILIDAD</fullName>
+                <default>false</default>
+                <label>CONTABILIDAD</label>
+            </value>
+            <value>
+                <fullName>REPORTES DEL SISTEMA</fullName>
+                <default>false</default>
+                <label>REPORTES DEL SISTEMA</label>
+            </value>
+            <value>
+                <fullName>GARANTIAS</fullName>
+                <default>false</default>
+                <label>GARANTIAS</label>
+            </value>
+            <value>
+                <fullName>SEGURIDAD INTERNA</fullName>
+                <default>false</default>
+                <label>SEGURIDAD INTERNA</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
