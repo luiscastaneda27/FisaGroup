@@ -29,6 +29,8 @@
 		<name>Role</name>
 	</types>
 	<types>
+		<members>CaseOrigin</members>
+		<members>CasePriority</members>
 		<members>CaseStatus</members>
 		<name>StandardValueSet</name>
 	</types>
