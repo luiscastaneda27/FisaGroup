@@ -9,6 +9,7 @@
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
+        <controllingField>FS_Producto__c</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
@@ -107,6 +108,195 @@
                 <default>false</default>
                 <label>SEGURIDAD INTERNA</label>
             </value>
+            <value>
+                <fullName>Business Application Products</fullName>
+                <default>false</default>
+                <label>Business Application Products</label>
+            </value>
+            <value>
+                <fullName>Business Application Generator</fullName>
+                <default>false</default>
+                <label>Business Application Generator</label>
+            </value>
+            <value>
+                <fullName>Business Support Aplication</fullName>
+                <default>false</default>
+                <label>Business Support Aplication</label>
+            </value>
+            <value>
+                <fullName>Integration Service FSY</fullName>
+                <default>false</default>
+                <label>Integration Service FSY</label>
+            </value>
+            <value>
+                <fullName>Business Aplication</fullName>
+                <default>false</default>
+                <label>Business Aplication</label>
+            </value>
+            <value>
+                <fullName>Homebanking</fullName>
+                <default>false</default>
+                <label>Homebanking</label>
+            </value>
+            <value>
+                <fullName>OLB-FT</fullName>
+                <default>false</default>
+                <label>OLB-FT</label>
+            </value>
+            <value>
+                <fullName>Móvil</fullName>
+                <default>false</default>
+                <label>Móvil</label>
+            </value>
+            <value>
+                <fullName>Kiosko</fullName>
+                <default>false</default>
+                <label>Kiosko</label>
+            </value>
+            <value>
+                <fullName>Multichanel Management</fullName>
+                <default>false</default>
+                <label>Multichanel Management</label>
+            </value>
+            <value>
+                <fullName>Motor Transaccional</fullName>
+                <default>false</default>
+                <label>Motor Transaccional</label>
+            </value>
+            <value>
+                <fullName>Enterprise Banking</fullName>
+                <default>false</default>
+                <label>Enterprise Banking</label>
+            </value>
         </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>GENERALES</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>CLIENTES</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>CAJA Y SERVICIOS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>CAPTACIONES VISTA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>CAPTACIONES A PLAZO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>COLOCACIONES</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <controllingFieldValue>FISA Credit Card</controllingFieldValue>
+            <valueName>ESTABLECIMIENTOS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <controllingFieldValue>FISA Credit Card</controllingFieldValue>
+            <valueName>TARJETA DE CREDITO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>COMERCIO EXTERIOR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>MESA DE DINERO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>SERVICIOS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>TARJETA DE DEBITO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <controllingFieldValue>FISA FISS</controllingFieldValue>
+            <valueName>INF. MANAGEMEN SYST. (IMS)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <controllingFieldValue>FISA FISS</controllingFieldValue>
+            <valueName>CHECK CLEARING (ECCO)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <controllingFieldValue>FISA FISS</controllingFieldValue>
+            <valueName>PROCESO DE DOCUMENTO (DIPS)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>CONTABILIDAD</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>REPORTES DEL SISTEMA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>GARANTIAS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA System</controllingFieldValue>
+            <valueName>SEGURIDAD INTERNA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA - Business Platform</controllingFieldValue>
+            <valueName>Business Application Products</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA - Business Platform</controllingFieldValue>
+            <valueName>Business Application Generator</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA - Business Platform</controllingFieldValue>
+            <valueName>Business Support Aplication</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FISA - Business Platform</controllingFieldValue>
+            <valueName>Integration Service FSY</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OMNIA</controllingFieldValue>
+            <valueName>Business Aplication</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OMNIA</controllingFieldValue>
+            <valueName>Homebanking</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OMNIA</controllingFieldValue>
+            <valueName>OLB-FT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OMNIA</controllingFieldValue>
+            <valueName>Móvil</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OMNIA</controllingFieldValue>
+            <valueName>Kiosko</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OMNIA</controllingFieldValue>
+            <valueName>Multichanel Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OMNIA</controllingFieldValue>
+            <valueName>Motor Transaccional</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OMNIA</controllingFieldValue>
+            <valueName>Enterprise Banking</valueName>
+        </valueSettings>
     </valueSet>
 </CustomField>

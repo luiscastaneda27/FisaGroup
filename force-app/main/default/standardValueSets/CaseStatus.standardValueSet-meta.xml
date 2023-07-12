@@ -37,4 +37,10 @@
         <label>Cerrado</label>
         <closed>true</closed>
     </standardValue>
+    <standardValue>
+        <fullName>Dado de Baja</fullName>
+        <default>false</default>
+        <label>Dado de Baja</label>
+        <closed>true</closed>
+    </standardValue>
 </StandardValueSet>

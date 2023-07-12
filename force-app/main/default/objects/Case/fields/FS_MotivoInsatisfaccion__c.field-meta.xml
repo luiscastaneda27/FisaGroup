@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FS_MotivoInsatisfaccion__c</fullName>
+    <externalId>false</externalId>
+    <label>Motivo de Insatisfacción</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Información Incompleta</fullName>
+                <default>false</default>
+                <label>Información Incompleta</label>
+            </value>
+            <value>
+                <fullName>Tiempo de entrega</fullName>
+                <default>false</default>
+                <label>Tiempo de entrega</label>
+            </value>
+            <value>
+                <fullName>No se ofrece alternativas</fullName>
+                <default>false</default>
+                <label>No se ofrece alternativas</label>
+            </value>
+            <value>
+                <fullName>Entrega tiene errores</fullName>
+                <default>false</default>
+                <label>Entrega tiene errores</label>
+            </value>
+            <value>
+                <fullName>Desconocimiento del negocio</fullName>
+                <default>false</default>
+                <label>Desconocimiento del negocio</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

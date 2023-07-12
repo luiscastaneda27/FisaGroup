@@ -27,6 +27,16 @@
                 <default>false</default>
                 <label>FISA Credit Card</label>
             </value>
+            <value>
+                <fullName>FISA FISS</fullName>
+                <default>false</default>
+                <label>FISA FISS</label>
+            </value>
+            <value>
+                <fullName>OMNIA</fullName>
+                <default>false</default>
+                <label>OMNIA</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
