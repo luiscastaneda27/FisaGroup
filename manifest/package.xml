@@ -19,6 +19,7 @@
 		<name>CustomObject</name>
 	</types>
 	<types>
+		<members>Account-Formato de cuentas</members>
 		<members>Case-Layout Cliente</members>
 		<members>Case-Layout Interno Casos</members>
 		<members>FS_AceptacionRechazoCaso__c-Formato Aceptación %2F Rechazo de Caso</members>
