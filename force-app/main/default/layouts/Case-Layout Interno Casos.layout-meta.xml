@@ -52,18 +52,6 @@
                 <behavior>Edit</behavior>
                 <field>FS_SubModulo__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>FS_NotasReunionSatisfaccion__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Comments</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>FS_FechaCompromisoEntrega__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -87,14 +75,6 @@
                 <field>Description</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>StopStartDate</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>EntitlementId</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>CreatedDate</field>
             </layoutItems>
@@ -104,15 +84,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>IsStopped</field>
+                <field>Comments</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>IsEscalated</field>
+                <field>FS_NotasReunionSatisfaccion__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>AssetId</field>
+                <field>FS_FechaCompromisoEntrega__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

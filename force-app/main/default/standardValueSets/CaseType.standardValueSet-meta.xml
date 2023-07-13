@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Puntual</fullName>
+        <default>false</default>
+        <label>Puntual</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Definitivo</fullName>
+        <default>false</default>
+        <label>Definitivo</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Atención 24x7</fullName>
+        <default>false</default>
+        <label>Atención 24x7</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Pase en produccción</fullName>
+        <default>false</default>
+        <label>Pase en produccción</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Revisión ambiente laboratorio</fullName>
+        <default>false</default>
+        <label>Revisión ambiente laboratorio</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Revisión sistemas externos</fullName>
+        <default>false</default>
+        <label>Revisión sistemas externos</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Script personalizados</fullName>
+        <default>false</default>
+        <label>Script personalizados</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Atención sin costo</fullName>
+        <default>false</default>
+        <label>Atención sin costo</label>
+    </standardValue>
+</StandardValueSet>

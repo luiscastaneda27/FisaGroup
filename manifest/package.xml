@@ -12,6 +12,7 @@
 		<members>Case.FS_ResultadoEncuesta__c</members>
 		<members>Case.FS_SubEstado__c</members>
 		<members>Case.FS_SubModulo__c</members>
+		<members>Case.FS_FechaCompromisoEntrega__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
@@ -48,6 +49,7 @@
 		<members>CaseOrigin</members>
 		<members>CasePriority</members>
 		<members>CaseStatus</members>
+		<members>CaseType</members>
 		<name>StandardValueSet</name>
 	</types>
 	<version>55.0</version>
