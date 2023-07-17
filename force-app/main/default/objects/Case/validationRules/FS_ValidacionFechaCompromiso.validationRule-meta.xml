@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FS_ValidacionFechaCompromiso</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISCHANGED(FS_FechaCompromisoEntrega__c),  TEXT(FS_SubEstado__c) != &apos;Análisis Consulta N1&apos;, TEXT(FS_SubEstado__c) != &apos;Análisis Consulta N2&apos; )</errorConditionFormula>
+    <errorDisplayField>FS_FechaCompromisoEntrega__c</errorDisplayField>
+    <errorMessage>Este campo solo es modificable en el estado de análisis.</errorMessage>
+</ValidationRule>

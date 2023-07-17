@@ -28,6 +28,10 @@
 		<name>CustomObject</name>
 	</types>
 	<types>
+		<members>FS_ValoresSiNo</members>
+		<name>GlobalValueSet</name>
+	</types>
+	<types>
 		<members>Account-Formato de cuentas</members>
 		<members>Case-Layout Cliente</members>
 		<members>Case-Layout Interno Casos</members>
@@ -64,6 +68,11 @@
 		<members>CaseStatus</members>
 		<members>CaseType</members>
 		<name>StandardValueSet</name>
+	</types>
+	<types>
+		<members>Case.FS_ValidacionDatosRespuesta</members>
+		<members>Case.FS_ValidacionFechaCompromiso</members>
+		<name>ValidationRule</name>
 	</types>
 	<version>55.0</version>
 </Package>
