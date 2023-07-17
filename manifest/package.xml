@@ -36,6 +36,10 @@
 		<name>Layout</name>
 	</types>
 	<types>
+		<members>FS_PermisosServicioCliente</members>
+		<name>PermissionSet</name>
+	</types>
+	<types>
 		<members>FS_AtencionN1</members>
 		<members>FS_AtencionN2</members>
 		<name>Queue</name>
