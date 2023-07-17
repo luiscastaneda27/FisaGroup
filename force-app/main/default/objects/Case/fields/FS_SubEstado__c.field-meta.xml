@@ -14,7 +14,7 @@
             <sorted>false</sorted>
             <value>
                 <fullName>Apertura de caso</fullName>
-                <default>false</default>
+                <default>true</default>
                 <label>Apertura de caso</label>
             </value>
             <value>
