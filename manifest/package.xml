@@ -29,7 +29,18 @@
 	</types>
 	<types>
 		<members>FS_AceptacionRechazoCaso__c</members>
+		<members>FS_ProductoAdquirido__c</members>
 		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>FS_CorreosClientesCasos/FS_AnalisisCaso</members>
+		<members>FS_CorreosClientesCasos/FS_AsignacionCaso</members>
+		<members>FS_CorreosClientesCasos/FS_CreacionCaso</members>
+		<members>FS_CorreosClientesCasos/FS_Encuesta</members>
+		<members>FS_CorreosClientesCasos/FS_InformacionFaltante</members>
+		<members>FS_CorreosClientesCasos/FS_RechazoRespuesta</members>
+		<members>FS_CorreosClientesCasos/FS_ValidacionInformacion</members>
+		<name>EmailTemplate</name>
 	</types>
 	<types>
 		<members>Portal_para_Servicio_al_Cliente1</members>
@@ -45,7 +56,12 @@
 		<members>Case-Layout Interno Casos</members>
 		<members>Contact-Formato de contactos</members>
 		<members>FS_AceptacionRechazoCaso__c-Formato Aceptación %2F Rechazo de Caso</members>
+		<members>FS_ProductoAdquirido__c-Formato Producto Adquirido</members>
 		<name>Layout</name>
+	</types>
+	<types>
+		<members>FS_CasoClientes</members>
+		<name>Letterhead</name>
 	</types>
 	<types>
 		<members>FS_PermisosServicioCliente</members>
@@ -55,6 +71,10 @@
 		<members>FS_AtencionN1</members>
 		<members>FS_AtencionN2</members>
 		<name>Queue</name>
+	</types>
+	<types>
+		<members>Case.SendEmail</members>
+		<name>QuickAction</name>
 	</types>
 	<types>
 		<members>Case.FS_Consulta</members>
