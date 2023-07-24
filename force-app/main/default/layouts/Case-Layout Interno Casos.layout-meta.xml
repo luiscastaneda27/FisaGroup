@@ -72,11 +72,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Description</field>
+                <field>FS_FechaCompromisoEntrega__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>FS_FechaCompromisoEntrega__c</field>
+                <field>ContactId</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -85,24 +85,18 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Campos de Control</label>
+        <label>Descripción Cliente</label>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>FS_InformacionCompleta__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>FS_AceptaRespuesta__c</field>
+                <field>FS_DescripcionCliente__c</field>
             </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>FS_PudeSolventarPregunta__c</field>
+                <field>Description</field>
             </layoutItems>
         </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
+        <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -119,64 +113,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>FS_NotasReunionSatisfaccion__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Datos de cuenta</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>AccountId</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>ContactPhone</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>ContactMobile</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>ContactId</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>ContactEmail</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Datos de Encuesta</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>FS_ResultadoEncuesta__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>FS_MotivoInsatisfaccion__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>FS_CSATCaso__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>FS_EncuestaEnviada__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -252,9 +188,6 @@
         <quickActionListItems>
             <quickActionName>FeedItem.PollPost</quickActionName>
         </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>Case.SendEmail</quickActionName>
-        </quickActionListItems>
     </quickActionList>
     <relatedContent>
         <relatedContentItems>
@@ -270,13 +203,12 @@
             </layoutItem>
         </relatedContentItems>
     </relatedContent>
-    <relatedLists>
-        <fields>SOLUTION.ISSUE</fields>
+    <!--relatedLists>
         <fields>SOLUTION.SOLUTION_NUMBER</fields>
         <fields>SOLUTION.STATUS</fields>
         <fields>CORE.USERS.ALIAS</fields>
         <relatedList>RelatedSolutionList</relatedList>
-    </relatedLists>
+    </relatedLists-->
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
         <fields>TASK.WHO_NAME</fields>
@@ -306,7 +238,6 @@
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <relatedObjects>ContactId</relatedObjects>
-    <relatedObjects>AccountId</relatedObjects>
     <runAssignmentRulesDefault>false</runAssignmentRulesDefault>
     <showEmailCheckbox>true</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

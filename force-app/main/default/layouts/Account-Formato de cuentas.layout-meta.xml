@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -192,6 +189,11 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>FeedItem.TextPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>FeedItem.ContentPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
@@ -296,11 +298,6 @@
             <actionType>ProductivityAction</actionType>
             <sortOrder>21</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
     </platformActionList>
     <quickActionList>
         <quickActionListItems>
@@ -364,6 +361,12 @@
         <relatedList>RelatedCaseList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>FS_Producto__c</fields>
+        <fields>FS_Modulo__c</fields>
+        <fields>FS_SubModulo__c</fields>
+        <relatedList>FS_ProductoAdquirido__c.FS_Cuenta__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>TASK.SUBJECT</fields>
         <fields>TASK.WHO_NAME</fields>
         <fields>TASK.WHAT_NAME</fields>
@@ -418,10 +421,6 @@
         <fields>FS_MotivoInsatisfaccion__c</fields>
         <fields>FS_Comentarios__c</fields>
         <relatedList>FS_AceptacionRechazoCaso__c.FS_Cliente__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>FS_ProductoAdquirido__c.FS_Cuenta__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

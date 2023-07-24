@@ -1,19 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
+		<members>CaseTriggerHandler</members>
+		<members>CaseTriggerHelper</members>
+		<members>CommunitiesLandingController</members>
+		<members>ControladorCrearCaso</members>
+		<members>ControladorEncuesta</members>
+		<members>JobValidacionRespuesta</members>
+		<members>TrabajoAgenteHandler</members>
+		<members>TrabajoAgenteHelper</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>CommunitiesLanding</members>
+		<name>ApexPage</name>
+	</types>
+	<types>
+		<members>CaseTrigger</members>
+		<members>TrabajoAgenteTrigger</members>
+		<name>ApexTrigger</name>
+	</types>
+	<types>
 		<members>Case.FS_Casos</members>
 		<name>BusinessProcess</name>
+	</types>
+	<types>
+		<members>standard__ServiceConsole</members>
+		<name>CustomApplication</name>
 	</types>
 	<types>
 		<members>Case.FS_AceptaRespuesta__c</members>
 		<members>Case.FS_Area__c</members>
 		<members>Case.FS_CSATCaso__c</members>
+		<members>Case.FS_ComentariosEncuesta__c</members>
 		<members>Case.FS_ComentariosInternos__c</members>
+		<members>Case.FS_DescripcionCliente__c</members>
 		<members>Case.FS_EncuestaEnviada__c</members>
 		<members>Case.FS_FechaCompromisoEntrega__c</members>
+		<members>Case.FS_FechaContestacionEncuesta__c</members>
+		<members>Case.FS_FechaEnvioEncuesta__c</members>
 		<members>Case.FS_InformacionCompleta__c</members>
 		<members>Case.FS_Modulo__c</members>
 		<members>Case.FS_MotivoInsatisfaccion__c</members>
+		<members>Case.FS_NombreContacto__c</members>
+		<members>Case.FS_NombreCuanta__c</members>
+		<members>Case.FS_NombrePropietario__c</members>
+		<members>Case.FS_NombreTipoRegistro__c</members>
 		<members>Case.FS_NotasReunionSatisfaccion__c</members>
 		<members>Case.FS_Producto__c</members>
 		<members>Case.FS_PudeSolventarPregunta__c</members>
@@ -25,7 +57,17 @@
 		<members>FS_AceptacionRechazoCaso__c.FS_Comentarios__c</members>
 		<members>FS_AceptacionRechazoCaso__c.FS_MotivoInsatisfaccion__c</members>
 		<members>FS_AceptacionRechazoCaso__c.FS_Tipo__c</members>
+		<members>FS_ProductoAdquirido__c.FS_Cuenta__c</members>
+		<members>FS_ProductoAdquirido__c.FS_Modulo__c</members>
+		<members>FS_ProductoAdquirido__c.FS_Producto__c</members>
+		<members>FS_ProductoAdquirido__c.FS_SubModulo__c</members>
+		<members>MC4SF__MC_Subscriber__c.MC4SF__Daylight_Savings_GMT_Offset__c</members>
 		<name>CustomField</name>
+	</types>
+	<types>
+		<members>FS_UrlPortalEncuestas</members>
+		<members>FS_UrlPortalServicios</members>
+		<name>CustomLabel</name>
 	</types>
 	<types>
 		<members>FS_AceptacionRechazoCaso__c</members>
@@ -33,6 +75,16 @@
 		<name>CustomObject</name>
 	</types>
 	<types>
+		<members>Encuestas_Servicio_al_Cliente2</members>
+		<members>Portal_para_Servicio_al_Cliente</members>
+		<name>CustomSite</name>
+	</types>
+	<types>
+		<members>Calificacindecuenta/FS_LogoFisaServicios.png</members>
+		<name>Document</name>
+	</types>
+	<types>
+		<members>FS_CorreosClientesCasos</members>
 		<members>FS_CorreosClientesCasos/FS_AnalisisCaso</members>
 		<members>FS_CorreosClientesCasos/FS_AsignacionCaso</members>
 		<members>FS_CorreosClientesCasos/FS_CreacionCaso</members>
@@ -43,8 +95,13 @@
 		<name>EmailTemplate</name>
 	</types>
 	<types>
+		<members>Encuestas_Servicio_al_Cliente3</members>
 		<members>Portal_para_Servicio_al_Cliente1</members>
 		<name>ExperienceBundle</name>
+	</types>
+	<types>
+		<members>FS_CasoPaginaRegistro</members>
+		<name>FlexiPage</name>
 	</types>
 	<types>
 		<members>*</members>
@@ -64,6 +121,20 @@
 		<name>Letterhead</name>
 	</types>
 	<types>
+		<members>fs_CrearCaso</members>
+		<members>fs_Encuesta</members>
+		<name>LightningComponentBundle</name>
+	</types>
+	<types>
+		<members>Encuestas Servicio al Cliente%2E</members>
+		<members>Portal para Servicio al Cliente</members>
+		<name>Network</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>PathAssistant</name>
+	</types>
+	<types>
 		<members>FS_PermisosServicioCliente</members>
 		<name>PermissionSet</name>
 	</types>
@@ -73,7 +144,13 @@
 		<name>Queue</name>
 	</types>
 	<types>
-		<members>Case.SendEmail</members>
+		<members>FS_AtencionN1</members>
+		<members>FS_AtencionN2</members>
+		<name>QueueRoutingConfig</name>
+	</types>
+	<types>
+		<members>Case.FS_CamposControlConsulta</members>
+		<members>Case.FS_DatosEncuesta</members>
 		<name>QuickAction</name>
 	</types>
 	<types>
@@ -96,11 +173,28 @@
 		<name>Role</name>
 	</types>
 	<types>
+		<members>Encuestas_Servicio_al_Cliente3</members>
+		<members>Portal_para_Servicio_al_Cliente1</members>
+		<name>SiteDotCom</name>
+	</types>
+	<types>
 		<members>CaseOrigin</members>
 		<members>CasePriority</members>
 		<members>CaseStatus</members>
 		<members>CaseType</members>
 		<name>StandardValueSet</name>
+	</types>
+	<types>
+		<members>FS_FisaLogo</members>
+		<members>FS_LogoInsatisfecho</members>
+		<members>FS_LogoLike</members>
+		<members>FS_LogoMuyInsatisfecho</members>
+		<members>FS_LogoMuySatisfecho</members>
+		<members>FS_LogoNeutral</members>
+		<members>FS_LogoSatisfecho</members>
+		<members>SNA_Encuestas_Servicio_al_Cliente3_sf_default_cdn_5dmll</members>
+		<members>SNA_Portal_para_Servicio_al_Cliente1_sf_default_cdn_fLgxZ</members>
+		<name>StaticResource</name>
 	</types>
 	<types>
 		<members>Case.FS_ValidacionDatosRespuesta</members>

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>CaseTriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CaseTriggerHelper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ControladorCrearCaso</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.AccountId</field>
@@ -52,7 +64,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.FS_ComentariosEncuesta__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.FS_ComentariosInternos__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_DescripcionCliente__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -63,6 +85,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.FS_FechaCompromisoEntrega__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_FechaContestacionEncuesta__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_FechaEnvioEncuesta__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -78,6 +110,26 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.FS_MotivoInsatisfaccion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.FS_NombreContacto__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.FS_NombreCuanta__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.FS_NombrePropietario__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.FS_NombreTipoRegistro__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -240,6 +292,26 @@
         <field>FS_AceptacionRechazoCaso__c.FS_Tipo__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>FS_ProductoAdquirido__c.FS_Cuenta__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>FS_ProductoAdquirido__c.FS_Modulo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>FS_ProductoAdquirido__c.FS_Producto__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>FS_ProductoAdquirido__c.FS_SubModulo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Permisos para portal de Servicio al Cliente</label>
     <objectPermissions>
@@ -268,6 +340,15 @@
         <modifyAllRecords>false</modifyAllRecords>
         <object>FS_AceptacionRechazoCaso__c</object>
         <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>FS_ProductoAdquirido__c</object>
+        <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <recordTypeVisibilities>
         <recordType>Case.FS_Consulta</recordType>

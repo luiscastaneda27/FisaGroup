@@ -242,6 +242,29 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>FS_ResultadoEncuesta__c</picklist>
+        <values>
+            <fullName>Insatisfecho</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Muy Insatisfecho</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Muy Satisfecho</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Neutral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Satisfecho</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_SubEstado__c</picklist>
         <values>
             <fullName>Análisis Consulta N1</fullName>

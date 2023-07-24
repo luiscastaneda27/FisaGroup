@@ -3,12 +3,39 @@
     <fullName>FS_ResultadoEncuesta__c</fullName>
     <externalId>false</externalId>
     <label>Resultado Encuesta</label>
-    <precision>4</precision>
     <required>false</required>
-    <scale>0</scale>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>Number</type>
-    <unique>false</unique>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Muy Insatisfecho</fullName>
+                <default>false</default>
+                <label>Muy Insatisfecho</label>
+            </value>
+            <value>
+                <fullName>Insatisfecho</fullName>
+                <default>false</default>
+                <label>Insatisfecho</label>
+            </value>
+            <value>
+                <fullName>Neutral</fullName>
+                <default>false</default>
+                <label>Neutral</label>
+            </value>
+            <value>
+                <fullName>Satisfecho</fullName>
+                <default>false</default>
+                <label>Satisfecho</label>
+            </value>
+            <value>
+                <fullName>Muy Satisfecho</fullName>
+                <default>false</default>
+                <label>Muy Satisfecho</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
 </CustomField>

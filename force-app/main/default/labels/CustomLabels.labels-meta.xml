@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>FS_UrlPortalEncuestas</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>Url Portal Encuestas</shortDescription>
+        <value>https://fisagrp--devfs.sandbox.my.site.com/survey/s</value>
+    </labels>
+    <labels>
+        <fullName>FS_UrlPortalServicios</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>Url Portal Servicios</shortDescription>
+        <value>https://fisagrp--devfs.sandbox.my.site.com/servicios/s</value>
+    </labels>
+</CustomLabels>
