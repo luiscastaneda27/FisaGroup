@@ -122,6 +122,7 @@
 	</types>
 	<types>
 		<members>fs_CrearCaso</members>
+		<members>fs_CampoPendienteCaso</members>
 		<members>fs_Encuesta</members>
 		<name>LightningComponentBundle</name>
 	</types>
