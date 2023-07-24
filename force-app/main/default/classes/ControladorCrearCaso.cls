@@ -24,11 +24,51 @@ public without sharing class ControladorCrearCaso {
         return respuesta;
     }
     
+    @AuraEnabled
+    public static CasoWrapper getCaso(String casoId){
+        CasoWrapper respuesta = new CasoWrapper();
+        Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Case').getDescribe().fields.getMap();
+        String query = 'Select ';
+        for(Schema.SObjectField sfield : fieldMap.Values()){
+            schema.describefieldresult dfield = sfield.getDescribe();
+            query += dfield.getname() + ',';
+        }
+        query =  query.substring(0, query.length() - 1) + ' From Case Where Id = :casoId';
+        respuesta.caso = DataBase.query(query);
+        respuesta.listAceptaRespuesta = getPickListOption('Case', 'FS_AceptaRespuesta__c');
+        return respuesta;
+    }
+    
+    @AuraEnabled
+    public static void guardarCaso(String casoJSON){
+        Case caso = (Case) JSON.deserialize(casoJSON, Case.class);
+        update caso;
+    }
+    
+    public static List<PickListOption> getPickListOption(String objeto, String campo){
+       List<PickListOption> listOptions = new List<PickListOption>();
+        SObjectType objectType = Schema.getGlobalDescribe().get(objeto);
+        List<Schema.PicklistEntry> ple = objectType.getDescribe().fields.getMap()
+            .get(campo).getDescribe().getPickListValues();
+        for(Schema.PicklistEntry entry : ple)  {
+            PickListOption p = new PickListOption();
+            p.label = entry.getLabel();
+            p.value = entry.getvalue();
+            listOptions.add(p);
+        }
+        return listOptions;
+    }
+    
     public class ContactoWrapper{
         @AuraEnabled public String cuentaId {get;set;}
         @AuraEnabled public String contactId {get;set;}
         @AuraEnabled public List<Producto> listTodosProductos {get;set;}
         @AuraEnabled public List<PickListOption> listTiporegistro {get;set;}
+    }
+    
+    public class CasoWrapper{
+        @AuraEnabled public Case caso {get;set;}
+        @AuraEnabled public List<PickListOption> listAceptaRespuesta {get;set;}
     }
     
     public class Producto{

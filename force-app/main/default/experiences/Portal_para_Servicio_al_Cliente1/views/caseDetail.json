@@ -19,6 +19,13 @@
       "renditionMap" : { },
       "type" : "component"
     }, {
+      "componentAttributes" : { },
+      "componentName" : "c:fs_CampoPendienteCaso",
+      "id" : "105d859d-006e-42ad-ab61-df05bfbf4aef",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
       "componentAttributes" : {
         "detailsTabLabel" : "Detalle",
         "discussionsTabLabel" : "Feed",

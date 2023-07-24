@@ -76,6 +76,7 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         console.log("Caso: "+this.casoId)
         guardarCaso({casoJSON: JSON.stringify(this.data.caso)}).then(response => {
             this.cancelar();
+            this.init();
             this.showSpinner = false;
             this.pushMessage('Exitoso', 'success', 'Datos guardados exitosamente');
         }).catch(error => {
