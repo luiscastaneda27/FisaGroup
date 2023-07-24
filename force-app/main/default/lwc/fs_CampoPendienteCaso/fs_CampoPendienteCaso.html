@@ -1,24 +1,24 @@
 <template>
-    <template if:true={data.pendienteRespuestaDetalle} >
-    <lightning-layout vertical-align="stretch" multiple-rows="true" >
-        <lightning-layout-item flexibility="auto" padding="around-small" size="12">
-            <lightning-card icon-name="standard:answer_best" title="Aceptación de Respuesta">
-                <lightning-layout vertical-align="stretch" multiple-rows="true" >
-                <lightning-layout-item flexibility="auto" padding="around-small" size="6">
-                    <lightning-combobox name="aceptaResp" label="Acepta Respuesta"
-                        value={data.caso.FS_AceptaRespuesta__c} options={data.listAceptaRespuesta}
-                        onchange={handleChange} placeholder="Seleccione una respuesta">
-                    </lightning-combobox>
-                </lightning-layout-item>
-                <lightning-layout-item flexibility="auto" padding="around-small" size="6">
-                    <br/>
-                    <lightning-button label="Guardar" title="Guardar" variant="brand" name="guardar"
-                        class="slds-m-left_x-small" onclick={guardarCaso}></lightning-button>
-                </lightning-layout-item>
-            </lightning-layout>
-            </lightning-card>
-        </lightning-layout-item>
-    </lightning-layout>
+    <template if:true={data.pendienteRespuestaDetalle}>
+        <lightning-layout vertical-align="stretch" multiple-rows="true">
+            <lightning-layout-item flexibility="auto" padding="around-small" size="12">
+                <lightning-card icon-name="standard:answer_best" title="Aceptación de Respuesta">
+                    <lightning-layout vertical-align="stretch" multiple-rows="true">
+                        <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                            <lightning-combobox name="aceptaResp" label="Acepta Respuesta"
+                                value={data.caso.FS_AceptaRespuesta__c} options={data.listAceptaRespuesta}
+                                onchange={handleChange} placeholder="Seleccione una respuesta">
+                            </lightning-combobox>
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                            <br />
+                            <lightning-button label="Guardar" title="Guardar" variant="brand" name="guardar"
+                                class="slds-m-left_x-small" onclick={guardarCaso}></lightning-button>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
     </template>
     <template if:true={data.pendienteRespuesta}>
         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
@@ -51,7 +51,52 @@
         <div class="slds-backdrop slds-backdrop_open"></div>
     </template>
 
-    
+
+    <template if:true={data.pendienteEncuestaDetalle}>
+        <lightning-layout vertical-align="stretch" multiple-rows="true">
+            <lightning-layout-item flexibility="auto" padding="around-small" size="12">
+                <lightning-card icon-name="standard:survey" title="Encuesta Pendiente">
+                    <lightning-layout vertical-align="stretch" multiple-rows="true">
+                        <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                            <h1>Tienes la encuesta pendiente por contestar   </h1>
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                            <br />
+                            <a class="slds-button slds-button--brand" href={data.urlEncuesta} target="_blank" onclick={cancelar}  > Ir a la Encuesta</a>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+    <template if:true={data.pendienteEncuesta}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Pendiente Contestación de
+                        Encuesta</h1>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium ">
+                    <div class="slds-form slds-form_compound slds-align--absolute-left">
+                        <fieldset class="slds-form-element">
+                            <div class="slds-modal__content slds-p-around--medium">
+                               <h1>Tienes la encuesta pendiente por contestar. </h1>
+                            </div>
+                            <footer class="slds-modal__footer">
+                                <lightning-button label="Cancelar" title="Cancelar" onclick={cancelar}
+                                    class="slds-m-left_x-small"></lightning-button> &nbsp;
+                                    <a class="slds-button slds-button--brand" href={data.urlEncuesta} target="_blank" onclick={cancelar}  > Ir a la Encuesta</a>
+                            </footer>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+
     <template if:true={showSpinner}>
         <div id="activityIndicator" class="slds-spinner_container">
             <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">

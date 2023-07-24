@@ -3,6 +3,7 @@ import { LightningElement, track } from 'lwc';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import getCaso from "@salesforce/apex/ControladorCrearCaso.getCaso";
 import guardarCaso from "@salesforce/apex/ControladorCrearCaso.guardarCaso";
+import urlEncuesta from '@salesforce/label/c.FS_UrlPortalEncuestas';
 
 export default class Fs_CampoPendienteCaso extends LightningElement {
 
@@ -33,6 +34,9 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             if(response.caso.FS_SubEstado__c === "Envío de respuesta" && response.caso.FS_AceptaRespuesta__c === undefined){
                 this.data.pendienteRespuesta = true;
                 this.data.pendienteRespuestaDetalle = true;
+            }else if(response.caso.FS_SubEstado__c === "Respuesta aceptada" && response.caso.Status === "Pendiente de Respuesta CSAT"){
+                this.data.pendienteEncuesta = true;
+                this.data.pendienteEncuestaDetalle = true;
             }
             this.showSpinner = false;
         }).catch(error => {
@@ -47,6 +51,7 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         urlCompleta = urlCompleta.split("case/")[1];
         this.casoId = urlCompleta.split("/")[0];
         console.log("Caso Id: "+this.casoId)
+        this.data.urlEncuesta = urlEncuesta + '/encuesta?recordId=' +  this.casoId;
     }
 
     pushMessage(title,variant,msj){
@@ -76,6 +81,8 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         console.log("Caso: "+this.casoId)
         guardarCaso({casoJSON: JSON.stringify(this.data.caso)}).then(response => {
             this.cancelar();
+            this.data.pendienteEncuestaDetalle = false;
+            this.data.pendienteRespuestaDetalle = false;
             this.init();
             this.showSpinner = false;
             this.pushMessage('Exitoso', 'success', 'Datos guardados exitosamente');
