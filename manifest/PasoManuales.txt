@@ -1,0 +1,5 @@
+1. Crear comunidades 
+2. Subir documento (Imagen de fisa)
+3. Asignación de páginas
+4. Activación de Omnichanel
+5. Habilitar api para comunidades
