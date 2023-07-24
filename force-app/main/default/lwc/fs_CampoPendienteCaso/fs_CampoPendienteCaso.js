@@ -29,8 +29,6 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         getCaso({casoId: this.casoId}).then(response => {
             this.data.caso = response.caso;
             this.data.listAceptaRespuesta = response.listAceptaRespuesta;
-            console.log(response.caso.FS_SubEstado__c +" --- "+response.caso.FS_AceptaRespuesta__c)
-            console.log(JSON.stringify(response.caso));
             if(response.caso.FS_SubEstado__c === "Envío de respuesta" && response.caso.FS_AceptaRespuesta__c === undefined){
                 this.data.pendienteRespuesta = true;
                 this.data.pendienteRespuestaDetalle = true;
