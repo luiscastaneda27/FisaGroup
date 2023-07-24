@@ -27,5 +27,5 @@
     <siteAdmin>luis.castaneda@intellectsystem</siteAdmin>
     <siteGuestRecordDefaultOwner>luis.castaneda@intellectsystem</siteGuestRecordDefaultOwner>
     <siteType>ChatterNetwork</siteType>
-    <urlPathPrefix>surveyds</urlPathPrefix>
+    <urlPathPrefix>survey</urlPathPrefix>
 </CustomSite>
