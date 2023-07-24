@@ -64,14 +64,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>SlaExitDate</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SlaStartDate</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>FS_FechaCompromisoEntrega__c</field>
             </layoutItems>
             <layoutItems>
