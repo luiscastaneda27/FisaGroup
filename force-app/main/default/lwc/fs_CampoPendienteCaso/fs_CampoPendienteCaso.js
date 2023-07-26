@@ -12,10 +12,12 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
     @track data = {
         caso: {},
         listAceptaRespuesta: [],
+        listMotivosRechazo: [],
         pendienteEncuesta: false,
         pendienteEncuestaDetalle: false,
         pendienteRespuesta: false,
         pendienteRespuestaDetalle: false,
+        mostrarRechazo: false,
 
     }
 
@@ -29,6 +31,7 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         getCaso({casoId: this.casoId}).then(response => {
             this.data.caso = response.caso;
             this.data.listAceptaRespuesta = response.listAceptaRespuesta;
+            this.data.listMotivosRechazo = response.listMotivosRechazo;
             if(response.caso.FS_SubEstado__c === "Envío de respuesta" && response.caso.FS_AceptaRespuesta__c === undefined){
                 this.data.pendienteRespuesta = true;
                 this.data.pendienteRespuestaDetalle = true;
@@ -71,6 +74,16 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         const value = event.detail.value;
         if(name === "aceptaResp"){
             this.data.caso.FS_AceptaRespuesta__c = value;
+            if(value == "Si"){
+                this.data.mostrarRechazo = false;
+            }else{
+                this.data.mostrarRechazo = true;
+                this.data.caso.FS_MotivoRechazo__c = null;
+            }
+        }else if(name === "motivoRechazo"){
+            this.data.caso.FS_MotivoRechazo__c = value;
+        }else if(name === "comentarioResp"){
+            this.data.caso.FS_ComentariosRespuesta__c = value;
         }
     }
 

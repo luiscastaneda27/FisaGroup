@@ -418,7 +418,7 @@
     </relatedLists>
     <relatedLists>
         <fields>FS_Tipo__c</fields>
-        <fields>FS_MotivoInsatisfaccion__c</fields>
+        <fields>FS_MotivoRechazo__c</fields>
         <fields>FS_Comentarios__c</fields>
         <relatedList>FS_AceptacionRechazoCaso__c.FS_Cliente__c</relatedList>
     </relatedLists>

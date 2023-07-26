@@ -25,20 +25,12 @@
         <label>Case Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Subject</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>Status</field>
+                <behavior>Readonly</behavior>
+                <field>ContactId</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Origin</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Reason</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -46,41 +38,28 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>FS_Modulo__c</field>
+                <field>FS_SubModulo__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>FS_SubModulo__c</field>
+                <behavior>Required</behavior>
+                <field>Subject</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>AccountId</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>ContactId</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>ContactEmail</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>ContactPhone</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>ContactMobile</field>
+                <behavior>Required</behavior>
+                <field>Status</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Priority</field>
             </layoutItems>
             <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>CaseNumber</field>
+                <field>FS_Modulo__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -92,7 +71,7 @@
         <label>Descripción del caso</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>FS_DescripcionCliente__c</field>
             </layoutItems>
             <layoutItems>
@@ -197,22 +176,32 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
-        <fields>TASK.SUBJECT</fields>
-        <fields>TASK.WHO_NAME</fields>
-        <fields>ACTIVITY.TASK</fields>
-        <fields>TASK.DUE_DATE</fields>
-        <fields>CORE.USERS.FULL_NAME</fields>
-        <fields>TASK.LAST_UPDATE</fields>
-        <relatedList>RelatedHistoryList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedCommentsList</relatedList>
-    </relatedLists>
-    <relatedLists>
         <relatedList>RelatedAttachmentList</relatedList>
     </relatedLists>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>FS_Tipo__c</fields>
+        <fields>FS_MotivoRechazo__c</fields>
+        <fields>FS_Comentarios__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>FS_AceptacionRechazoCaso__c.FS_Caso__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>FS_ResultadoEncuesta__c</fields>
+        <fields>FS_MotivoInsatisfaccion__c</fields>
+        <fields>FS_Comentarios__c</fields>
+        <fields>FS_CreadoPor__c</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>FS_Encuesta__c.FS_Caso__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedEmailMessageList</relatedList>
+    </relatedLists>
     <relatedObjects>ContactId</relatedObjects>
-    <relatedObjects>AccountId</relatedObjects>
     <runAssignmentRulesDefault>false</runAssignmentRulesDefault>
     <showEmailCheckbox>true</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

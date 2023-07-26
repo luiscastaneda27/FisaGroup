@@ -10,8 +10,19 @@
                                 onchange={handleChange} placeholder="Seleccione una respuesta">
                             </lightning-combobox>
                         </lightning-layout-item>
-                        <lightning-layout-item flexibility="auto" padding="around-small" size="6">
-                            <br />
+                        <lightning-layout-item flexibility="auto" padding="around-small" size="6" if:true={data.mostrarRechazo} >
+                            <lightning-combobox name="motivoRechazo" label="Motivo Rechazo"
+                            value={data.caso.FS_MotivoRechazo__c} options={data.listMotivosRechazo}
+                            onchange={handleChange} placeholder="Seleccione una Motivo">
+                        </lightning-combobox>
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto" padding="around-small" size="12">
+                            <lightning-textarea name="comentarioResp" label="Comentarios" vaue={data.caso.FS_ComentariosRespuesta__c}
+                            onchange={handleChange}></lightning-textarea>
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto" padding="around-small" size="10" >
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto" padding="around-small" size="2">
                             <lightning-button label="Guardar" title="Guardar" variant="brand" name="guardar"
                                 class="slds-m-left_x-small" onclick={guardarCaso}></lightning-button>
                         </lightning-layout-item>
@@ -32,10 +43,30 @@
                     <div class="slds-form slds-form_compound slds-align--absolute-left">
                         <fieldset class="slds-form-element">
                             <div class="slds-modal__content slds-p-around--medium">
-                                <lightning-combobox name="aceptaResp" label="Acepta Respuesta"
-                                    value={data.caso.FS_AceptaRespuesta__c} options={data.listAceptaRespuesta}
-                                    onchange={handleChange} placeholder="Seleccione una respuesta">
-                                </lightning-combobox>
+                                <lightning-layout vertical-align="stretch" multiple-rows="true">
+                                    <lightning-layout-item flexibility="auto" padding="around-small" size="12">
+                                        <lightning-card icon-name="standard:answer_best" title="Aceptación de Respuesta">
+                                            <lightning-layout vertical-align="stretch" multiple-rows="true">
+                                                <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                                                    <lightning-combobox name="aceptaResp" label="Acepta Respuesta"
+                                                        value={data.caso.FS_AceptaRespuesta__c} options={data.listAceptaRespuesta}
+                                                        onchange={handleChange} placeholder="Seleccione una respuesta">
+                                                    </lightning-combobox>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small" size="6" if:true={data.mostrarRechazo} >
+                                                    <lightning-combobox name="motivoRechazo" label="Motivo Rechazo"
+                                                    value={data.caso.FS_MotivoRechazo__c} options={data.listMotivosRechazo}
+                                                    onchange={handleChange} placeholder="Seleccione una Motivo">
+                                                </lightning-combobox>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small" size="12">
+                                                    <lightning-textarea name="comentarioResp" label="Comentarios" vaue={data.caso.FS_ComentariosRespuesta__c}
+                                                    onchange={handleChange}></lightning-textarea>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-card>
+                                    </lightning-layout-item>
+                                </lightning-layout>
                             </div>
                             <footer class="slds-modal__footer">
                                 <lightning-button label="Cancelar" title="Cancelar" onclick={cancelar}

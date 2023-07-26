@@ -46,7 +46,7 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
 
     onchangeFilter(event){
         const name = event.target.name;
-        const value = event.detail.value;
+        const value = event.detail.value.trim() != "" ? event.detail.value : null;;
         if(name == "producto"){
             this.data.productoSeleccionado = value;
             this.data.subModuloSeleccionado = null;
@@ -88,23 +88,29 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
         }else if(name === "tipoRegistro"){
             this.data.registroSeleccionado = value;
             this.data.desabilitarSiguiente = false;
+        }else if(name === "motivo"){
+            this.data.motivoSeleccionado = value;
+        }else if(name === "asunto"){
+            this.data.asunto =  value;
+        }else if(name === "descripcion"){
+            this.data.descripcion = value;
         }
         this.habilitaBoton();
     }
 
     habilitaBoton(){
         this.data.habilitarBoton = true;
-        if(this.data.productoSeleccionado != null && this.data.subModuloSeleccionado != null && this.data.moduloSeleccionado != null){
-            this.data.habilitarBoton = false;
-        }else if(this.data.subModuloSeleccionado === null && this.data.moduloSeleccionado != null && this.data.listSubModulos.length === 0){
-            this.data.habilitarBoton = false;
-        }
+        let habilitarBoton = this.data.productoSeleccionado != null && this.data.subModuloSeleccionado != null && this.data.moduloSeleccionado != null;
+        habilitarBoton = habilitarBoton || (this.data.subModuloSeleccionado === null && this.data.moduloSeleccionado != null && this.data.listSubModulos.length === 0);
+        habilitarBoton = habilitarBoton && (this.data.registroSeleccionado != null && this.data.motivoSeleccionado != null);
+        habilitarBoton = habilitarBoton && (this.data.asunto != null && this.data.descripcion != null);
+
+        this.data.habilitarBoton = !habilitarBoton;
     }
     clickCrearCaso(event){
         const name = event.target.name;
         if(name === "crearCaso"){
-            this.data.popTipoRegistro = true;
-            this.data.registroSeleccionado = null;
+            this.data.popArchivo = true;
             this.data.desabilitarSiguiente = true;
         }else if(name === "siguiente"){
             this.crearCaso();
@@ -113,7 +119,7 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
     
     crearCaso(){
         this.showSpinner = true;
-        this.data.popTipoRegistro = false;
+        this.data.popArchivo = false;
         this.data.habilitarBoton = true;
         const defaultValues = encodeDefaultFieldValues({
             AccountId: this.data.cuentaId,
@@ -138,7 +144,7 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
         this.showSpinner = false;
     }
     cancelar(){
-        this.data.popTipoRegistro = false;
+        this.data.popArchivo = false;
     }
     pushMessage(title,variant,msj){
         const message = new ShowToastEvent({

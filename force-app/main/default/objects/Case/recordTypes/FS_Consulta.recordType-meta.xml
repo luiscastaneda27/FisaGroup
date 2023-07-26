@@ -3,6 +3,7 @@
     <fullName>FS_Consulta</fullName>
     <active>true</active>
     <businessProcess>FS_Casos</businessProcess>
+    <compactLayoutAssignment>FS_Casos</compactLayoutAssignment>
     <label>Consulta</label>
     <picklistValues>
         <picklist>FS_AceptaRespuesta__c</picklist>
@@ -204,6 +205,21 @@
         </values>
         <values>
             <fullName>Tiempo de entrega</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivoRechazo__c</picklist>
+        <values>
+            <fullName>Entrega incompleta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en la entrega</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No resolvió lo reportado</fullName>
             <default>false</default>
         </values>
     </picklistValues>

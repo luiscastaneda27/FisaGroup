@@ -21,6 +21,7 @@ public without sharing class ControladorCrearCaso {
             p.label = item.Name;
             respuesta.listTiporegistro.add(p);
         }
+        respuesta.listMotivo = getPickListOption('Case', 'Reason');
         return respuesta;
     }
     
@@ -36,11 +37,13 @@ public without sharing class ControladorCrearCaso {
         query =  query.substring(0, query.length() - 1) + ' From Case Where Id = :casoId';
         respuesta.caso = DataBase.query(query);
         respuesta.listAceptaRespuesta = getPickListOption('Case', 'FS_AceptaRespuesta__c');
+        respuesta.listMotivosRechazo = getPickListOption('Case', 'FS_MotivoRechazo__c');
         return respuesta;
     }
     
     @AuraEnabled
     public static void guardarCaso(String casoJSON){
+        System.debug('casoJSON: '+casoJSON);
         Case caso = (Case) JSON.deserialize(casoJSON, Case.class);
         update caso;
     }
@@ -64,11 +67,13 @@ public without sharing class ControladorCrearCaso {
         @AuraEnabled public String contactId {get;set;}
         @AuraEnabled public List<Producto> listTodosProductos {get;set;}
         @AuraEnabled public List<PickListOption> listTiporegistro {get;set;}
+        @AuraEnabled public List<PickListOption> listMotivo {get;set;}
     }
     
     public class CasoWrapper{
         @AuraEnabled public Case caso {get;set;}
         @AuraEnabled public List<PickListOption> listAceptaRespuesta {get;set;}
+        @AuraEnabled public List<PickListOption> listMotivosRechazo {get;set;}
     }
     
     public class Producto{

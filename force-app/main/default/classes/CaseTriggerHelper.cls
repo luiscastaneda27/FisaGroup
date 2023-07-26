@@ -117,6 +117,7 @@ public without sharing class CaseTriggerHelper {
                     item.FS_EncuestaEnviada__c = true;
                     item.FS_FechaEnvioEncuesta__c = System.now();
                     envioCorreo(item, 'FS_Encuesta', true);
+                    crearEncuesta(item);
                 }else if(item.FS_AceptaRespuesta__c == 'No'){
                     item.FS_SubEstado__c = 'Respuesta rechazada';
                     item.FS_PudeSolventarPregunta__c = null;
@@ -164,12 +165,15 @@ public without sharing class CaseTriggerHelper {
         html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
         mail.setSubject(asunnto);
         mail.setHtmlBody(html);
-        System.debug(html);
+        //System.debug(html);
         mail.saveAsActivity = esContacto;
         if(esContacto){
             //mail.setWhatId(caso.Id);
             mail.setTargetObjectId(caso.ContactId);
         }else{
+            //System.debug('caso.OwnerId: '+caso.OwnerId);
+            //User user1 = [Select Email from user Where Id = :caso.OwnerId];
+            //mail.setToAddresses(new String[] {user1.Email});
             mail.setTargetObjectId(caso.OwnerId);
         }
         MessageList.add(mail);
@@ -184,8 +188,14 @@ public without sharing class CaseTriggerHelper {
         aceptacion.FS_Caso__c = caso.Id;
         aceptacion.FS_Cliente__c = caso.AccountId;
         aceptacion.FS_Tipo__c = caso.FS_AceptaRespuesta__c == 'Si' ? 'Aceptación' : 'Rechazo'; 
-        aceptacion.FS_MotivoInsatisfaccion__c = caso.FS_MotivoInsatisfaccion__c;
+        aceptacion.FS_MotivoRechazo__c = caso.FS_MotivoRechazo__c;
+        aceptacion.FS_Comentarios__c = caso.FS_ComentariosRespuesta__c;
         insert aceptacion;
+    }
+    
+    public static void crearEncuesta(Case caso){
+        FS_Encuesta__c encuesta = new FS_Encuesta__c (FS_Caso__c = Caso.Id, FS_CreadoPor__c = UserInfo.getUserId());
+        insert encuesta;
     }
     
     public static Contact crearContacto(String userId){

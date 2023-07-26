@@ -32,6 +32,12 @@ public without sharing class ControladorEncuesta {
         caso.FS_FechaContestacionEncuesta__c = System.now();
         caso.Status = 'Cerrado';
         update caso;
+        
+        FS_Encuesta__c encuesta = [Select Id, FS_MotivoInsatisfaccion__c, FS_ResultadoEncuesta__c, FS_Comentarios__c from FS_Encuesta__c Where FS_Caso__c = :caso.Id limit 1];
+        encuesta.FS_MotivoInsatisfaccion__c = casoObj.motivoSeleccionado;
+        encuesta.FS_ResultadoEncuesta__c = casoObj.resultadoEncuesta;
+        encuesta.FS_Comentarios__c = casoObj.comentarios;
+        update encuesta;
     }
     public class EncuestaWrapper{
         @AuraEnabled public String numeroCaso{get;set;}

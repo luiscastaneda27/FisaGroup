@@ -9,11 +9,6 @@
                 <field>FS_InformacionCompleta__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>FS_AceptaRespuesta__c</field>
-                <uiBehavior>Readonly</uiBehavior>
-            </quickActionLayoutItems>
         </quickActionLayoutColumns>
         <quickActionLayoutColumns>
             <quickActionLayoutItems>

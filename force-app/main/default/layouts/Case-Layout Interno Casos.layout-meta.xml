@@ -223,6 +223,14 @@
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>FS_Tipo__c</fields>
+        <fields>FS_MotivoRechazo__c</fields>
+        <fields>FS_Comentarios__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>FS_AceptacionRechazoCaso__c.FS_Caso__c</relatedList>
+    </relatedLists>
     <relatedObjects>ContactId</relatedObjects>
     <runAssignmentRulesDefault>false</runAssignmentRulesDefault>
     <showEmailCheckbox>true</showEmailCheckbox>

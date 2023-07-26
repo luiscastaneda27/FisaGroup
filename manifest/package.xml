@@ -34,6 +34,7 @@
 		<members>Case.FS_CSATCaso__c</members>
 		<members>Case.FS_ComentariosEncuesta__c</members>
 		<members>Case.FS_ComentariosInternos__c</members>
+		<members>Case.FS_ComentariosRespuesta__c</members>
 		<members>Case.FS_DescripcionCliente__c</members>
 		<members>Case.FS_EncuestaEnviada__c</members>
 		<members>Case.FS_FechaCompromisoEntrega__c</members>
@@ -42,6 +43,7 @@
 		<members>Case.FS_InformacionCompleta__c</members>
 		<members>Case.FS_Modulo__c</members>
 		<members>Case.FS_MotivoInsatisfaccion__c</members>
+		<members>Case.FS_MotivoRechazo__c</members>
 		<members>Case.FS_NombreContacto__c</members>
 		<members>Case.FS_NombreCuanta__c</members>
 		<members>Case.FS_NombrePropietario__c</members>
@@ -55,7 +57,6 @@
 		<members>FS_AceptacionRechazoCaso__c.FS_Caso__c</members>
 		<members>FS_AceptacionRechazoCaso__c.FS_Cliente__c</members>
 		<members>FS_AceptacionRechazoCaso__c.FS_Comentarios__c</members>
-		<members>FS_AceptacionRechazoCaso__c.FS_MotivoInsatisfaccion__c</members>
 		<members>FS_AceptacionRechazoCaso__c.FS_Tipo__c</members>
 		<members>FS_ProductoAdquirido__c.FS_Cuenta__c</members>
 		<members>FS_ProductoAdquirido__c.FS_Modulo__c</members>
@@ -71,18 +72,14 @@
 	</types>
 	<types>
 		<members>FS_AceptacionRechazoCaso__c</members>
+		<members>FS_Encuesta__c</members>
 		<members>FS_ProductoAdquirido__c</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
-		<!--members>Encuestas_Servicio_al_Cliente2</members-->
 		<members>Portal_para_Servicio_al_Cliente</members>
 		<name>CustomSite</name>
 	</types>
-	<!--types>
-		<members>Calificacindecuenta/FS_LogoFisaServicios.png</members>
-		<name>Document</name>
-	</types-->
 	<types>
 		<members>FS_CorreosClientesCasos</members>
 		<members>FS_CorreosClientesCasos/FS_AnalisisCaso</members>
@@ -95,7 +92,6 @@
 		<name>EmailTemplate</name>
 	</types>
 	<types>
-		<!--members>Encuestas_Servicio_al_Cliente3</members-->
 		<members>Portal_para_Servicio_al_Cliente1</members>
 		<name>ExperienceBundle</name>
 	</types>
@@ -121,8 +117,8 @@
 		<name>Letterhead</name>
 	</types>
 	<types>
-		<members>fs_CrearCaso</members>
 		<members>fs_CampoPendienteCaso</members>
+		<members>fs_CrearCaso</members>
 		<members>fs_Encuesta</members>
 		<name>LightningComponentBundle</name>
 	</types>
@@ -131,7 +127,6 @@
 		<name>NavigationMenu</name>
 	</types>
 	<types>
-		<!--members>Encuestas Servicio al Cliente%2E</members-->
 		<members>Portal para Servicio al Cliente</members>
 		<name>Network</name>
 	</types>
@@ -178,7 +173,6 @@
 		<name>Role</name>
 	</types>
 	<types>
-		<!--members>Encuestas_Servicio_al_Cliente3</members-->
 		<members>Portal_para_Servicio_al_Cliente1</members>
 		<name>SiteDotCom</name>
 	</types>
@@ -197,7 +191,6 @@
 		<members>FS_LogoMuySatisfecho</members>
 		<members>FS_LogoNeutral</members>
 		<members>FS_LogoSatisfecho</members>
-		<!--members>SNA_Encuestas_Servicio_al_Cliente3_sf_default_cdn_5dmll</members-->
 		<members>SNA_Portal_para_Servicio_al_Cliente1_sf_default_cdn_fLgxZ</members>
 		<name>StaticResource</name>
 	</types>

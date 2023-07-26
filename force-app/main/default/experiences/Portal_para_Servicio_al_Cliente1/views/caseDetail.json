@@ -35,7 +35,7 @@
         "tab1Type" : "details",
         "tab2Type" : "related",
         "tab3Type" : "none",
-        "tab4Type" : "none",
+        "tab4Type" : "chatter",
         "timelineTabLabel" : "Activity"
       },
       "componentName" : "forceCommunity:recordHomeTabs",

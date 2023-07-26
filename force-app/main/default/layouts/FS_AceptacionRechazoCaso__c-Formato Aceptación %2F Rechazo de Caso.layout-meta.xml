@@ -23,7 +23,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>FS_MotivoInsatisfaccion__c</field>
+                <field>FS_MotivoRechazo__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>

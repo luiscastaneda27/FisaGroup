@@ -284,12 +284,37 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>FS_AceptacionRechazoCaso__c.FS_MotivoInsatisfaccion__c</field>
+        <field>FS_AceptacionRechazoCaso__c.FS_MotivoRechazo__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>FS_AceptacionRechazoCaso__c.FS_Tipo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>FS_Encuesta__c.FS_Caso__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>FS_Encuesta__c.FS_Comentarios__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>FS_Encuesta__c.FS_CreadoPor__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>FS_Encuesta__c.FS_MotivoInsatisfaccion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>FS_Encuesta__c.FS_ResultadoEncuesta__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -340,6 +365,15 @@
         <modifyAllRecords>false</modifyAllRecords>
         <object>FS_AceptacionRechazoCaso__c</object>
         <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>FS_Encuesta__c</object>
+        <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
