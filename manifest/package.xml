@@ -25,6 +25,10 @@
 		<name>BusinessProcess</name>
 	</types>
 	<types>
+		<members>Case.FS_Casos</members>
+		<name>CompactLayout</name>
+	</types>
+	<types>
 		<members>standard__ServiceConsole</members>
 		<name>CustomApplication</name>
 	</types>
@@ -32,6 +36,7 @@
 		<members>Case.FS_AceptaRespuesta__c</members>
 		<members>Case.FS_Area__c</members>
 		<members>Case.FS_CSATCaso__c</members>
+		<members>Case.FS_Carterizacion__c</members>
 		<members>Case.FS_ComentariosEncuesta__c</members>
 		<members>Case.FS_ComentariosInternos__c</members>
 		<members>Case.FS_ComentariosRespuesta__c</members>
@@ -57,7 +62,9 @@
 		<members>FS_AceptacionRechazoCaso__c.FS_Caso__c</members>
 		<members>FS_AceptacionRechazoCaso__c.FS_Cliente__c</members>
 		<members>FS_AceptacionRechazoCaso__c.FS_Comentarios__c</members>
+		<members>FS_AceptacionRechazoCaso__c.FS_MotivoRechazo__c</members>
 		<members>FS_AceptacionRechazoCaso__c.FS_Tipo__c</members>
+		<members>FS_Encuesta__c.FS_Caso__c</members>
 		<members>FS_ProductoAdquirido__c.FS_Cuenta__c</members>
 		<members>FS_ProductoAdquirido__c.FS_Modulo__c</members>
 		<members>FS_ProductoAdquirido__c.FS_Producto__c</members>
@@ -151,6 +158,10 @@
 	<types>
 		<members>Case.FS_CamposControlConsulta</members>
 		<members>Case.FS_DatosEncuesta</members>
+		<members>Case.FS_DatosRespuesta</members>
+		<members>Case.FS_Descripcion</members>
+		<members>Case.FS_DetalleCaso</members>
+		<members>Case.FS_InformacionWeb</members>
 		<name>QuickAction</name>
 	</types>
 	<types>

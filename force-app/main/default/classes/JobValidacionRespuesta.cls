@@ -1,4 +1,4 @@
-global class JobValidacionRespuesta implements Schedulable { 
+global without sharing class JobValidacionRespuesta implements Schedulable { 
     
     global void execute(SchedulableContext ctx) {
         recordatorioRespuesta();

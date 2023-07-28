@@ -2,7 +2,8 @@ import { LightningElement, track, api } from 'lwc';
 import getProductosAdquiridos from "@salesforce/apex/ControladorCrearCaso.getProductosAdquiridos";
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
-import { encodeDefaultFieldValues } from 'lightning/pageReferenceUtils'
+//import { encodeDefaultFieldValues } from 'lightning/pageReferenceUtils'
+import guardarCaso from "@salesforce/apex/ControladorCrearCaso.guardarCaso";
 
 export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
     @track data = {};
@@ -19,6 +20,7 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
             this.data.listProductos = [];
             this.data.listModulos = [];
             this.data.listSubModulos = [];
+            this.data.listArchivos = [];
             var productos = [];
             for(let j=0; j<response.listTodosProductos.length; j++){
                 var p = {};
@@ -104,24 +106,48 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
         habilitarBoton = habilitarBoton || (this.data.subModuloSeleccionado === null && this.data.moduloSeleccionado != null && this.data.listSubModulos.length === 0);
         habilitarBoton = habilitarBoton && (this.data.registroSeleccionado != null && this.data.motivoSeleccionado != null);
         habilitarBoton = habilitarBoton && (this.data.asunto != null && this.data.descripcion != null);
-
+        habilitarBoton = habilitarBoton && this.data.archivoSubido;
         this.data.habilitarBoton = !habilitarBoton;
     }
-    clickCrearCaso(event){
-        const name = event.target.name;
-        if(name === "crearCaso"){
-            this.data.popArchivo = true;
-            this.data.desabilitarSiguiente = true;
-        }else if(name === "siguiente"){
-            this.crearCaso();
-        }
-    }
     
-    crearCaso(){
+    clickCrearCaso(){
+        var caso = {};
         this.showSpinner = true;
         this.data.popArchivo = false;
         this.data.habilitarBoton = true;
-        const defaultValues = encodeDefaultFieldValues({
+
+        caso.AccountId = this.data.cuentaId;
+        caso.ContactId = this.data.contactId;
+        caso.FS_Producto__c = this.data.productoSeleccionado;
+        caso.FS_Modulo__c = this.data.moduloSeleccionado;
+        caso.FS_SubModulo__c = this.data.subModuloSeleccionado;
+        caso.Origin = "Web";
+        caso.FS_DescripcionCliente__c = this.data.descripcion;
+        caso.Subject = this.data.asunto;
+        caso.Status = "Nuevo";
+        caso.Reason = this.data.motivoSeleccionado;
+
+        guardarCaso({casoJSON: JSON.stringify(caso), 
+            archivosJSON:JSON.stringify(this.data.listArchivos)}).then(response => {
+            this.data.casoId = response;
+            this.showSpinner = false;
+            this.pushMessage('Exitoso', 'success', 'Datos guardados exitosamente');
+            console.log("this.data.casoId: "+this.data.casoId);
+            this[NavigationMixin.Navigate]({
+                type: "standard__recordPage",
+                attributes: {
+                  objectApiName: "Case",
+                  actionName: "view",
+                  recordId: this.data.casoId
+                }
+              });
+        }).catch(error => {
+            this.showSpinner = false;
+            this.pushMessage('Error', 'error', 'Ha ocurrido un error, por favor contacte a su administrador.');
+        });
+
+
+        /*const defaultValues = encodeDefaultFieldValues({
             AccountId: this.data.cuentaId,
             ContactId: this.data.contactId,
             FS_Producto__c: this.data.productoSeleccionado,
@@ -141,10 +167,23 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
                 recordTypeId: this.data.registroSeleccionado
             }
         });
-        this.showSpinner = false;
+        this.showSpinner = false;*/
     }
     cancelar(){
         this.data.popArchivo = false;
+    }
+    finalizaCargaArchivo(event) {
+        const uploadedFiles = event.detail.files;
+        for(let i = 0; i<uploadedFiles.length; i++){
+            var p = {};
+            console.log(JSON.stringify(uploadedFiles[i]));
+            p.label = uploadedFiles[i].name
+            p.value = uploadedFiles[i].documentId;
+            this.data.listArchivos.push(p);
+        }
+        console.log('Archivo Agregado: '+ JSON.stringify(this.data.listArchivos));
+       this.data.archivoSubido = true;
+       this.habilitaBoton();
     }
     pushMessage(title,variant,msj){
         const message = new ShowToastEvent({

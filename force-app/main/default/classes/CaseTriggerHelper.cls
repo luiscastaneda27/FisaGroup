@@ -1,7 +1,7 @@
 public without sharing class CaseTriggerHelper {
 
-    private static final String COLA_ATENCION_N1 ='FS_AtencionN1';
-    private static final String COLA_ATENCION_N2 ='FS_AtencionN2';
+    public static final String COLA_ATENCION_N1 ='FS_AtencionN1';
+    public static final String COLA_ATENCION_N2 ='FS_AtencionN2';
     
     private static final String CONSULTA_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Consulta').getRecordTypeId();
     private static final String SOLICITUD_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Solicitud').getRecordTypeId();
@@ -76,6 +76,13 @@ public without sharing class CaseTriggerHelper {
     
     public static void actualizacionDescripcion(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
+            //envioCorreo(item, 'FS_ActualizacionInformacionCliente', true);
+            for(CronTrigger item1 : [SELECT id FROM CronTrigger where CronJobDetail.Name = 'Prueba1']){
+                System.abortJob(item1.id);
+            }
+            Datetime fecha = Datetime.now().addMinutes(1);
+            String acron = fecha.second()+' '+fecha.minute()+' '+fecha.hour()+' '+fecha.day()+' '+fecha.month()+' ? '+fecha.year();
+            System.schedule('Prueba1', acron, new JobValidacionRespuesta());
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_DescripcionCliente__c != item.FS_DescripcionCliente__c && item.FS_SubEstado__c == 'En Espera de Respuesta del Cliente'){
                 item.FS_SubEstado__c = 'Análisis Consulta N1'; 
@@ -165,22 +172,30 @@ public without sharing class CaseTriggerHelper {
         html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
         mail.setSubject(asunnto);
         mail.setHtmlBody(html);
-        //System.debug(html);
         mail.saveAsActivity = esContacto;
         if(esContacto){
-            //mail.setWhatId(caso.Id);
+            User usuario = [Select Id, Profile.Name from user Where Id = :userInfo.getUserId()];
+            if(usuario.Profile.Name != 'Customer Community User'){
+                mail.setWhatId(caso.Id);
+            }
             mail.setTargetObjectId(caso.ContactId);
         }else{
-            //System.debug('caso.OwnerId: '+caso.OwnerId);
-            //User user1 = [Select Email from user Where Id = :caso.OwnerId];
-            //mail.setToAddresses(new String[] {user1.Email});
-            mail.setTargetObjectId(caso.OwnerId);
+            User usuario = [Select Email from user Where Id = :caso.OwnerId];
+            mail.setBccAddresses(new List<String>{usuario.Email});
+            //mail.setTargetObjectId(caso.OwnerId);
         }
         MessageList.add(mail);
         try{
+            System.debug(mail.getWhatId());
             Messaging.SendEmailResult[] results = Messaging.sendEmail(MessageList);
+            if(esContacto){
+                EmailMessage a = [Select Id, RelatedToId  from EmailMessage  Order by CreatedDate desc limit 1];
+                //a.RelatedToId = caso.Id;
+                //update a;
+            }
         }catch(Exception ex){
-            caso.addError(JSON.serialize(caso)+' ----- '+ex.getLineNumber() +' ----- '+ex.getMessage());
+            System.debug(ex.getMessage()+' ----- '+ex.getLineNumber());
+            caso.addError(ex.getMessage()+' ----- '+ex.getLineNumber());
         }
     }
     public static void crearHistorialAprobaciones(Case caso){
@@ -198,23 +213,12 @@ public without sharing class CaseTriggerHelper {
         insert encuesta;
     }
     
-    public static Contact crearContacto(String userId){
-        User usuario = [Select FirstName, LastName, Email from user Where Id = :userId];
-        Contact contacto = new Contact();
-        contacto.FirstName = usuario.FirstName;
-        contacto.LastName = usuario.LastName;
-        contacto.Email = usuario.Email;
-        insert contacto;
-        return contacto;
-    }
-    
     public static String getLogoImagen(){
         StaticResource staticResource = [SELECT Id, SystemModStamp, Name
                                          FROM StaticResource 
                                          WHERE Name = 'FS_FisaLogo'
                                          LIMIT 1];
         String urlRecurso = '<table width="100%" ><td style="width: 25%;" /><td style="width: 50%;" ><table><tr><td><img src="';
-        //urlRecurso +='https://fisagrp--devfs.sandbox.file.force.com/servlet/servlet.ImageServer?id=0156C000000QROw&oid=00D6C0000000gkO&lastMod=1689260873000' ;
         urlRecurso += Label.FS_UrlPortalEncuestas.substring(0, Label.FS_UrlPortalEncuestas.length()- 1);
         urlRecurso +='resource/' + String.valueOf(staticResource.SystemModStamp.getTime())+ '/' + staticResource.Name;
         urlRecurso += '"/></td></tr></table>';

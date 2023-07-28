@@ -48,6 +48,25 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>FS_Carterizacion__c</picklist>
+        <values>
+            <fullName>Alta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Baja</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VIP</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_InformacionCompleta__c</picklist>
         <values>
             <fullName>No</fullName>

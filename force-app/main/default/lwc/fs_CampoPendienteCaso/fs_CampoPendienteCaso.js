@@ -42,7 +42,6 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             this.showSpinner = false;
         }).catch(error => {
             this.showSpinner = false;
-            console.log("Error: "+JSOn.stringify(error));
             this.pushMessage('Error', 'error', 'Ha ocurrido un error, por favor contacte a su administrador.');
         });
     }
@@ -99,9 +98,13 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             this.pushMessage('Exitoso', 'success', 'Datos guardados exitosamente');
         }).catch(error => {
             this.showSpinner = false;
-            console.log("Error: "+JSOn.stringify(error));
             this.pushMessage('Error', 'error', 'Ha ocurrido un error, por favor contacte a su administrador.');
         });
+    }
+
+
+    popRespuesta(){
+        this.data.pendienteRespuesta = true;
     }
 
 }

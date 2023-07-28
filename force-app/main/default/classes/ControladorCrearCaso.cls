@@ -42,10 +42,48 @@ public without sharing class ControladorCrearCaso {
     }
     
     @AuraEnabled
-    public static void guardarCaso(String casoJSON){
+    public static Id guardarCaso(String casoJSON, String archivosJSON){
         System.debug('casoJSON: '+casoJSON);
+        List<String> listContentDocumentId = new List<String>();
         Case caso = (Case) JSON.deserialize(casoJSON, Case.class);
-        update caso;
+        Boolean crearCaso = String.isBlank(caso.Id);
+        if(crearCaso){
+            Id colaAtencionN1Id = [Select Id from Group Where DeveloperName = :CaseTriggerHelper.COLA_ATENCION_N1 and Type = 'Queue'].Id;
+            caso.OwnerId = colaAtencionN1Id;
+            caso.FS_SubEstado__c = 'Apertura de caso';
+            for(PickListOption item: (List<PickListOption>) JSON.deserialize(archivosJSON, List<PickListOption>.class)){
+                listContentDocumentId.add(item.value);
+            }
+        }
+        upsert caso;
+        if(crearCaso){
+            CaseTriggerHelper.envioCorreo(caso, 'FS_CreacionCaso', true);
+            recuperArchivo(caso, listContentDocumentId);
+        }
+        return caso.Id;
+    }
+    
+    public static void recuperArchivo(Case caso, List<String> listContentDocumentId){
+        list<Id> listIds = new  list<Id>();
+        list<Id> listDocumentos = new  list<Id>();
+        listIds.add(caso.ContactId);
+        
+        List<ContentDocumentLink> listArchivos = [Select Id,LinkedEntityId, ContentDocumentId from ContentDocumentLink Where LinkedEntityId in :listIds and ContentDocumentId in :listContentDocumentId];
+        for(ContentDocumentLink item: listArchivos){
+            listDocumentos.add(item.ContentDocumentId);
+        }
+        for(ContentVersion item: [Select ContentDocumentId from ContentVersion Where ContentDocumentId in :listDocumentos]){
+            try{
+                ContentDocumentLink cdl = new ContentDocumentLink();
+                cdl.ContentDocumentId = item.ContentDocumentId;
+                cdl.LinkedEntityId = caso.Id;
+                cdl.ShareType = 'V';
+                insert cdl;
+            }catch(Exception ex){
+                System.debug('Error: '+ex.getMessage());
+            }
+        }
+        delete listArchivos;
     }
     
     public static List<PickListOption> getPickListOption(String objeto, String campo){
