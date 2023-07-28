@@ -21,5 +21,10 @@
 		<name>StaticResource</name>
 	</types>/name>
 	</types>
+	<types>
+		<members>FS_UrlPortalEncuestas</members>
+		<members>FS_UrlPortalServicios</members>
+		<name>CustomLabel</name>
+	</types>
 	<version>55.0</version>
 </Package>

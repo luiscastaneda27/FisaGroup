@@ -73,11 +73,6 @@
 		<name>CustomField</name>
 	</types>
 	<types>
-		<members>FS_UrlPortalEncuestas</members>
-		<members>FS_UrlPortalServicios</members>
-		<name>CustomLabel</name>
-	</types>
-	<types>
 		<members>FS_AceptacionRechazoCaso__c</members>
 		<members>FS_Encuesta__c</members>
 		<members>FS_ProductoAdquirido__c</members>
