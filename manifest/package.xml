@@ -54,8 +54,11 @@
 		<members>Case.FS_NombrePropietario__c</members>
 		<members>Case.FS_NombreTipoRegistro__c</members>
 		<members>Case.FS_NotasReunionSatisfaccion__c</members>
+		<members>Case.FS_NumeroRequerimientosNuevo__c</members>
 		<members>Case.FS_Producto__c</members>
+		<members>Case.FS_Proyecto__c</members>
 		<members>Case.FS_PudeSolventarPregunta__c</members>
+		<members>Case.FS_Referencia__c</members>
 		<members>Case.FS_ResultadoEncuesta__c</members>
 		<members>Case.FS_SubEstado__c</members>
 		<members>Case.FS_SubModulo__c</members>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FS_Proyecto__c</fullName>
+    <externalId>false</externalId>
+    <label>Proyecto</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>FSHD001</fullName>
+                <default>false</default>
+                <label>Fisa System Help desk</label>
+            </value>
+            <value>
+                <fullName>FSDE238</fullName>
+                <default>false</default>
+                <label>Precontratados BMR por 250 días Q2</label>
+            </value>
+            <value>
+                <fullName>PNHD003</fullName>
+                <default>false</default>
+                <label>OMNIA Help Desk</label>
+            </value>
+            <value>
+                <fullName>FSHD010</fullName>
+                <default>false</default>
+                <label>Fallas operativas Helpdesk Fisa System</label>
+            </value>
+            <value>
+                <fullName>PNHD006</fullName>
+                <default>false</default>
+                <label>Fallas operativas HLPDESK plataforma de negocios</label>
+            </value>
+            <value>
+                <fullName>PNRE047</fullName>
+                <default>false</default>
+                <label>Servicio Soporte Local BIT 2022-2023</label>
+            </value>
+            <value>
+                <fullName>PNSO045</fullName>
+                <default>false</default>
+                <label>Soporte remoto online Banking</label>
+            </value>
+            <value>
+                <fullName>PNSO046</fullName>
+                <default>false</default>
+                <label>Soporte remoto Online Banking.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

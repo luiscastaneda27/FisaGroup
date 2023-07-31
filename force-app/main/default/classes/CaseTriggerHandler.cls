@@ -5,7 +5,7 @@ public without sharing class CaseTriggerHandler {
     }
     
     public static void afterInsert(List<Case> newCaseList){
-        //CaseTriggerHelper.validacionCorreoNuevo(newCaseList);
+        CaseTriggerHelper.validacionCorreoNuevo(newCaseList);
     }
     
     public static void beforeUpdate(List<Case> newCaseList, Map<Id, Case> oldCaseMap){

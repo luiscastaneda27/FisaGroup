@@ -266,6 +266,41 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>FS_Proyecto__c</picklist>
+        <values>
+            <fullName>FSDE238</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FSHD001</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FSHD010</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PNHD003</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PNHD006</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PNRE047</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PNSO045</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PNSO046</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_PudeSolventarPregunta__c</picklist>
         <values>
             <fullName>No</fullName>
@@ -989,15 +1024,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Definitivo</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Pase en produccción</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Puntual</fullName>
             <default>false</default>
         </values>
         <values>

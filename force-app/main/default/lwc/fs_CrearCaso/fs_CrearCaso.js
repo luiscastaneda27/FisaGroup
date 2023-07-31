@@ -102,8 +102,8 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
 
     habilitaBoton(){
         this.data.habilitarBoton = true;
-        let habilitarBoton = this.data.productoSeleccionado != null && this.data.subModuloSeleccionado != null && this.data.moduloSeleccionado != null;
-        habilitarBoton = habilitarBoton || (this.data.subModuloSeleccionado === null && this.data.moduloSeleccionado != null && this.data.listSubModulos.length === 0);
+        let habilitarBoton = this.data.productoSeleccionado != null && this.data.moduloSeleccionado != null;
+        //habilitarBoton = habilitarBoton || (this.data.subModuloSeleccionado === null && this.data.moduloSeleccionado != null && this.data.listSubModulos.length === 0);
         habilitarBoton = habilitarBoton && (this.data.registroSeleccionado != null && this.data.motivoSeleccionado != null);
         habilitarBoton = habilitarBoton && (this.data.asunto != null && this.data.descripcion != null);
         habilitarBoton = habilitarBoton && this.data.archivoSubido;
@@ -126,6 +126,7 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
         caso.Subject = this.data.asunto;
         caso.Status = "Nuevo";
         caso.Reason = this.data.motivoSeleccionado;
+        caso.RecordTypeId = this.data.registroSeleccionado;
 
         guardarCaso({casoJSON: JSON.stringify(caso), 
             archivosJSON:JSON.stringify(this.data.listArchivos)}).then(response => {

@@ -57,7 +57,6 @@ public without sharing class ControladorCrearCaso {
         }
         upsert caso;
         if(crearCaso){
-            CaseTriggerHelper.envioCorreo(caso, 'FS_CreacionCaso', true);
             recuperArchivo(caso, listContentDocumentId);
         }
         return caso.Id;
