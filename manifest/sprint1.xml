@@ -176,9 +176,9 @@
 		<members>FS_AgenteQAOmnia</members>
 		<members>FS_AgenteReleases</members>
 		<members>FS_ClienteFISA</members>
-		<members>FS_SupervisorCore</members>
-		<members>FS_SupervisorOmnia</members>
-		<members>FS_SupervisorReleases</members>
+		<members>FS_JefeCore</members>
+		<members>FS_JefeOmnia</members>
+		<members>FS_JefeReleases</members>
 		<name>Role</name>
 	</types>
 	<types>

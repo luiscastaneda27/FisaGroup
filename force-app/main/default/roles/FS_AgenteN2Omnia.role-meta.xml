@@ -5,5 +5,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Agente N2 - Omnia</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>FS_SupervisorOmnia</parentRole>
+    <parentRole>FS_JefeOmnia</parentRole>
 </Role>

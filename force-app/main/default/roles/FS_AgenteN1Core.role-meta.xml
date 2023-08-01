@@ -5,5 +5,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Agente N1 - Core</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>FS_SupervisorCore</parentRole>
+    <parentRole>FS_JefeCore</parentRole>
 </Role>
