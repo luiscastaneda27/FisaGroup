@@ -220,6 +220,35 @@
                 <identifier>console_relatedRecord</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>GuestCommunityCase</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                    <value>Datos Aprobación Solicitud</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Case.FS_DatosAprobacinSolicitud</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord7</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Solicitud</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
         <name>Facet-1d3995ed-10f6-4b7a-9eda-e996c7d45dcb</name>
         <type>Facet</type>
     </flexiPageRegions>

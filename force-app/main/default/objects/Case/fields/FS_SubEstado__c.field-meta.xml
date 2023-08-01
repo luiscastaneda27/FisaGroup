@@ -33,6 +33,21 @@
                 <label>Análisis Consulta N1</label>
             </value>
             <value>
+                <fullName>Costo Enviado</fullName>
+                <default>false</default>
+                <label>Costo Enviado</label>
+            </value>
+            <value>
+                <fullName>Costo Aceptado</fullName>
+                <default>false</default>
+                <label>Costo Aceptado</label>
+            </value>
+            <value>
+                <fullName>Costo Rechazado</fullName>
+                <default>false</default>
+                <label>Costo Rechazado</label>
+            </value>
+            <value>
                 <fullName>Escalado a N2</fullName>
                 <default>false</default>
                 <label>Escalado a N2</label>

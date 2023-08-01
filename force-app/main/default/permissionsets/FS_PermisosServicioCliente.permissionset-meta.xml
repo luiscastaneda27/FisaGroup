@@ -48,6 +48,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.FS_1erCostoAprobado__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Case.FS_AceptaRespuesta__c</field>
         <readable>true</readable>
@@ -90,6 +95,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.FS_EncuestaEnviada__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_FechaAprobacion1erCosto__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -154,6 +164,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.FS_NumeroHorasSolicitud__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.FS_NumeroRequerimientosNuevo__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -190,6 +205,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.FS_SubModulo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_UsuarioAprobador1erCosto__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
