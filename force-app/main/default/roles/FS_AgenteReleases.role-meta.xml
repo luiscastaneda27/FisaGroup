@@ -5,5 +5,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Agente Releases</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>FS_SupervisorReleases</parentRole>
+    <parentRole>FS_JefeReleases</parentRole>
 </Role>

@@ -3,6 +3,6 @@
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Supervisor - Core</name>
+    <name>Jefe - Releases</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
 </Role>
