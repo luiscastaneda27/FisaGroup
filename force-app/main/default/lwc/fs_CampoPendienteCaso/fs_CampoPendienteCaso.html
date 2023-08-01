@@ -5,7 +5,7 @@
                 <lightning-card icon-name="standard:answer_best" title="Aceptación de Respuesta">
                     <lightning-layout vertical-align="stretch" multiple-rows="true">
                         <lightning-layout-item flexibility="auto" padding="around-small" size="6">
-                            <h1>Tienes pendiente la Aceptación de Respuesta</h1>
+                            <h1>Tienes Pendiente la Aceptación de Respuesta</h1>
                         </lightning-layout-item>
                         <lightning-layout-item flexibility="auto" padding="around-small" size="6">
                             <br />
@@ -58,7 +58,7 @@
                                 <lightning-button label="Cancelar" title="Cancelar" onclick={cancelar}
                                     class="slds-m-left_x-small"></lightning-button>
                                 <lightning-button label="Guardar" title="Guardar" variant="brand" name="guardar"
-                                    class="slds-m-left_x-small" onclick={guardarCaso}></lightning-button>
+                                    class="slds-m-left_x-small" onclick={guardarCaso} disabled={data.botonDeshabilitadoPendResp} ></lightning-button>
                             </footer>
                         </fieldset>
                     </div>

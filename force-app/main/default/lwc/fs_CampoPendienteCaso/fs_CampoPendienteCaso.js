@@ -18,6 +18,7 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         pendienteRespuesta: false,
         pendienteRespuestaDetalle: false,
         mostrarRechazo: false,
+        botonDeshabilitadoPendResp : true
 
     }
 
@@ -70,20 +71,22 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
 
     handleChange(event){
         const name = event.target.name;
-        const value = event.detail.value;
+        const value = event.detail.value.trim() != "" ? event.detail.value.trim() : null; 
+        this.data.botonDeshabilitadoPendResp = true;
         if(name === "aceptaResp"){
             this.data.caso.FS_AceptaRespuesta__c = value;
             if(value == "Si"){
                 this.data.mostrarRechazo = false;
+                this.data.caso.FS_MotivoRechazo__c = null;
             }else{
                 this.data.mostrarRechazo = true;
-                this.data.caso.FS_MotivoRechazo__c = null;
             }
         }else if(name === "motivoRechazo"){
             this.data.caso.FS_MotivoRechazo__c = value;
         }else if(name === "comentarioResp"){
             this.data.caso.FS_ComentariosRespuesta__c = value;
         }
+        this.validarBotonPendResp();
     }
 
     guardarCaso(){
@@ -100,6 +103,14 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             this.showSpinner = false;
             this.pushMessage('Error', 'error', 'Ha ocurrido un error, por favor contacte a su administrador.');
         });
+    }
+
+    validarBotonPendResp(){
+        if(this.data.caso.FS_AceptaRespuesta__c === "Si"){
+            this.data.botonDeshabilitadoPendResp = false;
+        }else if(this.data.caso.FS_AceptaRespuesta__c === "No" && this.data.caso.FS_MotivoRechazo__c  != null && this.data.caso.FS_ComentariosRespuesta__c != null){
+            this.data.botonDeshabilitadoPendResp = false;
+        }
     }
 
 
