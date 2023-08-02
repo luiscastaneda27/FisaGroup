@@ -106,6 +106,7 @@ public without sharing class CaseTriggerHelper {
                 }else if(item.FS_PudeSolventarPregunta__c == 'No'){
                     item.OwnerId = colaAtencionN2Id;
                     item.FS_SubEstado__c = 'Escalado a N2';
+                    item.IsEscalated = true;
                     item.FS_InformacionCompleta__c = null;
                 }
                 
