@@ -6,7 +6,7 @@ public without sharing class CaseTriggerHelper {
     private static final String CONSULTA_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Consulta').getRecordTypeId();
     private static final String SOLICITUD_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Solicitud').getRecordTypeId();
     
-    public static void asignacionCola(List<Case> newCaseList){
+    /*public static void asignacionCola(List<Case> newCaseList){
         Id colaAtencionN1Id = [Select Id from Group Where DeveloperName = :COLA_ATENCION_N1 and Type = 'Queue'].Id;
         for(Case item: newCaseList){
             if(item.RecordTypeId == CONSULTA_TIPO_REGISTRO){
@@ -15,12 +15,13 @@ public without sharing class CaseTriggerHelper {
                 item.FS_SubEstado__c = 'Apertura de caso';
             }
         }
-    }
+    }*/
     
     public static void validacionCorreoNuevo(List<Case> newCaseList){
         for(Case item: newCaseList){
-            if(item.RecordTypeId == CONSULTA_TIPO_REGISTRO){
+            if(item.RecordTypeId == CONSULTA_TIPO_REGISTRO || item.RecordTypeId == SOLICITUD_TIPO_REGISTRO){
                 envioCorreo(item, 'FS_CreacionCaso', true);
+                crearHistorialDescripcion(item, null, item.FS_DescripcionCliente__c);
             }
         }
     }
@@ -76,19 +77,15 @@ public without sharing class CaseTriggerHelper {
     
     public static void actualizacionDescripcion(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
-            //envioCorreo(item, 'FS_ActualizacionInformacionCliente', true);
-            for(CronTrigger item1 : [SELECT id FROM CronTrigger where CronJobDetail.Name = 'Prueba1']){
-                System.abortJob(item1.id);
-            }
-            Datetime fecha = Datetime.now().addMinutes(1);
-            String acron = fecha.second()+' '+fecha.minute()+' '+fecha.hour()+' '+fecha.day()+' '+fecha.month()+' ? '+fecha.year();
-            System.schedule('Prueba1', acron, new JobValidacionRespuesta());
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_DescripcionCliente__c != item.FS_DescripcionCliente__c && item.FS_SubEstado__c == 'En Espera de Respuesta del Cliente'){
-                item.FS_SubEstado__c = 'Análisis Consulta N1'; 
-                item.Status = 'En Análisis';
-                item.FS_InformacionCompleta__c = null;
-                envioCorreo(item, 'FS_ActualizacionInformacionCliente', false);
+            if(caso.FS_DescripcionCliente__c != item.FS_DescripcionCliente__c){
+                crearHistorialDescripcion(item, caso.FS_DescripcionCliente__c, item.FS_DescripcionCliente__c);
+                if(item.FS_SubEstado__c == 'En Espera de Respuesta del Cliente'){
+                    item.FS_SubEstado__c = 'Análisis Consulta N1'; 
+                    item.Status = 'En Análisis';
+                    item.FS_InformacionCompleta__c = null;
+                    envioCorreo(item, 'FS_ActualizacionInformacionCliente', false);
+                }
             }
         }
     }
@@ -136,11 +133,26 @@ public without sharing class CaseTriggerHelper {
         }
     }
     
-    public static void casoCancelado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+    public static void horasSolicitud(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.Status  != item.Status && item.Status == 'Dado de baja'){
-                envioCorreo(item, 'FS_CasoCancelado', true);
+            if(caso.FS_NumeroHorasSolicitud__c  != item.FS_NumeroHorasSolicitud__c){
+                item.FS_SubEstado__c = 'En Espera de Respuesta del Cliente';
+                item.Status = 'En Análisis';
+                envioCorreo(item, 'FS_EnvíoPrimerCosto', true);
+            }
+        }
+    }
+    
+    public static void validacionEstado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.Status  != item.Status){
+                if(item.Status == 'Dado de baja'){
+                    envioCorreo(item, 'FS_CasoCancelado', true);
+                }else if (caso.FS_FechaContestacionEncuesta__c == item.FS_FechaContestacionEncuesta__c){
+                    item.Status.addError('Privilegios insuficiente para modificar el estado del caso');   
+                }
             }
         }
     }
@@ -207,6 +219,14 @@ public without sharing class CaseTriggerHelper {
         aceptacion.FS_MotivoRechazo__c = caso.FS_MotivoRechazo__c;
         aceptacion.FS_Comentarios__c = caso.FS_ComentariosRespuesta__c;
         insert aceptacion;
+    }
+    
+    public static void crearHistorialDescripcion(Case caso, String valorOriginal, String valorNuevo){
+        FS_HistorialDescripcionCaso__c historial = new FS_HistorialDescripcionCaso__c  ();
+        historial.FS_Caso__c = caso.Id;
+        historial.FS_ValorOriginal__c = valorOriginal;
+        historial.FS_ValorNuevo__c = valorNuevo;
+        insert historial;
     }
     
     public static void crearEncuesta(Case caso){

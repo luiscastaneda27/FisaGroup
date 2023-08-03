@@ -14,6 +14,12 @@
         <closed>false</closed>
     </standardValue>
     <standardValue>
+        <fullName>Aprobación 1er Costo</fullName>
+        <default>false</default>
+        <label>Aprobación 1er Costo</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
         <fullName>Entregado</fullName>
         <default>false</default>
         <label>Entregado</label>
@@ -42,11 +48,5 @@
         <default>false</default>
         <label>Dado de Baja</label>
         <closed>true</closed>
-    </standardValue>
-    <standardValue>
-        <fullName>Aprobación 1er Costo</fullName>
-        <default>false</default>
-        <label>Aprobación 1er Costo</label>
-        <closed>false</closed>
     </standardValue>
 </StandardValueSet>

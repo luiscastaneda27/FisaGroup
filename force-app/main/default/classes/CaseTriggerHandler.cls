@@ -9,6 +9,7 @@ public without sharing class CaseTriggerHandler {
     }
     
     public static void beforeUpdate(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        CaseTriggerHelper.validacionEstado(newCaseList, oldCaseMap);
         CaseTriggerHelper.informacionCompleta(newCaseList, oldCaseMap);
         CaseTriggerHelper.solventarPregunta(newCaseList, oldCaseMap);
         CaseTriggerHelper.aceptaRespuesta(newCaseList, oldCaseMap);

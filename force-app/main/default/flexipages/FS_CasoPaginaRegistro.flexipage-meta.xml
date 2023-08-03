@@ -219,10 +219,45 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.IsEscalated}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>false</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Consulta</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>GuestCommunityCase</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                    <value>Campos de Control</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Case.FS_CamposControlSolicitud</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord9</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Solicitud</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -281,10 +316,16 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord8</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.IsEscalated}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Consulta</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

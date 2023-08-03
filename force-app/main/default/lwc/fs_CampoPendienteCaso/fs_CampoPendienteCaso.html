@@ -58,7 +58,7 @@
                                 <lightning-button label="Cancelar" title="Cancelar" onclick={cancelar}
                                     class="slds-m-left_x-small"></lightning-button>
                                 <lightning-button label="Guardar" title="Guardar" variant="brand" name="guardar"
-                                    class="slds-m-left_x-small" onclick={guardarCaso} disabled={data.botonDeshabilitadoPendResp} ></lightning-button>
+                                    class="slds-m-left_x-small" onclick={guardarCaso} disabled={data.botonDeshabilitado} ></lightning-button>
                             </footer>
                         </fieldset>
                     </div>
@@ -104,6 +104,77 @@
                                 <lightning-button label="Cancelar" title="Cancelar" onclick={cancelar}
                                     class="slds-m-left_x-small"></lightning-button> &nbsp;
                                     <a class="slds-button slds-button--brand" href={data.urlEncuesta} target="_blank" onclick={cancelar}  > Ir a la Encuesta</a>
+                            </footer>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+
+    <template if:true={data.pendienteHorasDetalle}>
+        <lightning-layout vertical-align="stretch" multiple-rows="true">
+            <lightning-layout-item flexibility="auto" padding="around-small" size="12">
+                <lightning-card icon-name="standard:answer_best" title="Aceptación de Respuesta">
+                    <lightning-layout vertical-align="stretch" multiple-rows="true">
+                        <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                            <h1>Tienes Pendiente Aceptación de Horas de 1er Costo</h1>
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                            <br />
+                            <lightning-button label="Contestar" title="Contestar" variant="brand" name="contestar"
+                                class="slds-m-left_x-small" onclick={popRespuesta}></lightning-button>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+    <template if:true={data.pendienteHoras}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h1 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Pendiente Aceptación de
+                        Horas de 1er Costo</h1>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium ">
+                    <div class="slds-form slds-form_compound slds-align--absolute-left">
+                        <fieldset class="slds-form-element">
+                            <div class="slds-modal__content slds-p-around--medium">
+                                <h1>El número de horas de su solicitus es: {data.caso.FS_NumeroHorasSolicitud__c} </h1> 
+                                <lightning-layout vertical-align="stretch" multiple-rows="true">
+                                    <lightning-layout-item flexibility="auto" padding="around-small" size="12">
+                                        <lightning-card icon-name="standard:answer_best" title="Aceptación de 1er Costo">
+                                            <lightning-layout vertical-align="stretch" multiple-rows="true">
+                                                <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                                                    <lightning-combobox name="aceptaHoras" label="Acepta Horas"
+                                                        value={data.caso.FS_Acepta1erCosto__c} options={SiNo}
+                                                        onchange={handleChange} placeholder="Seleccione una respuesta">
+                                                    </lightning-combobox>
+                                                </lightning-layout-item>
+                                                <!--lightning-layout-item flexibility="auto" padding="around-small" size="6" if:true={data.mostrarRechazo} >
+                                                    <lightning-combobox name="motivoRechazo" label="Motivo Rechazo"
+                                                    value={data.caso.FS_MotivoRechazo__c} options={data.listMotivosRechazo}
+                                                    onchange={handleChange} placeholder="Seleccione una Motivo">
+                                                </lightning-combobox>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small" size="12">
+                                                    <lightning-textarea name="comentarioResp" label="Comentarios" vaue={data.caso.FS_ComentariosRespuesta__c}
+                                                    onchange={handleChange}></lightning-textarea>
+                                                </lightning-layout-item-->
+                                            </lightning-layout>
+                                        </lightning-card>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </div>
+                            <footer class="slds-modal__footer">
+                                <lightning-button label="Cancelar" title="Cancelar" onclick={cancelar}
+                                    class="slds-m-left_x-small"></lightning-button>
+                                <lightning-button label="Guardar" title="Guardar" variant="brand" name="guardar"
+                                    class="slds-m-left_x-small" onclick={guardarCaso} disabled={data.botonDeshabilitado} ></lightning-button>
                             </footer>
                         </fieldset>
                     </div>

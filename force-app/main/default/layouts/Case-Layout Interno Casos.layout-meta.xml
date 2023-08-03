@@ -187,6 +187,14 @@
         <fields>CREATED_DATE</fields>
         <relatedList>FS_AceptacionRechazoCaso__c.FS_Caso__c</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>FS_ValorOriginal__c</fields>
+        <fields>FS_ValorNuevo__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>FS_HistorialDescripcionCaso__c.FS_Caso__c</relatedList>
+    </relatedLists>
     <relatedObjects>ContactId</relatedObjects>
     <runAssignmentRulesDefault>false</runAssignmentRulesDefault>
     <showEmailCheckbox>true</showEmailCheckbox>

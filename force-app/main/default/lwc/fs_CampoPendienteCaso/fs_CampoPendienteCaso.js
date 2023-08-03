@@ -18,7 +18,9 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         pendienteRespuesta: false,
         pendienteRespuestaDetalle: false,
         mostrarRechazo: false,
-        botonDeshabilitadoPendResp : true
+        botonDeshabilitado : true,
+        pendienteHorasDetalle: false,
+        pendienteHoras: false,
 
     }
 
@@ -39,6 +41,9 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             }else if(response.caso.FS_SubEstado__c === "Respuesta aceptada" && response.caso.Status === "Pendiente de Respuesta CSAT"){
                 this.data.pendienteEncuesta = true;
                 this.data.pendienteEncuestaDetalle = true;
+            }else if(response.caso.FS_SubEstado__c === "En Espera de Respuesta del Cliente" && response.caso.Status === "En Análisis"){
+                this.data.pendienteHorasDetalle = true;
+                this.data.pendienteHoras = true;
             }
             this.showSpinner = false;
         }).catch(error => {
@@ -67,12 +72,13 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
     cancelar(){
         this.data.pendienteEncuesta = false;
         this.data.pendienteRespuesta = false;
+        this.data.pendienteHoras = false;
     }
 
     handleChange(event){
         const name = event.target.name;
         const value = event.detail.value.trim() != "" ? event.detail.value.trim() : null; 
-        this.data.botonDeshabilitadoPendResp = true;
+        this.data.botonDeshabilitado = true;
         if(name === "aceptaResp"){
             this.data.caso.FS_AceptaRespuesta__c = value;
             if(value == "Si"){
@@ -85,6 +91,8 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             this.data.caso.FS_MotivoRechazo__c = value;
         }else if(name === "comentarioResp"){
             this.data.caso.FS_ComentariosRespuesta__c = value;
+        }else if(name === "aceptaHoras"){
+            this.data.caso.FS_Acepta1erCosto__c = value;
         }
         this.validarBotonPendResp();
     }
@@ -96,6 +104,7 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             this.cancelar();
             this.data.pendienteEncuestaDetalle = false;
             this.data.pendienteRespuestaDetalle = false;
+            this.data.pendienteHorasDetalle= false;
             this.init();
             this.showSpinner = false;
             this.pushMessage('Exitoso', 'success', 'Datos guardados exitosamente');
@@ -107,15 +116,28 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
 
     validarBotonPendResp(){
         if(this.data.caso.FS_AceptaRespuesta__c === "Si"){
-            this.data.botonDeshabilitadoPendResp = false;
+            this.data.botonDeshabilitado = false;
         }else if(this.data.caso.FS_AceptaRespuesta__c === "No" && this.data.caso.FS_MotivoRechazo__c  != null && this.data.caso.FS_ComentariosRespuesta__c != null){
-            this.data.botonDeshabilitadoPendResp = false;
+            this.data.botonDeshabilitado = false;
+        }else if(this.data.caso.FS_Acepta1erCosto__c != null){
+            this.data.botonDeshabilitado = false;
         }
     }
 
 
     popRespuesta(){
-        this.data.pendienteRespuesta = true;
+        if(this.data.pendienteRespuestaDetalle){
+            this.data.pendienteRespuesta = true;
+        }else if(this.data.pendienteHorasDetalle){
+            this.data.pendienteHoras = true;
+        }
+    }
+
+    get SiNo() {
+        return [
+            { label: 'Si', value: 'Si' },
+            { label: 'No', value: 'No' },
+        ];
     }
 
 }

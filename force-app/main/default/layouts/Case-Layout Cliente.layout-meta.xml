@@ -71,7 +71,7 @@
         <label>Descripción del caso</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>FS_DescripcionCliente__c</field>
             </layoutItems>
         </layoutColumns>
@@ -200,6 +200,16 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEmailMessageList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>FS_ValorOriginal__c</fields>
+        <fields>FS_ValorNuevo__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>FS_HistorialDescripcionCaso__c.FS_Caso__c</relatedList>
     </relatedLists>
     <relatedObjects>ContactId</relatedObjects>
     <runAssignmentRulesDefault>false</runAssignmentRulesDefault>
