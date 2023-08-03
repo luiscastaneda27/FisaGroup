@@ -71,7 +71,7 @@
         <label>Descripción del caso</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>FS_DescripcionCliente__c</field>
             </layoutItems>
         </layoutColumns>
