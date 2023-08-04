@@ -53,6 +53,10 @@
 		<name>PermissionSet</name>
 	</types>
 	<types>
+		<members>Servicio al Cliente</members>
+		<name>Profile</name>
+	</types>
+	<types>
 		<members>Case.FS_CamposControlSolicitud</members>
 		<members>Case.FS_DatosAprobacinSolicitud</members>
 		<name>QuickAction</name>
