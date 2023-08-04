@@ -6,17 +6,6 @@ public without sharing class CaseTriggerHelper {
     private static final String CONSULTA_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Consulta').getRecordTypeId();
     private static final String SOLICITUD_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Solicitud').getRecordTypeId();
     
-    /*public static void asignacionCola(List<Case> newCaseList){
-        Id colaAtencionN1Id = [Select Id from Group Where DeveloperName = :COLA_ATENCION_N1 and Type = 'Queue'].Id;
-        for(Case item: newCaseList){
-            if(item.RecordTypeId == CONSULTA_TIPO_REGISTRO){
-                item.OwnerId = colaAtencionN1Id;
-                item.Status = 'Nuevo';
-                item.FS_SubEstado__c = 'Apertura de caso';
-            }
-        }
-    }*/
-    
     public static void validacionCorreoNuevo(List<Case> newCaseList){
         for(Case item: newCaseList){
             if(item.RecordTypeId == CONSULTA_TIPO_REGISTRO || item.RecordTypeId == SOLICITUD_TIPO_REGISTRO){
@@ -25,41 +14,6 @@ public without sharing class CaseTriggerHelper {
             }
         }
     }
-    
-    /*public static void validacionCorreoActualizacion(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-         List<String> listUserId = new  List<String>();
-         List<String> listUser = new  List<String>();
-         Id colaAtencionN1Id = [Select Id from Group Where DeveloperName = :COLA_ATENCION_N1 and Type = 'Queue'].Id;
-         for(Case item: newCaseList){
-             Case caso = oldCaseMap.get(item.Id);
-             if(caso.OwnerId != item.OwnerId && caso.OwnerId == colaAtencionN1Id){
-                 listUserId.add(item.OwnerId);
-                 System.debug('Hola');
-             }
-         }
-         if(listUserId.size() > 0){
-             for(User item :[Select Id from User Where Id in :listUserId]){
-                 listUser.add(item.Id);
-             }
-             System.debug('Hola');
-             for(Case item: newCaseList){
-                 if(listUser.contains(item.OwnerId)){
-                     System.debug('Hola');
-                     item.FS_SubEstado__c = 'Entrega 1a respuesta';
-                     envioCorreo(item, 'FS_AsignacionCaso', true);
-                 }
-             }
-         }
-    }
-    
-    public static void cambioSubEstadoAnalisis(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-        for(Case item: newCaseList){
-            Case caso = oldCaseMap.get(item.Id);
-            if(caso.Status != item.Status && item.Status == 'En Análisis'){
-                envioCorreo(item, 'FS_AnalisisCaso', true);
-            }
-        }
-    }*/
     
     public static void informacionCompleta(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
@@ -81,7 +35,7 @@ public without sharing class CaseTriggerHelper {
             if(caso.FS_DescripcionCliente__c != item.FS_DescripcionCliente__c){
                 crearHistorialDescripcion(item, caso.FS_DescripcionCliente__c, item.FS_DescripcionCliente__c);
                 if(item.FS_SubEstado__c == 'En Espera de Respuesta del Cliente'){
-                    item.FS_SubEstado__c = 'Análisis Consulta N1'; 
+                    item.FS_SubEstado__c = 'Análisis N1'; 
                     item.Status = 'En Análisis';
                     item.FS_InformacionCompleta__c = null;
                     envioCorreo(item, 'FS_ActualizacionInformacionCliente', false);
@@ -118,7 +72,7 @@ public without sharing class CaseTriggerHelper {
                 crearHistorialAprobaciones(item);
                 if(item.FS_AceptaRespuesta__c == 'Si'){
                     item.FS_SubEstado__c = 'Respuesta aceptada';
-                    item.Status = 'Pendiente de Respuesta CSAT';
+                    item.Status = 'Validación de Respuesta (Cliente)';
                     item.FS_EncuestaEnviada__c = true;
                     item.FS_FechaEnvioEncuesta__c = System.now();
                     envioCorreo(item, 'FS_Encuesta', true);
@@ -139,7 +93,24 @@ public without sharing class CaseTriggerHelper {
             if(caso.FS_NumeroHorasSolicitud__c  != item.FS_NumeroHorasSolicitud__c){
                 item.FS_SubEstado__c = 'En Espera de Respuesta del Cliente';
                 item.Status = 'En Análisis';
-                envioCorreo(item, 'FS_EnvíoPrimerCosto', true);
+                envioCorreo(item, 'FS_EnvioPrimerCosto', true);
+            }
+        }
+    }
+    
+    public static void acepta1erCosto(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_Acepta1erCosto__c  != item.FS_Acepta1erCosto__c){
+                if(item.FS_Acepta1erCosto__c == 'Si'){
+                    item.Status = 'Aprobación 1er Costo';
+                    item.FS_SubEstado__c = 'Costo Aceptado';
+                    item.FS_FechaAprobacion1erCosto__c = System.now();
+                    item.FS_UsuarioAprobador1erCosto__c = UserInfo.getUserId();
+                }else if(item.FS_Acepta1erCosto__c == 'No'){
+                    item.Status = 'Dado de baja';
+                    item.FS_SubEstado__c = 'Costo Rechazado';
+                }
             }
         }
     }
@@ -157,19 +128,15 @@ public without sharing class CaseTriggerHelper {
         }
     }
     
-   /* public static void respuestaValidada(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+    public static void validacionFechaEntrega(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_RespuestaValidada__c  != item.FS_RespuestaValidada__c){
-                if(item.FS_InformacionCompleta__c == 'Si'){
-                    item.Status = 'Validación de Respuesta (Cliente)';
-                }else if(item.FS_InformacionCompleta__c == 'No'){
-                    item.FS_SubEstado__c = 'Respuesta rechazada';
-                    envioCorreo(item, 'FS_RechazoRespuesta', false);
-                }
+            if(caso.FS_FechaCompromisoEntrega__c != item.FS_FechaCompromisoEntrega__c && caso.FS_FechaCompromisoEntrega__c == null && item.RecordTypeId == SOLICITUD_TIPO_REGISTRO){
+                item.Status = 'Análisis Falla Operativa';
+                item.FS_SubEstado__c = 'Análisis Falla Operativa';
             }
         }
-    }*/
+    }
 
      
     
@@ -201,14 +168,8 @@ public without sharing class CaseTriggerHelper {
         try{
             System.debug(mail.getWhatId());
             Messaging.SendEmailResult[] results = Messaging.sendEmail(MessageList);
-            if(esContacto){
-                EmailMessage a = [Select Id, RelatedToId  from EmailMessage  Order by CreatedDate desc limit 1];
-                //a.RelatedToId = caso.Id;
-                //update a;
-            }
         }catch(Exception ex){
             System.debug(ex.getMessage()+' ----- '+ex.getLineNumber());
-            caso.addError(ex.getMessage()+' ----- '+ex.getLineNumber());
         }
     }
     public static void crearHistorialAprobaciones(Case caso){

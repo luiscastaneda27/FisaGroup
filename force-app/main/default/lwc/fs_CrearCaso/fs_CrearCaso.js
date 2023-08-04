@@ -21,6 +21,8 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
             this.data.listModulos = [];
             this.data.listSubModulos = [];
             this.data.listArchivos = [];
+            this.data.popEliminar = false;
+            this.data.archivoEliminar = false;
             var productos = [];
             for(let j=0; j<response.listTodosProductos.length; j++){
                 var p = {};
@@ -172,6 +174,7 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
     }
     cancelar(){
         this.data.popArchivo = false;
+        this.data.popEliminar = false;
     }
     finalizaCargaArchivo(event) {
         const uploadedFiles = event.detail.files;
@@ -182,9 +185,29 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
             p.value = uploadedFiles[i].documentId;
             this.data.listArchivos.push(p);
         }
-        console.log('Archivo Agregado: '+ JSON.stringify(this.data.listArchivos));
        this.data.archivoSubido = true;
        this.habilitaBoton();
+    }
+    popEliminar(event){
+        const name = event.target.name;
+        for(let i = 0; i<this.data.listArchivos.length; i++){
+            if(name === this.data.listArchivos[i].value){
+                this.data.archivoEliminar = this.data.listArchivos[i];
+            }
+        }
+        this.data.popEliminar = true;
+    }
+
+    eliminarArchivo(){
+        const listArchivos = [];
+        for(let i = 0; i<this.data.listArchivos.length; i++){
+            if(this.data.archivoEliminar.value != this.data.listArchivos[i].value){
+                listArchivos.push(this.data.listArchivos[i]);
+            }
+        }
+        this.data.listArchivos = listArchivos;
+        this.data.popEliminar = false;
+        this.pushMessage('Exitoso', 'success', 'Archivo eliminado exitosamente.');
     }
     pushMessage(title,variant,msj){
         const message = new ShowToastEvent({

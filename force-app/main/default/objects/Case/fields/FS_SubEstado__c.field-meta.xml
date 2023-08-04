@@ -28,14 +28,9 @@
                 <label>Información validada</label>
             </value>
             <value>
-                <fullName>Análisis Consulta N1</fullName>
+                <fullName>Análisis N1</fullName>
                 <default>false</default>
-                <label>Análisis Consulta N1</label>
-            </value>
-            <value>
-                <fullName>Costo Enviado</fullName>
-                <default>false</default>
-                <label>Costo Enviado</label>
+                <label>Análisis N1</label>
             </value>
             <value>
                 <fullName>Costo Aceptado</fullName>
@@ -48,14 +43,19 @@
                 <label>Costo Rechazado</label>
             </value>
             <value>
+                <fullName>Análisis Falla Operativa</fullName>
+                <default>false</default>
+                <label>Análisis Falla Operativa</label>
+            </value>
+            <value>
                 <fullName>Escalado a N2</fullName>
                 <default>false</default>
                 <label>Escalado a N2</label>
             </value>
             <value>
-                <fullName>Análisis Consulta N2</fullName>
+                <fullName>Análisis N2</fullName>
                 <default>false</default>
-                <label>Análisis Consulta N2</label>
+                <label>Análisis N2</label>
             </value>
             <value>
                 <fullName>Envío de respuesta</fullName>

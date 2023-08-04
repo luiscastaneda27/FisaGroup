@@ -3,6 +3,10 @@
     <fullName>FS_CasoSolicitud</fullName>
     <isActive>true</isActive>
     <values>
+        <fullName>Análisis Falla Operativa</fullName>
+        <default>false</default>
+    </values>
+    <values>
         <fullName>Aprobación 1er Costo</fullName>
         <default>false</default>
     </values>

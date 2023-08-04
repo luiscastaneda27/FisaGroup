@@ -19,11 +19,6 @@
                             options={data.listModulos} onchange={onchangeFilter} placeholder="Seleccione un Módulo">
                         </lightning-combobox>
                     </lightning-layout-item>
-                    <!--lightning-layout-item padding="around-small" size="6">
-                        <lightning-combobox name="subModulo" label="Seleccione un Sub Módulo"
-                            value={data.subModuloSeleccionado} options={data.listSubModulos} onchange={onchangeFilter}
-                            placeholder="Seleccione un Sub Módulo"></lightning-combobox>
-                    </lightning-layout-item-->
 
                     <lightning-layout-item padding="around-small" size="6">
                         <lightning-combobox name="motivo" label="Seleccione un Motivo"
@@ -43,7 +38,7 @@
                             onuploadfinished={finalizaCargaArchivo} multiple >
                         </lightning-file-upload>
                         <template for:each={data.listArchivos} for:item="arch">
-                            <p key={arch.value}>{arch.label}</p>
+                            <p key={arch.value}>{arch.label} &nbsp;&nbsp;&nbsp;<a name={arch.value} onclick={popEliminar} >Eliminar </a></p>
                         </template>
                     </lightning-layout-item>
                     <lightning-layout-item padding="around-small"  size="2" >
@@ -54,6 +49,34 @@
             </lightning-card>
         </lightning-layout-item>
     </lightning-layout>
+
+    <template if:true={data.popEliminar}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h1 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Eliminar Archivos</h1>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium ">
+                    <div class="slds-form slds-form_compound slds-align--absolute-left">
+                        <fieldset class="slds-form-element">
+                            <div class="slds-modal__content slds-p-around--medium">
+                                <h1>Esta seguro que desea eliminar el archivo: {data.archivoEliminar.label} </h1> 
+                            </div>
+                            <footer class="slds-modal__footer">
+                                <lightning-button label="Cancelar" title="Cancelar" onclick={cancelar}
+                                    class="slds-m-left_x-small"></lightning-button>
+                                <lightning-button label="Guardar" title="Guardar" variant="brand" name="guardar"
+                                    class="slds-m-left_x-small" onclick={eliminarArchivo} disabled={data.botonDeshabilitado} ></lightning-button>
+                            </footer>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
     <template if:true={showSpinner}>
         <div id="activityIndicator" class="slds-spinner_container">
             <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">

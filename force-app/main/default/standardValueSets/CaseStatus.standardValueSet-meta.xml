@@ -20,6 +20,12 @@
         <closed>false</closed>
     </standardValue>
     <standardValue>
+        <fullName>Análisis Falla Operativa</fullName>
+        <default>false</default>
+        <label>Análisis Falla Operativa</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
         <fullName>Entregado</fullName>
         <default>false</default>
         <label>Entregado</label>

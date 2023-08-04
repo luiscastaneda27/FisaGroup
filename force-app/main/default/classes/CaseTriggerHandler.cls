@@ -14,6 +14,9 @@ public without sharing class CaseTriggerHandler {
         CaseTriggerHelper.solventarPregunta(newCaseList, oldCaseMap);
         CaseTriggerHelper.aceptaRespuesta(newCaseList, oldCaseMap);
         CaseTriggerHelper.actualizacionDescripcion(newCaseList, oldCaseMap);
+        CaseTriggerHelper.horasSolicitud(newCaseList, oldCaseMap);
+        CaseTriggerHelper.acepta1erCosto(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionFechaEntrega(newCaseList, oldCaseMap);
     }
     
     public static void afterUpdate(List<Case> newCaseList, Map<Id, Case> oldCaseMap){

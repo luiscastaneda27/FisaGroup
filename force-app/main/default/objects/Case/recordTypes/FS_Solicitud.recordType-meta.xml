@@ -6,9 +6,20 @@
     <compactLayoutAssignment>FS_Casos</compactLayoutAssignment>
     <label>Solicitud</label>
     <picklistValues>
+        <picklist>FS_PudeSolventarPregunta__c</picklist>
+        <values>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_SubEstado__c</picklist>
         <values>
-            <fullName>Análisis Consulta N1</fullName>
+            <fullName>Análisis Falla Operativa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Análisis N1</fullName>
             <default>false</default>
         </values>
         <values>
@@ -17,10 +28,6 @@
         </values>
         <values>
             <fullName>Costo Aceptado</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Costo Enviado</fullName>
             <default>false</default>
         </values>
         <values>

@@ -6,13 +6,24 @@
     <compactLayoutAssignment>FS_Casos</compactLayoutAssignment>
     <label>Consulta</label>
     <picklistValues>
-        <picklist>FS_SubEstado__c</picklist>
+        <picklist>FS_PudeSolventarPregunta__c</picklist>
         <values>
-            <fullName>Análisis Consulta N1</fullName>
+            <fullName>No</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Análisis Consulta N2</fullName>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_SubEstado__c</picklist>
+        <values>
+            <fullName>Análisis N1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Análisis N2</fullName>
             <default>false</default>
         </values>
         <values>
