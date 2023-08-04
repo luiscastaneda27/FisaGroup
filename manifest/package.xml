@@ -12,6 +12,7 @@
 	</types>
 	<types>
 		<members>Case.FS_1erCostoAprobado__c</members>
+		<members>Case.FS_Acepta1erCosto__c</members>
 		<members>Case.FS_FechaAprobacion1erCosto__c</members>
 		<members>Case.FS_NumeroHorasSolicitud__c</members>
 		<members>Case.FS_PudeSolventarPregunta__c</members>

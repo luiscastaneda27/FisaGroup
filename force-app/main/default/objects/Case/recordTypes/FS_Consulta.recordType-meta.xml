@@ -6,6 +6,17 @@
     <compactLayoutAssignment>FS_Casos</compactLayoutAssignment>
     <label>Consulta</label>
     <picklistValues>
+        <picklist>FS_Acepta1erCosto__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_PudeSolventarPregunta__c</picklist>
         <values>
             <fullName>No</fullName>
