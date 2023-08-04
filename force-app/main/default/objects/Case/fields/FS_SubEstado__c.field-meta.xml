@@ -28,9 +28,9 @@
                 <label>Información validada</label>
             </value>
             <value>
-                <fullName>Análisis Consulta N1</fullName>
+                <fullName>Análisis N1</fullName>
                 <default>false</default>
-                <label>Análisis Consulta N1</label>
+                <label>Análisis N1</label>
             </value>
             <value>
                 <fullName>Escalado a N2</fullName>
@@ -38,9 +38,9 @@
                 <label>Escalado a N2</label>
             </value>
             <value>
-                <fullName>Análisis Consulta N2</fullName>
+                <fullName>Análisis N2</fullName>
                 <default>false</default>
-                <label>Análisis Consulta N2</label>
+                <label>Análisis N2</label>
             </value>
             <value>
                 <fullName>Envío de respuesta</fullName>

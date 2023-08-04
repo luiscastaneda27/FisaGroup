@@ -337,11 +337,11 @@
     <picklistValues>
         <picklist>FS_SubEstado__c</picklist>
         <values>
-            <fullName>Análisis Consulta N1</fullName>
+            <fullName>Análisis N1</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Análisis Consulta N2</fullName>
+            <fullName>Análisis N2</fullName>
             <default>false</default>
         </values>
         <values>

@@ -28,10 +28,10 @@
 		<members>Case.FS_Casos</members>
 		<name>CompactLayout</name>
 	</types>
-	<types>
+	<!--types>
 		<members>standard__ServiceConsole</members>
 		<name>CustomApplication</name>
-	</types>
+	</types-->
 	<types>
 		<members>Case.FS_AceptaRespuesta__c</members>
 		<members>Case.FS_Area__c</members>
@@ -82,6 +82,7 @@
 		<name>CustomObject</name>
 	</types>
 	<types>
+		<members>Encuestas_Servicio_al_Cliente</members>
 		<members>Portal_para_Servicio_al_Cliente</members>
 		<name>CustomSite</name>
 	</types>
@@ -98,6 +99,7 @@
 	</types>
 	<types>
 		<members>Portal_para_Servicio_al_Cliente1</members>
+		<members>Encuestas_Servicio_al_Cliente1</members>
 		<name>ExperienceBundle</name>
 	</types>
 	<types>
@@ -133,6 +135,7 @@
 	</types>
 	<types>
 		<members>Portal para Servicio al Cliente</members>
+		<members>Encuestas Servicio al Cliente%2E</members>
 		<name>Network</name>
 	</types>
 	<types>
@@ -182,6 +185,7 @@
 		<name>Role</name>
 	</types>
 	<types>
+		<members>Encuestas_Servicio_al_Cliente1</members>
 		<members>Portal_para_Servicio_al_Cliente1</members>
 		<name>SiteDotCom</name>
 	</types>
@@ -201,6 +205,7 @@
 		<members>FS_LogoNeutral</members>
 		<members>FS_LogoSatisfecho</members>
 		<members>SNA_Portal_para_Servicio_al_Cliente1_sf_default_cdn_fLgxZ</members>
+		<members>SNA_Encuestas_Servicio_al_Cliente1_sf_default_cdn_vggQz</members>
 		<name>StaticResource</name>
 	</types>
 	<types>

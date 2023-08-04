@@ -85,7 +85,7 @@ public without sharing class CaseTriggerHelper {
             System.schedule('Prueba1', acron, new JobValidacionRespuesta());
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_DescripcionCliente__c != item.FS_DescripcionCliente__c && item.FS_SubEstado__c == 'En Espera de Respuesta del Cliente'){
-                item.FS_SubEstado__c = 'Análisis Consulta N1'; 
+                item.FS_SubEstado__c = 'Análisis N1'; 
                 item.Status = 'En Análisis';
                 item.FS_InformacionCompleta__c = null;
                 envioCorreo(item, 'FS_ActualizacionInformacionCliente', false);
