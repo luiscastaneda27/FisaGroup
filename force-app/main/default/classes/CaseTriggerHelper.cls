@@ -76,14 +76,7 @@ public without sharing class CaseTriggerHelper {
     
     public static void actualizacionDescripcion(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
-            //envioCorreo(item, 'FS_ActualizacionInformacionCliente', true);
-            for(CronTrigger item1 : [SELECT id FROM CronTrigger where CronJobDetail.Name = 'Prueba1']){
-                System.abortJob(item1.id);
-            }
-            Datetime fecha = Datetime.now().addMinutes(1);
-            String acron = fecha.second()+' '+fecha.minute()+' '+fecha.hour()+' '+fecha.day()+' '+fecha.month()+' ? '+fecha.year();
-            System.schedule('Prueba1', acron, new JobValidacionRespuesta());
-            Case caso = oldCaseMap.get(item.Id);
+           Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_DescripcionCliente__c != item.FS_DescripcionCliente__c && item.FS_SubEstado__c == 'En Espera de Respuesta del Cliente'){
                 item.FS_SubEstado__c = 'Análisis N1'; 
                 item.Status = 'En Análisis';
@@ -188,11 +181,7 @@ public without sharing class CaseTriggerHelper {
         try{
             System.debug(mail.getWhatId());
             Messaging.SendEmailResult[] results = Messaging.sendEmail(MessageList);
-            if(esContacto){
-                EmailMessage a = [Select Id, RelatedToId  from EmailMessage  Order by CreatedDate desc limit 1];
-                //a.RelatedToId = caso.Id;
-                //update a;
-            }
+            
         }catch(Exception ex){
             System.debug(ex.getMessage()+' ----- '+ex.getLineNumber());
             caso.addError(ex.getMessage()+' ----- '+ex.getLineNumber());
