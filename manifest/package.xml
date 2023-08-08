@@ -23,7 +23,10 @@
 		<name>CustomField</name>
 	</types>
 	<types>
+		<members>FS_AceptacionRechazoCaso__c</members>
+		<members>FS_Encuesta__c</members>
 		<members>FS_HistorialDescripcionCaso__c</members>
+		<members>FS_ProductoAdquirido__c</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
@@ -53,10 +56,6 @@
 	<types>
 		<members>FS_PermisosServicioCliente</members>
 		<name>PermissionSet</name>
-	</types>
-	<types>
-		<members>Servicio al Cliente</members>
-		<name>Profile</name>
 	</types>
 	<types>
 		<members>*</members>
