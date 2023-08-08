@@ -1,7 +1,9 @@
 public without sharing class CaseTriggerHelper {
 
-    public static final String COLA_ATENCION_N1 ='FS_AtencionN1';
-    public static final String COLA_ATENCION_N2 ='FS_AtencionN2';
+    public static final String COLA_ATENCION_N1_CORE ='FS_AtencionN1Core';
+    public static final String COLA_ATENCION_N2_CORE ='FS_AtencionN2Core';
+    public static final String COLA_ATENCION_N1_OMNIA ='FS_AtencionN1Omnia';
+    public static final String COLA_ATENCION_N2_OMNIA ='FS_AtencionN2Omnia';
     
     private static final String CONSULTA_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Consulta').getRecordTypeId();
     private static final String SOLICITUD_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Solicitud').getRecordTypeId();
@@ -45,7 +47,10 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void solventarPregunta(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-        Id colaAtencionN2Id = [Select Id from Group Where DeveloperName = :COLA_ATENCION_N2 and Type = 'Queue'].Id;
+        Map<String, String> mapColas = new Map<String, String>();
+        for(Group item: [Select Id, DeveloperName from Group Where DeveloperName In (:COLA_ATENCION_N2_CORE, :COLA_ATENCION_N2_OMNIA) and Type = 'Queue']){
+            mapColas.put(item.DeveloperName, item.Id);
+        }
          for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_PudeSolventarPregunta__c != item.FS_PudeSolventarPregunta__c){
@@ -55,7 +60,9 @@ public without sharing class CaseTriggerHelper {
                     item.FS_AceptaRespuesta__c = null;
                     envioCorreo(item, 'FS_ValidacionInformacion', true);
                 }else if(item.FS_PudeSolventarPregunta__c == 'No'){
-                    item.OwnerId = colaAtencionN2Id;
+                    Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
+                    item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_N2_CORE : COLA_ATENCION_N2_OMNIA);
+                    item.FS_Area__c =  esCore ? 'N2- CORE' : 'N2-OMNIA';
                     item.FS_SubEstado__c = 'Escalado a N2';
                     item.IsEscalated = true;
                     item.FS_InformacionCompleta__c = null;

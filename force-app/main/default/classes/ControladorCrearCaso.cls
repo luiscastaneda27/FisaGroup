@@ -48,8 +48,9 @@ public without sharing class ControladorCrearCaso {
         Case caso = (Case) JSON.deserialize(casoJSON, Case.class);
         Boolean crearCaso = String.isBlank(caso.Id);
         if(crearCaso){
-            Id colaAtencionN1Id = [Select Id from Group Where DeveloperName = :CaseTriggerHelper.COLA_ATENCION_N1 and Type = 'Queue'].Id;
-            caso.OwnerId = colaAtencionN1Id;
+            Boolean esCore = caso.FS_Producto__c == 'FISA System' || caso.FS_Producto__c == 'FISA Credit Card' ;
+            caso.FS_Area__c = esCore ? 'N1. CORE' : 'N1. OMNIA';
+            caso.OwnerId = [Select Id from Group Where DeveloperName = :(esCore ? CaseTriggerHelper.COLA_ATENCION_N1_CORE : CaseTriggerHelper.COLA_ATENCION_N1_OMNIA) and Type = 'Queue'].Id;
             caso.FS_SubEstado__c = 'Apertura de caso';
             for(PickListOption item: (List<PickListOption>) JSON.deserialize(archivosJSON, List<PickListOption>.class)){
                 listContentDocumentId.add(item.value);

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
-    <name>Atención N1</name>
+    <name>Atención N1 - Core</name>
     <queueMembers>
         <users>
             <user>luis.castaneda@intellectsystem</user>
         </users>
     </queueMembers>
-    <queueRoutingConfig>FS_AtencionN1</queueRoutingConfig>
+    <queueRoutingConfig>FS_AtencionN1Core</queueRoutingConfig>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

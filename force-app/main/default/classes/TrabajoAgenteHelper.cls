@@ -21,10 +21,14 @@ public class TrabajoAgenteHelper {
         for(User item :[Select Id from User Where Id in :listUserId]){
             listUser.add(item.Id);
         }
-        Id colaAtencionN1Id = [Select Id from Group Where DeveloperName = 'FS_AtencionN1' and Type = 'Queue'].Id;
+        List<String> colasAtencion = new List<String>();
+        for(Group item: [Select Id from Group Where DeveloperName In ('FS_AtencionN1Core', 'FS_AtencionN1Omnia') and Type = 'Queue']){
+            colasAtencion.add(item.Id);
+        }
         for(Case item: listCasos){
+            Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
             for(AgentWork aw: newAgentWork){
-                if(item.id == aw.WorkItemId && listUser.contains(aw.UserId) && aw.OriginalQueueId == colaAtencionN1Id &&
+                if(item.id == aw.WorkItemId && listUser.contains(aw.UserId) && colasAtencion.contains(aw.OriginalQueueId) &&
                   item.FS_SubEstado__c == 'Apertura de caso'){
                       item.FS_SubEstado__c = 'Entrega 1a respuesta';
                       CaseTriggerHelper.envioCorreo(item, 'FS_AsignacionCaso', true);

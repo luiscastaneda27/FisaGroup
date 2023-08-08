@@ -2,7 +2,7 @@
 <QueueRoutingConfig xmlns="http://soap.sforce.com/2006/04/metadata">
     <capacityWeight>5.0</capacityWeight>
     <isAttributeBased>false</isAttributeBased>
-    <label>Atención N1</label>
+    <label>Atención N1 - Omnia</label>
     <pushTimeout>60</pushTimeout>
     <routingModel>MOST_AVAILABLE</routingModel>
     <routingPriority>1</routingPriority>

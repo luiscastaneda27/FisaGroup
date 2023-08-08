@@ -3,6 +3,8 @@
 	<types>
 		<members>CaseTriggerHandler</members>
 		<members>CaseTriggerHelper</members>
+		<members>ControladorCrearCaso</members>
+		<members>TrabajoAgenteHelper</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
@@ -57,8 +59,25 @@
 		<name>Profile</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>Queue</name>
+	</types>
+	<types>
+		<members>FS_AtencionN1Core</members>
+		<members>FS_AtencionN1Omnia</members>
+		<members>FS_AtencionN2Core</members>
+		<members>FS_AtencionN2Omnia</members>
+		<name>QueueRoutingConfig</name>
+	</types>
+	<types>
+		<members>Case.FS_CamposControlConsulta</members>
 		<members>Case.FS_CamposControlSolicitud</members>
 		<members>Case.FS_DatosAprobacinSolicitud</members>
+		<members>Case.FS_DatosEncuesta</members>
+		<members>Case.FS_DatosRespuesta</members>
+		<members>Case.FS_Descripcion</members>
+		<members>Case.FS_DetalleCaso</members>
+		<members>Case.FS_InformacionWeb</members>
 		<name>QuickAction</name>
 	</types>
 	<types>
