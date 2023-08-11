@@ -8,6 +8,7 @@
 		<name>ApexClass</name>
 	</types>
 	<types>
+		<members>Case.FS_CasoIncidente</members>
 		<members>Case.FS_CasoSolicitud</members>
 		<members>Case.FS_Casos</members>
 		<name>BusinessProcess</name>
@@ -15,12 +16,26 @@
 	<types>
 		<members>Case.FS_1erCostoAprobado__c</members>
 		<members>Case.FS_Acepta1erCosto__c</members>
+		<members>Case.FS_AprobacionSolucionIPRelease__c</members>
+		<members>Case.FS_AutorizacionSolucionIPN2__c</members>
+		<members>Case.FS_CasoRQOrigenNovedad__c</members>
 		<members>Case.FS_FechaAprobacion1erCosto__c</members>
+		<members>Case.FS_FechaEntregaDesarrollo__c</members>
+		<members>Case.FS_MotivoCambioFechaDesarrollo__c</members>
+		<members>Case.FS_MotivoCambioFechaEntrega__c</members>
+		<members>Case.FS_MotivoRechazoAprobacionIPRealease__c</members>
+		<members>Case.FS_MotivosRechazoAprobacionIPN2__c</members>
 		<members>Case.FS_NumeroHorasSolicitud__c</members>
 		<members>Case.FS_PudeSolventarPregunta__c</members>
 		<members>Case.FS_SubEstado__c</members>
+		<members>Case.FS_TipoIncidente__c</members>
+		<members>Case.FS_URLResultadoAnalasis__c</members>
 		<members>Case.FS_UsuarioAprobador1erCosto__c</members>
 		<name>CustomField</name>
+	</types>
+	<types>
+		<members>FS_NotificacionServicio</members>
+		<name>CustomNotificationType</name>
 	</types>
 	<types>
 		<members>FS_AceptacionRechazoCaso__c</members>
@@ -69,7 +84,10 @@
 		<name>QueueRoutingConfig</name>
 	</types>
 	<types>
+		<members>Case.FS_AprobacionSolucionIPRelease</members>
+		<members>Case.FS_AutorizacionSolucionIPN2</members>
 		<members>Case.FS_CamposControlConsulta</members>
+		<members>Case.FS_CamposControlIncidente</members>
 		<members>Case.FS_CamposControlSolicitud</members>
 		<members>Case.FS_DatosAprobacinSolicitud</members>
 		<members>Case.FS_DatosEncuesta</members>
@@ -77,16 +95,27 @@
 		<members>Case.FS_Descripcion</members>
 		<members>Case.FS_DetalleCaso</members>
 		<members>Case.FS_InformacionWeb</members>
+		<members>Case.FS_RevisionDocumentacion</members>
+		<members>Case.FS_ValidacionInformacionIncidente</members>
 		<name>QuickAction</name>
 	</types>
 	<types>
 		<members>Case.FS_Consulta</members>
+		<members>Case.FS_Incidente</members>
 		<members>Case.FS_Solicitud</members>
 		<name>RecordType</name>
 	</types>
 	<types>
 		<members>CaseStatus</members>
 		<name>StandardValueSet</name>
+	</types>
+	<types>
+		<members>Case.FS_ValidacionAprobacionSolucionIPRelease</members>
+		<members>Case.FS_ValidacionAutorizacionSolucionIPN2</members>
+		<members>Case.FS_ValidacionFechaCompromisoDesarrollo</members>
+		<members>Case.FS_ValidacionFechaCompromisoEntrega</members>
+		<members>Case.FS_ValidacionRechazoIPRelease</members>
+		<name>ValidationRule</name>
 	</types>
 	<version>55.0</version>
 </Package>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FS_ValidacionAutorizacionSolucionIPN2</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  TEXT(FS_SubEstado__c) = &quot;Autorización Solución IP-N2&quot;,
+  OR(
+    $UserRole.Id !=  Owner:User.UserRole.Id,
+    $User.Id = Owner:User.Id
+  )
+)</errorConditionFormula>
+    <errorMessage>El caso se encuentra en Autorización de Solución IP-N2 y no tiene permisos para modificarlo.</errorMessage>
+</ValidationRule>

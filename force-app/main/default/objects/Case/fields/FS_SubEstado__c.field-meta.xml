@@ -33,6 +33,26 @@
                 <label>Análisis N1</label>
             </value>
             <value>
+                <fullName>Revisión Documentación N2</fullName>
+                <default>false</default>
+                <label>Revisión Documentación N2</label>
+            </value>
+            <value>
+                <fullName>Desarrollo Incidente Puntual</fullName>
+                <default>false</default>
+                <label>Desarrollo Incidente Puntual</label>
+            </value>
+            <value>
+                <fullName>Autorización Solución IP-N2</fullName>
+                <default>false</default>
+                <label>Autorización Solución IP-N2</label>
+            </value>
+            <value>
+                <fullName>Aprobación de Solución IP-Release</fullName>
+                <default>false</default>
+                <label>Aprobación de Solución IP-Release</label>
+            </value>
+            <value>
                 <fullName>Costo Aceptado</fullName>
                 <default>false</default>
                 <label>Costo Aceptado</label>

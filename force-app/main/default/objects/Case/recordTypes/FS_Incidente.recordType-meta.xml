@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>FS_Solicitud</fullName>
+    <fullName>FS_Incidente</fullName>
     <active>true</active>
-    <businessProcess>FS_CasoSolicitud</businessProcess>
-    <compactLayoutAssignment>FS_Casos</compactLayoutAssignment>
-    <label>Solicitud</label>
+    <businessProcess>FS_CasoIncidente</businessProcess>
+    <label>Incidente</label>
     <picklistValues>
         <picklist>FS_Acepta1erCosto__c</picklist>
         <values>
@@ -113,6 +112,10 @@
     <picklistValues>
         <picklist>FS_PudeSolventarPregunta__c</picklist>
         <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Si</fullName>
             <default>false</default>
         </values>
@@ -120,11 +123,11 @@
     <picklistValues>
         <picklist>FS_SubEstado__c</picklist>
         <values>
-            <fullName>Análisis Falla Operativa</fullName>
+            <fullName>Análisis N1</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Análisis N1</fullName>
+            <fullName>Análisis N2</fullName>
             <default>false</default>
         </values>
         <values>
@@ -132,11 +135,15 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Costo Aceptado</fullName>
+            <fullName>Aprobación de Solución IP-Release</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Costo Rechazado</fullName>
+            <fullName>Autorización Solución IP-N2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desarrollo Incidente Puntual</fullName>
             <default>false</default>
         </values>
         <values>
@@ -156,6 +163,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Escalado a N2</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Información validada</fullName>
             <default>false</default>
         </values>
@@ -165,6 +176,10 @@
         </values>
         <values>
             <fullName>Respuesta rechazada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Revisión Documentación N2</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -239,7 +254,15 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Definitivo</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Pase en produccción</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puntual</fullName>
             <default>false</default>
         </values>
         <values>

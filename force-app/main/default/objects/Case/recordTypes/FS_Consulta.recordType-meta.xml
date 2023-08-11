@@ -17,6 +17,100 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>FS_AprobacionSolucionIPRelease__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_AutorizacionSolucionIPN2__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivoCambioFechaDesarrollo__c</picklist>
+        <values>
+            <fullName>Cambio de alcance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cambio de prioridad interna</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cambio de prioridad solicitada por el cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dependencia de versionamiento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Problema en ambientes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivoCambioFechaEntrega__c</picklist>
+        <values>
+            <fullName>Cambio de alcance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cambio de prioridad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dependencia de versionamiento</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivoRechazoAprobacionIPRealease__c</picklist>
+        <values>
+            <fullName>Desarrollo incompleto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en documentación</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivosRechazoAprobacionIPN2__c</picklist>
+        <values>
+            <fullName>Desarrollo erróneo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desarrollo incompleto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Documentación incompleta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en documentación</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inconsistencia objetos</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_PudeSolventarPregunta__c</picklist>
         <values>
             <fullName>No</fullName>
@@ -71,6 +165,17 @@
         </values>
         <values>
             <fullName>Respuesta rechazada</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_TipoIncidente__c</picklist>
+        <values>
+            <fullName>Definitivo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puntual</fullName>
             <default>false</default>
         </values>
     </picklistValues>
