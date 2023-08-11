@@ -37,10 +37,6 @@
                 <field>FS_Producto__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>FS_SubModulo__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Required</behavior>
                 <field>Subject</field>
             </layoutItems>
@@ -53,9 +49,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Priority</field>
-            </layoutItems>
-            <layoutItems>
-                <emptySpace>true</emptySpace>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>

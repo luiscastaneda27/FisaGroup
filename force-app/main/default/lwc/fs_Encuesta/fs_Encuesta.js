@@ -49,7 +49,6 @@ export default class Fs_Encuesta extends LightningElement {
         this.getColorBlanco();
         const name = event.target.name;
         this.data.casoObjeto.mostrarMotivo = false;
-        this.data.casoObjeto.deshabilitarBoton = true;
         let color = "background-color:#57b888;";
         if(name === "logoMuyInsatisfecho"){
             this.data.styleLogoMuyInsatisfecho = color;
@@ -61,17 +60,15 @@ export default class Fs_Encuesta extends LightningElement {
             this.data.casoObjeto.resultadoEncuesta = "Insatisfecho";
         }else if(name === "logoNeutral"){
             this.data.styleLogoNeutral= color;
-            this.data.casoObjeto.deshabilitarBoton = false;
             this.data.casoObjeto.resultadoEncuesta = "Neutral";
         }else if(name === "logoSatisfecho"){
             this.data.styleLogoSatisfecho= color;
-            this.data.casoObjeto.deshabilitarBoton = false;
             this.data.casoObjeto.resultadoEncuesta = "Satisfecho";
         }else if(name === "logoMuySatisfecho"){
             this.data.styleLogoMuySatisfecho = color;
-            this.data.casoObjeto.deshabilitarBoton = false;
             this.data.casoObjeto.resultadoEncuesta = "Muy Satisfecho";
         }
+        this.habilitarBooton();
     }
 
     getColorBlanco(){
@@ -85,12 +82,26 @@ export default class Fs_Encuesta extends LightningElement {
 
     onchangeMotivo(event){
         const name = event.target.name;
+        const value = event.detail.value.trim() != "" ? event.detail.value.trim() : null;
         if(name === "motivo"){
-            this.data.casoObjeto.motivoSeleccionado = event.detail.value;
-            this.data.casoObjeto.deshabilitarBoton = false;
+            this.data.casoObjeto.motivoSeleccionado = value;
         }else if(name === "comentarios"){
-            this.data.casoObjeto.comentarios = event.detail.value;
+            this.data.casoObjeto.comentarios = value;
         }
+       this.habilitarBooton();
+    }
+
+    habilitarBooton(){
+        let resultadoEncuesta = this.data.casoObjeto.resultadoEncuesta;
+        if(resultadoEncuesta === null){
+            this.data.casoObjeto.deshabilitarBoton = true;
+        }else if (resultadoEncuesta === "Muy Insatisfecho" || resultadoEncuesta === "Insatisfecho"){
+            this.data.casoObjeto.deshabilitarBoton = !(this.data.casoObjeto.motivoSeleccionado != null && this.data.casoObjeto.comentarios != null)
+        }else{
+            this.data.casoObjeto.deshabilitarBoton = false;
+            this.data.casoObjeto.motivoSeleccionado = null;
+        }
+
     }
 
     enviarEncuesta(){
