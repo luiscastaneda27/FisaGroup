@@ -43,14 +43,19 @@ public without sharing class ControladorCrearCaso {
     
     @AuraEnabled
     public static Id guardarCaso(String casoJSON, String archivosJSON){
-        System.debug('casoJSON: '+casoJSON);
         List<String> listContentDocumentId = new List<String>();
         Case caso = (Case) JSON.deserialize(casoJSON, Case.class);
         Boolean crearCaso = String.isBlank(caso.Id);
         if(crearCaso){
+            user usuario = [Select Contact.Account.FS_Carterizacion__c, Contact.Account.FS_ServicioRemoto__c, Contact.Account.FS_ColaAtencion__c from User  Where Id = :userInfo.getUserId()];
             Boolean esCore = caso.FS_Producto__c == 'FISA System' || caso.FS_Producto__c == 'FISA Credit Card' ;
             caso.FS_Area__c = esCore ? 'N1. CORE' : 'N1. OMNIA';
-            caso.OwnerId = [Select Id from Group Where DeveloperName = :(esCore ? CaseTriggerHelper.COLA_ATENCION_N1_CORE : CaseTriggerHelper.COLA_ATENCION_N1_OMNIA) and Type = 'Queue'].Id;
+            caso.FS_Carterizacion__c = usuario.Contact.Account.FS_Carterizacion__c;
+            if(usuario.Contact.Account.FS_ServicioRemoto__c){
+                caso.OwnerId = [Select Id from Group Where DeveloperName = :usuario.Contact.Account.FS_ColaAtencion__c and Type = 'Queue'].Id;
+            }else{
+                caso.OwnerId = [Select Id from Group Where DeveloperName = :(esCore ? CaseTriggerHelper.COLA_ATENCION_N1_CORE : CaseTriggerHelper.COLA_ATENCION_N1_OMNIA) and Type = 'Queue'].Id;
+            }
             caso.FS_SubEstado__c = 'Apertura de caso';
             for(PickListOption item: (List<PickListOption>) JSON.deserialize(archivosJSON, List<PickListOption>.class)){
                 listContentDocumentId.add(item.value);

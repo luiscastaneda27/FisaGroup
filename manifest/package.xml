@@ -4,6 +4,7 @@
 		<members>CaseTriggerHandler</members>
 		<members>CaseTriggerHelper</members>
 		<members>ControladorCrearCaso</members>
+		<members>JobValidacionRespuesta</members>
 		<members>TrabajoAgenteHelper</members>
 		<name>ApexClass</name>
 	</types>
@@ -14,6 +15,9 @@
 		<name>BusinessProcess</name>
 	</types>
 	<types>
+		<members>Account.FS_Carterizacion__c</members>
+		<members>Account.FS_ColaAtencion__c</members>
+		<members>Account.FS_ServicioRemoto__c</members>
 		<members>Case.FS_1erCostoAprobado__c</members>
 		<members>Case.FS_Acepta1erCosto__c</members>
 		<members>Case.FS_AprobacionSolucionIPRelease__c</members>
@@ -32,6 +36,10 @@
 		<members>Case.FS_URLResultadoAnalasis__c</members>
 		<members>Case.FS_UsuarioAprobador1erCosto__c</members>
 		<name>CustomField</name>
+	</types>
+	<types>
+		<members>FS_DiasEnvioEncuesta</members>
+		<name>CustomLabel</name>
 	</types>
 	<types>
 		<members>FS_NotificacionServicio</members>
@@ -53,6 +61,11 @@
 		<name>FlexiPage</name>
 	</types>
 	<types>
+		<members>FS_Carterizacion</members>
+		<name>GlobalValueSet</name>
+	</types>
+	<types>
+		<members>Account-Formato de cuentas</members>
 		<members>Case-Layout Cliente</members>
 		<members>Case-Layout Interno Casos</members>
 		<members>FS_HistorialDescripcionCaso__c-Formato Historial de Descripción</members>

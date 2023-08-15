@@ -23,11 +23,22 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_InformacionCompleta__c != item.FS_InformacionCompleta__c){
                 if(item.FS_InformacionCompleta__c == 'Si'){
-                    item.FS_SubEstado__c = 'Información validada'; 
+                    item.FS_SubEstado__c = 'Información validada';
+                    item.Status = 'En Análisis';
                 }else if(item.FS_InformacionCompleta__c == 'No'){
                     item.FS_SubEstado__c = 'En Espera de Respuesta del Cliente'; 
                     envioCorreo(item, 'FS_InformacionFaltante', true);
                 }
+            }
+        }
+    }
+    
+    public static void validacionTipo(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.Type  != item.Type && item.RecordTypeId == SOLICITUD_TIPO_REGISTRO){
+                item.Status = 'En Análisis';
+                item.FS_SubEstado__c = 'Análisis N1';
             }
         }
     }
