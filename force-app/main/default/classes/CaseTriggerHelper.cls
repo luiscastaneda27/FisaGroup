@@ -256,6 +256,8 @@ public without sharing class CaseTriggerHelper {
         mail.setSubject(asunnto);
         mail.setHtmlBody(html);
         mail.saveAsActivity = esContacto;
+        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = :Label.FS_CorreoElectronicoServicio];
+        mail.setOrgWideEmailAddressId(owea.get(0).Id);
         if(esContacto){
             User usuario = [Select Id, Profile.Name from user Where Id = :userInfo.getUserId()];
             if(usuario.Profile.Name != 'Customer Community User'){

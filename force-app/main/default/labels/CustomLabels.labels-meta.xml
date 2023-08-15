@@ -21,4 +21,11 @@
         <shortDescription>FS_DiasEnvioEncuesta</shortDescription>
         <value>30</value>
     </labels>
+    <labels>
+        <fullName>FS_CorreoElectronicoServicio</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_CorreoElectronicoServicio</shortDescription>
+        <value>salesforce.sandbox@fisagrp.com</value>
+    </labels>
 </CustomLabels>
