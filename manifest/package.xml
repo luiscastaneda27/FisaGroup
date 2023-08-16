@@ -38,11 +38,6 @@
 		<name>CustomField</name>
 	</types>
 	<types>
-		<members>FS_CorreoElectronicoServicio</members>
-		<members>FS_DiasEnvioEncuesta</members>
-		<name>CustomLabel</name>
-	</types>
-	<types>
 		<members>FS_NotificacionServicio</members>
 		<name>CustomNotificationType</name>
 	</types>
