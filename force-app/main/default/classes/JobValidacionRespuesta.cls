@@ -8,7 +8,7 @@ global without sharing class JobValidacionRespuesta implements Schedulable {
     public static void recordatorioRespuesta(){
         DateTime fecha = DateTime.now().addDays(-Integer.valueOf(Label.FS_DiasEnvioEncuesta));
         String nombrePlantilla = 'FS_ValidacionInformacion';
-        String subEstado = 'Respuesta Enviada';
+        String subEstado = 'Envío de respuesta';
         List<Messaging.SingleEmailMessage> MessageList = new List<Messaging.SingleEmailMessage>();
         EmailTemplate plantilla = [Select Id, Subject, HTMLValue from EmailTemplate Where DeveloperName = :nombrePlantilla limit 1];
         OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = :Label.FS_CorreoElectronicoServicio];

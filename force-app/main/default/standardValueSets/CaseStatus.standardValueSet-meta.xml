@@ -26,12 +26,6 @@
         <closed>false</closed>
     </standardValue>
     <standardValue>
-        <fullName>Entregado</fullName>
-        <default>false</default>
-        <label>Entregado</label>
-        <closed>false</closed>
-    </standardValue>
-    <standardValue>
         <fullName>Validación de Respuesta (Cliente)</fullName>
         <default>false</default>
         <label>Validación de Respuesta (Cliente)</label>

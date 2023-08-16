@@ -68,7 +68,7 @@ public without sharing class CaseTriggerHelper {
             if(caso.FS_PudeSolventarPregunta__c != item.FS_PudeSolventarPregunta__c){
                 if(item.FS_PudeSolventarPregunta__c == 'Si'){
                     item.FS_SubEstado__c = 'Envío de respuesta';
-                    item.Status = 'Entregado';
+                    item.Status = 'Validación de Respuesta (Cliente)';
                     item.FS_AceptaRespuesta__c = null;
                     envioCorreo(item, 'FS_ValidacionInformacion', true);
                 }else if(item.FS_PudeSolventarPregunta__c == 'No'){
@@ -215,7 +215,7 @@ public without sharing class CaseTriggerHelper {
                 Id notificacionId = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1].Id;
                 if(item.FS_AprobacionSolucionIPRelease__c == 'Si'){
                     item.FS_SubEstado__c = 'Envío de respuesta';
-                    item.Status = 'Entregado';
+                    item.Status = 'Validación de Respuesta (Cliente)';
                     item.FS_AceptaRespuesta__c = null;
                     
                     String titulo = 'Aprobación de Solución IP-Release para caso '+item.CaseNumber;
@@ -251,7 +251,7 @@ public without sharing class CaseTriggerHelper {
         String html = reemplazarCampos(caso, plantilla.HTMLValue, 'Case');
         String urlLogo = getLogoImagen();
         html = getLogoImagen() + html.replace('{urlSiteServicios}', Label.FS_UrlPortalServicios);
-        html =html.replace('{urlSiteEncuestas}', Label.FS_UrlPortalEncuestas);
+        html = html.replace('{urlSiteEncuestas}', Label.FS_UrlPortalEncuestas);
         html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
         mail.setSubject(asunnto);
         mail.setHtmlBody(html);
@@ -270,7 +270,6 @@ public without sharing class CaseTriggerHelper {
         }
         MessageList.add(mail);
         try{
-            System.debug(mail.getWhatId());
             Messaging.SendEmailResult[] results = Messaging.sendEmail(MessageList);
         }catch(Exception ex){
             System.debug(ex.getMessage()+' ----- '+ex.getLineNumber());
