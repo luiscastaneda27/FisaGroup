@@ -91,7 +91,7 @@ public without sharing class CaseTriggerHelper {
                 crearHistorialAprobaciones(item);
                 if(item.FS_AceptaRespuesta__c == 'Si'){
                     item.FS_SubEstado__c = 'Respuesta aceptada';
-                    item.Status = 'Validación de Respuesta (Cliente)';
+                    item.Status = 'Pendiente de Respuesta CSAT';
                     item.FS_EncuestaEnviada__c = true;
                     item.FS_FechaEnvioEncuesta__c = System.now();
                     envioCorreo(item, 'FS_Encuesta', true);

@@ -38,7 +38,7 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             if(response.caso.FS_SubEstado__c === "Envío de respuesta" && response.caso.FS_AceptaRespuesta__c === undefined){
                 this.data.pendienteRespuesta = true;
                 this.data.pendienteRespuestaDetalle = true;
-            }else if(response.caso.FS_SubEstado__c === "Respuesta aceptada" && response.caso.Status === "Validación de Respuesta (Cliente)"){
+            }else if(response.caso.FS_SubEstado__c === "Respuesta aceptada" && response.caso.Status === "Pendiente de Respuesta CSAT"){
                 this.data.pendienteEncuesta = true;
                 this.data.pendienteEncuestaDetalle = true;
             }else if(response.caso.FS_SubEstado__c === "En Espera de Respuesta del Cliente" && response.caso.Status === "En Análisis"){
