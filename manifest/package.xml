@@ -3,11 +3,22 @@
 	<types>
 		<members>CaseTriggerHandler</members>
 		<members>CaseTriggerHelper</members>
+		<members>CommunitiesLandingController</members>
 		<members>ControladorCrearCaso</members>
+		<members>ControladorEncuesta</members>
 		<members>JobValidacionRespuesta</members>
 		<members>TrabajoAgenteHandler</members>
 		<members>TrabajoAgenteHelper</members>
 		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>CommunitiesLanding</members>
+		<name>ApexPage</name>
+	</types>
+	<types>
+		<members>CaseTrigger</members>
+		<members>TrabajoAgenteTrigger</members>
+		<name>ApexTrigger</name>
 	</types>
 	<types>
 		<members>Case.FS_CasoIncidente</members>
@@ -20,22 +31,65 @@
 		<members>Account.FS_ColaAtencion__c</members>
 		<members>Account.FS_ServicioRemoto__c</members>
 		<members>Case.FS_1erCostoAprobado__c</members>
-		<members>Case.FS_AProbacionSolucionIPN2__c</members>
 		<members>Case.FS_Acepta1erCosto__c</members>
+		<members>Case.FS_AceptaRespuesta__c</members>
+		<members>Case.FS_AprobacionSolucionIPN2__c</members>
 		<members>Case.FS_AprobacionSolucionIPRelease__c</members>
+		<members>Case.FS_Area__c</members>
+		<members>Case.FS_CSATCaso__c</members>
+		<members>Case.FS_Carterizacion__c</members>
 		<members>Case.FS_CasoRQOrigenNovedad__c</members>
+		<members>Case.FS_ComentariosEncuesta__c</members>
+		<members>Case.FS_ComentariosInternos__c</members>
+		<members>Case.FS_ComentariosRespuesta__c</members>
+		<members>Case.FS_DescripcionCliente__c</members>
+		<members>Case.FS_EncuestaEnviada__c</members>
 		<members>Case.FS_FechaAprobacion1erCosto__c</members>
+		<members>Case.FS_FechaCompromisoEntrega__c</members>
+		<members>Case.FS_FechaContestacionEncuesta__c</members>
 		<members>Case.FS_FechaEntregaDesarrollo__c</members>
+		<members>Case.FS_FechaEnvioEncuesta__c</members>
+		<members>Case.FS_InformacionCompleta__c</members>
+		<members>Case.FS_Modulo__c</members>
 		<members>Case.FS_MotivoCambioFechaDesarrollo__c</members>
 		<members>Case.FS_MotivoCambioFechaEntrega__c</members>
+		<members>Case.FS_MotivoInsatisfaccion__c</members>
+		<members>Case.FS_MotivoNoEntregaParche__c</members>
 		<members>Case.FS_MotivoRechazoAprobacionIPRealease__c</members>
+		<members>Case.FS_MotivoRechazoPlanPruebas__c</members>
+		<members>Case.FS_MotivoRechazoSDN2__c</members>
+		<members>Case.FS_MotivoRechazoSDRelease__c</members>
+		<members>Case.FS_MotivoRechazo__c</members>
+		<members>Case.FS_MotivosErrorInstalacion__c</members>
 		<members>Case.FS_MotivosRechazoAprobacionIPN2__c</members>
+		<members>Case.FS_MotivosRechazoCertificacion__c</members>
+		<members>Case.FS_MotivosRechazoDT__c</members>
+		<members>Case.FS_NombreContacto__c</members>
+		<members>Case.FS_NombreCuanta__c</members>
+		<members>Case.FS_NombrePropietario__c</members>
+		<members>Case.FS_NombreTipoRegistro__c</members>
+		<members>Case.FS_NotasReunionSatisfaccion__c</members>
 		<members>Case.FS_NumeroHorasSolicitud__c</members>
+		<members>Case.FS_NumeroRequerimientosNuevo__c</members>
+		<members>Case.FS_Producto__c</members>
+		<members>Case.FS_Proyecto__c</members>
 		<members>Case.FS_PudeSolventarPregunta__c</members>
+		<members>Case.FS_Referencia__c</members>
+		<members>Case.FS_ResultadoEncuesta__c</members>
 		<members>Case.FS_SubEstado__c</members>
+		<members>Case.FS_SubModulo__c</members>
 		<members>Case.FS_TipoIncidente__c</members>
+		<members>Case.FS_URLDisenioTecnico__c</members>
+		<members>Case.FS_URLEvidenciaPruebas__c</members>
+		<members>Case.FS_URLParcheCliente__c</members>
+		<members>Case.FS_URLPlanPruebas__c</members>
 		<members>Case.FS_URLResultadoAnalasis__c</members>
+		<members>Case.FS_URLSolucionDefinitiva__c</members>
+		<members>Case.FS_UrlAmbientePruebas__c</members>
+		<members>Case.FS_UsuarioAprobacionSolucionIPRelease__c</members>
 		<members>Case.FS_UsuarioAprobador1erCosto__c</members>
+		<members>Case.FS_UsuarioAprobadorSolucionIPN2__c</members>
+		<members>User.FS_FechaUltimaAprobacion__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
@@ -94,8 +148,8 @@
 		<name>QueueRoutingConfig</name>
 	</types>
 	<types>
-		<members>Case.FS_AprobacionSolucionIPRelease</members>
 		<members>Case.FS_AprobacionSolucionIPN2</members>
+		<members>Case.FS_AprobacionSolucionIPRelease</members>
 		<members>Case.FS_CamposControlConsulta</members>
 		<members>Case.FS_CamposControlIncidente</members>
 		<members>Case.FS_CamposControlSolicitud</members>

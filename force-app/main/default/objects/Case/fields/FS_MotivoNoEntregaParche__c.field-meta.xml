@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FS_MotivoNoEntregaParche__c</fullName>
+    <externalId>false</externalId>
+    <label>Motivo de no se entrega el parche</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cambio en fecha de entrega</fullName>
+                <default>false</default>
+                <label>Cambio en fecha de entrega</label>
+            </value>
+            <value>
+                <fullName>Release plan</fullName>
+                <default>false</default>
+                <label>Release plan</label>
+            </value>
+            <value>
+                <fullName>Bloqueo por dependencia</fullName>
+                <default>false</default>
+                <label>Bloqueo por dependencia</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
