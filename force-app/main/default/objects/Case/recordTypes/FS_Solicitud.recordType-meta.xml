@@ -17,7 +17,7 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>FS_AprobacionSolucionIPRelease__c</picklist>
+        <picklist>FS_AprobacionSolucionIPN2__c</picklist>
         <values>
             <fullName>No</fullName>
             <default>false</default>
@@ -28,7 +28,7 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>FS_AutorizacionSolucionIPN2__c</picklist>
+        <picklist>FS_AprobacionSolucionIPRelease__c</picklist>
         <values>
             <fullName>No</fullName>
             <default>false</default>

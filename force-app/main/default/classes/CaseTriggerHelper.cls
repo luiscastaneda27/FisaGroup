@@ -23,8 +23,12 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_InformacionCompleta__c != item.FS_InformacionCompleta__c){
                 if(item.FS_InformacionCompleta__c == 'Si'){
-                    item.FS_SubEstado__c = 'Información validada';
-                    item.Status = 'En Análisis';
+                    if(item.FS_SubEstado__c == 'Revisión Documentación N2'){
+                        item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
+                    }else{
+                        item.FS_SubEstado__c = 'Información validada';
+                        item.Status = 'En Análisis';
+                    }
                 }else if(item.FS_InformacionCompleta__c == 'No'){
                     item.FS_SubEstado__c = 'En Espera de Respuesta del Cliente'; 
                     envioCorreo(item, 'FS_InformacionFaltante', true);
@@ -161,7 +165,7 @@ public without sharing class CaseTriggerHelper {
         }
         for(Case item: newCaseList){
             String func = mapFunciones.get(item.OwnerId);
-            if(item.FS_SubEstado__c == 'Autorización Solución IP-N2' && (item.OwnerId == UserInfo.getUserId() || func != UserInfo.getUserRoleId()) ){
+            if(item.FS_SubEstado__c == 'Aprobación Solución IP-N2' && (item.OwnerId == UserInfo.getUserId() || func != UserInfo.getUserRoleId()) ){
                 item.addError('El caso se encuentra en Autorización de Solución IP-N2 y no tiene permisos para modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación de Solución IP-Release' && nombreFuncion != 'FS_JefeReleases'){
                 item.addError('El caso se encuentra en Aprobación de Solución IP-Release y no tiene permisos para modificarlo.');
@@ -188,23 +192,17 @@ public without sharing class CaseTriggerHelper {
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_URLResultadoAnalasis__c != item.FS_URLResultadoAnalasis__c && String.isBlank(caso.FS_URLResultadoAnalasis__c)){
-                item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
-            }
-        }
-    }
-    
-    public static void validacionFechaEntregaDesarollo(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-        for(Case item: newCaseList){
-            Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_FechaEntregaDesarrollo__c != item.FS_FechaEntregaDesarrollo__c){
-                item.FS_SubEstado__c = 'Autorización Solución IP-N2';
-                item.FS_AutorizacionSolucionIPN2__c = null;
+                item.FS_SubEstado__c = 'Aprobación Solución IP-N2';
+                item.FS_AprobacionSolucionIPN2__c = null;
                 item.FS_MotivosRechazoAprobacionIPN2__c = null;
                 Id notificacionId = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1].Id;
-                for(User usuario : [Select Id from User where UserRoleId = :userInfo.getUserRoleId() And Id != :item.OwnerId]){
-                    String titulo = 'Autorización Solución IP-N2 para caso '+item.CaseNumber;
+                for(User usuario : [Select Id, FS_FechaUltimaAprobacion__c from User where UserRoleId = :userInfo.getUserRoleId() And Id != :item.OwnerId Order by FS_FechaUltimaAprobacion__c asc limit 1]){
+                    String titulo = 'Aprobación Solución IP-N2 para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Autorización de Solución IP-N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(notificacionId, usuario.Id, item.Id, titulo, descripcion);
+                    usuario.FS_FechaUltimaAprobacion__c = System.now();
+                    item.FS_UsuarioAprobadorSolucionIPN2__c = usuario.Id;
+                    update usuario;
                 }
             }
         }
@@ -213,18 +211,21 @@ public without sharing class CaseTriggerHelper {
     public static void validacionAutorizacionSolucionIPN2(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_AutorizacionSolucionIPN2__c != item.FS_AutorizacionSolucionIPN2__c){
+            if(caso.FS_AprobacionSolucionIPN2__c != item.FS_AprobacionSolucionIPN2__c){
                 Id notificacionId = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1].Id;
-                if(item.FS_AutorizacionSolucionIPN2__c == 'Si'){
+                if(item.FS_AprobacionSolucionIPN2__c == 'Si'){
                     item.FS_SubEstado__c = 'Aprobación de Solución IP-Release';
-                    for(User usuario : [Select Id from User where UserRole.DeveloperName = 'FS_JefeReleases' And Id != :item.OwnerId]){
+                    for(User usuario : [Select Id from User where UserRole.DeveloperName = 'FS_JefeReleases' And Id != :item.OwnerId Order by FS_FechaUltimaAprobacion__c asc limit 1]){
                         String titulo = 'Aprobación de Solución IP-Release para caso '+item.CaseNumber;
                         String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación de Solución IP-Release para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                         enviarNotificacion(notificacionId, usuario.Id, item.Id, titulo, descripcion);
+                        usuario.FS_FechaUltimaAprobacion__c = System.now();
+                        item.FS_UsuarioAprobacionSolucionIPRelease__c = usuario.Id;
+                        update usuario;
                     }
-                }else if(item.FS_AutorizacionSolucionIPN2__c == 'No'){
+                }else if(item.FS_AprobacionSolucionIPN2__c == 'No'){
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
-                    String titulo = 'Rechazo de Autorización Solución IP-N2 para caso '+item.CaseNumber;
+                    String titulo = 'Rechazo de Aprobación Solución IP-N2 para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+UserInfo.getFirstName() + ' ha rechzado la Autorización de Solución IP-N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(notificacionId, item.OwnerId, item.Id, titulo, descripcion);
                 }
@@ -245,7 +246,7 @@ public without sharing class CaseTriggerHelper {
                     String titulo = 'Aprobación de Solución IP-Release para caso '+item.CaseNumber;
                     String descripcion = 'El Jefe de Release '+UserInfo.getUserName() + ' ha aprobado la Solución IP-Release para el caso número '+item.CaseNumber +' \nMuchas gracias.';
                     enviarNotificacion(notificacionId, item.OwnerId, item.Id, titulo, descripcion);
-                }else if(item.FS_AutorizacionSolucionIPN2__c == 'No'){
+                }else if(item.FS_AprobacionSolucionIPRelease__c == 'No'){
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                     String titulo = 'Rechazo de Solución IP-Release para caso '+item.CaseNumber;
                     String descripcion = 'El Jefe de Release '+UserInfo.getUserName() + ' ha rechzado la Solución IP-Release para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
@@ -256,11 +257,20 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void validacionTipoIncidente(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        Map<String, String> mapColas = new Map<String, String>();
+        for(Group item: [Select Id, DeveloperName from Group Where DeveloperName In (:COLA_ATENCION_N2_CORE, :COLA_ATENCION_N2_OMNIA) and Type = 'Queue']){
+            mapColas.put(item.DeveloperName, item.Id);
+        }
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_TipoIncidente__c != item.FS_TipoIncidente__c && item.FS_TipoIncidente__c == 'Puntual'){
+            if(caso.FS_TipoIncidente__c != item.FS_TipoIncidente__c){
                 item.Status = 'En Análisis';
-                item.FS_SubEstado__c = 'Revisión Documentación N2';
+                Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
+                item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_N2_CORE : COLA_ATENCION_N2_OMNIA);
+                item.FS_Area__c =  esCore ? 'N2- CORE' : 'N2-OMNIA';
+                item.FS_SubEstado__c = 'Escalado a N2';
+                item.IsEscalated = true;
+                item.FS_InformacionCompleta__c = null;
             }
         }
     }

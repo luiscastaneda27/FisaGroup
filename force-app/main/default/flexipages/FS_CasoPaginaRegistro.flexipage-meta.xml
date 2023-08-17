@@ -240,7 +240,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>updateQuickActionName</name>
-                    <value>Case.FS_AutorizacionSolucionIPN2</value>
+                    <value>Case.FS_AprobacionSolucionIPN2</value>
                 </componentInstanceProperties>
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord16</identifier>
@@ -252,12 +252,12 @@
                         <rightValue>Incidente</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.FS_AutorizacionSolucionIPN2__c}</leftValue>
+                        <leftValue>{!Record.FS_AprobacionSolucionIPN2__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Si</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.FS_AutorizacionSolucionIPN2__c}</leftValue>
+                        <leftValue>{!Record.FS_AprobacionSolucionIPN2__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>No</rightValue>
                     </criteria>
@@ -518,7 +518,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>updateQuickActionName</name>
-                    <value>Case.FS_AutorizacionSolucionIPN2</value>
+                    <value>Case.FS_AprobacionSolucionIPN2</value>
                 </componentInstanceProperties>
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord14</identifier>
@@ -660,7 +660,7 @@
                 </visibilityRule>
             </componentInstance>
         </itemInstances>
-         <itemInstances>
+        <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>createQuickActionName</name>
@@ -781,7 +781,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>updateQuickActionName</name>
-                    <value>Case.FS_AutorizacionSolucionIPN2</value>
+                    <value>Case.FS_AprobacionSolucionIPN2</value>
                 </componentInstanceProperties>
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord21</identifier>

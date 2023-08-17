@@ -5,6 +5,7 @@
 		<members>CaseTriggerHelper</members>
 		<members>ControladorCrearCaso</members>
 		<members>JobValidacionRespuesta</members>
+		<members>TrabajoAgenteHandler</members>
 		<members>TrabajoAgenteHelper</members>
 		<name>ApexClass</name>
 	</types>
@@ -19,9 +20,9 @@
 		<members>Account.FS_ColaAtencion__c</members>
 		<members>Account.FS_ServicioRemoto__c</members>
 		<members>Case.FS_1erCostoAprobado__c</members>
+		<members>Case.FS_AProbacionSolucionIPN2__c</members>
 		<members>Case.FS_Acepta1erCosto__c</members>
 		<members>Case.FS_AprobacionSolucionIPRelease__c</members>
-		<members>Case.FS_AutorizacionSolucionIPN2__c</members>
 		<members>Case.FS_CasoRQOrigenNovedad__c</members>
 		<members>Case.FS_FechaAprobacion1erCosto__c</members>
 		<members>Case.FS_FechaEntregaDesarrollo__c</members>
@@ -94,7 +95,7 @@
 	</types>
 	<types>
 		<members>Case.FS_AprobacionSolucionIPRelease</members>
-		<members>Case.FS_AutorizacionSolucionIPN2</members>
+		<members>Case.FS_AprobacionSolucionIPN2</members>
 		<members>Case.FS_CamposControlConsulta</members>
 		<members>Case.FS_CamposControlIncidente</members>
 		<members>Case.FS_CamposControlSolicitud</members>
