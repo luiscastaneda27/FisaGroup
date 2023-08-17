@@ -196,14 +196,16 @@ public without sharing class CaseTriggerHelper {
                 item.FS_AprobacionSolucionIPN2__c = null;
                 item.FS_MotivosRechazoAprobacionIPN2__c = null;
                 Id notificacionId = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1].Id;
-                for(User usuario : [Select Id, FS_FechaUltimaAprobacion__c from User where UserRoleId = :userInfo.getUserRoleId() And Id != :item.OwnerId Order by FS_FechaUltimaAprobacion__c asc limit 1]){
-                    String titulo = 'Aprobación Solución IP-N2 para caso '+item.CaseNumber;
-                    String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación de Solución IP-N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
-                    enviarNotificacion(notificacionId, usuario.Id, item.Id, titulo, descripcion);
-                    usuario.FS_FechaUltimaAprobacion__c = System.now();
-                    item.FS_UsuarioAprobadorSolucionIPN2__c = usuario.Id;
-                    update usuario;
+                if(item.FS_UsuarioAprobadorSolucionIPN2__c == null){
+                    for(User usuario : [Select Id, FS_FechaUltimaAprobacion__c from User where UserRoleId = :item.FS_RolPropietario__c And Id != :item.OwnerId Order by FS_FechaUltimaAprobacion__c asc limit 1]){
+                        usuario.FS_FechaUltimaAprobacion__c = System.now();
+                        item.FS_UsuarioAprobadorSolucionIPN2__c = usuario.Id;
+                        update usuario;
+                    }
                 }
+                String titulo = 'Aprobación Solución IP-N2 para caso '+item.CaseNumber;
+                String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación de Solución IP-N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                enviarNotificacion(notificacionId, item.FS_UsuarioAprobadorSolucionIPN2__c, item.Id, titulo, descripcion);
             }
         }
     }
@@ -215,14 +217,16 @@ public without sharing class CaseTriggerHelper {
                 Id notificacionId = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1].Id;
                 if(item.FS_AprobacionSolucionIPN2__c == 'Si'){
                     item.FS_SubEstado__c = 'Aprobación de Solución IP-Release';
-                    for(User usuario : [Select Id from User where UserRole.DeveloperName = 'FS_JefeReleases' And Id != :item.OwnerId Order by FS_FechaUltimaAprobacion__c asc limit 1]){
-                        String titulo = 'Aprobación de Solución IP-Release para caso '+item.CaseNumber;
-                        String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación de Solución IP-Release para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
-                        enviarNotificacion(notificacionId, usuario.Id, item.Id, titulo, descripcion);
-                        usuario.FS_FechaUltimaAprobacion__c = System.now();
-                        item.FS_UsuarioAprobacionSolucionIPRelease__c = usuario.Id;
-                        update usuario;
+                    if(item.FS_UsuarioAprobacionSolucionIPRelease__c == null){
+                        for(User usuario : [Select Id,FS_FechaUltimaAprobacion__c from User where UserRole.DeveloperName = 'FS_JefeReleases' And Id != :item.OwnerId Order by FS_FechaUltimaAprobacion__c asc limit 1]){
+                            usuario.FS_FechaUltimaAprobacion__c = System.now();
+                            item.FS_UsuarioAprobacionSolucionIPRelease__c = usuario.Id;
+                            update usuario;
+                        }
                     }
+                    String titulo = 'Aprobación de Solución IP-Release para caso '+item.CaseNumber;
+                    String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación de Solución IP-Release para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    enviarNotificacion(notificacionId, item.FS_UsuarioAprobacionSolucionIPRelease__c, item.Id, titulo, descripcion);
                 }else if(item.FS_AprobacionSolucionIPN2__c == 'No'){
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                     String titulo = 'Rechazo de Aprobación Solución IP-N2 para caso '+item.CaseNumber;

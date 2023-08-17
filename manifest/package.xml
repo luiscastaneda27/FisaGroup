@@ -7,7 +7,7 @@
 		<members>ControladorCrearCaso</members>
 		<members>ControladorEncuesta</members>
 		<members>JobValidacionRespuesta</members>
-		<members>TrabajoAgenteHandler</members> 
+		<members>TrabajoAgenteHandler</members>
 		<members>TrabajoAgenteHelper</members>
 		<name>ApexClass</name>
 	</types>
@@ -80,9 +80,11 @@
 		<members>Case.FS_PudeSolventarPregunta__c</members>
 		<members>Case.FS_Referencia__c</members>
 		<members>Case.FS_ResultadoEncuesta__c</members>
+		<members>Case.FS_RolPropietario__c</members>
 		<members>Case.FS_SubEstado__c</members>
 		<members>Case.FS_SubModulo__c</members>
 		<members>Case.FS_TipoIncidente__c</members>
+		<members>Case.FS_URLCodigoFuente__c</members>
 		<members>Case.FS_URLDisenioTecnico__c</members>
 		<members>Case.FS_URLEvidenciaPruebas__c</members>
 		<members>Case.FS_URLParcheCliente__c</members>
@@ -97,12 +99,6 @@
 		<name>CustomField</name>
 	</types>
 	<types>
-		<members>FS_AceptacionRechazoCaso__c</members>
-		<members>FS_Encuesta__c</members>
-		<members>FS_ProductoAdquirido__c</members>
-		<name>CustomObject</name>
-	</types>
-	<types>
 		<members>FS_NotificacionServicio</members>
 		<name>CustomNotificationType</name>
 	</types>
@@ -114,12 +110,12 @@
 		<name>CustomObject</name>
 	</types>
 	<types>
-	   <members>FS_CorreosClientesCasos/FS_EnvioPrimerCosto</members>
 		<members>FS_CorreosClientesCasos</members>
 		<members>FS_CorreosClientesCasos/FS_AnalisisCaso</members>
 		<members>FS_CorreosClientesCasos/FS_AsignacionCaso</members>
 		<members>FS_CorreosClientesCasos/FS_CreacionCaso</members>
 		<members>FS_CorreosClientesCasos/FS_Encuesta</members>
+		<members>FS_CorreosClientesCasos/FS_EnvioPrimerCosto</members>
 		<members>FS_CorreosClientesCasos/FS_InformacionFaltante</members>
 		<members>FS_CorreosClientesCasos/FS_RechazoRespuesta</members>
 		<members>FS_CorreosClientesCasos/FS_ValidacionInformacion</members>
@@ -160,17 +156,6 @@
 	<types>
 		<members>FS_PermisosServicioCliente</members>
 		<name>PermissionSet</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>Queue</name>
-	</types>
-	<types>
-		<members>FS_AtencionN1Core</members>
-		<members>FS_AtencionN1Omnia</members>
-		<members>FS_AtencionN2Core</members>
-		<members>FS_AtencionN2Omnia</members>
-		<name>QueueRoutingConfig</name>
 	</types>
 	<types>
 		<members>Case.FS_AprobacionSolucionIPN2</members>

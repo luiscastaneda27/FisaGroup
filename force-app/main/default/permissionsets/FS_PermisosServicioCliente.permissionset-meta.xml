@@ -294,6 +294,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.FS_RolPropietario__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.FS_SubEstado__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -305,6 +310,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.FS_TipoIncidente__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_URLCodigoFuente__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -465,11 +475,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.Type</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.URLCodigoFuente__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

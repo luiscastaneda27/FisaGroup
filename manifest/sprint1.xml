@@ -28,5 +28,16 @@
 		<members>SNA_Portal_para_Servicio_al_Cliente1_sf_default_cdn_fLgxZ</members>
 		<name>StaticResource</name>
 	</types>
+	<types>
+		<members>*</members>
+		<name>Queue</name>
+	</types>
+	<types>
+		<members>FS_AtencionN1Core</members>
+		<members>FS_AtencionN1Omnia</members>
+		<members>FS_AtencionN2Core</members>
+		<members>FS_AtencionN2Omnia</members>
+		<name>QueueRoutingConfig</name>
+	</types>
 	<version>55.0</version>
 </Package>
