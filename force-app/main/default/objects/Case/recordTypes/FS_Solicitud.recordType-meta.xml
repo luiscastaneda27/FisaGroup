@@ -6,7 +6,40 @@
     <compactLayoutAssignment>FS_Casos</compactLayoutAssignment>
     <label>Solicitud</label>
     <picklistValues>
+        <picklist>FS_Acepta1erCosto__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_AceptaRespuesta__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_AprobacionSolucionIPN2__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_AprobacionSolucionIPRelease__c</picklist>
         <values>
             <fullName>No</fullName>
             <default>false</default>
@@ -205,6 +238,44 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>FS_MotivoCambioFechaDesarrollo__c</picklist>
+        <values>
+            <fullName>Cambio de alcance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cambio de prioridad interna</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cambio de prioridad solicitada por el cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dependencia de versionamiento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Problema en ambientes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivoCambioFechaEntrega__c</picklist>
+        <values>
+            <fullName>Cambio de alcance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cambio de prioridad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dependencia de versionamiento</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_MotivoInsatisfaccion__c</picklist>
         <values>
             <fullName>Desconocimiento del negocio</fullName>
@@ -228,6 +299,85 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>FS_MotivoNoEntregaParche__c</picklist>
+        <values>
+            <fullName>Bloqueo por dependencia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cambio en fecha de entrega</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Release plan</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivoRechazoAprobacionIPRealease__c</picklist>
+        <values>
+            <fullName>Desarrollo incompleto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en documentación</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivoRechazoPlanPruebas__c</picklist>
+        <values>
+            <fullName>Incosistencia en plan de pruebas</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivoRechazoSDN2__c</picklist>
+        <values>
+            <fullName>Desarrollo erróneo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desarrollo incompleto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Documentación incompleta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en documentación</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inconsistencia en proyecto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inconsistencia objetos</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivoRechazoSDRelease__c</picklist>
+        <values>
+            <fullName>Documentación incompleta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en documentación</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Falta de aprobanción PR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inconsitencia en parche</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_MotivoRechazo__c</picklist>
         <values>
             <fullName>Entrega incompleta</fullName>
@@ -239,6 +389,82 @@
         </values>
         <values>
             <fullName>No resolvió lo reportado</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivosErrorInstalacion__c</picklist>
+        <values>
+            <fullName>Error en copilación</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en levantar el ambiente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en scripts</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivosRechazoAprobacionIPN2__c</picklist>
+        <values>
+            <fullName>Desarrollo erróneo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desarrollo incompleto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Documentación incompleta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en documentación</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inconsistencia objetos</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivosRechazoCertificacion__c</picklist>
+        <values>
+            <fullName>Cambio plan de pruebas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No autorizar pruebas FQC</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivosRechazoDT__c</picklist>
+        <values>
+            <fullName>Desarrollo erróneo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desarrollo incompleto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Documentación incompleta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en documentación</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inconsistencia en proyecto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inconsistencia objetos</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -961,6 +1187,17 @@
         </values>
         <values>
             <fullName>Wizard QT</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_TipoIncidente__c</picklist>
+        <values>
+            <fullName>Definitivo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puntual</fullName>
             <default>false</default>
         </values>
     </picklistValues>

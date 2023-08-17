@@ -1,131 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
-		<members>CaseTriggerHandler</members>
-		<members>CaseTriggerHelper</members>
-		<members>CommunitiesLandingController</members>
-		<members>ControladorCrearCaso</members>
-		<members>ControladorEncuesta</members>
-		<members>JobValidacionRespuesta</members>
-		<members>TrabajoAgenteHandler</members>
-		<members>TrabajoAgenteHelper</members>
-		<name>ApexClass</name>
-	</types>
-	<types>
-		<members>CommunitiesLanding</members>
-		<name>ApexPage</name>
-	</types>
-	<types>
-		<members>CaseTrigger</members>
-		<members>TrabajoAgenteTrigger</members>
-		<name>ApexTrigger</name>
-	</types>
-	<types>
-		<members>Case.FS_Casos</members>
-		<name>BusinessProcess</name>
-	</types>
-	<types>
-		<members>Case.FS_Casos</members>
-		<name>CompactLayout</name>
-	</types>
-	<types>
 		<members>standard__ServiceConsole</members>
 		<name>CustomApplication</name>
-	</types>
-	<types>
-		<members>Case.FS_AceptaRespuesta__c</members>
-		<members>Case.FS_Area__c</members>
-		<members>Case.FS_CSATCaso__c</members>
-		<members>Case.FS_Carterizacion__c</members>
-		<members>Case.FS_ComentariosEncuesta__c</members>
-		<members>Case.FS_ComentariosInternos__c</members>
-		<members>Case.FS_ComentariosRespuesta__c</members>
-		<members>Case.FS_DescripcionCliente__c</members>
-		<members>Case.FS_EncuestaEnviada__c</members>
-		<members>Case.FS_FechaCompromisoEntrega__c</members>
-		<members>Case.FS_FechaContestacionEncuesta__c</members>
-		<members>Case.FS_FechaEnvioEncuesta__c</members>
-		<members>Case.FS_InformacionCompleta__c</members>
-		<members>Case.FS_Modulo__c</members>
-		<members>Case.FS_MotivoInsatisfaccion__c</members>
-		<members>Case.FS_MotivoRechazo__c</members>
-		<members>Case.FS_NombreContacto__c</members>
-		<members>Case.FS_NombreCuanta__c</members>
-		<members>Case.FS_NombrePropietario__c</members>
-		<members>Case.FS_NombreTipoRegistro__c</members>
-		<members>Case.FS_NotasReunionSatisfaccion__c</members>
-		<members>Case.FS_NumeroRequerimientosNuevo__c</members>
-		<members>Case.FS_Producto__c</members>
-		<members>Case.FS_Proyecto__c</members>
-		<members>Case.FS_PudeSolventarPregunta__c</members>
-		<members>Case.FS_Referencia__c</members>
-		<members>Case.FS_ResultadoEncuesta__c</members>
-		<members>Case.FS_SubEstado__c</members>
-		<members>Case.FS_SubModulo__c</members>
-		<members>FS_AceptacionRechazoCaso__c.FS_Caso__c</members>
-		<members>FS_AceptacionRechazoCaso__c.FS_Cliente__c</members>
-		<members>FS_AceptacionRechazoCaso__c.FS_Comentarios__c</members>
-		<members>FS_AceptacionRechazoCaso__c.FS_MotivoRechazo__c</members>
-		<members>FS_AceptacionRechazoCaso__c.FS_Tipo__c</members>
-		<members>FS_Encuesta__c.FS_Caso__c</members>
-		<members>FS_ProductoAdquirido__c.FS_Cuenta__c</members>
-		<members>FS_ProductoAdquirido__c.FS_Modulo__c</members>
-		<members>FS_ProductoAdquirido__c.FS_Producto__c</members>
-		<members>FS_ProductoAdquirido__c.FS_SubModulo__c</members>
-		<members>MC4SF__MC_Subscriber__c.MC4SF__Daylight_Savings_GMT_Offset__c</members>
-		<name>CustomField</name>
-	</types>
-	<types>
-		<members>FS_AceptacionRechazoCaso__c</members>
-		<members>FS_Encuesta__c</members>
-		<members>FS_ProductoAdquirido__c</members>
-		<name>CustomObject</name>
 	</types>
 	<types>
 		<members>Portal_para_Servicio_al_Cliente</members>
 		<name>CustomSite</name>
 	</types>
 	<types>
-		<members>FS_CorreosClientesCasos</members>
-		<members>FS_CorreosClientesCasos/FS_AnalisisCaso</members>
-		<members>FS_CorreosClientesCasos/FS_AsignacionCaso</members>
-		<members>FS_CorreosClientesCasos/FS_CreacionCaso</members>
-		<members>FS_CorreosClientesCasos/FS_Encuesta</members>
-		<members>FS_CorreosClientesCasos/FS_InformacionFaltante</members>
-		<members>FS_CorreosClientesCasos/FS_RechazoRespuesta</members>
-		<members>FS_CorreosClientesCasos/FS_ValidacionInformacion</members>
-		<name>EmailTemplate</name>
-	</types>
-	<types>
 		<members>Portal_para_Servicio_al_Cliente1</members>
 		<name>ExperienceBundle</name>
-	</types>
-	<types>
-		<members>FS_CasoPaginaRegistro</members>
-		<name>FlexiPage</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>GlobalValueSet</name>
-	</types>
-	<types>
-		<members>Account-Formato de cuentas</members>
-		<members>Case-Layout Cliente</members>
-		<members>Case-Layout Interno Casos</members>
-		<members>Contact-Formato de contactos</members>
-		<members>FS_AceptacionRechazoCaso__c-Formato Aceptación %2F Rechazo de Caso</members>
-		<members>FS_ProductoAdquirido__c-Formato Producto Adquirido</members>
-		<name>Layout</name>
-	</types>
-	<types>
-		<members>FS_CasoClientes</members>
-		<name>Letterhead</name>
-	</types>
-	<types>
-		<members>fs_CampoPendienteCaso</members>
-		<members>fs_CrearCaso</members>
-		<members>fs_Encuesta</members>
-		<name>LightningComponentBundle</name>
 	</types>
 	<types>
 		<members>SFDC_Default_Navigation_Portal_para_Servicio_al_Cliente</members>
@@ -136,77 +21,12 @@
 		<name>Network</name>
 	</types>
 	<types>
-		<members>*</members>
-		<name>PathAssistant</name>
-	</types>
-	<types>
-		<members>FS_PermisosServicioCliente</members>
-		<name>PermissionSet</name>
-	</types>
-	<types>
-		<members>FS_AtencionN1</members>
-		<members>FS_AtencionN2</members>
-		<name>Queue</name>
-	</types>
-	<types>
-		<members>FS_AtencionN1</members>
-		<members>FS_AtencionN2</members>
-		<name>QueueRoutingConfig</name>
-	</types>
-	<types>
-		<members>Case.FS_CamposControlConsulta</members>
-		<members>Case.FS_DatosEncuesta</members>
-		<members>Case.FS_DatosRespuesta</members>
-		<members>Case.FS_Descripcion</members>
-		<members>Case.FS_DetalleCaso</members>
-		<members>Case.FS_InformacionWeb</members>
-		<name>QuickAction</name>
-	</types>
-	<types>
-		<members>Case.FS_Consulta</members>
-		<members>Case.FS_Solicitud</members>
-		<name>RecordType</name>
-	</types>
-	<types>
-		<members>FS_AgenteN1Core</members>
-		<members>FS_AgenteN1Omnia</members>
-		<members>FS_AgenteN2Core</members>
-		<members>FS_AgenteN2Omnia</members>
-		<members>FS_AgenteQACore</members>
-		<members>FS_AgenteQAOmnia</members>
-		<members>FS_AgenteReleases</members>
-		<members>FS_ClienteFISA</members>
-		<members>FS_JefeCore</members>
-		<members>FS_JefeOmnia</members>
-		<members>FS_JefeReleases</members>
-		<name>Role</name>
-	</types>
-	<types>
 		<members>Portal_para_Servicio_al_Cliente1</members>
 		<name>SiteDotCom</name>
 	</types>
 	<types>
-		<members>CaseOrigin</members>
-		<members>CasePriority</members>
-		<members>CaseStatus</members>
-		<members>CaseType</members>
-		<name>StandardValueSet</name>
-	</types>
-	<types>
-		<members>FS_FisaLogo</members>
-		<members>FS_LogoInsatisfecho</members>
-		<members>FS_LogoLike</members>
-		<members>FS_LogoMuyInsatisfecho</members>
-		<members>FS_LogoMuySatisfecho</members>
-		<members>FS_LogoNeutral</members>
-		<members>FS_LogoSatisfecho</members>
 		<members>SNA_Portal_para_Servicio_al_Cliente1_sf_default_cdn_fLgxZ</members>
 		<name>StaticResource</name>
-	</types>
-	<types>
-		<members>Case.FS_ValidacionDatosRespuesta</members>
-		<members>Case.FS_ValidacionFechaCompromiso</members>
-		<name>ValidationRule</name>
 	</types>
 	<version>55.0</version>
 </Package>

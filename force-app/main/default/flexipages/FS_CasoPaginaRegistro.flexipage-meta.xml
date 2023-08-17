@@ -236,7 +236,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>titleFieldName</name>
-                    <value>Autorización Solución IP-N2</value>
+                    <value>Aprobación Solución IP-N2</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>updateQuickActionName</name>
@@ -514,7 +514,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>titleFieldName</name>
-                    <value>Autorización Solución IP-N2</value>
+                    <value>Aprobación Solución IP-N2</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>updateQuickActionName</name>
@@ -537,7 +537,7 @@
                     <criteria>
                         <leftValue>{!Record.FS_SubEstado__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Autorización Solución IP-N2</rightValue>
+                        <rightValue>Aprobación Solución IP-N2</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -622,40 +622,6 @@
                         <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Consulta</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>createQuickActionName</name>
-                    <value>GuestCommunityCase</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>lookupFieldName</name>
-                    <value>Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>titleFieldName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>updateQuickActionName</name>
-                    <value>Case.FS_CamposControlIncidente</value>
-                </componentInstanceProperties>
-                <componentName>console:relatedRecord</componentName>
-                <identifier>console_relatedRecord11</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.IsEscalated}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Incidente</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -777,7 +743,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>titleFieldName</name>
-                    <value>Autorización Solución IP-N2</value>
+                    <value>Aprobación Solución IP-N2</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>updateQuickActionName</name>
@@ -800,7 +766,7 @@
                     <criteria>
                         <leftValue>{!Record.FS_SubEstado__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Autorización Solución IP-N2</rightValue>
+                        <rightValue>Aprobación Solución IP-N2</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

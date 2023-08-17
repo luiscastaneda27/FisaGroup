@@ -22,7 +22,6 @@ public without sharing class CaseTriggerHandler {
         CaseTriggerHelper.validacionFechaEntrega(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionTipoIncidente(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionURLResultadoAnalasis(newCaseList, oldCaseMap);
-        CaseTriggerHelper.validacionFechaEntregaDesarollo(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionAutorizacionSolucionIPN2(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionAprobacionSolucionIPRelease(newCaseList, oldCaseMap);
     }

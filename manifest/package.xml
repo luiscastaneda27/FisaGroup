@@ -7,7 +7,7 @@
 		<members>ControladorCrearCaso</members>
 		<members>ControladorEncuesta</members>
 		<members>JobValidacionRespuesta</members>
-		<members>TrabajoAgenteHandler</members>
+		<members>TrabajoAgenteHandler</members> 
 		<members>TrabajoAgenteHelper</members>
 		<name>ApexClass</name>
 	</types>
@@ -25,6 +25,10 @@
 		<members>Case.FS_CasoSolicitud</members>
 		<members>Case.FS_Casos</members>
 		<name>BusinessProcess</name>
+	</types>
+	<types>
+		<members>Case.FS_Casos</members>
+		<name>CompactLayout</name>
 	</types>
 	<types>
 		<members>Account.FS_Carterizacion__c</members>
@@ -93,6 +97,12 @@
 		<name>CustomField</name>
 	</types>
 	<types>
+		<members>FS_AceptacionRechazoCaso__c</members>
+		<members>FS_Encuesta__c</members>
+		<members>FS_ProductoAdquirido__c</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
 		<members>FS_NotificacionServicio</members>
 		<name>CustomNotificationType</name>
 	</types>
@@ -104,7 +114,15 @@
 		<name>CustomObject</name>
 	</types>
 	<types>
-		<members>FS_CorreosClientesCasos/FS_EnvioPrimerCosto</members>
+	   <members>FS_CorreosClientesCasos/FS_EnvioPrimerCosto</members>
+		<members>FS_CorreosClientesCasos</members>
+		<members>FS_CorreosClientesCasos/FS_AnalisisCaso</members>
+		<members>FS_CorreosClientesCasos/FS_AsignacionCaso</members>
+		<members>FS_CorreosClientesCasos/FS_CreacionCaso</members>
+		<members>FS_CorreosClientesCasos/FS_Encuesta</members>
+		<members>FS_CorreosClientesCasos/FS_InformacionFaltante</members>
+		<members>FS_CorreosClientesCasos/FS_RechazoRespuesta</members>
+		<members>FS_CorreosClientesCasos/FS_ValidacionInformacion</members>
 		<name>EmailTemplate</name>
 	</types>
 	<types>
@@ -112,15 +130,22 @@
 		<name>FlexiPage</name>
 	</types>
 	<types>
-		<members>FS_Carterizacion</members>
+		<members>*</members>
 		<name>GlobalValueSet</name>
 	</types>
 	<types>
 		<members>Account-Formato de cuentas</members>
 		<members>Case-Layout Cliente</members>
 		<members>Case-Layout Interno Casos</members>
+		<members>Contact-Formato de contactos</members>
+		<members>FS_AceptacionRechazoCaso__c-Formato Aceptación %2F Rechazo de Caso</members>
 		<members>FS_HistorialDescripcionCaso__c-Formato Historial de Descripción</members>
+		<members>FS_ProductoAdquirido__c-Formato Producto Adquirido</members>
 		<name>Layout</name>
+	</types>
+	<types>
+		<members>FS_CasoClientes</members>
+		<name>Letterhead</name>
 	</types>
 	<types>
 		<members>fs_CampoPendienteCaso</members>
@@ -170,8 +195,35 @@
 		<name>RecordType</name>
 	</types>
 	<types>
+		<members>FS_AgenteN1Core</members>
+		<members>FS_AgenteN1Omnia</members>
+		<members>FS_AgenteN2Core</members>
+		<members>FS_AgenteN2Omnia</members>
+		<members>FS_AgenteQACore</members>
+		<members>FS_AgenteQAOmnia</members>
+		<members>FS_AgenteReleases</members>
+		<members>FS_ClienteFISA</members>
+		<members>FS_JefeCore</members>
+		<members>FS_JefeOmnia</members>
+		<members>FS_JefeReleases</members>
+		<name>Role</name>
+	</types>
+	<types>
+		<members>CaseOrigin</members>
+		<members>CasePriority</members>
 		<members>CaseStatus</members>
+		<members>CaseType</members>
 		<name>StandardValueSet</name>
+	</types>
+	<types>
+		<members>FS_FisaLogo</members>
+		<members>FS_LogoInsatisfecho</members>
+		<members>FS_LogoLike</members>
+		<members>FS_LogoMuyInsatisfecho</members>
+		<members>FS_LogoMuySatisfecho</members>
+		<members>FS_LogoNeutral</members>
+		<members>FS_LogoSatisfecho</members>
+		<name>StaticResource</name>
 	</types>
 	<types>
 		<members>Case.FS_ValidacionFechaCompromisoDesarrollo</members>
