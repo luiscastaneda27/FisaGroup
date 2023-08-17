@@ -147,6 +147,28 @@ public without sharing class CaseTriggerHelper {
         }
     }
     
+    public static void validacionSubEstado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        Map<Id, String> mapFunciones = new Map<Id, String>();
+        String nombreFuncion;
+        for(Case item: newCaseList){
+            mapFunciones.put(item.OwnerId, null);
+        }
+        for(User usuario: [Select Id, UserRoleId, UserRole.DeveloperName from User Where Id in :mapFunciones.keySet() Or  Id = :UserInfo.getUserId()]){
+            mapFunciones.put(usuario.Id, usuario.UserRoleId);
+            if(usuario.Id == UserInfo.getUserId()){
+                nombreFuncion = usuario.UserRole.DeveloperName;
+            }
+        }
+        for(Case item: newCaseList){
+            String func = mapFunciones.get(item.OwnerId);
+            if(item.FS_SubEstado__c == 'Autorización Solución IP-N2' && (item.OwnerId == UserInfo.getUserId() || func != UserInfo.getUserRoleId()) ){
+                item.addError('El caso se encuentra en Autorización de Solución IP-N2 y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación de Solución IP-Release' && nombreFuncion != 'FS_JefeReleases'){
+                item.addError('El caso se encuentra en Aprobación de Solución IP-Release y no tiene permisos para modificarlo.');
+            }
+        }
+    }
+    
     public static void validacionFechaEntrega(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
@@ -176,6 +198,8 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_FechaEntregaDesarrollo__c != item.FS_FechaEntregaDesarrollo__c){
                 item.FS_SubEstado__c = 'Autorización Solución IP-N2';
+                item.FS_AutorizacionSolucionIPN2__c = null;
+                item.FS_MotivosRechazoAprobacionIPN2__c = null;
                 Id notificacionId = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1].Id;
                 for(User usuario : [Select Id from User where UserRoleId = :userInfo.getUserRoleId() And Id != :item.OwnerId]){
                     String titulo = 'Autorización Solución IP-N2 para caso '+item.CaseNumber;
@@ -201,7 +225,7 @@ public without sharing class CaseTriggerHelper {
                 }else if(item.FS_AutorizacionSolucionIPN2__c == 'No'){
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                     String titulo = 'Rechazo de Autorización Solución IP-N2 para caso '+item.CaseNumber;
-                    String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechzado la Autorización de Solución IP-N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    String descripcion = 'El agente '+UserInfo.getFirstName() + ' ha rechzado la Autorización de Solución IP-N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(notificacionId, item.OwnerId, item.Id, titulo, descripcion);
                 }
             }
@@ -331,6 +355,20 @@ public without sharing class CaseTriggerHelper {
             }
         }
         return html;
+    }
+    
+    public static void createIssueJira(List<Case> newCaseList) { 
+        String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
+        String jiraIssueTypeId = System.Label.FS_IdIssueJira; // Id Issue Jira
+        
+        //Conditions to create de Issue in Jira
+    	JCFS.API.createJiraIssue('14029', '11150');    
+        //JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseMap);
+    }
+    
+    public static void updateIssueJira(List<Case> newCaseList) {       
+        //Conditions to update de Issue in Jira
+    	JCFS.API.pushUpdatesToJira();  
     }
     
 }

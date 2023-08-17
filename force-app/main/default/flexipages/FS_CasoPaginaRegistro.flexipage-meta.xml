@@ -523,7 +523,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord14</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.IsEscalated}</leftValue>
                         <operator>EQUAL</operator>
@@ -538,16 +538,6 @@
                         <leftValue>{!Record.FS_SubEstado__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Autorización Solución IP-N2</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.FS_AutorizacionSolucionIPN2__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Si</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.FS_AutorizacionSolucionIPN2__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>No</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -573,7 +563,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord15</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.IsEscalated}</leftValue>
                         <operator>EQUAL</operator>
@@ -590,14 +580,9 @@
                         <rightValue>Aprobación de Solución IP-Release</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.FS_AprobacionSolucionIPRelease__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Si</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.FS_AprobacionSolucionIPRelease__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>No</rightValue>
+                        <leftValue>{!$User.UserRole.DeveloperName}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>FS_JefeReleases</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -827,6 +812,12 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>JCFS:jiraIssuesLwc</componentName>
+                <identifier>JCFS_jiraIssuesLwc</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

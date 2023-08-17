@@ -119,11 +119,10 @@
 		<name>StandardValueSet</name>
 	</types>
 	<types>
-		<members>Case.FS_ValidacionAprobacionSolucionIPRelease</members>
-		<members>Case.FS_ValidacionAutorizacionSolucionIPN2</members>
 		<members>Case.FS_ValidacionFechaCompromisoDesarrollo</members>
 		<members>Case.FS_ValidacionFechaCompromisoEntrega</members>
 		<members>Case.FS_ValidacionRechazoIPRelease</members>
+		<members>Case.FS_ValidacionRechazoSolucionIPN2</members>
 		<name>ValidationRule</name>
 	</types>
 	<version>55.0</version>
