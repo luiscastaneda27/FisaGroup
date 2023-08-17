@@ -660,6 +660,196 @@
                 </visibilityRule>
             </componentInstance>
         </itemInstances>
+         <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>GuestCommunityCase</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                    <value>Campos de Control</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Case.FS_CamposControlIncidente</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord18</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.IsEscalated}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Incidente</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>GuestCommunityCase</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                    <value>Validación de Información</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Case.FS_ValidacionInformacionIncidente</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord19</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.IsEscalated}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Incidente</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>GuestCommunityCase</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                    <value>Revisión de Documentación</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Case.FS_RevisionDocumentacion</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord20</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.IsEscalated}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Incidente</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>GuestCommunityCase</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                    <value>Autorización Solución IP-N2</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Case.FS_AutorizacionSolucionIPN2</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord21</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.IsEscalated}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Incidente</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_SubEstado__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Autorización Solución IP-N2</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>GuestCommunityCase</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                    <value>Aprobación de Solución IP-Release</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Case.FS_AprobacionSolucionIPRelease</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord22</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.IsEscalated}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Incidente</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_SubEstado__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Aprobación de Solución IP-Release</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$User.UserRole.DeveloperName}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>FS_JefeReleases</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
         <name>Facet-ec148824-bc8d-4c81-94ab-c728764652f1</name>
         <type>Facet</type>
     </flexiPageRegions>
