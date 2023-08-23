@@ -138,6 +138,11 @@
                 <label>Aprobación Solución Definitiva Releases</label>
             </value>
             <value>
+                <fullName>Escalado a QA</fullName>
+                <default>false</default>
+                <label>Escalado a QA</label>
+            </value>
+            <value>
                 <fullName>Elaboración Plan de Pruebas</fullName>
                 <default>false</default>
                 <label>Elaboración Plan de Pruebas</label>
@@ -153,29 +158,29 @@
                 <label>Instalación Parche Releases</label>
             </value>
             <value>
+                <fullName>Aprobación Instalación Parche - Releases</fullName>
+                <default>false</default>
+                <label>Aprobación Instalación Parche - Releases</label>
+            </value>
+            <value>
                 <fullName>Certificación Parche QA</fullName>
                 <default>false</default>
                 <label>Certificación Parche QA</label>
             </value>
             <value>
-                <fullName>Aprobación Certificación Parche</fullName>
+                <fullName>Aprobación Certificación Parche QA</fullName>
                 <default>false</default>
-                <label>Aprobación Certificación Parche</label>
+                <label>Aprobación Certificación Parche QA</label>
             </value>
             <value>
-                <fullName>Parche Instalado</fullName>
+                <fullName>Entrega de Parche</fullName>
                 <default>false</default>
-                <label>Parche Instalado</label>
+                <label>Entrega de Parche</label>
             </value>
             <value>
-                <fullName>Parche Aceptado Cliente</fullName>
+                <fullName>Instalación de Parche</fullName>
                 <default>false</default>
-                <label>Parche Aceptado Cliente</label>
-            </value>
-            <value>
-                <fullName>Parche Rechazado Cliente</fullName>
-                <default>false</default>
-                <label>Parche Rechazado Cliente</label>
+                <label>Instalación de Parche</label>
             </value>
             <value>
                 <fullName>Paso a Producción</fullName>

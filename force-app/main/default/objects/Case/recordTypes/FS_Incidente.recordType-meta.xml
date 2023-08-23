@@ -574,6 +574,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Aprobación Instalación Parche - Releases</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Aprobación Solución IP-N2</fullName>
             <default>false</default>
         </values>
@@ -598,11 +602,19 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Entrega de Parche</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Envío de respuesta</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Escalado a N2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escalado a QA</fullName>
             <default>false</default>
         </values>
         <values>
