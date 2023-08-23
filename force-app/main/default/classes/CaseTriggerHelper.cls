@@ -18,11 +18,65 @@ public without sharing class CaseTriggerHelper {
         }
     }
     
+    public static void validacionProducto(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        Boolean flag = false;
+        List<String> listAccount = new  List<String>();
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_Producto__c != item.FS_Producto__c || caso.FS_Modulo__c != item.FS_Modulo__c || caso.FS_SubModulo__c != item.FS_SubModulo__c){
+                flag = true;
+                listAccount.add(item.AccountId);
+            }
+        }
+        if(flag){
+            List<FS_ProductoAdquirido__c> productos = [Select FS_Cuenta__c, FS_Producto__c, FS_Modulo__c, FS_SubModulo__c from FS_ProductoAdquirido__c Where FS_Cuenta__c in :listAccount];
+            for(Case item: newCaseList){
+                flag = false;
+                for(FS_ProductoAdquirido__c p :productos){
+                    if(item.AccountId == p.FS_Cuenta__c && item.FS_Producto__c == p.FS_Producto__c && item.FS_Modulo__c == p.FS_Modulo__c && item.FS_SubModulo__c == p.FS_SubModulo__c){
+                        flag = true;
+                    }
+                }
+                if(!flag){
+                    item.addError('El cliente no tiene la combinación de productos seleccionados');
+                }else{
+                     Case caso = oldCaseMap.get(item.Id);
+                    if(caso.FS_Producto__c != item.FS_Producto__c){
+                        Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
+                        item.FS_Area__c = esCore ? 'N1. CORE' : 'N1. OMNIA';
+                        item.OwnerId = [Select Id from Group Where DeveloperName = :(esCore ? COLA_ATENCION_N1_CORE : COLA_ATENCION_N1_OMNIA) and Type = 'Queue'].Id;
+                    }
+                }
+            }
+            
+        }
+        
+    }
     public static void informacionCompleta(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        List<String> listAccount = new  List<String>();
+        List<String> listProductos = new  List<String>();
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(String.isBlank(item.FS_SubModulo__c)){
+                listAccount.add(item.AccountId);
+            }
+        }
+        for(FS_ProductoAdquirido__c item: [Select FS_Cuenta__c, FS_Producto__c, FS_Modulo__c, FS_SubModulo__c from FS_ProductoAdquirido__c Where FS_Cuenta__c = :listAccount]){
+            String prod = item.FS_Cuenta__c  + item.FS_Producto__c + item.FS_Modulo__c + item.FS_SubModulo__c;
+            listProductos.add(prod);
+        }
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_InformacionCompleta__c != item.FS_InformacionCompleta__c){
                 if(item.FS_InformacionCompleta__c == 'Si'){
+                    String prod = item.AccountId  + item.FS_Producto__c + item.FS_Modulo__c + item.FS_SubModulo__c;
+                    String msjError = 'Debe Completar los siguientes campos ';
+                    msjError += String.isBlank(item.FS_Proyecto__c) ? 'Proyecto, ' : '';
+                    msjError += item.FS_FechaCompromisoEntrega__c == null ? 'Fecha de Compromiso de Entrega, ' : '';
+                    msjError += String.isBlank(item.FS_SubModulo__c) && !listProductos.contains(prod) ? 'Sub Módulo, ' : '';
+                    if(msjError.length() > 37){
+                        item.addError(msjError.substring(0, msjError.length() - 2));
+                    }
                     if(item.FS_SubEstado__c == 'Revisión Documentación N2'){
                         item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                     }else{
@@ -30,6 +84,7 @@ public without sharing class CaseTriggerHelper {
                         item.Status = 'En Análisis';
                     }
                 }else if(item.FS_InformacionCompleta__c == 'No'){
+                    item.FS_SubEstadoQueSePideInformacion__c = item.FS_SubEstado__c;
                     item.FS_SubEstado__c = 'En Espera de Respuesta del Cliente'; 
                     envioCorreo(item, 'FS_InformacionFaltante', true);
                 }
@@ -53,7 +108,8 @@ public without sharing class CaseTriggerHelper {
             if(caso.FS_DescripcionCliente__c != item.FS_DescripcionCliente__c){
                 crearHistorialDescripcion(item, caso.FS_DescripcionCliente__c, item.FS_DescripcionCliente__c);
                 if(item.FS_SubEstado__c == 'En Espera de Respuesta del Cliente'){
-                    item.FS_SubEstado__c = 'Análisis N1'; 
+                    item.FS_SubEstado__c = item.FS_SubEstadoQueSePideInformacion__c;
+                    item.FS_SubEstadoQueSePideInformacion__c = null;
                     item.Status = 'En Análisis';
                     item.FS_InformacionCompleta__c = null;
                     envioCorreo(item, 'FS_ActualizacionInformacionCliente', false);
@@ -371,18 +427,17 @@ public without sharing class CaseTriggerHelper {
         return html;
     }
     
-    public static void createIssueJira(List<Case> newCaseList) { 
+    public static void createIssueJira(List<Case> newCaseList, List<Case> oldCaseList) { 
         String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
-        String jiraIssueTypeId = System.Label.FS_IdIssueJira; // Id Issue Jira
+        String jiraIssueTypeId = System.Label.FS_IdIssueJira; // Id Issue Jira: Incidente Definitivo
         
-        //Conditions to create de Issue in Jira
-    	JCFS.API.createJiraIssue('14029', '11150');    
-        //JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseMap);
+        //Conditions to create de Issue in Jira    
+        JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
     }
     
-    public static void updateIssueJira(List<Case> newCaseList) {       
+    public static void updateIssueJira(List<Case> newCaseList, List<Case> oldCaseList) {       
         //Conditions to update de Issue in Jira
-    	JCFS.API.pushUpdatesToJira();  
+        JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
     }
     
 }

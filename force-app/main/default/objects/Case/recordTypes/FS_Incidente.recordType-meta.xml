@@ -298,7 +298,18 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>FS_MotivoNoEntregaParche__c</picklist>
+        <picklist>FS_MotivoRechazoAprobacionIPRealease__c</picklist>
+        <values>
+            <fullName>Desarrollo incompleto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en documentación</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivoRechazoEntregaParche__c</picklist>
         <values>
             <fullName>Bloqueo por dependencia</fullName>
             <default>false</default>
@@ -309,17 +320,6 @@
         </values>
         <values>
             <fullName>Release plan</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>FS_MotivoRechazoAprobacionIPRealease__c</picklist>
-        <values>
-            <fullName>Desarrollo incompleto</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Error en documentación</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -392,21 +392,6 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>FS_MotivosErrorInstalacion__c</picklist>
-        <values>
-            <fullName>Error en copilación</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Error en levantar el ambiente</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Error en scripts</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
         <picklist>FS_MotivosRechazoAprobacionIPN2__c</picklist>
         <values>
             <fullName>Desarrollo erróneo</fullName>
@@ -464,6 +449,21 @@
         </values>
         <values>
             <fullName>Inconsistencia objetos</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_MotivosRechazoInstalacionParche__c</picklist>
+        <values>
+            <fullName>Error en copilación</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en levantar el ambiente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en scripts</fullName>
             <default>false</default>
         </values>
     </picklistValues>

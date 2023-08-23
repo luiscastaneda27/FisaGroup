@@ -7,12 +7,12 @@
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Type</field>
+                <field>FS_NumeroRequerimientosNuevo__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>FS_NumeroRequerimientosNuevo__c</field>
+                <field>FS_Proyecto__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
@@ -28,7 +28,8 @@
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
-                <emptySpace>true</emptySpace>
+                <emptySpace>false</emptySpace>
+                <field>FS_Referencia__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>

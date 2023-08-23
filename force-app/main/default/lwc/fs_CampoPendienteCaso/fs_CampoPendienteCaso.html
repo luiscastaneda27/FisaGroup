@@ -175,6 +175,48 @@
     </template>
 
 
+
+    <template if:true={data.pendienteInformacionDetalle}>
+        <lightning-layout vertical-align="stretch" multiple-rows="true">
+            <lightning-layout-item flexibility="auto" padding="around-small" size="12">
+                <lightning-card icon-name="action:info" title="Información Pendiente">
+                    <lightning-layout vertical-align="stretch" multiple-rows="true">
+                        <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                            <h1>Tiene información pendiente para completar en el caso</h1>
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+    <template if:true={data.pendienteInformacion}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h1 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate">Información Pendiente</h1>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium ">
+                    <div class="slds-form slds-form_compound slds-align--absolute-left">
+                        <fieldset class="slds-form-element">
+                            <div class="slds-modal__content slds-p-around--medium">
+                                <h1>Tiene información pendiente para completar en el caso</h1> 
+                            </div>
+                            <footer class="slds-modal__footer">
+                                <lightning-button label="Aceptar" title="Aceptar" variant="brand" name="Aceptar"
+                                    class="slds-m-left_x-small" onclick={guardarCaso} ></lightning-button>
+                            </footer>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+
     <template if:true={showSpinner}>
         <div id="activityIndicator" class="slds-spinner_container">
             <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">

@@ -9,6 +9,7 @@
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
+        <controllingField>FS_Modulo__c</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
@@ -738,5 +739,704 @@
                 <label>Procesos-lentitud-herramientas</label>
             </value>
         </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Business Support Aplication</controllingFieldValue>
+            <valueName>Campaign Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Support Aplication</controllingFieldValue>
+            <valueName>Business Rule Engine - BRE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Support Aplication</controllingFieldValue>
+            <valueName>Analizer Monitor</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Integration Service FSY</controllingFieldValue>
+            <valueName>Formalizar Prestamos Personales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Integration Service FSY</controllingFieldValue>
+            <valueName>Formalizar Cuentas Vista</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Integration Service FSY</controllingFieldValue>
+            <valueName>Formalizar Tarjeta de Crédito</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Integration Service FSY</controllingFieldValue>
+            <valueName>Formalizar venta cruzada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Integration Service FSY</controllingFieldValue>
+            <valueName>Formalizar Data de Clientes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Aplication</controllingFieldValue>
+            <valueName>Originación-Flujo Automotriz</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Aplication</controllingFieldValue>
+            <valueName>Originación-Flujo Consumo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Aplication</controllingFieldValue>
+            <valueName>Originación-Flujo AMICAR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Aplication</controllingFieldValue>
+            <valueName>Integración FISA System</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Aplication</controllingFieldValue>
+            <valueName>Integración Servicios Terceros</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Aplication</controllingFieldValue>
+            <valueName>Flujos-Camunda</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Aplication</controllingFieldValue>
+            <valueName>Documentos-Alfresco</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Aplication</controllingFieldValue>
+            <valueName>Carga de Documentos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Aplication</controllingFieldValue>
+            <valueName>Procesos-lentitud-herramientas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <valueName>ACH</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <controllingFieldValue>Móvil</controllingFieldValue>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
+            <valueName>Pagos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <controllingFieldValue>Móvil</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <valueName>Transferencias</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <valueName>Transferencias Propias</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <valueName>Transferencias a Terceros</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <valueName>Transferencias Internacionales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <valueName>Transferencias Recurrentes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <valueName>Emisión de Giros</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <valueName>Pago Tarjeta</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <valueName>Pago de Servicios</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <valueName>Pago de Obligaciones Propias</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <valueName>Pago de Obligaciones a Terceros</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <valueName>Cambio de Clave</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>Móvil</controllingFieldValue>
+            <valueName>Ingreso – Posición Consolidada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Homebanking</controllingFieldValue>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
+            <valueName>Transferencias al Exterior</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <valueName>Bloqueos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <valueName>Adminstración usuario</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OLB-FT</controllingFieldValue>
+            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
+            <valueName>Posición Consolidada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Móvil</controllingFieldValue>
+            <valueName>Mobile Banking</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Móvil</controllingFieldValue>
+            <valueName>Transferencias múltiples</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Móvil</controllingFieldValue>
+            <valueName>Pagos múltiples</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Kiosko</controllingFieldValue>
+            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
+            <controllingFieldValue>GARANTIAS</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
+            <valueName>Solicitudes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multichanel Management</controllingFieldValue>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Documentos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multichanel Management</controllingFieldValue>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Autorizaciones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multichanel Management</controllingFieldValue>
+            <valueName>Calendarización Y Procesos Masivos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multichanel Management</controllingFieldValue>
+            <valueName>Administración multicanal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multichanel Management</controllingFieldValue>
+            <valueName>Seguridad</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multichanel Management</controllingFieldValue>
+            <valueName>Límites</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multichanel Management</controllingFieldValue>
+            <valueName>Componente generales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multichanel Management</controllingFieldValue>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <valueName>Notificaciones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <valueName>SFTP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <valueName>Carga de archivos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <valueName>Carga manual</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <valueName>SPI/SCI</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <valueName>Beneficiarios</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <valueName>Reporteria</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <valueName>Reintentos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
+            <valueName>Cobros</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
+            <valueName>Recaudaciones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <valueName>Confirming</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <valueName>Tarifas /Comisiones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <valueName>Teller</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
+            <valueName>Cuentas electrónicas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
+            <valueName>Parametrizacion, Plantillas Genericas y anexos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
+            <valueName>Parametrización de Transacciones y Subtransacciones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
+            <valueName>Afiliaciones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
+            <valueName>Soft Token</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
+            <controllingFieldValue>INF. MANAGEMEN SYST. (IMS)</controllingFieldValue>
+            <controllingFieldValue>CHECK CLEARING (ECCO)</controllingFieldValue>
+            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
+            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
+            <controllingFieldValue>REPORTES DEL SISTEMA</controllingFieldValue>
+            <controllingFieldValue>GARANTIAS</controllingFieldValue>
+            <controllingFieldValue>SEGURIDAD INTERNA</controllingFieldValue>
+            <controllingFieldValue>GENERALES</controllingFieldValue>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Parametrización</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
+            <controllingFieldValue>GARANTIAS</controllingFieldValue>
+            <controllingFieldValue>GENERALES</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
+            <valueName>Contabilidad</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
+            <valueName>Cupones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
+            <controllingFieldValue>GARANTIAS</controllingFieldValue>
+            <controllingFieldValue>SEGURIDAD INTERNA</controllingFieldValue>
+            <controllingFieldValue>GENERALES</controllingFieldValue>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
+            <valueName>Mantenimiento</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
+            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
+            <valueName>Proceso Fin de Día</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
+            <controllingFieldValue>INF. MANAGEMEN SYST. (IMS)</controllingFieldValue>
+            <controllingFieldValue>CHECK CLEARING (ECCO)</controllingFieldValue>
+            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
+            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
+            <controllingFieldValue>REPORTES DEL SISTEMA</controllingFieldValue>
+            <controllingFieldValue>GARANTIAS</controllingFieldValue>
+            <controllingFieldValue>SEGURIDAD INTERNA</controllingFieldValue>
+            <controllingFieldValue>GENERALES</controllingFieldValue>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
+            <valueName>Reportes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
+            <valueName>Títulos y Valores</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <valueName>Bloqueos/Desbloqueos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <valueName>Cancelación</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <valueName>Switch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <valueName>Tarjetas Innominadas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <valueName>Tramas Transaccionales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CHECK CLEARING (ECCO)</controllingFieldValue>
+            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
+            <valueName>Carga de Información</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CHECK CLEARING (ECCO)</controllingFieldValue>
+            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
+            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
+            <controllingFieldValue>GARANTIAS</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <valueName>Consulta</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CHECK CLEARING (ECCO)</controllingFieldValue>
+            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
+            <valueName>Inicio/Fin de día</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
+            <valueName>Proceso Primera Camara</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
+            <valueName>Proceso Segunda Camara</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
+            <valueName>Procesos de Afectacion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
+            <valueName>Ajustes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
+            <valueName>Auxiliares</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
+            <valueName>Generación de Comprobantes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
+            <valueName>Mayorización</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
+            <valueName>Balances</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GARANTIAS</controllingFieldValue>
+            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
+            <valueName>Cierre</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GENERALES</controllingFieldValue>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <valueName>Clientes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GENERALES</controllingFieldValue>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <valueName>Integración</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GENERALES</controllingFieldValue>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <valueName>Sistema</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <valueName>Comprobantes Fiscales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <valueName>Convenios</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <valueName>Facturas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <valueName>Monitor</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <valueName>Planillas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <valueName>Plataforma de Ventas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <valueName>Retenciones Judiciales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLIENTES</controllingFieldValue>
+            <valueName>Sincronización</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
+            <valueName>Apertura caja</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <valueName>Cuadre</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
+            <valueName>Manejo Bóveda</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
+            <valueName>Negociación de Divisas/Compra/Venta</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
+            <valueName>Prevención Lavado de dinero</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
+            <valueName>Recepción de dinero</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <valueName>Reversos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <valueName>Cargos/Comisiones/Impuestos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <valueName>Manejo Cuentas Ahorro</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <valueName>Manejo Cuentas Corrientes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <valueName>Manejo Cuentas de Acumulación</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <valueName>Manejo de Lineas de Crédito</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
+            <valueName>Pignoración</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
+            <valueName>Sobregiros</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
+            <valueName>Renovación</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <valueName>Compromisos/Líneas de Crédito</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <valueName>Desembolso</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <valueName>Incrementos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <valueName>Pagos Masivos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <valueName>Pagos en Batch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <valueName>Pagos en Línea</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <valueName>Reestructuración</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <valueName>Traspasos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <valueName>Estados de Cuenta</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <valueName>Facturación</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <valueName>Proceso de Fin de Día</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <valueName>Renegociaciones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
+            <valueName>Reprogramaciones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
+            <valueName>Cartas de Crédito</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
+            <valueName>Cobranzas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
+            <valueName>Garantias</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Products</controllingFieldValue>
+            <valueName>Flujo Prestamos Personales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Products</controllingFieldValue>
+            <valueName>Flujo Cuentas Vista</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Products</controllingFieldValue>
+            <valueName>Flujo Tarjeta de Crédito</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Products</controllingFieldValue>
+            <valueName>Flujo venta cruzada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Products</controllingFieldValue>
+            <valueName>Mantenimiento de Clientes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Catalogos y Mapeos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Jerarquías</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Configuración de servidores</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Correos de notificación</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Definición de aplicaciones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Wizard BT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Wizard QT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Render Browser (Incl Skin)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Render Web Mobile (Incl Skin)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Application Generator</controllingFieldValue>
+            <valueName>Render Mobile (Incl Skin)</valueName>
+        </valueSettings>
     </valueSet>
 </CustomField>

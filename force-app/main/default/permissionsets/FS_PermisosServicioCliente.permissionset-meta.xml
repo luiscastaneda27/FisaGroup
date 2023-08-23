@@ -109,6 +109,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.FS_ComentarioMotivoNoInstalacionParche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.FS_ComentariosEncuesta__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -184,12 +189,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Case.FS_MotivoNoEntregaParche__c</field>
+        <field>Case.FS_MotivoRechazoAprobacionIPRealease__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Case.FS_MotivoRechazoAprobacionIPRealease__c</field>
+        <field>Case.FS_MotivoRechazoEntregaParche__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -214,11 +219,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Case.FS_MotivosErrorInstalacion__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Case.FS_MotivosRechazoAprobacionIPN2__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -233,13 +233,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_MotivosRechazoInstalacionParche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Case.FS_NombreContacto__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Case.FS_NombreCuanta__c</field>
+        <field>Case.FS_NombreCuenta__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -293,8 +298,13 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Case.FS_RolPropietario__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_SubEstadoQueSePideInformacion__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

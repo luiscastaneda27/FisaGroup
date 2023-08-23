@@ -43,6 +43,7 @@
 		<members>Case.FS_CSATCaso__c</members>
 		<members>Case.FS_Carterizacion__c</members>
 		<members>Case.FS_CasoRQOrigenNovedad__c</members>
+		<members>Case.FS_ComentarioMotivoNoInstalacionParche__c</members>
 		<members>Case.FS_ComentariosEncuesta__c</members>
 		<members>Case.FS_ComentariosInternos__c</members>
 		<members>Case.FS_ComentariosRespuesta__c</members>
@@ -58,18 +59,18 @@
 		<members>Case.FS_MotivoCambioFechaDesarrollo__c</members>
 		<members>Case.FS_MotivoCambioFechaEntrega__c</members>
 		<members>Case.FS_MotivoInsatisfaccion__c</members>
-		<members>Case.FS_MotivoNoEntregaParche__c</members>
 		<members>Case.FS_MotivoRechazoAprobacionIPRealease__c</members>
+		<members>Case.FS_MotivoRechazoEntregaParche__c</members>
 		<members>Case.FS_MotivoRechazoPlanPruebas__c</members>
 		<members>Case.FS_MotivoRechazoSDN2__c</members>
 		<members>Case.FS_MotivoRechazoSDRelease__c</members>
 		<members>Case.FS_MotivoRechazo__c</members>
-		<members>Case.FS_MotivosErrorInstalacion__c</members>
 		<members>Case.FS_MotivosRechazoAprobacionIPN2__c</members>
 		<members>Case.FS_MotivosRechazoCertificacion__c</members>
 		<members>Case.FS_MotivosRechazoDT__c</members>
+		<members>Case.FS_MotivosRechazoInstalacionParche__c</members>
 		<members>Case.FS_NombreContacto__c</members>
-		<members>Case.FS_NombreCuanta__c</members>
+		<members>Case.FS_NombreCuenta__c</members>
 		<members>Case.FS_NombrePropietario__c</members>
 		<members>Case.FS_NombreTipoRegistro__c</members>
 		<members>Case.FS_NotasReunionSatisfaccion__c</members>
@@ -81,6 +82,7 @@
 		<members>Case.FS_Referencia__c</members>
 		<members>Case.FS_ResultadoEncuesta__c</members>
 		<members>Case.FS_RolPropietario__c</members>
+		<members>Case.FS_SubEstadoQueSePideInformacion__c</members>
 		<members>Case.FS_SubEstado__c</members>
 		<members>Case.FS_SubModulo__c</members>
 		<members>Case.FS_TipoIncidente__c</members>

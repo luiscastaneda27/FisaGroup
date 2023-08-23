@@ -32,12 +32,12 @@
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>FS_Producto__c</field>
-                <uiBehavior>Edit</uiBehavior>
+                <uiBehavior>Required</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>FS_Modulo__c</field>
-                <uiBehavior>Edit</uiBehavior>
+                <uiBehavior>Required</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
@@ -56,16 +56,6 @@
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>Type</field>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>FS_Proyecto__c</field>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>FS_Referencia__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>

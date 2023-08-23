@@ -359,7 +359,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Case.FS_NombreCuanta__c</field>
+        <field>Case.FS_NombreCuenta__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

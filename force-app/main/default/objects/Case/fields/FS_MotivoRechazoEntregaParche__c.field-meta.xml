@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>FS_MotivoNoEntregaParche__c</fullName>
+    <fullName>FS_MotivoRechazoEntregaParche__c</fullName>
     <externalId>false</externalId>
-    <label>Motivo de no se entrega el parche</label>
+    <label>Motivos rechazo entrega de parche</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>

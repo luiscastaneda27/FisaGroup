@@ -4,13 +4,13 @@ trigger CaseTrigger on Case (before insert, before update, before delete, after 
         if(trigger.isBefore){
             CaseTriggerHandler.beforeInsert(trigger.new);
         }else if(trigger.isAfter){
-            CaseTriggerHandler.afterInsert(trigger.new);
+            CaseTriggerHandler.afterInsert(trigger.new, trigger.old);
         }
     }else if(trigger.isUpdate){
         if(trigger.isBefore){
             CaseTriggerHandler.beforeUpdate(trigger.new, trigger.oldMap);
         }else if(trigger.isAfter){
-            CaseTriggerHandler.afterUpdate(trigger.new, trigger.oldMap);
+            CaseTriggerHandler.afterUpdate(trigger.new, trigger.old);
         }
     }
 }
