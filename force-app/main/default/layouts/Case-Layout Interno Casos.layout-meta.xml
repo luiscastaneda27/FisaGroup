@@ -18,7 +18,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Reason</field>
+                <field>ContactId</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -29,10 +29,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Priority</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>ContactId</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

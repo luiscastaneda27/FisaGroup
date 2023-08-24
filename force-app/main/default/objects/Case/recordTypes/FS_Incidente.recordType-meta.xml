@@ -27,6 +27,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>FS_AprobacionDisenioTecnico__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_AprobacionSolucionIPN2__c</picklist>
         <values>
             <fullName>No</fullName>
@@ -560,6 +571,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>FS_SolucionCortoPlazo__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_SubEstado__c</picklist>
         <values>
             <fullName>Análisis N1</fullName>
@@ -574,7 +596,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Aprobación Certificación Parche QA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación Diseño Técnico</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Aprobación Instalación Parche - Releases</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación Plan de Pruebas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación Solución Definitiva N2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación Solución Definitiva Releases</fullName>
             <default>false</default>
         </values>
         <values>
@@ -586,7 +628,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Certificación Parche QA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desarrollo Incidente Definitivo</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Desarrollo Incidente Puntual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Elaboración Diseño Técnico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Elaboración Plan de Pruebas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Elaboración Solución Definitiva</fullName>
             <default>false</default>
         </values>
         <values>
@@ -622,6 +684,26 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Instalación Parche Releases</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instalación de Parche</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paso a Producción</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paso a Producción Confirmado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paso a Producción No Confirmado</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Respuesta aceptada</fullName>
             <default>false</default>
         </values>
@@ -631,6 +713,10 @@
         </values>
         <values>
             <fullName>Revisión Documentación N2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Validación-Entrega de Fuentes</fullName>
             <default>false</default>
         </values>
     </picklistValues>

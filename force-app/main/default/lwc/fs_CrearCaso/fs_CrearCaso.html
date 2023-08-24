@@ -19,12 +19,6 @@
                             options={data.listModulos} onchange={onchangeFilter} placeholder="Seleccione un Módulo">
                         </lightning-combobox>
                     </lightning-layout-item>
-
-                    <lightning-layout-item padding="around-small" size="6">
-                        <lightning-combobox name="motivo" label="Seleccione un Motivo"
-                            value={data.motivoSeleccionado} options={data.listMotivo} onchange={onchangeFilter}
-                            placeholder="Seleccione un Motivo"></lightning-combobox>
-                    </lightning-layout-item>
                     <lightning-layout-item padding="around-small" size="6">
                         <lightning-input type="text" label="Asunto de Caso" name="asunto" onchange={onchangeFilter} value={data.asunto} ></lightning-input>
                     </lightning-layout-item> 

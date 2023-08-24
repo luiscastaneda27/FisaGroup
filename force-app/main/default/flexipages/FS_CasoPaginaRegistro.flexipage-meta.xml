@@ -647,7 +647,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord18</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.IsEscalated}</leftValue>
                         <operator>EQUAL</operator>
@@ -657,6 +657,51 @@
                         <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Incidente</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_TipoIncidente__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Definitivo</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>GuestCommunityCase</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                    <value>Campos de Control</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Case.FS_CamposControlIncidenteDefinitivo</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord11</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.IsEscalated}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Incidente</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_TipoIncidente__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Definitivo</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -717,7 +762,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord20</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.IsEscalated}</leftValue>
                         <operator>EQUAL</operator>
@@ -727,6 +772,91 @@
                         <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Incidente</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_TipoIncidente__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Puntual</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>GuestCommunityCase</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                    <value>Elaboración Diseño Técnico</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Case.FS_ElaboracinDisenioTecnico</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord23</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.IsEscalated}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Incidente</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_TipoIncidente__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Definitivo</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>GuestCommunityCase</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                    <value>Aprobación Diseño Técnico</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Case.FS_AprobacionDisenioTecnico</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord24</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Incidente</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_SubEstado__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Aprobación Diseño Técnico</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_AprobacionDisenioTecnico__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Si</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -752,7 +882,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord21</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.IsEscalated}</leftValue>
                         <operator>EQUAL</operator>
@@ -767,6 +897,11 @@
                         <leftValue>{!Record.FS_SubEstado__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Aprobación Solución IP-N2</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_AprobacionSolucionIPN2__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Si</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -792,7 +927,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord22</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+                    <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.IsEscalated}</leftValue>
                         <operator>EQUAL</operator>
@@ -809,9 +944,9 @@
                         <rightValue>Aprobación de Solución IP-Release</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!$User.UserRole.DeveloperName}</leftValue>
+                        <leftValue>{!Record.FS_AprobacionSolucionIPRelease__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>FS_JefeReleases</rightValue>
+                        <rightValue>Si</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -977,6 +1112,39 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Case.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Cases</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer5</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.FS_SolucionCortoPlazo__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Si</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>lookupFieldName</name>
                     <value>Id</value>
                 </componentInstanceProperties>
@@ -1071,7 +1239,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListLabel</name>
-                    <value>Casos Relacionados</value>
+                    <value>Casos de la  Cuenta</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>

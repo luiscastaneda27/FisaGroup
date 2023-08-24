@@ -28,6 +28,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>FS_AprobacionDisenioTecnico__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_AprobacionSolucionIPN2__c</picklist>
         <values>
             <fullName>No</fullName>
@@ -553,6 +564,17 @@
         </values>
         <values>
             <fullName>Satisfecho</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FS_SolucionCortoPlazo__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Si</fullName>
             <default>false</default>
         </values>
     </picklistValues>

@@ -26,6 +26,9 @@ public without sharing class CaseTriggerHandler {
         CaseTriggerHelper.validacionURLResultadoAnalasis(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionAutorizacionSolucionIPN2(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionAprobacionSolucionIPRelease(newCaseList, oldCaseMap);
+        
+        CaseTriggerHelper.validacionSolucionCortoPlazo(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionURLDisenioTecnico(newCaseList, oldCaseMap);
     }
     
     public static void afterUpdate(List<Case> newCaseList, List<Case> oldCaseList) {
