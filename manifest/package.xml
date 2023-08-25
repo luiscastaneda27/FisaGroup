@@ -41,6 +41,7 @@
 		<members>Case.FS_Acepta1erCosto__c</members>
 		<members>Case.FS_AceptaRespuesta__c</members>
 		<members>Case.FS_AprobacionDisenioTecnico__c</members>
+		<members>Case.FS_AprobacionSolucionDefinitivaN2__c</members>
 		<members>Case.FS_AprobacionSolucionIPN2__c</members>
 		<members>Case.FS_AprobacionSolucionIPRelease__c</members>
 		<members>Case.FS_Area__c</members>
@@ -99,12 +100,12 @@
 		<members>Case.FS_URLResultadoAnalasis__c</members>
 		<members>Case.FS_URLSolucionDefinitiva__c</members>
 		<members>Case.FS_UrlAmbientePruebas__c</members>
-		<members>Case.FS_UsuarioAprobacionSolucionIPRelease__c</members>
+		<members>Case.FS_UsuarioAprobacionSolucionRelease__c</members>
 		<members>Case.FS_UsuarioAprobador1erCosto__c</members>
 		<members>Case.FS_UsuarioAprobadorDT__c</members>
 		<members>Case.FS_UsuarioAprobadorSolucionIPN2__c</members>
+		<members>Case.FS_AprobacionSolucionDefinitivaRelease__c</members>
 		<members>User.FS_FechaUltimaAprobacion__c</members>
-		<members>Case.FS_AprobacionSolucionDefinitivaN2__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
@@ -167,7 +168,18 @@
 		<name>PermissionSet</name>
 	</types>
 	<types>
+		<members>FS_AtencionQACore</members>
+		<members>FS_AtencionQAOmnia</members>
+		<name>Queue</name>
+	</types>
+	<types>
+		<members>FS_AtencionQACore</members>
+		<members>FS_AtencionQAOmnia</members>
+		<name>QueueRoutingConfig</name>
+	</types>
+	<types>
 		<members>Case.FS_AprobacionDisenioTecnico</members>
+		<members>Case.FS_AprobacionSolucionDefinitivaN2</members>
 		<members>Case.FS_AprobacionSolucionIPN2</members>
 		<members>Case.FS_AprobacionSolucionIPRelease</members>
 		<members>Case.FS_CamposControlConsulta</members>
@@ -182,10 +194,10 @@
 		<members>Case.FS_ElaboracinDisenioTecnico</members>
 		<members>Case.FS_InformacionWeb</members>
 		<members>Case.FS_RevisionDocumentacion</members>
-		<members>Case.FS_ValidacionInformacionIncidente</members>
-		<members>Case.FS_AprobacionSolucionDefinitivaN2</members>
 		<members>Case.FS_SolucionDefinitiva</members>
 		<members>Case.FS_ValidacinEntregaFuentes</members>
+		<members>Case.FS_ValidacionInformacionIncidente</members>
+		<members>Case.FS_AprobacionSolucionDefinitivaReleases</members>
 		<name>QuickAction</name>
 	</types>
 	<types>
@@ -229,9 +241,10 @@
 		<members>Case.FS_ValidacionFechaCompromisoDesarrollo</members>
 		<members>Case.FS_ValidacionFechaCompromisoEntrega</members>
 		<members>Case.FS_ValidacionRechazoDisenioTecnico</members>
+		<members>Case.FS_ValidacionRechazoIDRelease</members>
 		<members>Case.FS_ValidacionRechazoIPRelease</members>
-		<members>Case.FS_ValidacionRechazoSolucionIPN2</members>
 		<members>Case.FS_ValidacionRechazoSolucionDefinitivaN2</members>
+		<members>Case.FS_ValidacionRechazoSolucionIPN2</members>
 		<name>ValidationRule</name>
 	</types>
 	<version>55.0</version>

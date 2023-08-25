@@ -89,6 +89,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.FS_AprobacionSolucionDefinitivaRelease__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.FS_AprobacionSolucionIPN2__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -384,7 +389,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Case.FS_UsuarioAprobacionSolucionIPRelease__c</field>
+        <field>Case.FS_UsuarioAprobacionSolucionRelease__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

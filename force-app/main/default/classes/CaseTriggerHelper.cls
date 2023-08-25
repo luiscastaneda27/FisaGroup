@@ -4,6 +4,17 @@ public without sharing class CaseTriggerHelper {
     public static final String COLA_ATENCION_N2_CORE ='FS_AtencionN2Core';
     public static final String COLA_ATENCION_N1_OMNIA ='FS_AtencionN1Omnia';
     public static final String COLA_ATENCION_N2_OMNIA ='FS_AtencionN2Omnia';
+    public static final String COLA_ATENCION_QA_OMNIA ='FS_AtencionQAOmnia';
+    public static final String COLA_ATENCION_QA_CORE ='FS_AtencionQACore';
+    public static Map<String, String> mapColas;
+    
+    static{
+        mapColas = new Map<String, String>();
+        Map<String, String> mapColas = new Map<String, String>();
+        for(Group item: [Select Id, DeveloperName from Group Where DeveloperName Like '%FS_%' and Type = 'Queue']){
+            mapColas.put(item.DeveloperName, item.Id);
+        }
+    }
     
     private static final String CONSULTA_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Consulta').getRecordTypeId();
     private static final String SOLICITUD_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Solicitud').getRecordTypeId();
@@ -120,10 +131,10 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void solventarPregunta(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-        Map<String, String> mapColas = new Map<String, String>();
+        /*Map<String, String> m.apColas = new Map<String, String>();
         for(Group item: [Select Id, DeveloperName from Group Where DeveloperName In (:COLA_ATENCION_N2_CORE, :COLA_ATENCION_N2_OMNIA) and Type = 'Queue']){
-            mapColas.put(item.DeveloperName, item.Id);
-        }
+            m.apColas.put(item.DeveloperName, item.Id);
+        }*/
          for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_PudeSolventarPregunta__c != item.FS_PudeSolventarPregunta__c){
@@ -212,12 +223,14 @@ public without sharing class CaseTriggerHelper {
         for(Case item: newCaseList){
             if(item.FS_SubEstado__c == 'Aprobación Solución IP-N2' && item.FS_UsuarioAprobadorSolucionIPN2__c != UserInfo.getUserId() ){
                 item.addError('El caso se encuentra en Aprobación de Solución IP-N2 y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación de Solución IP-Release' && item.FS_UsuarioAprobacionSolucionIPRelease__c != UserInfo.getUserId()){
+            }else if(item.FS_SubEstado__c == 'Aprobación de Solución IP-Release' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c) ){
                 item.addError('El caso se encuentra en Aprobación de Solución IP-Release y no tiene permisos para modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación Diseño Técnico' && item.FS_UsuarioAprobadorDT__c != UserInfo.getUserId()){
                 item.addError('El caso se encuentra en Aprobación de Diseño Técnico y no tiene permisos para modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva N2' && item.FS_UsuarioAprobadorDT__c != UserInfo.getUserId()){
-                item.addError('El caso se encuentra en Aprobación de Diseño Técnico y no tiene permisos para modificarlo.');
+                item.addError('El caso se encuentra en Aprobación Solución Definitiva N2 y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva Releases' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c)){
+                item.addError('El caso se encuentra en Aprobación de Solución Definitiva Releases y no tiene permisos para modificarlo.');
             }
         }
     }
@@ -266,18 +279,8 @@ public without sharing class CaseTriggerHelper {
                     item.FS_AprobacionSolucionIPRelease__c = null;
                     item.FS_MotivoRechazoAprobacionIPRealease__c = null;
                     item.FS_SubEstado__c = 'Aprobación de Solución IP-Release';
-                    if(item.FS_UsuarioAprobacionSolucionIPRelease__c == null){
-                        for(User usuario : [Select Id,FS_FechaUltimaAprobacion__c from User where UserRole.DeveloperName = 'FS_JefeReleases' And Id != :item.OwnerId Order by FS_FechaUltimaAprobacion__c asc limit 1]){
-                            usuario.FS_FechaUltimaAprobacion__c = System.now();
-                            item.FS_UsuarioAprobacionSolucionIPRelease__c = usuario.Id;
-                            update usuario;
-                        }
-                    }
-                    String titulo = 'Aprobación de Solución IP-Release para caso '+item.CaseNumber;
-                    String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación de Solución IP-Release para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
-                    enviarNotificacion(item.FS_UsuarioAprobacionSolucionIPRelease__c, item.Id, titulo, descripcion);
                 }else if(item.FS_AprobacionSolucionIPN2__c == 'No'){
-                     item.FS_URLResultadoAnalasis__c = null;
+                    item.FS_URLResultadoAnalasis__c = null;
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                     String titulo = 'Rechazo de Aprobación Solución IP-N2 para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+UserInfo.getFirstName() + ' ha rechzado la Aprobación de Solución IP-N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
@@ -297,13 +300,13 @@ public without sharing class CaseTriggerHelper {
                     item.FS_AceptaRespuesta__c = null;
                     
                     String titulo = 'Aprobación de Solución IP-Release para caso '+item.CaseNumber;
-                    String descripcion = 'El Jefe de Release '+UserInfo.getUserName() + ' ha aprobado la Solución IP-Release para el caso número '+item.CaseNumber +' \nMuchas gracias.';
+                    String descripcion = 'El Jefe de Release ' + item.FS_UsuarioAprobacionSolucionRelease__c + ' ha aprobado la Solución IP-Release para el caso número '+item.CaseNumber +' \nMuchas gracias.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }else if(item.FS_AprobacionSolucionIPRelease__c == 'No'){
                      item.FS_URLResultadoAnalasis__c = null;
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                     String titulo = 'Rechazo de Solución IP-Release para caso '+item.CaseNumber;
-                    String descripcion = 'El Jefe de Release '+UserInfo.getUserName() + ' ha rechzado la Solución IP-Release para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    String descripcion = 'El Jefe de Release ' + item.FS_UsuarioAprobacionSolucionRelease__c + ' ha rechzado la Solución IP-Release para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
             }
@@ -311,10 +314,6 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void validacionTipoIncidente(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-        Map<String, String> mapColas = new Map<String, String>();
-        for(Group item: [Select Id, DeveloperName from Group Where DeveloperName In (:COLA_ATENCION_N2_CORE, :COLA_ATENCION_N2_OMNIA) and Type = 'Queue']){
-            mapColas.put(item.DeveloperName, item.Id);
-        }
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_TipoIncidente__c != item.FS_TipoIncidente__c){
@@ -426,20 +425,60 @@ public without sharing class CaseTriggerHelper {
             }
         }
     }
+    
+    public static void validacionAprobacionSolucionDefinitivaRelease(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_AprobacionSolucionDefinitivaRelease__c != item.FS_AprobacionSolucionDefinitivaRelease__c){
+                if(item.FS_AprobacionSolucionDefinitivaRelease__c == 'Si'){
+                    Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
+                    item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_QA_CORE : COLA_ATENCION_QA_OMNIA);
+                    item.FS_Area__c =  esCore ? 'QA CC-CORE' : 'QA CC-OMNIA';
+                    item.FS_SubEstado__c = 'Escalado a QA';
+                }else if(item.FS_AprobacionSolucionDefinitivaRelease__c == 'No'){
+                    
+                }
+            }
+        }
+    }
 
      
     public static void upsertCaseJira(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-        List<Case> listaCasosNuevos = new List<Case>();
-        List<Case> listaCasosViejos = new List<Case>();
+        List<Case> casesNewIP = new List<Case>();
+        List<Case> casesNewID = new List<Case>();
+        List<Case> casesOldIP = new List<Case>();
+        List<Case> casesOldID = new List<Case>();
+        
+        List<Case> casesNewUpdateIP = new List<Case>();
+        List<Case> casesNewUpdateID = new List<Case>();
+        List<Case> casesOldUpdateIP = new List<Case>();
+        List<Case> casesOldUpdateID = new List<Case>();
+        
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_SubEstado__c != item.FS_SubEstado__c && (item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo' && item.FS_SubEstado__c == 'Desarrollo Incidente Puntual')){
-                listaCasosNuevos.add(item);
-                listaCasosViejos.add(caso);
+            if(caso.FS_SubEstado__c != item.FS_SubEstado__c && item.FS_TipoIncidente__c == 'Puntual'){
+                if(item.FS_SubEstado__c == 'Desarrollo Incidente Puntual'){
+                    casesNewIP.add(item);
+                    casesOldIP.add(caso);
+                }
+            }if(caso.FS_SubEstado__c != item.FS_SubEstado__c && item.FS_TipoIncidente__c == 'Definitivo'){
+                if(item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo'){
+                    casesNewID.add(item);
+                    casesOldID.add(caso);
+                }
             }
         }
-        if(!listaCasosNuevos.isEmpty()){
-            createIssueJira(listaCasosNuevos, listaCasosViejos);
+        if(!casesNewIP.isEmpty()){
+            createIssueJira(casesNewIP, casesOldIP);
+        }
+        if(!casesNewID.isEmpty()){
+            createIssueJira(casesNewID, casesOldID);
+        }
+        if(!casesNewUpdateIP.isEmpty()){
+            updateIssueJira(casesNewUpdateIP, casesOldUpdateIP);
+        }
+        if(!casesNewUpdateID.isEmpty()){
+            updateIssueJira(casesNewUpdateID, casesOldUpdateID);
         }
     }
     
@@ -485,6 +524,7 @@ public without sharing class CaseTriggerHelper {
         notification.setTargetId(recordId); 
         notification.send(new Set<String> { usuarioId }); 
     }
+    
     public static void crearHistorialAprobaciones(Case caso){
         FS_AceptacionRechazoCaso__c aceptacion = new FS_AceptacionRechazoCaso__c ();
         aceptacion.FS_Caso__c = caso.Id;
@@ -536,11 +576,9 @@ public without sharing class CaseTriggerHelper {
     
     public static void createIssueJira(List<Case> newCaseList, List<Case> oldCaseList) { 
         String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
-        String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJira : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
-        //Definitivo 11158
-        System.debug('Se llamo a crear');
-        //Conditions to create de Issue in Jira    
-        JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
+        String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJiraIncidenteDefinitivo : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
+        System.debug('jiraIssueTypeId: '+jiraIssueTypeId);
+        JCFS.API.createJiraIssue(jiraProjectId, '11150', newCaseList, oldCaseList);
     }
     
     public static void updateIssueJira(List<Case> newCaseList, List<Case> oldCaseList) {       
