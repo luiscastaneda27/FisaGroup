@@ -216,6 +216,8 @@ public without sharing class CaseTriggerHelper {
                 item.addError('El caso se encuentra en Aprobación de Solución IP-Release y no tiene permisos para modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación Diseño Técnico' && item.FS_UsuarioAprobadorDT__c != UserInfo.getUserId()){
                 item.addError('El caso se encuentra en Aprobación de Diseño Técnico y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva N2' && item.FS_UsuarioAprobadorDT__c != UserInfo.getUserId()){
+                item.addError('El caso se encuentra en Aprobación de Diseño Técnico y no tiene permisos para modificarlo.');
             }
         }
     }
@@ -242,7 +244,6 @@ public without sharing class CaseTriggerHelper {
                 item.FS_SubEstado__c = 'Aprobación Solución IP-N2';
                 item.FS_AprobacionSolucionIPN2__c = null;
                 item.FS_MotivosRechazoAprobacionIPN2__c = null;
-                Id notificacionId = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1].Id;
                 if(item.FS_UsuarioAprobadorSolucionIPN2__c == null){
                     for(User usuario : [Select Id, FS_FechaUltimaAprobacion__c from User where UserRoleId = :item.FS_RolPropietario__c And Id != :item.OwnerId Order by FS_FechaUltimaAprobacion__c asc limit 1]){
                         usuario.FS_FechaUltimaAprobacion__c = System.now();
@@ -252,7 +253,7 @@ public without sharing class CaseTriggerHelper {
                 }
                 String titulo = 'Aprobación Solución IP-N2 para caso '+item.CaseNumber;
                 String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación de Solución IP-N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
-                enviarNotificacion(notificacionId, item.FS_UsuarioAprobadorSolucionIPN2__c, item.Id, titulo, descripcion);
+                enviarNotificacion(item.FS_UsuarioAprobadorSolucionIPN2__c, item.Id, titulo, descripcion);
             }
         }
     }
@@ -261,7 +262,6 @@ public without sharing class CaseTriggerHelper {
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_AprobacionSolucionIPN2__c != item.FS_AprobacionSolucionIPN2__c){
-                Id notificacionId = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1].Id;
                 if(item.FS_AprobacionSolucionIPN2__c == 'Si'){
                     item.FS_AprobacionSolucionIPRelease__c = null;
                     item.FS_MotivoRechazoAprobacionIPRealease__c = null;
@@ -275,13 +275,13 @@ public without sharing class CaseTriggerHelper {
                     }
                     String titulo = 'Aprobación de Solución IP-Release para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación de Solución IP-Release para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
-                    enviarNotificacion(notificacionId, item.FS_UsuarioAprobacionSolucionIPRelease__c, item.Id, titulo, descripcion);
+                    enviarNotificacion(item.FS_UsuarioAprobacionSolucionIPRelease__c, item.Id, titulo, descripcion);
                 }else if(item.FS_AprobacionSolucionIPN2__c == 'No'){
                      item.FS_URLResultadoAnalasis__c = null;
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                     String titulo = 'Rechazo de Aprobación Solución IP-N2 para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+UserInfo.getFirstName() + ' ha rechzado la Aprobación de Solución IP-N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
-                    enviarNotificacion(notificacionId, item.OwnerId, item.Id, titulo, descripcion);
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
             }
         }
@@ -291,7 +291,6 @@ public without sharing class CaseTriggerHelper {
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_AprobacionSolucionIPRelease__c != item.FS_AprobacionSolucionIPRelease__c){
-                Id notificacionId = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1].Id;
                 if(item.FS_AprobacionSolucionIPRelease__c == 'Si'){
                     item.FS_SubEstado__c = 'Envío de respuesta';
                     item.Status = 'Validación de Respuesta (Cliente)';
@@ -299,13 +298,13 @@ public without sharing class CaseTriggerHelper {
                     
                     String titulo = 'Aprobación de Solución IP-Release para caso '+item.CaseNumber;
                     String descripcion = 'El Jefe de Release '+UserInfo.getUserName() + ' ha aprobado la Solución IP-Release para el caso número '+item.CaseNumber +' \nMuchas gracias.';
-                    enviarNotificacion(notificacionId, item.OwnerId, item.Id, titulo, descripcion);
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }else if(item.FS_AprobacionSolucionIPRelease__c == 'No'){
                      item.FS_URLResultadoAnalasis__c = null;
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                     String titulo = 'Rechazo de Solución IP-Release para caso '+item.CaseNumber;
                     String descripcion = 'El Jefe de Release '+UserInfo.getUserName() + ' ha rechzado la Solución IP-Release para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
-                    enviarNotificacion(notificacionId, item.OwnerId, item.Id, titulo, descripcion);
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
             }
         }
@@ -361,7 +360,6 @@ public without sharing class CaseTriggerHelper {
                 item.FS_SubEstado__c = 'Aprobación Diseño Técnico';
                 item.FS_AprobacionDisenioTecnico__c = null;
                 item.FS_MotivosRechazoDT__c = null;
-                Id notificacionId = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1].Id;
                 if(item.FS_UsuarioAprobadorDT__c == null){
                     for(User usuario : [Select Id, FS_FechaUltimaAprobacion__c from User where UserRoleId = :item.FS_RolPropietario__c And Id != :item.OwnerId and IsActive = true Order by FS_FechaUltimaAprobacion__c asc limit 1]){
                         usuario.FS_FechaUltimaAprobacion__c = System.now();
@@ -371,13 +369,79 @@ public without sharing class CaseTriggerHelper {
                 }
                 String titulo = 'Aprobación Diseño Técnico para caso '+item.CaseNumber;
                 String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación Diseño Técnico para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
-                enviarNotificacion(notificacionId, item.FS_UsuarioAprobadorDT__c, item.Id, titulo, descripcion);
+                enviarNotificacion(item.FS_UsuarioAprobadorDT__c, item.Id, titulo, descripcion);
 
+            }
+        }
+    }
+    
+    public static void validacionAprobacionDisenioTecnico(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_AprobacionDisenioTecnico__c  != item.FS_AprobacionDisenioTecnico__c){
+                if(item.FS_AprobacionDisenioTecnico__c == 'Si'){
+                    item.FS_SubEstado__c = 'Validación-Entrega de Fuentes';
+                }else if(item.FS_AprobacionDisenioTecnico__c == 'No'){
+                    item.FS_URLDisenioTecnico__c = null;
+                    item.FS_SubEstado__c = 'Elaboración Diseño Técnico';
+                    String titulo = 'Rechazo Diseño Técnico para caso '+item.CaseNumber;
+                    String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado el diseño técnico para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
+                }
+            }
+        }
+    }
+    
+    public static void validacionURLCodigoFuente(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_URLCodigoFuente__c != item.FS_URLCodigoFuente__c  && String.isBlank(caso.FS_URLCodigoFuente__c)){
+                item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
+            }
+        }
+    }
+    
+    public static void validacionURLSolucionDefinitiva(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_URLSolucionDefinitiva__c != item.FS_URLSolucionDefinitiva__c  && String.isBlank(caso.FS_URLSolucionDefinitiva__c)){
+                item.FS_SubEstado__c = 'Aprobación Solución Definitiva N2';
+            }
+        }
+    }
+    
+     public static void validacionAprobacionSolucionDefinitiva(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_AprobacionSolucionDefinitivaN2__c != item.FS_AprobacionSolucionDefinitivaN2__c ){
+                if(item.FS_AprobacionSolucionDefinitivaN2__c == 'Si'){
+                    item.FS_SubEstado__c = 'Aprobación Solución Definitiva Releases';
+                }else if(item.FS_AprobacionSolucionDefinitivaN2__c == 'No'){
+                    item.FS_URLSolucionDefinitiva__c = null;
+                    item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
+                    String titulo = 'Rechazo de Solución Definitiva N2 para caso '+item.CaseNumber;
+                    String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
+                }
             }
         }
     }
 
      
+    public static void upsertCaseJira(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        List<Case> listaCasosNuevos = new List<Case>();
+        List<Case> listaCasosViejos = new List<Case>();
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_SubEstado__c != item.FS_SubEstado__c && (item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo' && item.FS_SubEstado__c == 'Desarrollo Incidente Puntual')){
+                listaCasosNuevos.add(item);
+                listaCasosViejos.add(caso);
+            }
+        }
+        if(!listaCasosNuevos.isEmpty()){
+            createIssueJira(listaCasosNuevos, listaCasosViejos);
+        }
+    }
     
     public static void envioCorreo(Case caso, String nombrePlantilla, Boolean esContacto){
         List<Messaging.SingleEmailMessage> MessageList = new List<Messaging.SingleEmailMessage>();
@@ -412,7 +476,8 @@ public without sharing class CaseTriggerHelper {
         }
     }
     
-    public static void enviarNotificacion(String notificacionId, String usuarioId, String recordId, String titulo, String descripcion){
+    public static void enviarNotificacion(String usuarioId, String recordId, String titulo, String descripcion){
+        Id notificacionId = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1].Id;
         Messaging.CustomNotification notification = new Messaging.CustomNotification();
         notification.setTitle(titulo);
         notification.setBody(descripcion);
@@ -471,8 +536,9 @@ public without sharing class CaseTriggerHelper {
     
     public static void createIssueJira(List<Case> newCaseList, List<Case> oldCaseList) { 
         String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
-        String jiraIssueTypeId = System.Label.FS_IdIssueJira; // Id Issue Jira: Incidente Definitivo
-        
+        String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJira : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
+        //Definitivo 11158
+        System.debug('Se llamo a crear');
         //Conditions to create de Issue in Jira    
         JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
     }

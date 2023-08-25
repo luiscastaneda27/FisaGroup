@@ -104,6 +104,7 @@
 		<members>Case.FS_UsuarioAprobadorDT__c</members>
 		<members>Case.FS_UsuarioAprobadorSolucionIPN2__c</members>
 		<members>User.FS_FechaUltimaAprobacion__c</members>
+		<members>Case.FS_AprobacionSolucionDefinitivaN2__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
@@ -182,6 +183,9 @@
 		<members>Case.FS_InformacionWeb</members>
 		<members>Case.FS_RevisionDocumentacion</members>
 		<members>Case.FS_ValidacionInformacionIncidente</members>
+		<members>Case.FS_AprobacionSolucionDefinitivaN2</members>
+		<members>Case.FS_SolucionDefinitiva</members>
+		<members>Case.FS_ValidacinEntregaFuentes</members>
 		<name>QuickAction</name>
 	</types>
 	<types>
@@ -227,6 +231,7 @@
 		<members>Case.FS_ValidacionRechazoDisenioTecnico</members>
 		<members>Case.FS_ValidacionRechazoIPRelease</members>
 		<members>Case.FS_ValidacionRechazoSolucionIPN2</members>
+		<members>Case.FS_ValidacionRechazoSolucionDefinitivaN2</members>
 		<name>ValidationRule</name>
 	</types>
 	<version>55.0</version>

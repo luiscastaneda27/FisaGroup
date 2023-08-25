@@ -12,7 +12,7 @@ public without sharing class CaseTriggerHandler {
     
     public static void beforeUpdate(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         CaseTriggerHelper.validacionEstado(newCaseList, oldCaseMap);
-        CaseTriggerHelper.validacionSubEstado(newCaseList, oldCaseMap);
+        //CaseTriggerHelper.validacionSubEstado(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionProducto(newCaseList, oldCaseMap);
         CaseTriggerHelper.informacionCompleta(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionTipo(newCaseList, oldCaseMap);
@@ -29,11 +29,17 @@ public without sharing class CaseTriggerHandler {
         
         CaseTriggerHelper.validacionSolucionCortoPlazo(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionURLDisenioTecnico(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionAprobacionDisenioTecnico(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionURLCodigoFuente(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionURLSolucionDefinitiva(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionAprobacionSolucionDefinitiva(newCaseList, oldCaseMap);
+        
     }
     
-    public static void afterUpdate(List<Case> newCaseList, List<Case> oldCaseList) {
+    public static void afterUpdate(List<Case> newCaseList, Map<Id, Case> oldCaseMap) {
     	//Update Issue in Jira
-        CaseTriggerHelper.updateIssueJira(newCaseList, oldCaseList);   
+        //CaseTriggerHelper.updateIssueJira(newCaseList, oldCaseList);
+        CaseTriggerHelper.upsertCaseJira(newCaseList, oldCaseMap);
     }
     
     

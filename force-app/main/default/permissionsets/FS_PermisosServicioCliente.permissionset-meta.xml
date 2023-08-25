@@ -84,6 +84,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.FS_AprobacionSolucionDefinitivaN2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.FS_AprobacionSolucionIPN2__c</field>
         <readable>true</readable>
     </fieldPermissions>
