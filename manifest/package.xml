@@ -107,6 +107,7 @@
 		<members>Case.FS_AprobacionSolucionDefinitivaRelease__c</members>
 		<members>Case.FS_AprobacionPlanPruebas__c</members>
 		<members>Case.FS_UsuarioAprobadorPlanPruebas__c</members>
+		<members>Case.FS_PropietarioCasoSolucionCortoPlazo__c</members>
 		<members>User.FS_FechaUltimaAprobacion__c</members>
 		<name>CustomField</name>
 	</types>

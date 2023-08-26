@@ -1,13 +1,10 @@
 public without sharing class CaseTriggerHandler {
 
     public static void beforeInsert(List<Case> newCaseList){
-        //CaseTriggerHelper.asignacionCola(newCaseList);
     }
     
     public static void afterInsert(List<Case> newCaseList, List<Case> oldCaseList){
         CaseTriggerHelper.validacionCorreoNuevo(newCaseList);
-        //Create Issue in Jira
-        CaseTriggerHelper.createIssueJira(newCaseList, oldCaseList);
     }
     
     public static void beforeUpdate(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
@@ -41,8 +38,6 @@ public without sharing class CaseTriggerHandler {
     }
     
     public static void afterUpdate(List<Case> newCaseList, Map<Id, Case> oldCaseMap) {
-    	//Update Issue in Jira
-        //CaseTriggerHelper.updateIssueJira(newCaseList, oldCaseList);
         CaseTriggerHelper.upsertCaseJira(newCaseList, oldCaseMap);
     }
     
