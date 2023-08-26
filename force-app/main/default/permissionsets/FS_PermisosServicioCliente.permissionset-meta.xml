@@ -84,6 +84,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.FS_AprobacionPlanPruebas__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.FS_AprobacionSolucionDefinitivaN2__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -400,6 +405,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.FS_UsuarioAprobadorDT__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_UsuarioAprobadorPlanPruebas__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

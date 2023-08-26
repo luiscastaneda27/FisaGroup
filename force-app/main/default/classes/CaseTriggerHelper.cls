@@ -10,11 +10,18 @@ public without sharing class CaseTriggerHelper {
     
     static{
         mapColas = new Map<String, String>();
-        Map<String, String> mapColas = new Map<String, String>();
         for(Group item: [Select Id, DeveloperName from Group Where DeveloperName Like '%FS_%' and Type = 'Queue']){
             mapColas.put(item.DeveloperName, item.Id);
         }
     }
+    
+    public static Map<String, String> getColas(){
+        Map<String, String> mapColas = new Map<String, String>();
+        for(Group item: [Select Id, DeveloperName from Group Where DeveloperName Like '%FS_%' and Type = 'Queue']){
+            mapColas.put(item.DeveloperName, item.Id);
+        }
+        return mapColas;
+    } 
     
     private static final String CONSULTA_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Consulta').getRecordTypeId();
     private static final String SOLICITUD_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Solicitud').getRecordTypeId();
@@ -231,6 +238,8 @@ public without sharing class CaseTriggerHelper {
                 item.addError('El caso se encuentra en Aprobación Solución Definitiva N2 y no tiene permisos para modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva Releases' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c)){
                 item.addError('El caso se encuentra en Aprobación de Solución Definitiva Releases y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Plan de Pruebas' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
+                item.addError('El caso se encuentra en Aprobación de Solución Definitiva Releases y no tiene permisos para modificarlo.');
             }
         }
     }
@@ -257,13 +266,7 @@ public without sharing class CaseTriggerHelper {
                 item.FS_SubEstado__c = 'Aprobación Solución IP-N2';
                 item.FS_AprobacionSolucionIPN2__c = null;
                 item.FS_MotivosRechazoAprobacionIPN2__c = null;
-                if(item.FS_UsuarioAprobadorSolucionIPN2__c == null){
-                    for(User usuario : [Select Id, FS_FechaUltimaAprobacion__c from User where UserRoleId = :item.FS_RolPropietario__c And Id != :item.OwnerId Order by FS_FechaUltimaAprobacion__c asc limit 1]){
-                        usuario.FS_FechaUltimaAprobacion__c = System.now();
-                        item.FS_UsuarioAprobadorSolucionIPN2__c = usuario.Id;
-                        update usuario;
-                    }
-                }
+                item.FS_UsuarioAprobadorSolucionIPN2__c = item.FS_UsuarioAprobadorSolucionIPN2__c == null ? getUsuario(item) : item.FS_UsuarioAprobadorSolucionIPN2__c;
                 String titulo = 'Aprobación Solución IP-N2 para caso '+item.CaseNumber;
                 String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación de Solución IP-N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                 enviarNotificacion(item.FS_UsuarioAprobadorSolucionIPN2__c, item.Id, titulo, descripcion);
@@ -359,13 +362,7 @@ public without sharing class CaseTriggerHelper {
                 item.FS_SubEstado__c = 'Aprobación Diseño Técnico';
                 item.FS_AprobacionDisenioTecnico__c = null;
                 item.FS_MotivosRechazoDT__c = null;
-                if(item.FS_UsuarioAprobadorDT__c == null){
-                    for(User usuario : [Select Id, FS_FechaUltimaAprobacion__c from User where UserRoleId = :item.FS_RolPropietario__c And Id != :item.OwnerId and IsActive = true Order by FS_FechaUltimaAprobacion__c asc limit 1]){
-                        usuario.FS_FechaUltimaAprobacion__c = System.now();
-                        item.FS_UsuarioAprobadorDT__c = usuario.Id;
-                        update usuario;
-                    }
-                }
+                item.FS_UsuarioAprobadorDT__c = item.FS_UsuarioAprobadorDT__c == null ? getUsuario(item) : item.FS_UsuarioAprobadorDT__c;
                 String titulo = 'Aprobación Diseño Técnico para caso '+item.CaseNumber;
                 String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación Diseño Técnico para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                 enviarNotificacion(item.FS_UsuarioAprobadorDT__c, item.Id, titulo, descripcion);
@@ -409,7 +406,7 @@ public without sharing class CaseTriggerHelper {
         }
     }
     
-     public static void validacionAprobacionSolucionDefinitiva(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+     public static void validacionAprobacionSolucionDefinitivaN2(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_AprobacionSolucionDefinitivaN2__c != item.FS_AprobacionSolucionDefinitivaN2__c ){
@@ -436,12 +433,66 @@ public without sharing class CaseTriggerHelper {
                     item.FS_Area__c =  esCore ? 'QA CC-CORE' : 'QA CC-OMNIA';
                     item.FS_SubEstado__c = 'Escalado a QA';
                 }else if(item.FS_AprobacionSolucionDefinitivaRelease__c == 'No'){
-                    
+                    item.FS_URLSolucionDefinitiva__c = null;
+                    item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
+                    String titulo = 'Rechazo de Solución Definitiva N2 para caso '+item.CaseNumber;
+                    String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
             }
         }
     }
+    
+    public static void validacionURLPlanPruebas(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_URLPlanPruebas__c != item.FS_URLPlanPruebas__c  && String.isBlank(caso.FS_URLPlanPruebas__c)){
+                item.FS_SubEstado__c = 'Aprobación Plan de Pruebas';
+                item.FS_AprobacionPlanPruebas__c = null;
+                item.FS_MotivoRechazoPlanPruebas__c = null;
+                item.FS_UsuarioAprobadorPlanPruebas__c = item.FS_UsuarioAprobadorPlanPruebas__c == null ? getUsuario(item) : item.FS_UsuarioAprobadorPlanPruebas__c;
+                String titulo = 'Aprobación Plan de pruebas para caso '+item.CaseNumber;
+                String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación de Plan de pruebas para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                enviarNotificacion(item.FS_UsuarioAprobadorPlanPruebas__c, item.Id, titulo, descripcion);
+            }
+        }
+    }
+    
+    public static void validacionAprobacionPlanPruebas(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_AprobacionPlanPruebas__c != item.FS_AprobacionPlanPruebas__c){
+                if(item.FS_AprobacionPlanPruebas__c == 'Si'){
+                    item.FS_SubEstado__c = 'Instalación Parche Releases';
+                }else if(item.FS_AprobacionPlanPruebas__c == 'No'){
+                    item.FS_URLPlanPruebas__c = null;
+                    item.FS_SubEstado__c = 'Elaboración Plan de Pruebas';
+                    String titulo = 'Rechazo Plan de pruebas para caso '+item.CaseNumber;
+                    String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado el Plan de Pruebas para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
+                }
+            }
+        }
+    }
+    
+    public static void validacionURLAmbientePruebas(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_UrlAmbientePruebas__c != item.FS_UrlAmbientePruebas__c && String.isBlank(caso.FS_UrlAmbientePruebas__c)){
+                item.FS_SubEstado__c = 'Aprobación Instalación Parche - Releases';
+            }
+        }
+    }
 
+    public static Id getUsuario(Case caso){
+        Id userId;
+        for(User usuario : [Select Id, FS_FechaUltimaAprobacion__c from User where UserRoleId = :caso.FS_RolPropietario__c And Id != :caso.OwnerId and IsActive = true Order by FS_FechaUltimaAprobacion__c asc limit 1]){
+            usuario.FS_FechaUltimaAprobacion__c = System.now();
+            update usuario;
+            userId = usuario.Id;
+        }
+        return userId;
+    }
      
     public static void upsertCaseJira(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         List<Case> casesNewIP = new List<Case>();

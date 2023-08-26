@@ -105,6 +105,8 @@
 		<members>Case.FS_UsuarioAprobadorDT__c</members>
 		<members>Case.FS_UsuarioAprobadorSolucionIPN2__c</members>
 		<members>Case.FS_AprobacionSolucionDefinitivaRelease__c</members>
+		<members>Case.FS_AprobacionPlanPruebas__c</members>
+		<members>Case.FS_UsuarioAprobadorPlanPruebas__c</members>
 		<members>User.FS_FechaUltimaAprobacion__c</members>
 		<name>CustomField</name>
 	</types>
@@ -198,6 +200,9 @@
 		<members>Case.FS_ValidacinEntregaFuentes</members>
 		<members>Case.FS_ValidacionInformacionIncidente</members>
 		<members>Case.FS_AprobacionSolucionDefinitivaReleases</members>
+		<members>Case.FS_AprobacinPlanPruebas</members>
+		<members>Case.FS_ElaboracionPlanPruebas</members>
+		<members>Case.FS_InstalacinParcheReleases</members>
 		<name>QuickAction</name>
 	</types>
 	<types>

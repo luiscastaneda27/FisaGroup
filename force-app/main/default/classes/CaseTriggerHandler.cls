@@ -32,7 +32,11 @@ public without sharing class CaseTriggerHandler {
         CaseTriggerHelper.validacionAprobacionDisenioTecnico(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionURLCodigoFuente(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionURLSolucionDefinitiva(newCaseList, oldCaseMap);
-        CaseTriggerHelper.validacionAprobacionSolucionDefinitiva(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionAprobacionSolucionDefinitivaN2(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionAprobacionSolucionDefinitivaRelease(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionURLPlanPruebas(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionAprobacionPlanPruebas(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionURLAmbientePruebas(newCaseList, oldCaseMap);
         
     }
     

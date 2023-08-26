@@ -2,6 +2,11 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>Atención QA - Core</name>
+    <queueMembers>
+        <users>
+            <user>luis.castaneda@intellectsystem</user>
+        </users>
+    </queueMembers>
     <queueRoutingConfig>FS_AtencionQACore</queueRoutingConfig>
     <queueSobject>
         <sobjectType>Case</sobjectType>
