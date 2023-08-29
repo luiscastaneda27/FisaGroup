@@ -239,7 +239,11 @@ public without sharing class CaseTriggerHelper {
             }else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva Releases' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c)){
                 item.addError('El caso se encuentra en Aprobación de Solución Definitiva Releases y no tiene permisos para modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación Plan de Pruebas' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
-                item.addError('El caso se encuentra en Aprobación de Solución Definitiva Releases y no tiene permisos para modificarlo.');
+                item.addError('El caso se encuentra en Aprobación Plan de Pruebas y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Instalación Parche - Releases' && String.isBlank(item.FS_UsuarioAprobadorInstalacionParcheRele__c)){
+                item.addError('El caso se encuentra en Aprobación Instalación Parche - Releases y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
+                item.addError('El caso se encuentra en Aprobación Certificación Parche QA y no tiene permisos para modificarlo.');
             }
         }
     }
@@ -480,6 +484,65 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_UrlAmbientePruebas__c != item.FS_UrlAmbientePruebas__c && String.isBlank(caso.FS_UrlAmbientePruebas__c)){
                 item.FS_SubEstado__c = 'Aprobación Instalación Parche - Releases';
+            }
+        }
+    }
+    
+    public static void validacionAprobacionInstalacionRelease(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_AprobacionInstalacionParcheRelease__c  != item.FS_AprobacionInstalacionParcheRelease__c ){
+                if(item.FS_AprobacionInstalacionParcheRelease__c == 'Si'){
+                    item.FS_SubEstado__c = 'Certificación Parche QA';
+                }else if(item.FS_AprobacionInstalacionParcheRelease__c == 'No'){
+                    item.FS_UrlAmbientePruebas__c = null;
+                    item.FS_URLSolucionDefinitiva__c = null;
+                    item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
+                    String titulo = 'Rechazo de Instalación Parche - Releases para caso '+item.CaseNumber;
+                    String descripcion = 'El agente ' + item.FS_UsuarioAprobadorInstalacionParcheRele__c  + ' ha rechazado la Instalación Parche - Releases para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
+                }
+            }
+        }
+    }
+    
+    public static void validacionURLEvidenciaPruebas(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_UrlEvidenciaPruebas__c != item.FS_UrlEvidenciaPruebas__c && String.isBlank(caso.FS_UrlEvidenciaPruebas__c)){
+                item.FS_SubEstado__c = 'Aprobación Certificación Parche QA';
+                String titulo = 'Aprobación Certificación Parche QA para caso '+item.CaseNumber;
+                String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación Certificación Parche QA para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                enviarNotificacion(item.FS_UsuarioAprobadorPlanPruebas__c, item.Id, titulo, descripcion);
+            }
+        }
+    }
+    
+    public static void validacionAprobacionCertificacionQA(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_AprobacionCertificacionParcheQA__c != item.FS_AprobacionCertificacionParcheQA__c){
+                if(item.FS_AprobacionCertificacionParcheQA__c  == 'Si'){
+                    item.FS_SubEstado__c = 'Entrega de Parche';
+                }else if(item.FS_AprobacionCertificacionParcheQA__c  == 'No'){
+                    item.FS_URLSolucionDefinitiva__c = null;
+                    item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
+                    String titulo = 'Rechazo de Certificación Parche QA para caso '+item.CaseNumber;
+                    String descripcion = 'El agente ' + item.FS_UsuarioAprobadorInstalacionParcheRele__c  + ' ha rechazado la Certificación Parche QA para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
+                }
+            }
+        }
+    }
+    
+    public static void validacionUrlEntregaParche(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_URLParcheCliente__c  != item.FS_URLParcheCliente__c  && String.isBlank(caso.FS_URLParcheCliente__c)){
+                item.FS_SubEstado__c = 'Instalación de Parche';
+                //String titulo = 'Aprobación Certificación Parche QA para caso '+item.CaseNumber;
+                //String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación Certificación Parche QA para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                //enviarNotificacion(item.FS_UsuarioAprobadorPlanPruebas__c, item.Id, titulo, descripcion);
             }
         }
     }

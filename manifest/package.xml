@@ -40,8 +40,12 @@
 		<members>Case.FS_1erCostoAprobado__c</members>
 		<members>Case.FS_Acepta1erCosto__c</members>
 		<members>Case.FS_AceptaRespuesta__c</members>
+		<members>Case.FS_AprobacionCertificacionParcheQA__c</members>
 		<members>Case.FS_AprobacionDisenioTecnico__c</members>
+		<members>Case.FS_AprobacionInstalacionParcheRelease__c</members>
+		<members>Case.FS_AprobacionPlanPruebas__c</members>
 		<members>Case.FS_AprobacionSolucionDefinitivaN2__c</members>
+		<members>Case.FS_AprobacionSolucionDefinitivaRelease__c</members>
 		<members>Case.FS_AprobacionSolucionIPN2__c</members>
 		<members>Case.FS_AprobacionSolucionIPRelease__c</members>
 		<members>Case.FS_Area__c</members>
@@ -82,6 +86,7 @@
 		<members>Case.FS_NumeroHorasSolicitud__c</members>
 		<members>Case.FS_NumeroRequerimientosNuevo__c</members>
 		<members>Case.FS_Producto__c</members>
+		<members>Case.FS_PropietarioCasoSolucionCortoPlazo__c</members>
 		<members>Case.FS_Proyecto__c</members>
 		<members>Case.FS_PudeSolventarPregunta__c</members>
 		<members>Case.FS_Referencia__c</members>
@@ -103,11 +108,9 @@
 		<members>Case.FS_UsuarioAprobacionSolucionRelease__c</members>
 		<members>Case.FS_UsuarioAprobador1erCosto__c</members>
 		<members>Case.FS_UsuarioAprobadorDT__c</members>
-		<members>Case.FS_UsuarioAprobadorSolucionIPN2__c</members>
-		<members>Case.FS_AprobacionSolucionDefinitivaRelease__c</members>
-		<members>Case.FS_AprobacionPlanPruebas__c</members>
+		<members>Case.FS_UsuarioAprobadorInstalacionParcheRele__c</members>
 		<members>Case.FS_UsuarioAprobadorPlanPruebas__c</members>
-		<members>Case.FS_PropietarioCasoSolucionCortoPlazo__c</members>
+		<members>Case.FS_UsuarioAprobadorSolucionIPN2__c</members>
 		<members>User.FS_FechaUltimaAprobacion__c</members>
 		<name>CustomField</name>
 	</types>
@@ -181,29 +184,33 @@
 		<name>QueueRoutingConfig</name>
 	</types>
 	<types>
+		<members>Case.FS_AprobacinPlanPruebas</members>
+		<members>Case.FS_AprobacionCertificacionParcheQA</members>
 		<members>Case.FS_AprobacionDisenioTecnico</members>
+		<members>Case.FS_AprobacionInstalacionParcheReleases</members>
 		<members>Case.FS_AprobacionSolucionDefinitivaN2</members>
+		<members>Case.FS_AprobacionSolucionDefinitivaReleases</members>
 		<members>Case.FS_AprobacionSolucionIPN2</members>
 		<members>Case.FS_AprobacionSolucionIPRelease</members>
 		<members>Case.FS_CamposControlConsulta</members>
 		<members>Case.FS_CamposControlIncidente</members>
 		<members>Case.FS_CamposControlIncidenteDefinitivo</members>
 		<members>Case.FS_CamposControlSolicitud</members>
+		<members>Case.FS_CertificacinParcheQA</members>
 		<members>Case.FS_DatosAprobacinSolicitud</members>
 		<members>Case.FS_DatosEncuesta</members>
 		<members>Case.FS_DatosRespuesta</members>
 		<members>Case.FS_Descripcion</members>
 		<members>Case.FS_DetalleCaso</members>
 		<members>Case.FS_ElaboracinDisenioTecnico</members>
+		<members>Case.FS_ElaboracionPlanPruebas</members>
+		<members>Case.FS_EntregaParche</members>
 		<members>Case.FS_InformacionWeb</members>
+		<members>Case.FS_InstalacinParcheReleases</members>
 		<members>Case.FS_RevisionDocumentacion</members>
 		<members>Case.FS_SolucionDefinitiva</members>
 		<members>Case.FS_ValidacinEntregaFuentes</members>
 		<members>Case.FS_ValidacionInformacionIncidente</members>
-		<members>Case.FS_AprobacionSolucionDefinitivaReleases</members>
-		<members>Case.FS_AprobacinPlanPruebas</members>
-		<members>Case.FS_ElaboracionPlanPruebas</members>
-		<members>Case.FS_InstalacinParcheReleases</members>
 		<name>QuickAction</name>
 	</types>
 	<types>
@@ -246,9 +253,11 @@
 	<types>
 		<members>Case.FS_ValidacionFechaCompromisoDesarrollo</members>
 		<members>Case.FS_ValidacionFechaCompromisoEntrega</members>
+		<members>Case.FS_ValidacionRechazoCertificParcheQA</members>
 		<members>Case.FS_ValidacionRechazoDisenioTecnico</members>
 		<members>Case.FS_ValidacionRechazoIDRelease</members>
 		<members>Case.FS_ValidacionRechazoIPRelease</members>
+		<members>Case.FS_ValidacionRechazoInstalacionParcheRel</members>
 		<members>Case.FS_ValidacionRechazoSolucionDefinitivaN2</members>
 		<members>Case.FS_ValidacionRechazoSolucionIPN2</members>
 		<name>ValidationRule</name>
