@@ -56,7 +56,6 @@
 		<members>Case.FS_CasoRQOrigenNovedad__c</members>
 		<members>Case.FS_ComentarioMotivoNoInstalacionParche__c</members>
 		<members>Case.FS_ComentariosEncuesta__c</members>
-		<members>Case.FS_ComentariosInternos__c</members>
 		<members>Case.FS_ComentariosRespuesta__c</members>
 		<members>Case.FS_DescripcionCliente__c</members>
 		<members>Case.FS_EncuestaEnviada__c</members>
@@ -93,6 +92,8 @@
 		<members>Case.FS_PudeSolventarPregunta__c</members>
 		<members>Case.FS_Referencia__c</members>
 		<members>Case.FS_ResultadoEncuesta__c</members>
+		<members>Case.FS_ReunionCSAT__c</members>
+		<members>Case.FS_ReunionesCliente__c</members>
 		<members>Case.FS_RolPropietario__c</members>
 		<members>Case.FS_SolucionCortoPlazo__c</members>
 		<members>Case.FS_SubEstadoAnterior__c</members>
@@ -206,6 +207,7 @@
 		<members>Case.FS_CamposControlIncidenteDefinitivo</members>
 		<members>Case.FS_CamposControlSolicitud</members>
 		<members>Case.FS_CertificacinParcheQA</members>
+		<members>Case.FS_ComentariosInternos</members>
 		<members>Case.FS_DatosAprobacinSolicitud</members>
 		<members>Case.FS_DatosEncuesta</members>
 		<members>Case.FS_DatosRespuesta</members>

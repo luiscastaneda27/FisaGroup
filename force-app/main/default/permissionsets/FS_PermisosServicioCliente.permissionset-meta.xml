@@ -159,11 +159,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Case.FS_ComentariosInternos__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Case.FS_ComentariosRespuesta__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -340,6 +335,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.FS_ResultadoEncuesta__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_ReunionCSAT__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_ReunionesCliente__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

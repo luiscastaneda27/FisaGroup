@@ -294,11 +294,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Case.FS_ComentariosInternos__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Case.FS_ComentariosRespuesta__c</field>
         <readable>true</readable>
     </fieldPermissions>
