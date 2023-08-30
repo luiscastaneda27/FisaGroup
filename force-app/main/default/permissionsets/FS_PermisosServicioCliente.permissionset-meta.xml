@@ -74,6 +74,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.FS_AceptaInstalacionParche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_AceptaPaseProducion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.FS_AceptaRespuesta__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -340,6 +350,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.FS_SolucionCortoPlazo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_SubEstadoAnterior__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

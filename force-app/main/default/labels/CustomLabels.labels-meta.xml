@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+     <labels>
+        <fullName>FS_CorreosPaseProduccionAceptado</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_CorreosPaseProduccionAceptado</shortDescription>
+        <value>elisa.valle@intellectsystem.net</value>
+    </labels>
     <labels>
         <fullName>FS_UrlPortalEncuestas</fullName>
         <language>es</language>

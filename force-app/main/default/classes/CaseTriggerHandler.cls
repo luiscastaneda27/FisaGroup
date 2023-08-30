@@ -38,6 +38,8 @@ public without sharing class CaseTriggerHandler {
         CaseTriggerHelper.validacionURLEvidenciaPruebas(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionAprobacionCertificacionQA(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionUrlEntregaParche(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionAceptaInstalacionParche(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionAceptaPaseProduccion(newCaseList, oldCaseMap);
         
     }
     

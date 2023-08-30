@@ -23,6 +23,10 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         pendienteHoras: false,
         pendienteInformacionDetalle: false,
         pendienteInformacion: false,
+        pendienteInstalacionParcheDetalle: false,
+        pendienteInstalacionParche: false,
+        pendientePaseProduccionDetalle: false,
+        pendientePaseProduccion: false,
 
     }
 
@@ -37,6 +41,7 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             this.data.caso = response.caso;
             this.data.listAceptaRespuesta = response.listAceptaRespuesta;
             this.data.listMotivosRechazo = response.listMotivosRechazo;
+            this.data.listMotivosRechazoParche = response.listMotivosRechazoParche;
             if(response.caso.FS_SubEstado__c === "Envío de respuesta" && response.caso.FS_AceptaRespuesta__c === undefined){
                 this.data.pendienteRespuesta = true;
                 this.data.pendienteRespuestaDetalle = true;
@@ -49,6 +54,15 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             }else if(response.caso.FS_SubEstado__c === "En Espera de Respuesta del Cliente" && response.caso.FS_InformacionCompleta__c === "No"){
                 this.data.pendienteInformacionDetalle = true;
                 this.data.pendienteInformacion = true;
+            }else if(response.caso.FS_SubEstado__c === "Instalación de Parche"){
+                this.data.pendienteInstalacionParcheDetalle = true;
+                this.data.pendienteInstalacionParche = true;
+            }else if(response.caso.FS_SubEstado__c === "Paso a Producción"){
+                this.data.pendientePaseProduccionDetalle = true;
+                this.data.pendientePaseProduccion = true;
+            }else if(response.caso.FS_SubEstado__c === "Paso a Producción Confirmado" && response.caso.Status === "Pendiente de Respuesta CSAT"){
+                this.data.pendienteEncuesta = true;
+                this.data.pendienteEncuestaDetalle = true;
             }
             this.showSpinner = false;
         }).catch(error => {
@@ -79,6 +93,8 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         this.data.pendienteRespuesta = false;
         this.data.pendienteHoras = false;
         this.data.pendienteInformacion = false;
+        this.data.pendienteInstalacionParche = false;
+        this.data.pendientePaseProduccion = false;
     }
 
     handleChange(event){
@@ -87,18 +103,24 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         this.data.botonDeshabilitado = true;
         if(name === "aceptaResp"){
             this.data.caso.FS_AceptaRespuesta__c = value;
-            if(value == "Si"){
-                this.data.mostrarRechazo = false;
-                this.data.caso.FS_MotivoRechazo__c = null;
-            }else{
-                this.data.mostrarRechazo = true;
-            }
+            this.data.mostrarRechazo = (value != "Si");
+            this.data.caso.FS_MotivoRechazo__c = !this.data.mostrarRechazo ? null : this.data.caso.FS_MotivoRechazo__c; 
         }else if(name === "motivoRechazo"){
             this.data.caso.FS_MotivoRechazo__c = value;
         }else if(name === "comentarioResp"){
             this.data.caso.FS_ComentariosRespuesta__c = value;
         }else if(name === "aceptaHoras"){
             this.data.caso.FS_Acepta1erCosto__c = value;
+        }else if(name === "motivoRechazoParche"){
+            this.data.caso.FS_MotivosRechazoInstalacionParche__c = value;
+        }else if(name === "comentarioParch"){
+            this.data.caso.FS_ComentarioMotivoNoInstalacionParche__c = value;
+        }else if(name === "aceptaParche"){
+            this.data.caso.FS_AceptaInstalacionParche__c = value;
+            this.data.mostrarRechazo = (value != "Si");
+            this.data.caso.FS_MotivosRechazoInstalacionParche__c = !this.data.mostrarRechazo ? null : this.data.caso.FS_MotivosRechazoInstalacionParche__c; 
+        }else if(name === "aceptaPase"){
+            this.data.caso.FS_AceptaPaseProducion__c = value;
         }
         this.validarBotonPendResp();
     }
@@ -116,6 +138,8 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             this.data.pendienteRespuestaDetalle = false;
             this.data.pendienteHorasDetalle= false;
             this.data.pendienteInformacionDetalle = false;
+            this.data.pendienteInstalacionParcheDetalle = false;
+            this.data.pendientePaseProduccionDetalle = false;
             this.init();
             this.showSpinner = false;
             this.pushMessage('Exitoso', 'success', 'Datos guardados exitosamente');
@@ -126,9 +150,11 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
     }
 
     validarBotonPendResp(){
-        if(this.data.caso.FS_AceptaRespuesta__c === "Si"){
+        if(this.data.caso.FS_AceptaRespuesta__c === "Si" || this.data.caso.FS_AceptaInstalacionParche__c === "Si" ){
             this.data.botonDeshabilitado = false;
         }else if(this.data.caso.FS_AceptaRespuesta__c === "No" && this.data.caso.FS_MotivoRechazo__c  != null && this.data.caso.FS_ComentariosRespuesta__c != null){
+            this.data.botonDeshabilitado = false;
+        }else if(this.data.caso.FS_AceptaInstalacionParche__c === "No" && this.data.caso.FS_MotivosRechazoInstalacionParche__c  != null && this.data.caso.FS_ComentarioMotivoNoInstalacionParche__c != null){
             this.data.botonDeshabilitado = false;
         }else if(this.data.caso.FS_Acepta1erCosto__c != null){
             this.data.botonDeshabilitado = false;
@@ -143,6 +169,10 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             this.data.pendienteHoras = true;
         }else if(this.data.pendienteInformacionDetalle){
             this.data.pendienteInformacion = true;
+        }else if(this.data.pendienteInstalacionParcheDetalle){
+            this.data.pendienteInstalacionParche = true;
+        }else if(this.data.pendientePaseProduccionDetalle){
+            this.data.pendientePaseProduccion = true;
         }
     }
 

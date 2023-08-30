@@ -39,6 +39,8 @@
 		<members>Account.FS_ServicioRemoto__c</members>
 		<members>Case.FS_1erCostoAprobado__c</members>
 		<members>Case.FS_Acepta1erCosto__c</members>
+		<members>Case.FS_AceptaInstalacionParche__c</members>
+		<members>Case.FS_AceptaPaseProducion__c</members>
 		<members>Case.FS_AceptaRespuesta__c</members>
 		<members>Case.FS_AprobacionCertificacionParcheQA__c</members>
 		<members>Case.FS_AprobacionDisenioTecnico__c</members>
@@ -93,6 +95,7 @@
 		<members>Case.FS_ResultadoEncuesta__c</members>
 		<members>Case.FS_RolPropietario__c</members>
 		<members>Case.FS_SolucionCortoPlazo__c</members>
+		<members>Case.FS_SubEstadoAnterior__c</members>
 		<members>Case.FS_SubEstadoQueSePideInformacion__c</members>
 		<members>Case.FS_SubEstado__c</members>
 		<members>Case.FS_SubModulo__c</members>
@@ -115,6 +118,10 @@
 		<name>CustomField</name>
 	</types>
 	<types>
+		<members>FS_CorreosPaseProduccionAceptado</members>
+		<name>CustomLabel</name>
+	</types>
+	<types>
 		<members>FS_NotificacionServicio</members>
 		<name>CustomNotificationType</name>
 	</types>
@@ -133,6 +140,8 @@
 		<members>FS_CorreosClientesCasos/FS_Encuesta</members>
 		<members>FS_CorreosClientesCasos/FS_EnvioPrimerCosto</members>
 		<members>FS_CorreosClientesCasos/FS_InformacionFaltante</members>
+		<members>FS_CorreosClientesCasos/FS_PaseProduccion</members>
+		<members>FS_CorreosClientesCasos/FS_PaseProduccionAceptado</members>
 		<members>FS_CorreosClientesCasos/FS_RechazoRespuesta</members>
 		<members>FS_CorreosClientesCasos/FS_ValidacionInformacion</members>
 		<name>EmailTemplate</name>
@@ -258,6 +267,7 @@
 		<members>Case.FS_ValidacionRechazoIDRelease</members>
 		<members>Case.FS_ValidacionRechazoIPRelease</members>
 		<members>Case.FS_ValidacionRechazoInstalacionParcheRel</members>
+		<members>Case.FS_ValidacionRechazoPlanPruebas</members>
 		<members>Case.FS_ValidacionRechazoSolucionDefinitivaN2</members>
 		<members>Case.FS_ValidacionRechazoSolucionIPN2</members>
 		<name>ValidationRule</name>

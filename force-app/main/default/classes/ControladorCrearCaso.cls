@@ -38,6 +38,7 @@ public without sharing class ControladorCrearCaso {
         respuesta.caso = DataBase.query(query);
         respuesta.listAceptaRespuesta = getPickListOption('Case', 'FS_AceptaRespuesta__c');
         respuesta.listMotivosRechazo = getPickListOption('Case', 'FS_MotivoRechazo__c');
+        respuesta.listMotivosRechazoParche = getPickListOption('Case', 'FS_MotivosRechazoInstalacionParche__c');
         return respuesta;
     }
     
@@ -117,6 +118,7 @@ public without sharing class ControladorCrearCaso {
         @AuraEnabled public Case caso {get;set;}
         @AuraEnabled public List<PickListOption> listAceptaRespuesta {get;set;}
         @AuraEnabled public List<PickListOption> listMotivosRechazo {get;set;}
+        @AuraEnabled public List<PickListOption> listMotivosRechazoParche {get;set;}
     }
     
     public class Producto{

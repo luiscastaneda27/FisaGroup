@@ -138,11 +138,7 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void solventarPregunta(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-        /*Map<String, String> m.apColas = new Map<String, String>();
-        for(Group item: [Select Id, DeveloperName from Group Where DeveloperName In (:COLA_ATENCION_N2_CORE, :COLA_ATENCION_N2_OMNIA) and Type = 'Queue']){
-            m.apColas.put(item.DeveloperName, item.Id);
-        }*/
-         for(Case item: newCaseList){
+        for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_PudeSolventarPregunta__c != item.FS_PudeSolventarPregunta__c){
                 if(item.FS_PudeSolventarPregunta__c == 'Si'){
@@ -309,6 +305,7 @@ public without sharing class CaseTriggerHelper {
                     String titulo = 'Aprobación de Solución IP-Release para caso '+item.CaseNumber;
                     String descripcion = 'El Jefe de Release ' + item.FS_UsuarioAprobacionSolucionRelease__c + ' ha aprobado la Solución IP-Release para el caso número '+item.CaseNumber +' \nMuchas gracias.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
+                    envioCorreo(item, 'FS_ValidacionInformacion', true);
                 }else if(item.FS_AprobacionSolucionIPRelease__c == 'No'){
                      item.FS_URLResultadoAnalasis__c = null;
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
@@ -432,10 +429,15 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_AprobacionSolucionDefinitivaRelease__c != item.FS_AprobacionSolucionDefinitivaRelease__c){
                 if(item.FS_AprobacionSolucionDefinitivaRelease__c == 'Si'){
-                    Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
-                    item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_QA_CORE : COLA_ATENCION_QA_OMNIA);
-                    item.FS_Area__c =  esCore ? 'QA CC-CORE' : 'QA CC-OMNIA';
-                    item.FS_SubEstado__c = 'Escalado a QA';
+                    if(String.isNotBlank(item.FS_SubEstadoAnterior__c)){
+                        item.FS_SubEstadoAnterior__c = null;
+                        item.FS_SubEstado__c = 'Instalación Parche Releases';
+                    }else{
+                        Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
+                        item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_QA_CORE : COLA_ATENCION_QA_OMNIA);
+                        item.FS_Area__c =  esCore ? 'QA CC-CORE' : 'QA CC-OMNIA';
+                        item.FS_SubEstado__c = 'Escalado a QA';   
+                    }
                 }else if(item.FS_AprobacionSolucionDefinitivaRelease__c == 'No'){
                     item.FS_URLSolucionDefinitiva__c = null;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
@@ -495,6 +497,7 @@ public without sharing class CaseTriggerHelper {
                 if(item.FS_AprobacionInstalacionParcheRelease__c == 'Si'){
                     item.FS_SubEstado__c = 'Certificación Parche QA';
                 }else if(item.FS_AprobacionInstalacionParcheRelease__c == 'No'){
+                    item.FS_SubEstadoAnterior__c = item.FS_SubEstado__c;
                     item.FS_UrlAmbientePruebas__c = null;
                     item.FS_URLSolucionDefinitiva__c = null;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
@@ -540,9 +543,43 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_URLParcheCliente__c  != item.FS_URLParcheCliente__c  && String.isBlank(caso.FS_URLParcheCliente__c)){
                 item.FS_SubEstado__c = 'Instalación de Parche';
-                //String titulo = 'Aprobación Certificación Parche QA para caso '+item.CaseNumber;
-                //String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación Certificación Parche QA para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
-                //enviarNotificacion(item.FS_UsuarioAprobadorPlanPruebas__c, item.Id, titulo, descripcion);
+                item.Status = 'Validación de Respuesta (Cliente)';
+                item.FS_AceptaRespuesta__c = null;
+                envioCorreo(item, 'FS_ValidacionInformacion', true);
+            }
+        }
+    }
+    
+    public static void validacionAceptaInstalacionParche(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_AceptaInstalacionParche__c != item.FS_AceptaInstalacionParche__c && item.FS_AceptaInstalacionParche__c != null){
+                if(item.FS_AceptaInstalacionParche__c == 'Si'){
+                    item.FS_SubEstado__c = 'Paso a Producción';
+                    envioCorreo(item, 'FS_PaseProduccion', true);
+                }else if(item.FS_AceptaInstalacionParche__c == 'No'){
+                    item.FS_SubEstado__c = 'Elaboración Solución Definitiva'; 
+                    item.Status = 'En Análisis';
+                }
+            }
+        }
+    }
+    
+    public static void validacionAceptaPaseProduccion(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_AceptaPaseProducion__c  != item.FS_AceptaPaseProducion__c ){
+                if(item.FS_AceptaPaseProducion__c == 'Si'){
+                    item.Status = 'Pendiente de Respuesta CSAT';
+                    item.FS_SubEStado__c = 'Paso a Producción Confirmado';
+                    item.FS_EncuestaEnviada__c = true;
+                    item.FS_FechaEnvioEncuesta__c = System.now();
+                    envioCorreo(item, 'FS_Encuesta', true);
+                    crearEncuesta(item);
+                    envioCorreo(item, 'FS_PaseProduccionAceptado', false);
+                }else if(item.FS_AceptaPaseProducion__c == 'No'){
+                    item.FS_SubEstado__c = 'Paso a Producción No Confirmado';
+                }
             }
         }
     }
@@ -574,12 +611,23 @@ public without sharing class CaseTriggerHelper {
                 if(item.FS_SubEstado__c == 'Desarrollo Incidente Puntual'){
                     casesNewIP.add(item);
                     casesOldIP.add(caso);
+                }else if(item.FS_SubEstado__c == 'Aprobación de Solución IP-Release' || item.FS_SubEstado__c == 'Aprobación Solución IP-N2'){
+                    casesNewUpdateIP.add(item);
+                    casesOldUpdateIP.add(caso);
                 }
             }if(caso.FS_SubEstado__c != item.FS_SubEstado__c && item.FS_TipoIncidente__c == 'Definitivo'){
                 if(item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo'){
                     casesNewID.add(item);
                     casesOldID.add(caso);
-                }
+                }else if(item.FS_SubEstado__c == 'Validación-Entrega de Fuentes' || item.FS_SubEstado__c == 'Elaboración Diseño Técnico' ||
+                         item.FS_SubEstado__c == 'Aprobación Solución Definitiva Releases' || item.FS_SubEstado__c == 'Elaboración Solución Definitiva' ||
+                         item.FS_SubEstado__c == 'Escalado a QA' || item.FS_SubEstado__c == 'Instalación Parche Releases' ||
+                         item.FS_SubEstado__c == 'Elaboración Plan de Pruebas' || item.FS_SubEstado__c == 'Certificación Parche QA' ||
+                         item.FS_SubEstado__c == 'Validación-Entrega de Fuentes' || item.FS_SubEstado__c == 'Entrega de Parche' ||
+                         item.FS_SubEstado__c == 'Paso a Producción' || item.FS_SubEstado__c == 'Paso a Producción No Confirmado'){
+                             casesNewUpdateID.add(item);
+                             casesOldUpdateID.add(caso);
+                         }
             }
         }
         if(!casesNewIP.isEmpty()){
@@ -619,7 +667,7 @@ public without sharing class CaseTriggerHelper {
             mail.setTargetObjectId(caso.ContactId);
         }else{
             User usuario = [Select Email from user Where Id = :caso.OwnerId];
-            mail.setBccAddresses(new List<String>{usuario.Email});
+            mail.setBccAddresses( nombrePlantilla != 'FS_PaseProduccionAceptado' ? new List<String>{usuario.Email} : Label.FS_CorreosPaseProduccionAceptado.split(','));
         }
         MessageList.add(mail);
         try{
@@ -689,15 +737,14 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void createIssueJira(List<Case> newCaseList, List<Case> oldCaseList) { 
-        String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
-        String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJiraIncidenteDefinitivo : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
-        System.debug('jiraIssueTypeId: '+jiraIssueTypeId);
-        JCFS.API.createJiraIssue(jiraProjectId, '11150', newCaseList, oldCaseList);
+       // String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
+        //String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJiraIncidenteDefinitivo : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
+        //JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
     }
     
     public static void updateIssueJira(List<Case> newCaseList, List<Case> oldCaseList) {       
         //Conditions to update de Issue in Jira
-        JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
+        //JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
     }
     
 }
