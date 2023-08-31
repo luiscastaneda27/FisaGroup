@@ -583,7 +583,40 @@ public without sharing class CaseTriggerHelper {
             }
         }
     }
-
+	
+    public static void historialCaso(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Case').getDescribe().fields.getMap();
+        String camposEstandar = 'OwnerId,Subject,ParentId,Description,Status,Type';
+        List<FS_HistorialCampos__c > listHistorial = new List<FS_HistorialCampos__c >();
+        for(Schema.SObjectField sfield : fieldMap.Values()){
+            schema.describefieldresult dfield = sfield.getDescribe();
+            String apiCampo = dfield.getName();
+            if(camposEstandar.contains(apiCampo) || (apiCampo.contains('__c') && !apiCampo.equals('FS_DescripcionCliente__c'))){
+                for(Case item: newCaseList){
+                    String valorOriginal = String.valueOf(oldCaseMap.get(item.Id).get(apiCampo));
+                    String valorNuevo = String.valueOf(item.get(apiCampo));
+                     String tipoCampo = String.valueOf(dfield.getType());
+                    if(valorOriginal != valorNuevo){
+                        if(tipoCampo == 'DATETIME'){
+                            valorOriginal = valorOriginal != null ? String.valueOf(DateTime.valueOf( valorOriginal ).format() ) : valorOriginal;
+                            valorNuevo = valorNuevo != null ? String.valueOf( DateTime.valueOf( valorNuevo ).format() ) : valorNuevo;
+                        }else if(tipoCampo == 'DATE'){
+                            valorOriginal = valorOriginal != null ? String.valueOf(Date.valueOf( valorOriginal ).format() ) : valorOriginal;
+                            valorNuevo = valorNuevo != null ? String.valueOf( Date.valueOf( valorNuevo ).format() ) : valorNuevo;
+                        }
+                        listHistorial.add(new FS_HistorialCampos__c(
+                            FS_Caso__c = item.Id,
+                            FS_NombreCampo__c  = dfield.getLabel(),
+                            FS_NombreApiCampo__c  = apiCampo,
+                            FS_ValorOriginal__c  = valorOriginal,
+                            FS_ValorNuevo__c = valorNuevo));
+                    }
+                }
+            }
+        }
+        DataBase.insert(listHistorial, false);
+        
+    }
     public static Id getUsuario(Case caso){
         Id userId;
         for(User usuario : [Select Id, FS_FechaUltimaAprobacion__c from User where UserRoleId = :caso.FS_RolPropietario__c And Id != :caso.OwnerId and IsActive = true Order by FS_FechaUltimaAprobacion__c asc limit 1]){
@@ -737,14 +770,14 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void createIssueJira(List<Case> newCaseList, List<Case> oldCaseList) { 
-       // String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
-        //String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJiraIncidenteDefinitivo : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
-        //JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
-    }
+        // String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
+         //String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJiraIncidenteDefinitivo : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
+         //JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
+     }
     
     public static void updateIssueJira(List<Case> newCaseList, List<Case> oldCaseList) {       
-        //Conditions to update de Issue in Jira
-        //JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
-    }
+         //Conditions to update de Issue in Jira
+         //JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
+     }
     
 }

@@ -129,6 +129,7 @@
 	<types>
 		<members>FS_AceptacionRechazoCaso__c</members>
 		<members>FS_Encuesta__c</members>
+		<members>FS_HistorialCampos__c</members>
 		<members>FS_HistorialDescripcionCaso__c</members>
 		<members>FS_ProductoAdquirido__c</members>
 		<name>CustomObject</name>

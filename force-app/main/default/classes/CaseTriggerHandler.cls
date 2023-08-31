@@ -44,6 +44,7 @@ public without sharing class CaseTriggerHandler {
     }
     
     public static void afterUpdate(List<Case> newCaseList, Map<Id, Case> oldCaseMap) {
+        CaseTriggerHelper.historialCaso(newCaseList, oldCaseMap);
         CaseTriggerHelper.upsertCaseJira(newCaseList, oldCaseMap);
     }
     

@@ -54,6 +54,10 @@
                 <behavior>Readonly</behavior>
                 <field>FS_Modulo__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>FS_FechaCompromisoEntrega__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>

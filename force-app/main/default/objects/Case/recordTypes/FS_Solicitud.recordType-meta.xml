@@ -4,7 +4,7 @@
     <active>true</active>
     <businessProcess>FS_CasoSolicitud</businessProcess>
     <compactLayoutAssignment>FS_Casos</compactLayoutAssignment>
-    <label>Solicitud</label>
+    <label>Solicitud (Falla Operativa)</label>
     <picklistValues>
         <picklist>FS_Acepta1erCosto__c</picklist>
         <values>
