@@ -15,42 +15,42 @@
             <value>
                 <fullName>FSHD001</fullName>
                 <default>false</default>
-                <label>Fisa System Help desk</label>
+                <label>FSHD001 - Fisa System Help desk</label>
             </value>
             <value>
                 <fullName>FSDE238</fullName>
                 <default>false</default>
-                <label>Precontratados BMR por 250 días Q2</label>
+                <label>FSDE238 - Precontratados BMR por 250 días Q2</label>
             </value>
             <value>
                 <fullName>PNHD003</fullName>
                 <default>false</default>
-                <label>OMNIA Help Desk</label>
+                <label>PNHD003 - OMNIA Help Desk</label>
             </value>
             <value>
                 <fullName>FSHD010</fullName>
                 <default>false</default>
-                <label>Fallas operativas Helpdesk Fisa System</label>
+                <label>FSHD010 - Fallas operativas Helpdesk Fisa System</label>
             </value>
             <value>
                 <fullName>PNHD006</fullName>
                 <default>false</default>
-                <label>Fallas operativas HLPDESK plataforma de negocios</label>
+                <label>PNHD006 - Fallas operativas HLPDESK plataforma de negocios</label>
             </value>
             <value>
                 <fullName>PNRE047</fullName>
                 <default>false</default>
-                <label>Servicio Soporte Local BIT 2022-2023</label>
+                <label>PNRE047 - Servicio Soporte Local BIT 2022-2023</label>
             </value>
             <value>
                 <fullName>PNSO045</fullName>
                 <default>false</default>
-                <label>Soporte remoto online Banking</label>
+                <label>PNSO045 - Soporte remoto online Banking</label>
             </value>
             <value>
                 <fullName>PNSO046</fullName>
                 <default>false</default>
-                <label>Soporte remoto Online Banking.</label>
+                <label>PNSO046 - Soporte remoto Online Banking</label>
             </value>
         </valueSetDefinition>
     </valueSet>

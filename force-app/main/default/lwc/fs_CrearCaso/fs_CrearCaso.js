@@ -197,15 +197,11 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
     }
 
     eliminarArchivo(){
-        const listArchivos = [];
-        for(let i = 0; i<this.data.listArchivos.length; i++){
-            if(this.data.archivoEliminar.value != this.data.listArchivos[i].value){
-                listArchivos.push(this.data.listArchivos[i]);
-            }
-        }
-        this.data.listArchivos = listArchivos;
+        this.data.listArchivos = this.data.listArchivos.filter(record => record.value != this.data.archivoEliminar.value);
         this.data.popEliminar = false;
+        this.data.archivoSubido = this.data.listArchivos.length > 0;
         this.pushMessage('Exitoso', 'success', 'Archivo eliminado exitosamente.');
+        this.habilitaBoton();
     }
     pushMessage(title,variant,msj){
         const message = new ShowToastEvent({
