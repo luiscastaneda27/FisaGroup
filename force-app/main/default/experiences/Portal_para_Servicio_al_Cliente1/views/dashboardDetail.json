@@ -9,17 +9,6 @@
     "regionName" : "header",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "height" : "1065",
-        "recordId" : "{!recordId}"
-      },
-      "componentName" : "forceCommunity:dashboard",
-      "id" : "1687112f-1f93-4b6b-b541-79ff1d64bb80",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "df8b58a3-9b62-41db-94c6-5ccb95fc96b1",
     "regionName" : "content",
     "type" : "region"

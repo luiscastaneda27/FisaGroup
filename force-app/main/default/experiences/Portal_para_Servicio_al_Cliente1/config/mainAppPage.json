@@ -4,7 +4,7 @@
   "headMarkup" : null,
   "id" : "957aa91a-bf13-46ce-b739-439c33d06eb9",
   "isLockerServiceEnabled" : true,
-  "isRelaxedCSPLevel" : false,
+  "isRelaxedCSPLevel" : true,
   "label" : "main",
   "templateName" : "Service Community Template",
   "type" : "appPage"

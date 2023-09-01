@@ -34,6 +34,10 @@
 		<name>CompactLayout</name>
 	</types>
 	<types>
+		<members>Login_Wallpaper</members>
+		<name>ContentAsset</name>
+	</types>
+	<types>
 		<members>Account.FS_Carterizacion__c</members>
 		<members>Account.FS_ColaAtencion__c</members>
 		<members>Account.FS_ServicioRemoto__c</members>

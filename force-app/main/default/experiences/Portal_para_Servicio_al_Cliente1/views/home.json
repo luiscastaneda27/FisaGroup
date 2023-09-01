@@ -7,16 +7,10 @@
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : {
-        "bannerText" : "A place where you can easily find solutions and ask questions",
-        "bannerTextWithKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> and <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
-        "bannerTextWithoutKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
-        "pageType" : "",
-        "showSubTopics" : true,
-        "title" : "Welcome!",
-        "uniqueNameOrId" : ""
+        "richTextValue" : "<div style=\"text-align: center\">\n\t<img  src=\"https://fisagrp--devfs.sandbox.my.site.com/servicios/resource/1689775202000/FS_FisaLogo?\">\n</div>"
       },
-      "componentName" : "forceCommunity:headline",
-      "id" : "e57f6ed9-357a-470d-911f-50b759ded84e",
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "5a677977-892d-4398-bbe3-42623b684b11",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -33,10 +27,10 @@
       "componentAttributes" : {
         "defaultSortOrderCompactFeed" : "Relevance",
         "defaultSortOrderFullFeed" : "Relevance",
-        "discussionTabLabel" : "Discussions",
-        "featuredTabLabel" : "Featured",
+        "discussionTabLabel" : "Debate",
+        "featuredTabLabel" : "Destacado",
         "maxWidth" : 100,
-        "myFeedTabLabel" : "My Feed",
+        "myFeedTabLabel" : "Noticias",
         "overlayColor" : "rgba(0,0,0,0.4)",
         "overlayHoverColor" : "",
         "radius" : 0,
@@ -53,39 +47,21 @@
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
-    } ],
-    "id" : "6c736a91-3961-413e-827b-d6a0cd9febad",
-    "regionName" : "content",
-    "type" : "region"
-  }, {
-    "components" : [ {
+    }, {
       "componentAttributes" : {
         "channel" : "DefaultChannel",
         "title" : ""
       },
       "componentName" : "forceCommunity:recommendations",
-      "id" : "2bfcba2d-1121-40eb-a5e6-e63ed08c9f9e",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "display" : "LEVELS_POINTS",
-        "excludeInternalUsers" : false,
-        "knowledgeLabel" : "Knows about",
-        "numberOfUsers" : 5,
-        "showContextUser" : false,
-        "showTooltip" : false,
-        "showUserRank" : false,
-        "title" : "Leaderboard",
-        "tooltipText" : "Earn points and climb to new levels when you contribute in the experience!"
-      },
-      "componentName" : "forceCommunity:reputationLeaderboard42",
-      "id" : "96f17f82-59a4-4b12-b91c-e235a9cf18e2",
+      "id" : "0aac92ed-ce10-4289-a747-da28e4c3bb16",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
+    "id" : "6c736a91-3961-413e-827b-d6a0cd9febad",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
     "id" : "1957eaea-b4b4-438f-bdc9-7189e7804278",
     "regionName" : "sidebar",
     "type" : "region"
