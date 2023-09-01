@@ -283,7 +283,7 @@
                     <criteria>
                         <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Solicitud</rightValue>
+                        <rightValue>Solicitud (Falla Operativa)</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -312,7 +312,7 @@
                     <criteria>
                         <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Solicitud</rightValue>
+                        <rightValue>Solicitud (Falla Operativa)</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
