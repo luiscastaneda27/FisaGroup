@@ -27,6 +27,43 @@ public without sharing class CaseTriggerHelper {
     private static final String SOLICITUD_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Solicitud').getRecordTypeId();
     private static final String INCIDENTE_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Incidente').getRecordTypeId();
     
+    
+    
+    public static void validacionEstado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.Status  != item.Status){
+                if(item.Status == 'Dado de baja'){
+                    envioCorreo(item, 'FS_CasoCancelado', true);
+                }else if (caso.FS_FechaContestacionEncuesta__c == item.FS_FechaContestacionEncuesta__c){
+                    item.Status.addError('Privilegios insuficiente para modificar el estado del caso');   
+                }
+            }
+        }
+    }
+    
+    public static void validacionSubEstado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            if(item.FS_SubEstado__c == 'Aprobación Solución IP-N2' && item.FS_UsuarioAprobadorSolucionIPN2__c != UserInfo.getUserId() ){
+                item.addError('El caso se encuentra en Aprobación de Solución IP-N2 y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación de Solución IP-Release' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c) ){
+                item.addError('El caso se encuentra en Aprobación de Solución IP-Release y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Diseño Técnico' && item.FS_UsuarioAprobadorDT__c != UserInfo.getUserId()){
+                item.addError('El caso se encuentra en Aprobación de Diseño Técnico y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva N2' && item.FS_UsuarioAprobadorDT__c != UserInfo.getUserId()){
+                item.addError('El caso se encuentra en Aprobación Solución Definitiva N2 y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva Releases' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c)){
+                item.addError('El caso se encuentra en Aprobación de Solución Definitiva Releases y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Plan de Pruebas' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
+                item.addError('El caso se encuentra en Aprobación Plan de Pruebas y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Instalación Parche - Releases' && String.isBlank(item.FS_UsuarioAprobadorInstalacionParcheRele__c)){
+                item.addError('El caso se encuentra en Aprobación Instalación Parche - Releases y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
+                item.addError('El caso se encuentra en Aprobación Certificación Parche QA y no tiene permisos para modificarlo.');
+            }
+        }
+    }
+    
     public static void validacionCorreoNuevo(List<Case> newCaseList){
         for(Case item: newCaseList){
             if(item.RecordTypeId == CONSULTA_TIPO_REGISTRO || item.RecordTypeId == SOLICITUD_TIPO_REGISTRO || item.RecordTypeId == INCIDENTE_TIPO_REGISTRO){
@@ -98,6 +135,10 @@ public without sharing class CaseTriggerHelper {
                     }
                     if(item.FS_SubEstado__c == 'Revisión Documentación N2'){
                         item.FS_SubEstado__c = item.FS_TipoIncidente__c == 'Puntual' ? 'Desarrollo Incidente Puntual' : 'Desarrollo Incidente Definitivo';
+                    }else if(item.FS_NombreTipoRegistro__c  == 'Solicitud (Falla Operativa)'){
+                        item.FS_SubEstado__c = 'En Espera de Respuesta del Cliente';
+                        item.Status = 'En Análisis';
+                        envioCorreo(item, 'FS_AprobacionPrimerCosto', true);
                     }else{
                         item.FS_SubEstado__c = 'Información validada';
                         item.Status = 'En Análisis';
@@ -181,17 +222,6 @@ public without sharing class CaseTriggerHelper {
         }
     }
     
-    public static void horasSolicitud(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-        for(Case item: newCaseList){
-            Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_NumeroHorasSolicitud__c  != item.FS_NumeroHorasSolicitud__c){
-                item.FS_SubEstado__c = 'En Espera de Respuesta del Cliente';
-                item.Status = 'En Análisis';
-                envioCorreo(item, 'FS_EnvioPrimerCosto', true);
-            }
-        }
-    }
-    
     public static void acepta1erCosto(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
@@ -201,6 +231,9 @@ public without sharing class CaseTriggerHelper {
                     item.FS_SubEstado__c = 'Costo Aceptado';
                     item.FS_FechaAprobacion1erCosto__c = System.now();
                     item.FS_UsuarioAprobador1erCosto__c = UserInfo.getUserId();
+                    String titulo = 'Aprobación de Primer Costo para caso '+item.CaseNumber;
+                    String descripcion = 'El cliente '+UserInfo.getFirstName() + ' ha aceptado el 1er costo para el caso '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }else if(item.FS_Acepta1erCosto__c == 'No'){
                     item.Status = 'Dado de baja';
                     item.FS_SubEstado__c = 'Costo Rechazado';
@@ -209,37 +242,15 @@ public without sharing class CaseTriggerHelper {
         }
     }
     
-    public static void validacionEstado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+    public static void horasSolicitud(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.Status  != item.Status){
-                if(item.Status == 'Dado de baja'){
-                    envioCorreo(item, 'FS_CasoCancelado', true);
-                }else if (caso.FS_FechaContestacionEncuesta__c == item.FS_FechaContestacionEncuesta__c){
-                    item.Status.addError('Privilegios insuficiente para modificar el estado del caso');   
-                }
-            }
-        }
-    }
-    
-    public static void validacionSubEstado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-        for(Case item: newCaseList){
-            if(item.FS_SubEstado__c == 'Aprobación Solución IP-N2' && item.FS_UsuarioAprobadorSolucionIPN2__c != UserInfo.getUserId() ){
-                item.addError('El caso se encuentra en Aprobación de Solución IP-N2 y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación de Solución IP-Release' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c) ){
-                item.addError('El caso se encuentra en Aprobación de Solución IP-Release y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación Diseño Técnico' && item.FS_UsuarioAprobadorDT__c != UserInfo.getUserId()){
-                item.addError('El caso se encuentra en Aprobación de Diseño Técnico y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva N2' && item.FS_UsuarioAprobadorDT__c != UserInfo.getUserId()){
-                item.addError('El caso se encuentra en Aprobación Solución Definitiva N2 y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva Releases' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c)){
-                item.addError('El caso se encuentra en Aprobación de Solución Definitiva Releases y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación Plan de Pruebas' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
-                item.addError('El caso se encuentra en Aprobación Plan de Pruebas y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación Instalación Parche - Releases' && String.isBlank(item.FS_UsuarioAprobadorInstalacionParcheRele__c)){
-                item.addError('El caso se encuentra en Aprobación Instalación Parche - Releases y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
-                item.addError('El caso se encuentra en Aprobación Certificación Parche QA y no tiene permisos para modificarlo.');
+            if(caso.FS_NumeroHorasSolicitud__c  != item.FS_NumeroHorasSolicitud__c){
+                item.FS_SubEstado__c = 'Envío de respuesta';
+                item.Status = 'Validación de Respuesta (Cliente)';
+                item.FS_AceptaRespuesta__c = null;
+                item.FS_PudeSolventarPregunta__c = 'Si';
+                envioCorreo(item, 'FS_ValidacionInformacionSolicitud', true);
             }
         }
     }
@@ -586,12 +597,13 @@ public without sharing class CaseTriggerHelper {
 	
     public static void historialCaso(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Case').getDescribe().fields.getMap();
-        String camposEstandar = 'OwnerId,Subject,ParentId,Description,Status,Type';
+        String camposEstandar = 'Subject,ParentId,Description,Status,Type';
+        String camposCustom = 'FS_RolPropietario__c,FS_DescripcionCliente__c';
         List<FS_HistorialCampos__c > listHistorial = new List<FS_HistorialCampos__c >();
         for(Schema.SObjectField sfield : fieldMap.Values()){
             schema.describefieldresult dfield = sfield.getDescribe();
             String apiCampo = dfield.getName();
-            if(camposEstandar.contains(apiCampo) || (apiCampo.contains('__c') && !apiCampo.equals('FS_DescripcionCliente__c'))){
+            if(camposEstandar.contains(apiCampo) || (apiCampo.contains('__c') && !camposCustom.contains(apiCampo))){
                 for(Case item: newCaseList){
                     String valorOriginal = String.valueOf(oldCaseMap.get(item.Id).get(apiCampo));
                     String valorNuevo = String.valueOf(item.get(apiCampo));
@@ -762,7 +774,7 @@ public without sharing class CaseTriggerHelper {
             String campo = dfield.getname();
             String objCampo = '{!' + objeto + '.' + campo +'}';
             if(html.contains(objCampo)){
-                String valorCampo = caso.get(campo) != null ? (String) caso.get(campo) : '';
+                String valorCampo = caso.get(campo) != null ? String.valueOf(caso.get(campo)) : '';
                 html = html.replace(objCampo, valorCampo);
             }
         }
@@ -779,5 +791,5 @@ public without sharing class CaseTriggerHelper {
          //Conditions to update de Issue in Jira
          //JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
      }
-    
+
 }

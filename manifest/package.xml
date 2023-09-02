@@ -140,8 +140,11 @@
 	</types>
 	<types>
 		<members>FS_CorreosClientesCasos</members>
+		<members>FS_CorreosClientesCasos/FS_ActualizacionInformacionCliente</members>
 		<members>FS_CorreosClientesCasos/FS_AnalisisCaso</members>
+		<members>FS_CorreosClientesCasos/FS_AprobacionPrimerCosto</members>
 		<members>FS_CorreosClientesCasos/FS_AsignacionCaso</members>
+		<members>FS_CorreosClientesCasos/FS_CasoCancelado</members>
 		<members>FS_CorreosClientesCasos/FS_CreacionCaso</members>
 		<members>FS_CorreosClientesCasos/FS_Encuesta</members>
 		<members>FS_CorreosClientesCasos/FS_EnvioPrimerCosto</members>
@@ -150,6 +153,7 @@
 		<members>FS_CorreosClientesCasos/FS_PaseProduccionAceptado</members>
 		<members>FS_CorreosClientesCasos/FS_RechazoRespuesta</members>
 		<members>FS_CorreosClientesCasos/FS_ValidacionInformacion</members>
+		<members>FS_CorreosClientesCasos/FS_ValidacionInformacionSolicitud</members>
 		<name>EmailTemplate</name>
 	</types>
 	<types>

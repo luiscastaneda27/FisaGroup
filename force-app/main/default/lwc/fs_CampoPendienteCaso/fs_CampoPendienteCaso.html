@@ -33,6 +33,11 @@
                                     <lightning-layout-item flexibility="auto" padding="around-small" size="12">
                                         <lightning-card icon-name="standard:answer_best" title="Aceptación de Respuesta">
                                             <lightning-layout vertical-align="stretch" multiple-rows="true">
+                                                <lightning-layout-item if:true={data.esSolicitud} flexibility="auto" padding="around-small" size="12">
+                                                    <p>En relación con tu caso N° {data.caso.CaseNumber} hemos finalizado con el requerimiento solicitado, 
+                                                        el cual tuvo una duración de <b> {data.caso.FS_NumeroHorasSolicitud__c} horas</b>.
+                                                    </p>
+                                                </lightning-layout-item>
                                                 <lightning-layout-item flexibility="auto" padding="around-small" size="6">
                                                     <lightning-combobox name="aceptaResp" label="Acepta Respuesta"
                                                         value={data.caso.FS_AceptaRespuesta__c} options={data.listAceptaRespuesta}
@@ -47,7 +52,7 @@
                                                 </lightning-layout-item>
                                                 <lightning-layout-item flexibility="auto" padding="around-small" size="12">
                                                     <lightning-textarea name="comentarioResp" label="Comentarios" vaue={data.caso.FS_ComentariosRespuesta__c}
-                                                    onchange={handleChange}></lightning-textarea>
+                                                    onchange={handleChange} ></lightning-textarea>
                                                 </lightning-layout-item>
                                             </lightning-layout>
                                         </lightning-card>
@@ -144,15 +149,21 @@
                     <div class="slds-form slds-form_compound slds-align--absolute-left">
                         <fieldset class="slds-form-element">
                             <div class="slds-modal__content slds-p-around--medium">
-                                <h1>El número de horas de su solicitus es: {data.caso.FS_NumeroHorasSolicitud__c} </h1> 
                                 <lightning-layout vertical-align="stretch" multiple-rows="true">
                                     <lightning-layout-item flexibility="auto" padding="around-small" size="12">
                                         <lightning-card icon-name="standard:answer_best" title="Aceptación de 1er Costo">
                                             <lightning-layout vertical-align="stretch" multiple-rows="true">
+                                                <lightning-layout-item flexibility="auto" padding="around-small" size="12">
+                                                    <p>En relación con tu caso N° {data.caso.CaseNumber} hemos comenzado con la revisión de tu
+                                                        solicitud, para darle continuidad al mismo solicitamos tu aprobación previa de un día de
+                                                        trabajo.
+                                                        <br /><br />Te recordamos que al finalizar lo solicitado estaremos enviándote un resumen de las
+                                                        horas consumidas en este requerimiento.
+                                                    </p>
+                                                </lightning-layout-item>
                                                 <lightning-layout-item flexibility="auto" padding="around-small" size="6">
-                                                    <lightning-combobox name="aceptaHoras" label="Acepta Horas"
-                                                        value={data.caso.FS_Acepta1erCosto__c} options={SiNo}
-                                                        onchange={handleChange} placeholder="Seleccione una respuesta">
+                                                    <lightning-combobox name="aceptaHoras" label="Acepta Horas" value={data.caso.FS_Acepta1erCosto__c}
+                                                        options={SiNo} onchange={handleChange} placeholder="Seleccione una respuesta">
                                                     </lightning-combobox>
                                                 </lightning-layout-item>
                                             </lightning-layout>

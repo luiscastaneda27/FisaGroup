@@ -13,6 +13,10 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         caso: {},
         listAceptaRespuesta: [],
         listMotivosRechazo: [],
+        esConsulta: false,
+        esSolicitud: false,
+        esIncidentePuntual: false,
+        esIncidenteDefinitivo: false,
         pendienteEncuesta: false,
         pendienteEncuestaDetalle: false,
         pendienteRespuesta: false,
@@ -39,6 +43,11 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         this.showSpinner = true;
         getCaso({casoId: this.casoId}).then(response => {
             this.data.caso = response.caso;
+            console.log(this.data.caso.FS_ComentariosRespuesta__c);
+            this.data.esConsulta = response.caso.FS_NombreTipoRegistro__c == 'Consulta';
+            this.data.esSolicitud = response.caso.FS_NombreTipoRegistro__c == 'Solicitud (Falla Operativa)';
+            this.data.esIncidentePuntual = response.caso.FS_NombreTipoRegistro__c == 'Incidente' && response.caso.FS_TipoIncidente__c == 'Puntual';
+            this.data.esIncidenteDefinitivo = response.caso.FS_NombreTipoRegistro__c == 'Consulta' && response.caso.FS_TipoIncidente__c == 'Definitivo';
             this.data.listAceptaRespuesta = response.listAceptaRespuesta;
             this.data.listMotivosRechazo = response.listMotivosRechazo;
             this.data.listMotivosRechazoParche = response.listMotivosRechazoParche;
@@ -152,11 +161,11 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
     validarBotonPendResp(){
         if(this.data.caso.FS_AceptaRespuesta__c === "Si" || this.data.caso.FS_AceptaInstalacionParche__c === "Si" ){
             this.data.botonDeshabilitado = false;
-        }else if(this.data.caso.FS_AceptaRespuesta__c === "No" && this.data.caso.FS_MotivoRechazo__c  != null && this.data.caso.FS_ComentariosRespuesta__c != null){
+        }else if(this.data.caso.FS_AceptaRespuesta__c === "No" && this.data.caso.FS_MotivoRechazo__c != null && this.data.caso.FS_ComentariosRespuesta__c != null){
             this.data.botonDeshabilitado = false;
         }else if(this.data.caso.FS_AceptaInstalacionParche__c === "No" && this.data.caso.FS_MotivosRechazoInstalacionParche__c  != null && this.data.caso.FS_ComentarioMotivoNoInstalacionParche__c != null){
             this.data.botonDeshabilitado = false;
-        }else if(this.data.caso.FS_Acepta1erCosto__c != null){
+        }else if(this.data.caso.FS_Acepta1erCosto__c != null && this.data.caso.FS_SubEstado__c === "En Espera de Respuesta del Cliente"){
             this.data.botonDeshabilitado = false;
         }
     }
