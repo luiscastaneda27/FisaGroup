@@ -5,7 +5,9 @@
 		<members>CaseTriggerHelper</members>
 		<members>CaseTriggerHelper_Test</members>
 		<members>ControladorCrearCaso</members>
+		<members>ControladorCrearCaso_Test</members>
 		<members>ControladorEncuesta</members>
+		<members>ControladorEncuesta_Test</members>
 		<members>FeedCommentTriggerHandler</members>
 		<members>FeedCommentTriggerHelper</members>
 		<members>JobValidacionRespuesta</members>

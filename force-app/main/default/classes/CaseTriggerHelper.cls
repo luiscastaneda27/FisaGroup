@@ -23,9 +23,9 @@ public without sharing class CaseTriggerHelper {
         return mapColas;
     } 
     
-    private static final String CONSULTA_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Consulta').getRecordTypeId();
-    private static final String SOLICITUD_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Solicitud').getRecordTypeId();
-    private static final String INCIDENTE_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Incidente').getRecordTypeId();
+    public static final String CONSULTA_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Consulta').getRecordTypeId();
+    public static final String SOLICITUD_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Solicitud').getRecordTypeId();
+    public static final String INCIDENTE_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Incidente').getRecordTypeId();
     
     
     
@@ -318,7 +318,7 @@ public without sharing class CaseTriggerHelper {
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                     envioCorreo(item, 'FS_ValidacionInformacion', true);
                 }else if(item.FS_AprobacionSolucionIPRelease__c == 'No'){
-                     item.FS_URLResultadoAnalasis__c = null;
+                    item.FS_URLResultadoAnalasis__c = null;
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                     String titulo = 'Rechazo de Solución IP-Release para caso '+item.CaseNumber;
                     String descripcion = 'El Jefe de Release ' + item.FS_UsuarioAprobacionSolucionRelease__c + ' ha rechzado la Solución IP-Release para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
@@ -652,6 +652,8 @@ public without sharing class CaseTriggerHelper {
         
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
+             //casesNewUpdateIP.add(item);
+               //     casesOldUpdateIP.add(caso);
             if(caso.FS_SubEstado__c != item.FS_SubEstado__c && item.FS_TipoIncidente__c == 'Puntual'){
                 if(item.FS_SubEstado__c == 'Desarrollo Incidente Puntual'){
                     casesNewIP.add(item);
@@ -782,14 +784,66 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void createIssueJira(List<Case> newCaseList, List<Case> oldCaseList) { 
-        // String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
-         //String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJiraIncidenteDefinitivo : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
-         //JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
-     }
+        String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
+        String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJiraIncidenteDefinitivo : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
+        System.debug('jiraIssueTypeId: '+jiraIssueTypeId);
+        JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
+    }
     
     public static void updateIssueJira(List<Case> newCaseList, List<Case> oldCaseList) {       
-         //Conditions to update de Issue in Jira
-         //JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
-     }
-
+        //Conditions to update de Issue in Jira
+        JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
+    }
+    
+    public static void MilestoneCalculator(List<Case> newCaseList){
+        
+        /*List<MT001__mdt> ltsMT01 = new List<MT001__mdt>();
+        ltsMT01 = [select MasterLabel, FS_Activo__c, FS_NombreTipoRegistro__c, FS_SubEstado__c, FS_SLA__c 
+                   FROM MT001__mdt WHERE FS_Activo__c = true];
+        
+        Decimal timer;
+        for(Case ltsCase : newCaseList){
+            for(MT001__mdt ltsMT : ltsMT01){
+                if(ltsCase.RecordType.Name == ltsMT.FS_NombreTipoRegistro__c && ltsCase.FS_SubEstado__c == ltsMT.FS_SubEstado__c){
+                    timer = ltsMT.FS_SLA__c * 60;
+                }
+            }   
+        }*/
+        
+        List<Entitlement> ltsEntitlement = new List<Entitlement>();
+        ltsEntitlement = [select id, name from Entitlement];
+        
+        String Consulta;
+        String IncidenteD;
+        String IncidenteP;
+        
+        for(Entitlement lstEMT: ltsEntitlement){
+            if(lstEMT.Name == 'SLA Consulta - Interno'){
+                Consulta = lstEMT.id;
+            }else if(lstEMT.Name == 'SLA Incidente definitivo - Interno'){
+                IncidenteD = lstEMT.id;
+            }else if(lstEMT.Name == 'SLA Incidente puntual - Interno'){
+                IncidenteP = lstEMT.id;
+            }
+        }
+        
+        //List<Case> newCase = new List<Case>();
+        Case myAccount=newCaseList[0];
+        Case newCase = [select id, EntitlementId from Case where id =: myAccount.id];
+        
+        for(Case ltsCase : newCaseList){
+            if(ltsCase.RecordType.Name == 'Consulta' && ltsCase.FS_SubEstado__c != 'En Espera de Respuesta del Cliente'){
+                newCase.EntitlementId = Consulta;
+            }else if(ltsCase.RecordType.Name == 'Incidente' && ltsCase.FS_SubEstado__c != 'En Espera de Respuesta del Cliente'){
+                newCase.EntitlementId = IncidenteD;
+            }else if(ltsCase.RecordType.Name == 'Solicitud (Falla Operativa)' && ltsCase.FS_SubEstado__c != 'En Espera de Respuesta del Cliente'){
+                newCase.EntitlementId = IncidenteP;
+            }
+            //newCase.add(ltsCase);
+        }
+    
+        update newCase;
+          
+    }//fin proceso
+    
 }

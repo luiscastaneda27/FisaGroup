@@ -32,7 +32,7 @@ public without sharing class ControladorCrearCaso {
         String query = 'Select ';
         for(Schema.SObjectField sfield : fieldMap.Values()){
             schema.describefieldresult dfield = sfield.getDescribe();
-            query += dfield.getname() + ',';
+            query += dfield.getName() + ',';
         }
         query =  query.substring(0, query.length() - 1) + ' From Case Where Id = :casoId';
         respuesta.caso = DataBase.query(query);

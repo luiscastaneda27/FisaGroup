@@ -1225,7 +1225,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord22</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
+                    <booleanFilter>1 AND 2 AND (3 OR 4 OR 5)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.IsEscalated}</leftValue>
                         <operator>EQUAL</operator>
@@ -1245,6 +1245,11 @@
                         <leftValue>{!Record.FS_AprobacionSolucionIPRelease__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Si</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_AprobacionSolucionIPRelease__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>No</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -1485,6 +1490,22 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>hideMarkCompleteButton</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>support:milestones</componentName>
+                <identifier>support_milestones</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>JCFS:jiraIssuesLwc</componentName>
+                <identifier>JCFS_jiraIssuesLwc</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
