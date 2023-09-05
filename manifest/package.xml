@@ -3,7 +3,7 @@
 	<types>
 		<members>CaseTriggerHandler</members>
 		<members>CaseTriggerHelper</members>
-		<members>CommunitiesLandingController</members>
+		<members>CaseTriggerHelper_Test</members>
 		<members>ControladorCrearCaso</members>
 		<members>ControladorEncuesta</members>
 		<members>FeedCommentTriggerHandler</members>
@@ -12,10 +12,6 @@
 		<members>TrabajoAgenteHandler</members>
 		<members>TrabajoAgenteHelper</members>
 		<name>ApexClass</name>
-	</types>
-	<types>
-		<members>CommunitiesLanding</members>
-		<name>ApexPage</name>
 	</types>
 	<types>
 		<members>CaseTrigger</members>
