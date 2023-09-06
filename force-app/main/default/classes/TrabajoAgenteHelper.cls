@@ -22,7 +22,6 @@ public class TrabajoAgenteHelper {
             listUser.add(item.Id);
         }
         List<String> colasAtencion = new List<String>();
-        //List<String> colasAtencionN2 = new List<String>();
         for(Group item: [Select Id,Developername from Group Where DeveloperName Like '%FS_%' and Type = 'Queue']){
             colasAtencion.add(item.Id);
         }

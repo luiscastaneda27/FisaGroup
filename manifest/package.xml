@@ -11,9 +11,12 @@
 		<members>DataFactory</members>
 		<members>FeedCommentTriggerHandler</members>
 		<members>FeedCommentTriggerHelper</members>
+		<members>FeedCommentTriggerHelper_Test</members>
 		<members>JobValidacionRespuesta</members>
+		<members>JobValidacionRespuesta_Test</members>
 		<members>TrabajoAgenteHandler</members>
 		<members>TrabajoAgenteHelper</members>
+		<members>TrabajoAgenteHelper_Test</members>
 		<name>ApexClass</name>
 	</types>
 	<types>

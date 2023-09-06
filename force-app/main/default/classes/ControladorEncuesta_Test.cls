@@ -14,9 +14,11 @@ public class ControladorEncuesta_Test {
     @isTest
     static void ControladorEncuesta() {
         Case caso =  [Select Id, RecordType.DeveloperName, ContactId from Case Where RecordTypeId = :CaseTriggerHelper.CONSULTA_TIPO_REGISTRO];
+        Test.startTest();
         caso.FS_AceptaRespuesta__c = 'Si';
         update caso;
         ControladorEncuesta.actualizarCaso(JSON.serialize(ControladorEncuesta.getCaso(caso.Id)));
+        Test.stopTest();
     }
 
 }

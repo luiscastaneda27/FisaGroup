@@ -12,6 +12,7 @@ public class DataFactory {
         contc.FirstName = 'FistName Test';
         contc.LastName = 'LastName Test';
         contc.AccountId = acc.Id;
+        contc.Email = 'test@test.com';
         insert contc;
         return contc;
     }
