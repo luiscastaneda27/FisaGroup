@@ -154,6 +154,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.FS_ComentariosAprobacionInstalacionParch__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.FS_ComentariosAprobacionSolucinRelease__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.FS_ComentariosEncuesta__c</field>
         <readable>true</readable>
     </fieldPermissions>

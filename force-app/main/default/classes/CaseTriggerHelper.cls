@@ -128,7 +128,7 @@ public without sharing class CaseTriggerHelper {
                     String prod = item.AccountId  + item.FS_Producto__c + item.FS_Modulo__c + item.FS_SubModulo__c;
                     String msjError = 'Debe Completar los siguientes campos ';
                     msjError += String.isBlank(item.FS_Proyecto__c) ? 'Proyecto, ' : '';
-                    msjError += item.FS_FechaCompromisoEntrega__c == null ? 'Fecha de Compromiso de Entrega, ' : '';
+                    msjError += item.FS_FechaCompromisoEntrega__c == null && item.RecordTypeId != SOLICITUD_TIPO_REGISTRO ? 'Fecha de Compromiso de Entrega, ' : '';
                     msjError += String.isBlank(item.FS_SubModulo__c) && !listProductos.contains(prod) ? 'Sub Módulo, ' : '';
                     if(msjError.length() > 37){
                         item.addError(msjError.substring(0, msjError.length() - 2));
@@ -314,9 +314,11 @@ public without sharing class CaseTriggerHelper {
                     item.FS_AceptaRespuesta__c = null;
                     
                     String titulo = 'Aprobación de Solución IP-Release para caso '+item.CaseNumber;
-                    String descripcion = 'El Jefe de Release ' + item.FS_UsuarioAprobacionSolucionRelease__c + ' ha aprobado la Solución IP-Release para el caso número '+item.CaseNumber +' \nMuchas gracias.';
+                    String descripcion = 'El Jefe de Release ' + item.FS_UsuarioAprobacionSolucionRelease__c + ' ha aprobado la Solución IP-Release para el caso número '+item.CaseNumber +'\nMuchas gracias.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                     envioCorreo(item, 'FS_ValidacionInformacion', true);
+                    descripcion = 'Hemos entregado la respuesta al caso, la solución se encuentra disponible en la siguiente URL para su validación '+item.FS_URLResultadoAnalasis__c +'\n\nTus comentarios son importantes para nosotros.';
+                    insert new FeedItem(ParentId = item.Id, Body = descripcion, Visibility = 'AllUsers');
                 }else if(item.FS_AprobacionSolucionIPRelease__c == 'No'){
                     item.FS_URLResultadoAnalasis__c = null;
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
@@ -677,18 +679,7 @@ public without sharing class CaseTriggerHelper {
                          }
             }
         }
-        if(!casesNewIP.isEmpty()){
-            createIssueJira(casesNewIP, casesOldIP);
-        }
-        if(!casesNewID.isEmpty()){
-            createIssueJira(casesNewID, casesOldID);
-        }
-        if(!casesNewUpdateIP.isEmpty()){
-            updateIssueJira(casesNewUpdateIP, casesOldUpdateIP);
-        }
-        if(!casesNewUpdateID.isEmpty()){
-            updateIssueJira(casesNewUpdateID, casesOldUpdateID);
-        }
+        
     }
     
     public static void envioCorreo(Case caso, String nombrePlantilla, Boolean esContacto){
@@ -784,15 +775,15 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void createIssueJira(List<Case> newCaseList, List<Case> oldCaseList) { 
-        String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
-        String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJiraIncidenteDefinitivo : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
-        System.debug('jiraIssueTypeId: '+jiraIssueTypeId);
-        JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
+        //String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
+        //String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJiraIncidenteDefinitivo : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
+        //System.debug('jiraIssueTypeId: '+jiraIssueTypeId);
+        //JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
     }
     
     public static void updateIssueJira(List<Case> newCaseList, List<Case> oldCaseList) {       
         //Conditions to update de Issue in Jira
-        JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
+        //JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
     }
     
     public static void MilestoneCalculator(List<Case> newCaseList){

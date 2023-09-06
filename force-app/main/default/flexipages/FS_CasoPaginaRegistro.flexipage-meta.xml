@@ -422,91 +422,6 @@
                 </visibilityRule>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>createQuickActionName</name>
-                    <value>GuestCommunityCase</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>lookupFieldName</name>
-                    <value>Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>titleFieldName</name>
-                    <value>Aprobación Solución IP-N2</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>updateQuickActionName</name>
-                    <value>Case.FS_AprobacionSolucionIPN2</value>
-                </componentInstanceProperties>
-                <componentName>console:relatedRecord</componentName>
-                <identifier>console_relatedRecord14</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.IsEscalated}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Incidente</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.FS_SubEstado__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Aprobación Solución IP-N2</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>createQuickActionName</name>
-                    <value>GuestCommunityCase</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>lookupFieldName</name>
-                    <value>Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>titleFieldName</name>
-                    <value>Aprobación de Solución IP-Release</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>updateQuickActionName</name>
-                    <value>Case.FS_AprobacionSolucionIPRelease</value>
-                </componentInstanceProperties>
-                <componentName>console:relatedRecord</componentName>
-                <identifier>console_relatedRecord15</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.IsEscalated}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Incidente</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.FS_SubEstado__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Aprobación de Solución IP-Release</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.UserRole.DeveloperName}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>FS_JefeReleases</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
         <name>Facet-1d3995ed-10f6-4b7a-9eda-e996c7d45dcb</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1490,22 +1405,6 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>hideMarkCompleteButton</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentName>support:milestones</componentName>
-                <identifier>support_milestones</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>JCFS:jiraIssuesLwc</componentName>
-                <identifier>JCFS_jiraIssuesLwc</identifier>
-            </componentInstance>
-        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

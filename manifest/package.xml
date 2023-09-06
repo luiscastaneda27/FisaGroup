@@ -13,6 +13,7 @@
 		<members>JobValidacionRespuesta</members>
 		<members>TrabajoAgenteHandler</members>
 		<members>TrabajoAgenteHelper</members>
+		<members>DataFactory</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
@@ -57,6 +58,8 @@
 		<members>Case.FS_Carterizacion__c</members>
 		<members>Case.FS_CasoRQOrigenNovedad__c</members>
 		<members>Case.FS_ComentarioMotivoNoInstalacionParche__c</members>
+		<members>Case.FS_ComentariosAprobacionInstalacionParch__c</members>
+		<members>Case.FS_ComentariosAprobacionSolucinRelease__c</members>
 		<members>Case.FS_ComentariosEncuesta__c</members>
 		<members>Case.FS_ComentariosRespuesta__c</members>
 		<members>Case.FS_DescripcionCliente__c</members>
