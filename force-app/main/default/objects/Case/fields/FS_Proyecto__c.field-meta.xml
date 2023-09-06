@@ -13,42 +13,42 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>FSHD001</fullName>
+                <fullName>FSHD001 - Fisa System Help desk</fullName>
                 <default>false</default>
                 <label>FSHD001 - Fisa System Help desk</label>
             </value>
             <value>
-                <fullName>FSDE238</fullName>
+                <fullName>FSDE238 - Precontratados BMR por 250 días Q2</fullName>
                 <default>false</default>
                 <label>FSDE238 - Precontratados BMR por 250 días Q2</label>
             </value>
             <value>
-                <fullName>PNHD003</fullName>
+                <fullName>PNHD003 - OMNIA Help Desk</fullName>
                 <default>false</default>
                 <label>PNHD003 - OMNIA Help Desk</label>
             </value>
             <value>
-                <fullName>FSHD010</fullName>
+                <fullName>FSHD010 - Fallas operativas Helpdesk Fisa System</fullName>
                 <default>false</default>
                 <label>FSHD010 - Fallas operativas Helpdesk Fisa System</label>
             </value>
             <value>
-                <fullName>PNHD006</fullName>
+                <fullName>PNHD006 - Fallas operativas HLPDESK plataforma de negocios</fullName>
                 <default>false</default>
                 <label>PNHD006 - Fallas operativas HLPDESK plataforma de negocios</label>
             </value>
             <value>
-                <fullName>PNRE047</fullName>
+                <fullName>PNRE047 - Servicio Soporte Local BIT 2022-2023</fullName>
                 <default>false</default>
                 <label>PNRE047 - Servicio Soporte Local BIT 2022-2023</label>
             </value>
             <value>
-                <fullName>PNSO045</fullName>
+                <fullName>PNSO045 - Soporte remoto online Banking</fullName>
                 <default>false</default>
                 <label>PNSO045 - Soporte remoto online Banking</label>
             </value>
             <value>
-                <fullName>PNSO046</fullName>
+                <fullName>PNSO046 - Soporte remoto Online Banking</fullName>
                 <default>false</default>
                 <label>PNSO046 - Soporte remoto Online Banking</label>
             </value>

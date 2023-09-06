@@ -82,7 +82,7 @@
           "includeContactSupport" : false,
           "includeMessages" : false,
           "loginLabel" : "Iniciar Sesión",
-          "logoutLabel" : "Cerrar Cesión",
+          "logoutLabel" : "Cerrar Sesión",
           "myAccountLabel" : "Empresa",
           "showAccountManagement" : false,
           "showUserSettings" : false,

@@ -48,6 +48,8 @@ public without sharing class CaseTriggerHelper {
                 item.addError('El caso se encuentra en Aprobación de Solución IP-N2 y no tiene permisos para modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación de Solución IP-Release' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c) ){
                 item.addError('El caso se encuentra en Aprobación de Solución IP-Release y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Elaboración Diseño Técnico' && item.FS_FechaEntregaDesarrollo__c == null){
+                item.addError('El caso se encuentra en Elaboración Diseño Técnico y no tiene permisos para modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación Diseño Técnico' && item.FS_UsuarioAprobadorDT__c != UserInfo.getUserId()){
                 item.addError('El caso se encuentra en Aprobación de Diseño Técnico y no tiene permisos para modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva N2' && item.FS_UsuarioAprobadorDT__c != UserInfo.getUserId()){

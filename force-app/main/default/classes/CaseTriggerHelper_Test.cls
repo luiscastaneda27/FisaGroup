@@ -24,7 +24,7 @@ public class CaseTriggerHelper_Test {
         
         caso.FS_InformacionCompleta__c = 'Si';
         actualizarCasoError(caso);
-        caso.FS_Proyecto__c = 'FSHD001';
+        caso.FS_Proyecto__c = 'FSHD001 - Fisa System Help desk';
         caso.FS_FechaCompromisoEntrega__c = Date.today();
         update caso;
         
@@ -57,7 +57,7 @@ public class CaseTriggerHelper_Test {
         
         caso.FS_InformacionCompleta__c = 'Si';
         actualizarCasoError(caso);
-        caso.FS_Proyecto__c = 'FSHD001';
+        caso.FS_Proyecto__c = 'FSHD001 - Fisa System Help desk';
         caso.FS_FechaCompromisoEntrega__c = Date.today();
         update caso;
         
@@ -78,7 +78,7 @@ public class CaseTriggerHelper_Test {
         
         caso.FS_InformacionCompleta__c = 'Si';
         actualizarCasoError(caso);
-        caso.FS_Proyecto__c = 'FSHD001';
+        caso.FS_Proyecto__c = 'FSHD001 - Fisa System Help desk';
         caso.FS_FechaCompromisoEntrega__c = Date.today();
         update caso;
         
@@ -187,7 +187,7 @@ public class CaseTriggerHelper_Test {
         Case caso =  [Select Id, RecordType.DeveloperName from Case Where RecordTypeId = :CaseTriggerHelper.INCIDENTE_TIPO_REGISTRO];
         
         caso.FS_InformacionCompleta__c = 'Si';
-        caso.FS_Proyecto__c = 'FSHD001';
+        caso.FS_Proyecto__c = 'FSHD001 - Fisa System Help desk';
         caso.FS_FechaCompromisoEntrega__c = Date.today();
         update caso;
         
