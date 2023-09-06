@@ -8,12 +8,12 @@
 		<members>ControladorCrearCaso_Test</members>
 		<members>ControladorEncuesta</members>
 		<members>ControladorEncuesta_Test</members>
+		<members>DataFactory</members>
 		<members>FeedCommentTriggerHandler</members>
 		<members>FeedCommentTriggerHelper</members>
 		<members>JobValidacionRespuesta</members>
 		<members>TrabajoAgenteHandler</members>
 		<members>TrabajoAgenteHelper</members>
-		<members>DataFactory</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
