@@ -221,6 +221,9 @@ public without sharing class CaseTriggerHelper {
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                     if(item.RecordTypeId == CONSULTA_TIPO_REGISTRO){
                         insert new FeedItem(ParentId = item.Id, Body = item.FS_RespuestaCliente__c, Visibility = 'AllUsers');
+                    }else if(item.RecordTypeId == SOLICITUD_TIPO_REGISTRO){
+                        descripcion = 'Estimado Cliente\n\n\nHemos finalizado con el requerimiento solicitado, el cual tuvo una duración de '+item.FS_NumeroHorasSolicitud__c +' horas\n\nTus comentarios son importantes para nosotros.\n\nGracias\nCustomer Care Team\n\nSaludos';
+                        insert new FeedItem(ParentId = item.Id, Body = descripcion, Visibility = 'AllUsers');
                     }
                 }else if(item.FS_AprobacionSolucion__c == 'No'){
                     item.FS_SubEstado__c = item.RecordTypeId == CONSULTA_TIPO_REGISTRO ? 'Información validada' : 'Análisis Falla Operativa';
