@@ -185,10 +185,15 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_PudeSolventarPregunta__c != item.FS_PudeSolventarPregunta__c){
                 if(item.FS_PudeSolventarPregunta__c == 'Si'){
-                    item.FS_SubEstado__c = 'Envío de respuesta';
-                    item.Status = 'Validación de Respuesta (Cliente)';
-                    item.FS_AceptaRespuesta__c = null;
-                    envioCorreo(item, 'FS_ValidacionInformacion', true);
+                    if(item.FS_Area__c == 'N1. CORE' || item.FS_Area__c == 'N1. OMNIA'){
+                        aprobacionConsSolic(item);
+                        item.FS_SubEstado__c = 'Aprobación Consulta N2';
+                    }else{
+                        item.FS_SubEstado__c = 'Envío de respuesta';
+                        item.Status = 'Validación de Respuesta (Cliente)';
+                        item.FS_AceptaRespuesta__c = null;
+                        envioCorreo(item, 'FS_ValidacionInformacion', true);
+                    }
                 }else if(item.FS_PudeSolventarPregunta__c == 'No'){
                     Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
                     item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_N2_CORE : COLA_ATENCION_N2_OMNIA);
@@ -200,6 +205,32 @@ public without sharing class CaseTriggerHelper {
                 
             }
         }
+    }
+    
+    public static void validacionAprobacionSolucion(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_AprobacionSolucion__c != item.FS_AprobacionSolucion__c){
+                if(item.FS_AprobacionSolucion__c == 'Si'){
+                    item.FS_SubEstado__c = 'Envío de respuesta';
+                    item.Status = 'Validación de Respuesta (Cliente)';
+                    item.FS_AceptaRespuesta__c = null;
+                    envioCorreo(item, 'FS_ValidacionInformacion', true);
+                    String titulo = 'Aprobación de solución para caso '+item.CaseNumber;
+                    String descripcion = 'El agente ' + UserInfo.getUserName() + ' ha aprobado de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
+                    if(item.RecordTypeId == CONSULTA_TIPO_REGISTRO){
+                        insert new FeedItem(ParentId = item.Id, Body = item.FS_RespuestaCliente__c, Visibility = 'AllUsers');
+                    }
+                }else if(item.FS_AprobacionSolucion__c == 'No'){
+                    item.FS_SubEstado__c = 'Análisis N1';
+                    String titulo = 'Rechazo de solución para caso '+item.CaseNumber;
+                    String descripcion = 'El agente ' + UserInfo.getUserName() + ' ha rechazado de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
+                    item.FS_PudeSolventarPregunta__c = null;
+                }
+            }
+        }        
     }
     
     public static void aceptaRespuesta(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
@@ -248,13 +279,35 @@ public without sharing class CaseTriggerHelper {
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_NumeroHorasSolicitud__c  != item.FS_NumeroHorasSolicitud__c){
-                item.FS_SubEstado__c = 'Envío de respuesta';
-                item.Status = 'Validación de Respuesta (Cliente)';
-                item.FS_AceptaRespuesta__c = null;
-                item.FS_PudeSolventarPregunta__c = 'Si';
-                envioCorreo(item, 'FS_ValidacionInformacionSolicitud', true);
+                if(item.FS_Area__c == 'N1. CORE' || item.FS_Area__c == 'N1. OMNIA'){
+                    aprobacionConsSolic(item);
+                    item.FS_SubEstado__c = 'Aprobación Solicitud N2';
+                }else{
+                    item.FS_SubEstado__c = 'Envío de respuesta';
+                    item.Status = 'Validación de Respuesta (Cliente)';
+                    item.FS_AceptaRespuesta__c = null;
+                    item.FS_PudeSolventarPregunta__c = 'Si';
+                    envioCorreo(item, 'FS_ValidacionInformacionSolicitud', true);
+                }
             }
         }
+    }
+    
+    public static void aprobacionConsSolic(Case item){
+        String nombreRol = item.FS_Area__c == 'N1. CORE' ? 'FS_AgenteN2Core' : 'FS_AgenteN2Omnia';
+        if(item.FS_UsuarioAprobadorSolucion__c == null){
+            for(User usuario : [Select Id, FS_FechaUltimaAprobacion__c from User where UserRole.DeveloperName = :nombreRol And Id != :item.OwnerId and IsActive = true Order by FS_FechaUltimaAprobacion__c asc limit 1]){
+                usuario.FS_FechaUltimaAprobacion__c = System.now();
+                update usuario;
+                item.FS_UsuarioAprobadorSolucion__c = usuario.Id;
+            }
+        }
+        String titulo = 'Aprobación de solución para caso '+item.CaseNumber;
+        String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita la aprobación de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+        enviarNotificacion(item.FS_UsuarioAprobadorSolucion__c, item.Id, titulo, descripcion);
+        item.FS_AprobacionSolucion__c = null;
+        item.FS_RespuestaCliente__c = null;
+        item.FS_ComentariosRechazoSolucion__c = null;
     }
     
     public static void validacionFechaEntrega(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
@@ -319,7 +372,7 @@ public without sharing class CaseTriggerHelper {
                     String descripcion = 'El Jefe de Release ' + item.FS_UsuarioAprobacionSolucionRelease__c + ' ha aprobado la Solución IP-Release para el caso número '+item.CaseNumber +'\nMuchas gracias.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                     envioCorreo(item, 'FS_ValidacionInformacion', true);
-                    descripcion = 'Hemos entregado la respuesta al caso, la solución se encuentra disponible en la siguiente URL para su validación '+item.FS_URLResultadoAnalasis__c +'\n\nTus comentarios son importantes para nosotros.';
+                    descripcion = 'Estimado Cliente\n\n\nHemos entregado la respuesta al caso, la solución se encuentra disponible en la siguiente URL para su validación '+item.FS_URLResultadoAnalasis__c +'\n\nTus comentarios son importantes para nosotros.\n\nGracias\nCustomer Care Team\n\nSaludos';
                     insert new FeedItem(ParentId = item.Id, Body = descripcion, Visibility = 'AllUsers');
                 }else if(item.FS_AprobacionSolucionIPRelease__c == 'No'){
                     item.FS_URLResultadoAnalasis__c = null;
@@ -705,6 +758,9 @@ public without sharing class CaseTriggerHelper {
                 mail.setWhatId(caso.Id);
             }
             mail.setTargetObjectId(caso.ContactId);
+            if(String.isNotBlank(caso.FS_CorreosNotificacionesServicios__c)){
+                mail.setCcAddresses(caso.FS_CorreosNotificacionesServicios__c.split(','));
+            }
         }else{
             User usuario = [Select Email from user Where Id = :caso.OwnerId];
             mail.setBccAddresses( nombrePlantilla != 'FS_PaseProduccionAceptado' ? new List<String>{usuario.Email} : Label.FS_CorreosPaseProduccionAceptado.split(','));

@@ -42,6 +42,7 @@
 	<types>
 		<members>Account.FS_Carterizacion__c</members>
 		<members>Account.FS_ColaAtencion__c</members>
+		<members>Account.FS_CorreosNotificacionesServicios__c</members>
 		<members>Account.FS_ServicioRemoto__c</members>
 		<members>Case.FS_1erCostoAprobado__c</members>
 		<members>Case.FS_Acepta1erCosto__c</members>
@@ -56,6 +57,7 @@
 		<members>Case.FS_AprobacionSolucionDefinitivaRelease__c</members>
 		<members>Case.FS_AprobacionSolucionIPN2__c</members>
 		<members>Case.FS_AprobacionSolucionIPRelease__c</members>
+		<members>Case.FS_AprobacionSolucion__c</members>
 		<members>Case.FS_Area__c</members>
 		<members>Case.FS_CSATCaso__c</members>
 		<members>Case.FS_Carterizacion__c</members>
@@ -64,7 +66,9 @@
 		<members>Case.FS_ComentariosAprobacionInstalacionParch__c</members>
 		<members>Case.FS_ComentariosAprobacionSolucinRelease__c</members>
 		<members>Case.FS_ComentariosEncuesta__c</members>
+		<members>Case.FS_ComentariosRechazoSolucion__c</members>
 		<members>Case.FS_ComentariosRespuesta__c</members>
+		<members>Case.FS_CorreosNotificacionesServicios__c</members>
 		<members>Case.FS_DescripcionCliente__c</members>
 		<members>Case.FS_EncuestaEnviada__c</members>
 		<members>Case.FS_FechaAprobacion1erCosto__c</members>
@@ -99,6 +103,7 @@
 		<members>Case.FS_Proyecto__c</members>
 		<members>Case.FS_PudeSolventarPregunta__c</members>
 		<members>Case.FS_Referencia__c</members>
+		<members>Case.FS_RespuestaCliente__c</members>
 		<members>Case.FS_ResultadoEncuesta__c</members>
 		<members>Case.FS_ReunionCSAT__c</members>
 		<members>Case.FS_ReunionesCliente__c</members>
@@ -123,6 +128,7 @@
 		<members>Case.FS_UsuarioAprobadorInstalacionParcheRele__c</members>
 		<members>Case.FS_UsuarioAprobadorPlanPruebas__c</members>
 		<members>Case.FS_UsuarioAprobadorSolucionIPN2__c</members>
+		<members>Case.FS_UsuarioAprobadorSolucion__c</members>
 		<members>User.FS_FechaUltimaAprobacion__c</members>
 		<name>CustomField</name>
 	</types>
@@ -209,8 +215,10 @@
 	<types>
 		<members>Case.FS_AprobacinPlanPruebas</members>
 		<members>Case.FS_AprobacionCertificacionParcheQA</members>
+		<members>Case.FS_AprobacionConsulta</members>
 		<members>Case.FS_AprobacionDisenioTecnico</members>
 		<members>Case.FS_AprobacionInstalacionParcheReleases</members>
+		<members>Case.FS_AprobacionSolicitud</members>
 		<members>Case.FS_AprobacionSolucionDefinitivaN2</members>
 		<members>Case.FS_AprobacionSolucionDefinitivaReleases</members>
 		<members>Case.FS_AprobacionSolucionIPN2</members>
@@ -283,8 +291,10 @@
 		<members>Case.FS_ValidacionRechazoIPRelease</members>
 		<members>Case.FS_ValidacionRechazoInstalacionParcheRel</members>
 		<members>Case.FS_ValidacionRechazoPlanPruebas</members>
+		<members>Case.FS_ValidacionRechazoSolucion</members>
 		<members>Case.FS_ValidacionRechazoSolucionDefinitivaN2</members>
 		<members>Case.FS_ValidacionRechazoSolucionIPN2</members>
+		<members>Case.FS_ValidacionRespuestaCliente</members>
 		<name>ValidationRule</name>
 	</types>
 	<version>55.0</version>

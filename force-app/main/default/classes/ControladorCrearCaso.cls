@@ -48,10 +48,11 @@ public without sharing class ControladorCrearCaso {
         Case caso = (Case) JSON.deserialize(casoJSON, Case.class);
         Boolean crearCaso = String.isBlank(caso.Id);
         if(crearCaso){
-            user usuario = [Select Contact.Account.FS_Carterizacion__c, Contact.Account.FS_ServicioRemoto__c, Contact.Account.FS_ColaAtencion__c from User  Where Id = :userInfo.getUserId()];
+            user usuario = [Select Contact.Account.FS_Carterizacion__c, Contact.Account.FS_ServicioRemoto__c, Contact.Account.FS_ColaAtencion__c, Contact.Account.FS_CorreosNotificacionesServicios__c  from User  Where Id = :userInfo.getUserId()];
             Boolean esCore = caso.FS_Producto__c == 'FISA System' || caso.FS_Producto__c == 'FISA Credit Card' ;
             caso.FS_Area__c = esCore ? 'N1. CORE' : 'N1. OMNIA';
             caso.FS_Carterizacion__c = usuario.Contact.Account.FS_Carterizacion__c;
+            caso.FS_CorreosNotificacionesServicios__c = usuario.Contact.Account.FS_CorreosNotificacionesServicios__c;
             if(usuario.Contact.Account.FS_ServicioRemoto__c){
                 caso.OwnerId = [Select Id from Group Where DeveloperName = :usuario.Contact.Account.FS_ColaAtencion__c and Type = 'Queue'].Id;
             }else{

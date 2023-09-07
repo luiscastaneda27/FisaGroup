@@ -16,18 +16,25 @@ global without sharing class JobValidacionRespuesta implements Schedulable {
         query += ' Where FS_SubEstado__c = :subEstado and FS_AceptaRespuesta__c = null and LastModifiedDate >= :fecha';
         for(Case item: Database.query(query)){
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-            String asunnto = CaseTriggerHelper.reemplazarCampos(item, plantilla.Subject, 'Case');
-            String html = CaseTriggerHelper.reemplazarCampos(item, plantilla.HTMLValue, 'Case');
-            String urlLogo = CaseTriggerHelper.getLogoImagen();
-            html = CaseTriggerHelper.getLogoImagen() + html.replace('{urlSiteServicios}', Label.FS_UrlPortalServicios);
-            html =html.replace('{urlSiteEncuestas}', Label.FS_UrlPortalEncuestas);
-            html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
-            mail.setSubject(asunnto);
-            mail.setHtmlBody(html);
-            mail.saveAsActivity = true;
-            mail.setWhatId(item.Id);
-            mail.setTargetObjectId(item.ContactId);
-            mail.setOrgWideEmailAddressId(owea.get(0).Id);
+            try{
+                String asunnto = CaseTriggerHelper.reemplazarCampos(item, plantilla.Subject, 'Case');
+                String html = CaseTriggerHelper.reemplazarCampos(item, plantilla.HTMLValue, 'Case');
+                String urlLogo = CaseTriggerHelper.getLogoImagen();
+                html = CaseTriggerHelper.getLogoImagen() + html.replace('{urlSiteServicios}', Label.FS_UrlPortalServicios);
+                html =html.replace('{urlSiteEncuestas}', Label.FS_UrlPortalEncuestas);
+                html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
+                mail.setSubject(asunnto);
+                mail.setHtmlBody(html);
+                mail.saveAsActivity = true;
+                mail.setWhatId(item.Id);
+                mail.setTargetObjectId(item.ContactId);
+                mail.setOrgWideEmailAddressId(owea.get(0).Id);
+                if(String.isNotBlank(item.FS_CorreosNotificacionesServicios__c)){
+                    mail.setCcAddresses(item.FS_CorreosNotificacionesServicios__c.split(','));
+                }
+            }catch(exception ex){
+                
+            }
             MessageList.add(mail);
         }
         Messaging.SendEmailResult[] results = Messaging.sendEmail(MessageList);
@@ -44,18 +51,25 @@ global without sharing class JobValidacionRespuesta implements Schedulable {
         query += ' Where FS_SubEstado__c = :subEstado and FS_FechaEnvioEncuesta__c >= :fecha';
         for(Case item: Database.query(query)){
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-            String asunnto = CaseTriggerHelper.reemplazarCampos(item, plantilla.Subject, 'Case');
-            String html = CaseTriggerHelper.reemplazarCampos(item, plantilla.HTMLValue, 'Case');
-            String urlLogo = CaseTriggerHelper.getLogoImagen();
-            html = CaseTriggerHelper.getLogoImagen() + html.replace('{urlSiteServicios}', Label.FS_UrlPortalServicios);
-            html =html.replace('{urlSiteEncuestas}', Label.FS_UrlPortalEncuestas);
-            html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
-            mail.setSubject(asunnto);
-            mail.setHtmlBody(html);
-            mail.saveAsActivity = true;
-            mail.setWhatId(item.Id);
-            mail.setTargetObjectId(item.ContactId);
-            mail.setOrgWideEmailAddressId(owea.get(0).Id);
+            try{
+                String asunnto = CaseTriggerHelper.reemplazarCampos(item, plantilla.Subject, 'Case');
+                String html = CaseTriggerHelper.reemplazarCampos(item, plantilla.HTMLValue, 'Case');
+                String urlLogo = CaseTriggerHelper.getLogoImagen();
+                html = CaseTriggerHelper.getLogoImagen() + html.replace('{urlSiteServicios}', Label.FS_UrlPortalServicios);
+                html =html.replace('{urlSiteEncuestas}', Label.FS_UrlPortalEncuestas);
+                html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
+                mail.setSubject(asunnto);
+                mail.setHtmlBody(html);
+                mail.saveAsActivity = true;
+                mail.setWhatId(item.Id);
+                mail.setTargetObjectId(item.ContactId);
+                mail.setOrgWideEmailAddressId(owea.get(0).Id);
+                if(String.isNotBlank(item.FS_CorreosNotificacionesServicios__c)){
+                    mail.setCcAddresses(item.FS_CorreosNotificacionesServicios__c.split(','));
+                }
+            }catch(exception ex){
+                
+            }
             MessageList.add(mail);
         }
         Messaging.SendEmailResult[] results = Messaging.sendEmail(MessageList);

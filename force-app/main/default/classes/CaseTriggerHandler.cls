@@ -17,6 +17,7 @@ public without sharing class CaseTriggerHandler {
         CaseTriggerHelper.aceptaRespuesta(newCaseList, oldCaseMap);
         CaseTriggerHelper.actualizacionDescripcion(newCaseList, oldCaseMap);
         CaseTriggerHelper.horasSolicitud(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionAprobacionSolucion(newCaseList, oldCaseMap);
         CaseTriggerHelper.acepta1erCosto(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionFechaEntrega(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionTipoIncidente(newCaseList, oldCaseMap);

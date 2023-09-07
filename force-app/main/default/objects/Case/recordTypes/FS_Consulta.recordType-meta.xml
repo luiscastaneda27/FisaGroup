@@ -138,6 +138,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>FS_AprobacionSolucion__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_Area__c</picklist>
         <values>
             <fullName>N1%2E CORE</fullName>
@@ -582,35 +593,35 @@
     <picklistValues>
         <picklist>FS_Proyecto__c</picklist>
         <values>
-            <fullName>FSDE238</fullName>
+            <fullName>FSDE238 - Precontratados BMR por 250 días Q2</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>FSHD001</fullName>
+            <fullName>FSHD001 - Fisa System Help desk</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>FSHD010</fullName>
+            <fullName>FSHD010 - Fallas operativas Helpdesk Fisa System</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>PNHD003</fullName>
+            <fullName>PNHD003 - OMNIA Help Desk</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>PNHD006</fullName>
+            <fullName>PNHD006 - Fallas operativas HLPDESK plataforma de negocios</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>PNRE047</fullName>
+            <fullName>PNRE047 - Servicio Soporte Local BIT 2022-2023</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>PNSO045</fullName>
+            <fullName>PNSO045 - Soporte remoto online Banking</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>PNSO046</fullName>
+            <fullName>PNSO046 - Soporte remoto Online Banking</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -671,6 +682,14 @@
         </values>
         <values>
             <fullName>Apertura de caso</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación Consulta N2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación Solicitud N2</fullName>
             <default>false</default>
         </values>
         <values>

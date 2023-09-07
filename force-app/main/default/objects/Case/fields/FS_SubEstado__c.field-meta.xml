@@ -197,6 +197,16 @@
                 <default>false</default>
                 <label>Paso a Producción Confirmado</label>
             </value>
+            <value>
+                <fullName>Aprobación Consulta N2</fullName>
+                <default>false</default>
+                <label>Aprobación Consulta N2</label>
+            </value>
+            <value>
+                <fullName>Aprobación Solicitud N2</fullName>
+                <default>false</default>
+                <label>Aprobación Solicitud N2</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
