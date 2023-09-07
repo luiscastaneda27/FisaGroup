@@ -223,7 +223,7 @@ public without sharing class CaseTriggerHelper {
                         insert new FeedItem(ParentId = item.Id, Body = item.FS_RespuestaCliente__c, Visibility = 'AllUsers');
                     }
                 }else if(item.FS_AprobacionSolucion__c == 'No'){
-                    item.FS_SubEstado__c = 'Análisis N1';
+                    item.FS_SubEstado__c = item.RecordTypeId == CONSULTA_TIPO_REGISTRO ? 'Información validada' : 'Análisis Falla Operativa';
                     String titulo = 'Rechazo de solución para caso '+item.CaseNumber;
                     String descripcion = 'El agente ' + UserInfo.getUserName() + ' ha rechazado de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
