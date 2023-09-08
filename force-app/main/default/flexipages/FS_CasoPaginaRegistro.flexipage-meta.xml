@@ -830,7 +830,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord24</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+                    <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -845,6 +845,11 @@
                         <leftValue>{!Record.FS_AprobacionDisenioTecnico__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Si</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_AprobacionDisenioTecnico__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>No</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -959,7 +964,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord25</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.FS_SubEstado__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -968,6 +973,16 @@
                     <criteria>
                         <leftValue>{!Record.FS_URLSolucionDefinitiva__c}</leftValue>
                         <operator>NE</operator>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_AprobacionSolucionDefinitivaN2__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Si</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_AprobacionSolucionDefinitivaN2__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>No</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -1014,7 +1029,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord26</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.FS_SubEstado__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -1024,6 +1039,11 @@
                         <leftValue>{!Record.FS_AprobacionSolucionDefinitivaRelease__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Si</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_AprobacionSolucionDefinitivaRelease__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>No</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -1104,7 +1124,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord28</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.FS_SubEstado__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -1115,39 +1135,10 @@
                         <operator>EQUAL</operator>
                         <rightValue>Si</rightValue>
                     </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>createQuickActionName</name>
-                    <value>GuestCommunityCase</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>lookupFieldName</name>
-                    <value>Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>titleFieldName</name>
-                    <value>Instalación Parche Releases</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>updateQuickActionName</name>
-                    <value>Case.FS_InstalacinParcheReleases</value>
-                </componentInstanceProperties>
-                <componentName>console:relatedRecord</componentName>
-                <identifier>console_relatedRecord29</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
-                        <leftValue>{!Record.FS_SubEstado__c}</leftValue>
+                        <leftValue>{!Record.FS_AprobacionPlanPruebas__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Instalación Parche Releases</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.FS_UrlAmbientePruebas__c}</leftValue>
-                        <operator>NE</operator>
+                        <rightValue>No</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -1209,6 +1200,40 @@
                         <leftValue>{!Record.FS_AprobacionInstalacionParcheRelease__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>No</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>GuestCommunityCase</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                    <value>Instalación Parche Releases</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Case.FS_InstalacinParcheReleases</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord29</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.FS_SubEstado__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Instalación Parche Releases</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_UrlAmbientePruebas__c}</leftValue>
+                        <operator>NE</operator>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -1289,7 +1314,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord32</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.FS_SubEstado__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -1299,6 +1324,11 @@
                         <leftValue>{!Record.FS_AprobacionCertificacionParcheQA__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Si</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_AprobacionCertificacionParcheQA__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>No</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -1379,17 +1409,7 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord21</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.IsEscalated}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Incidente</rightValue>
-                    </criteria>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.FS_SubEstado__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -1399,6 +1419,11 @@
                         <leftValue>{!Record.FS_AprobacionSolucionIPN2__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Si</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_AprobacionSolucionIPN2__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>No</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

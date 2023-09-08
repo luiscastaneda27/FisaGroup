@@ -137,6 +137,7 @@ public without sharing class CaseTriggerHelper {
                     }
                     if(item.FS_SubEstado__c == 'Revisión Documentación N2'){
                         item.FS_SubEstado__c = item.FS_TipoIncidente__c == 'Puntual' ? 'Desarrollo Incidente Puntual' : 'Desarrollo Incidente Definitivo';
+                        item.Status = 'En Desarrollo';
                     }else if(item.FS_NombreTipoRegistro__c  == 'Solicitud (Falla Operativa)'){
                         item.FS_SubEstado__c = 'En Espera de Respuesta del Cliente';
                         item.Status = 'En Análisis';
@@ -550,7 +551,7 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_AprobacionPlanPruebas__c != item.FS_AprobacionPlanPruebas__c){
                 if(item.FS_AprobacionPlanPruebas__c == 'Si'){
-                    item.FS_SubEstado__c = 'Instalación Parche Releases';
+                    item.FS_SubEstado__c = 'Aprobación Instalación Parche - Releases';
                 }else if(item.FS_AprobacionPlanPruebas__c == 'No'){
                     item.FS_URLPlanPruebas__c = null;
                     item.FS_SubEstado__c = 'Elaboración Plan de Pruebas';
@@ -562,21 +563,12 @@ public without sharing class CaseTriggerHelper {
         }
     }
     
-    public static void validacionURLAmbientePruebas(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-        for(Case item: newCaseList){
-            Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_UrlAmbientePruebas__c != item.FS_UrlAmbientePruebas__c && String.isBlank(caso.FS_UrlAmbientePruebas__c)){
-                item.FS_SubEstado__c = 'Aprobación Instalación Parche - Releases';
-            }
-        }
-    }
-    
     public static void validacionAprobacionInstalacionRelease(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_AprobacionInstalacionParcheRelease__c  != item.FS_AprobacionInstalacionParcheRelease__c ){
                 if(item.FS_AprobacionInstalacionParcheRelease__c == 'Si'){
-                    item.FS_SubEstado__c = 'Certificación Parche QA';
+                    item.FS_SubEstado__c = 'Instalación Parche Releases';
                 }else if(item.FS_AprobacionInstalacionParcheRelease__c == 'No'){
                     item.FS_SubEstadoAnterior__c = item.FS_SubEstado__c;
                     item.FS_UrlAmbientePruebas__c = null;
@@ -586,6 +578,15 @@ public without sharing class CaseTriggerHelper {
                     String descripcion = 'El agente ' + item.FS_UsuarioAprobadorInstalacionParcheRele__c  + ' ha rechazado la Instalación Parche - Releases para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
+            }
+        }
+    }
+    
+    public static void validacionURLAmbientePruebas(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(caso.FS_UrlAmbientePruebas__c != item.FS_UrlAmbientePruebas__c && String.isBlank(caso.FS_UrlAmbientePruebas__c)){
+                item.FS_SubEstado__c = 'Certificación Parche QA';
             }
         }
     }
@@ -666,7 +667,7 @@ public without sharing class CaseTriggerHelper {
             }
         }
     }
-
+    
     public static void validacionIngProducto(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
