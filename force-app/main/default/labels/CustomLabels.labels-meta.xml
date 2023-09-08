@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
-     <labels>
+    <labels>
+        <fullName>FS_CorreoElectronicoServicio</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_CorreoElectronicoServicio</shortDescription>
+        <value>salesforce.sandbox@fisagrp.com</value>
+    </labels>
+    <labels>
         <fullName>FS_CorreosPaseProduccionAceptado</fullName>
         <language>es</language>
         <protected>false</protected>
         <shortDescription>FS_CorreosPaseProduccionAceptado</shortDescription>
         <value>elisa.valle@intellectsystem.net</value>
+    </labels>
+    <labels>
+        <fullName>FS_DiasEnvioEncuesta</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_DiasEnvioEncuesta</shortDescription>
+        <value>30</value>
+    </labels>
+    <labels>
+        <fullName>FS_IdIssueJiraIncidenteDefinitivo</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_IdIssueJiraIncidenteDefinitivo</shortDescription>
+        <value>11169</value>
+    </labels>
+    <labels>
+        <fullName>FS_IdIssueJiraPuntual</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_IdIssueJiraPuntual</shortDescription>
+        <value>11168</value>
+    </labels>
+    <labels>
+        <fullName>FS_IdJiraProject</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FS_IdJiraProject</shortDescription>
+        <value>14035</value>
     </labels>
     <labels>
         <fullName>FS_UrlPortalEncuestas</fullName>
@@ -20,19 +55,5 @@
         <protected>false</protected>
         <shortDescription>Url Portal Servicios</shortDescription>
         <value>https://fisagrp--qafs.sandbox.my.site.com/servicios/s</value>
-    </labels>
-    <labels>
-        <fullName>FS_DiasEnvioEncuesta</fullName>
-        <language>es</language>
-        <protected>false</protected>
-        <shortDescription>FS_DiasEnvioEncuesta</shortDescription>
-        <value>30</value>
-    </labels>
-    <labels>
-        <fullName>FS_CorreoElectronicoServicio</fullName>
-        <language>es</language>
-        <protected>false</protected>
-        <shortDescription>FS_CorreoElectronicoServicio</shortDescription>
-        <value>salesforce.sandbox@fisagrp.com</value>
     </labels>
 </CustomLabels>

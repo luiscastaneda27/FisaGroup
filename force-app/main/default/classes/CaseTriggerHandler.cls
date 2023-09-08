@@ -24,7 +24,6 @@ public without sharing class CaseTriggerHandler {
         CaseTriggerHelper.validacionURLResultadoAnalasis(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionAutorizacionSolucionIPN2(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionAprobacionSolucionIPRelease(newCaseList, oldCaseMap);
-        
         CaseTriggerHelper.validacionSolucionCortoPlazo(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionURLDisenioTecnico(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionAprobacionDisenioTecnico(newCaseList, oldCaseMap);
@@ -41,6 +40,7 @@ public without sharing class CaseTriggerHandler {
         CaseTriggerHelper.validacionUrlEntregaParche(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionAceptaInstalacionParche(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionAceptaPaseProduccion(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionIngProducto(newCaseList, oldCaseMap);
         
     }
     

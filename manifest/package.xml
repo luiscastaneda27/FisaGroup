@@ -77,6 +77,8 @@
 		<members>Case.FS_FechaEntregaDesarrollo__c</members>
 		<members>Case.FS_FechaEnvioEncuesta__c</members>
 		<members>Case.FS_InformacionCompleta__c</members>
+		<members>Case.FS_IngenieroProductoQA__c</members>
+		<members>Case.FS_IngenieroProducto__c</members>
 		<members>Case.FS_Modulo__c</members>
 		<members>Case.FS_MotivoCambioFechaDesarrollo__c</members>
 		<members>Case.FS_MotivoCambioFechaEntrega__c</members>
@@ -235,6 +237,7 @@
 		<members>Case.FS_EntregaParche</members>
 		<members>Case.FS_InformacionWeb</members>
 		<members>Case.FS_InstalacinParcheReleases</members>
+		<members>Case.FS_Producto</members>
 		<members>Case.FS_RevisionDocumentacion</members>
 		<members>Case.FS_SolucionDefinitiva</members>
 		<members>Case.FS_ValidacinEntregaFuentes</members>
@@ -292,6 +295,10 @@
 		<members>Case.FS_ValidacionRechazoSolucionIPN2</members>
 		<members>Case.FS_ValidacionRespuestaCliente</members>
 		<name>ValidationRule</name>
+	</types>
+	<types>
+		<members>ServiceRocket</members>
+		<name>RemoteSiteSetting</name>
 	</types>
 	<version>55.0</version>
 </Package>

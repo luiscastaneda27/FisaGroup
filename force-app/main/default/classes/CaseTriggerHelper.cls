@@ -221,9 +221,6 @@ public without sharing class CaseTriggerHelper {
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                     if(item.RecordTypeId == CONSULTA_TIPO_REGISTRO){
                         insert new FeedItem(ParentId = item.Id, Body = item.FS_RespuestaCliente__c, Visibility = 'AllUsers');
-                    }else if(item.RecordTypeId == SOLICITUD_TIPO_REGISTRO){
-                        descripcion = 'Estimado Cliente\n\n\nHemos finalizado con el requerimiento solicitado, el cual tuvo una duración de '+item.FS_NumeroHorasSolicitud__c +' horas\n\nTus comentarios son importantes para nosotros.\n\nGracias\nCustomer Care Team\n\nSaludos';
-                        insert new FeedItem(ParentId = item.Id, Body = descripcion, Visibility = 'AllUsers');
                     }
                 }else if(item.FS_AprobacionSolucion__c == 'No'){
                     item.FS_SubEstado__c = item.RecordTypeId == CONSULTA_TIPO_REGISTRO ? 'Información validada' : 'Análisis Falla Operativa';
@@ -421,6 +418,10 @@ public without sharing class CaseTriggerHelper {
                     casoHijo.FS_TipoIncidente__c = 'Puntual';
                     casoHijo.FS_SolucionCortoPlazo__c = null;
                     insert casoHijo;
+                    casoHijo = [Select Id, CaseNumber From Case where Id =: casoHijo.Id];
+                    String titulo = 'Asignación de caso No. '+casoHijo.CaseNumber;
+                    String descripcion = 'El agente ' + userInfo.getUserName()  + ' ha creado el caso '+casoHijo.CaseNumber +' como solución a corto plazo del caso ' + item.CaseNumber + '\nPor favor dar seguimiento.';
+                    enviarNotificacion(item.FS_PropietarioCasoSolucionCortoPlazo__c, casoHijo.Id, titulo, descripcion);
                 }
                 item.FS_SubEstado__c = 'Elaboración Diseño Técnico';
             }
@@ -474,6 +475,9 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_URLSolucionDefinitiva__c != item.FS_URLSolucionDefinitiva__c  && String.isBlank(caso.FS_URLSolucionDefinitiva__c)){
                 item.FS_SubEstado__c = 'Aprobación Solución Definitiva N2';
+                item.FS_AprobacionSolucionDefinitivaN2__c = null;
+                item.FS_MotivoRechazoSDN2__c = null;
+                
             }
         }
     }
@@ -484,8 +488,11 @@ public without sharing class CaseTriggerHelper {
             if(caso.FS_AprobacionSolucionDefinitivaN2__c != item.FS_AprobacionSolucionDefinitivaN2__c ){
                 if(item.FS_AprobacionSolucionDefinitivaN2__c == 'Si'){
                     item.FS_SubEstado__c = 'Aprobación Solución Definitiva Releases';
+                    item.FS_AprobacionSolucionDefinitivaRelease__c = null;
+                    item.FS_MotivoRechazoSDRelease__c = null;
+                    item.FS_ComentariosAprobacionSolucinRelease__c = null;
                 }else if(item.FS_AprobacionSolucionDefinitivaN2__c == 'No'){
-                    item.FS_URLSolucionDefinitiva__c = null;
+                    item.FS_AprobacionSolucionDefinitivaRelease__c = null;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
                     String titulo = 'Rechazo de Solución Definitiva N2 para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
@@ -503,6 +510,9 @@ public without sharing class CaseTriggerHelper {
                     if(String.isNotBlank(item.FS_SubEstadoAnterior__c)){
                         item.FS_SubEstadoAnterior__c = null;
                         item.FS_SubEstado__c = 'Instalación Parche Releases';
+                        item.FS_AprobacionInstalacionParcheRelease__c = null;
+                        item.FS_MotivosRechazoInstalacionParche__c = null;
+                        item.FS_ComentariosAprobacionInstalacionParch__c = null;
                     }else{
                         Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
                         item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_QA_CORE : COLA_ATENCION_QA_OMNIA);
@@ -616,6 +626,8 @@ public without sharing class CaseTriggerHelper {
                 item.FS_SubEstado__c = 'Instalación de Parche';
                 item.Status = 'Validación de Respuesta (Cliente)';
                 item.FS_AceptaRespuesta__c = null;
+                String descripcion = 'Estimado Cliente\n\n\nHemos entregado la respuesta al caso, la solución se encuentra disponible en la siguiente URL para su validación '+item.FS_URLParcheCliente__c +'\n\nTus comentarios son importantes para nosotros.\n\nGracias\nCustomer Care Team\n\nSaludos';
+                insert new FeedItem(ParentId = item.Id, Body = descripcion, Visibility = 'AllUsers');
                 envioCorreo(item, 'FS_ValidacionInformacion', true);
             }
         }
@@ -651,6 +663,22 @@ public without sharing class CaseTriggerHelper {
                 }else if(item.FS_AceptaPaseProducion__c == 'No'){
                     item.FS_SubEstado__c = 'Paso a Producción No Confirmado';
                 }
+            }
+        }
+    }
+
+    public static void validacionIngProducto(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            String titulo = 'Asignación de caso No. '+item.CaseNumber;
+            String descripcion = 'El agente ' + userInfo.getUserName()  + ' le ha asignado el caso '+item.CaseNumber +' \nPor favor dar seguimiento.';
+            if(caso.FS_IngenieroProducto__c  != item.FS_IngenieroProducto__c && caso.FS_IngenieroProducto__c != null){
+                item.OwnerId = caso.FS_IngenieroProducto__c;
+                enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
+            }
+            if(caso.FS_IngenieroProductoQA__c  != item.FS_IngenieroProductoQA__c && caso.FS_IngenieroProductoQA__c != null){
+                item.OwnerId = caso.FS_IngenieroProductoQA__c;
+                enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
             }
         }
     }
@@ -712,8 +740,6 @@ public without sharing class CaseTriggerHelper {
         
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-             //casesNewUpdateIP.add(item);
-               //     casesOldUpdateIP.add(caso);
             if(caso.FS_SubEstado__c != item.FS_SubEstado__c && item.FS_TipoIncidente__c == 'Puntual'){
                 if(item.FS_SubEstado__c == 'Desarrollo Incidente Puntual'){
                     casesNewIP.add(item);
@@ -731,12 +757,25 @@ public without sharing class CaseTriggerHelper {
                          item.FS_SubEstado__c == 'Escalado a QA' || item.FS_SubEstado__c == 'Instalación Parche Releases' ||
                          item.FS_SubEstado__c == 'Elaboración Plan de Pruebas' || item.FS_SubEstado__c == 'Certificación Parche QA' ||
                          item.FS_SubEstado__c == 'Validación-Entrega de Fuentes' || item.FS_SubEstado__c == 'Entrega de Parche' ||
-                         item.FS_SubEstado__c == 'Paso a Producción' || item.FS_SubEstado__c == 'Paso a Producción No Confirmado'){
+                         item.FS_SubEstado__c == 'Paso a Producción' || item.FS_SubEstado__c == 'Paso a Producción No Confirmado' || item.FS_SubEstado__c == 'Paso a Producción Confirmado'){
                              casesNewUpdateID.add(item);
                              casesOldUpdateID.add(caso);
                          }
             }
         }
+        if(casesNewIP.size() > 0){
+            createIssueJira(casesNewIP, casesOldIP);
+        }
+        if(casesNewUpdateIP.size() > 0){
+            createIssueJira(casesNewUpdateIP, casesOldUpdateIP);
+        }
+        if(casesNewID.size() > 0){
+            createIssueJira(casesNewID, casesOldID);
+        }
+        if(casesNewUpdateID.size() > 0){
+            updateIssueJira(casesNewUpdateID, casesOldUpdateID);
+        }
+            
         
     }
     
@@ -836,15 +875,13 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void createIssueJira(List<Case> newCaseList, List<Case> oldCaseList) { 
-        //String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
-        //String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJiraIncidenteDefinitivo : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
-        //System.debug('jiraIssueTypeId: '+jiraIssueTypeId);
-        //JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
+        String jiraProjectId = System.Label.FS_IdJiraProject; // Id Jira Project
+        String jiraIssueTypeId = newCaseList[0].FS_TipoIncidente__c == 'Definitivo' ? System.Label.FS_IdIssueJiraIncidenteDefinitivo : System.Label.FS_IdIssueJiraPuntual; // Id Issue Jira: Incidente Definitivo
+        JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
     }
     
     public static void updateIssueJira(List<Case> newCaseList, List<Case> oldCaseList) {       
-        //Conditions to update de Issue in Jira
-        //JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
+        JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
     }
     
     public static void MilestoneCalculator(List<Case> newCaseList){
