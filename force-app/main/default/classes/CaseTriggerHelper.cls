@@ -250,6 +250,15 @@ public without sharing class CaseTriggerHelper {
                     item.FS_SubEstado__c = 'Respuesta rechazada';
                     item.FS_PudeSolventarPregunta__c = null;
                     envioCorreo(item, 'FS_RechazoRespuesta', false);
+                    if(item.RecordTypeId == INCIDENTE_TIPO_REGISTRO && item.FS_TipoIncidente__c == 'Puntual' ){
+                        item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
+                        item.Status = 'En Desarrollo';
+                        item.FS_URLResultadoAnalasis__c = null;
+                    }else if (item.RecordTypeId == INCIDENTE_TIPO_REGISTRO && item.FS_TipoIncidente__c == 'Definitivo'){
+                        item.FS_SubEstado__c = 'Elaboración Diseño Técnico';
+                        item.Status = 'En Desarrollo';
+                        item.FS_URLDisenioTecnico__c = null;
+                    }
                 }
                 
             }
@@ -883,7 +892,7 @@ public without sharing class CaseTriggerHelper {
         JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
     }
     
-    public static void updateIssueJira(List<Case> newCaseList, List<Case> oldCaseList) {       
+    public static void updateIssueJira(List<Case> newCaseList, List<Case> oldCaseList) {   
         JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
     }
     
