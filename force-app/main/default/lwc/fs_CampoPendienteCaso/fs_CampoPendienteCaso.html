@@ -33,9 +33,17 @@
                                     <lightning-layout-item flexibility="auto" padding="around-small" size="12">
                                         <lightning-card icon-name="standard:answer_best" title="Aceptación de Respuesta">
                                             <lightning-layout vertical-align="stretch" multiple-rows="true">
+                                                <lightning-layout-item if:true={data.esConsulta} flexibility="auto" padding="around-small" size="12">
+                                                    <p>{data.caso.FS_RespuestaCliente__c}</b>
+                                                    </p>
+                                                </lightning-layout-item>
                                                 <lightning-layout-item if:true={data.esSolicitud} flexibility="auto" padding="around-small" size="12">
                                                     <p>En relación con tu caso N° {data.caso.CaseNumber} hemos finalizado con el requerimiento solicitado, 
                                                         el cual tuvo una duración de <b> {data.caso.FS_NumeroHorasSolicitud__c} horas</b>.
+                                                    </p>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item if:true={data.esIncidentePuntual} flexibility="auto" padding="around-small" size="12">
+                                                    <p>Hemos entregado la respuesta al caso, la solución se encuentra disponible en la siguiente URL para su validación <a href={data.caso.FS_URLResultadoAnalasis__c}  target="_blank" > {data.caso.FS_URLResultadoAnalasis__c} </a></b>
                                                     </p>
                                                 </lightning-layout-item>
                                                 <lightning-layout-item flexibility="auto" padding="around-small" size="6">
@@ -262,7 +270,8 @@
                                         <lightning-card icon-name="standard:answer_best" title="Instalación de Parche">
                                             <lightning-layout vertical-align="stretch" multiple-rows="true">
                                                 <lightning-layout-item flexibility="auto" padding="around-small" size="12">
-                                                    <a href={data.caso.FS_URLParcheCliente__c}  target="_blank" > {data.caso.FS_URLParcheCliente__c} </a>
+                                                    <p>Hemos entregado la respuesta al caso, la solución se encuentra disponible en la siguiente URL para su validación <a href={data.caso.FS_URLParcheCliente__c}  target="_blank" > {data.caso.FS_URLParcheCliente__c} </a></b>
+                                                    </p>
                                                 </lightning-layout-item>
                                                 <lightning-layout-item flexibility="auto" padding="around-small" size="6">
                                                     <lightning-combobox name="aceptaParche" label="Acepta Instalación"
