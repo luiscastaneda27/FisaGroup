@@ -742,15 +742,16 @@ public without sharing class CaseTriggerHelper {
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_SubEstado__c != item.FS_SubEstado__c && item.FS_TipoIncidente__c == 'Puntual'){
-                if(item.FS_SubEstado__c == 'Desarrollo Incidente Puntual'){
+                if(item.FS_SubEstado__c == 'Desarrollo Incidente Puntual' && caso.FS_SubEstado__c == 'Revisión Documentación N2'){
                     casesNewIP.add(item);
                     casesOldIP.add(caso);
-                }else if(item.FS_SubEstado__c == 'Aprobación de Solución IP-Release' || item.FS_SubEstado__c == 'Aprobación Solución IP-N2'){
+                }else if(item.FS_SubEstado__c == 'Aprobación de Solución IP-Release' || item.FS_SubEstado__c == 'Aprobación Solución IP-N2' ||
+                        item.FS_SubEstado__c == 'Desarrollo Incidente Puntual'){
                     casesNewUpdateIP.add(item);
                     casesOldUpdateIP.add(caso);
                 }
             }if(caso.FS_SubEstado__c != item.FS_SubEstado__c && item.FS_TipoIncidente__c == 'Definitivo'){
-                if(item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo'){
+                if(item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo' && caso.FS_SubEstado__c == 'Revisión Documentación N2'){
                     casesNewID.add(item);
                     casesOldID.add(caso);
                 }else if(item.FS_SubEstado__c == 'Validación-Entrega de Fuentes' || item.FS_SubEstado__c == 'Elaboración Diseño Técnico' ||
@@ -758,7 +759,8 @@ public without sharing class CaseTriggerHelper {
                          item.FS_SubEstado__c == 'Escalado a QA' || item.FS_SubEstado__c == 'Instalación Parche Releases' ||
                          item.FS_SubEstado__c == 'Elaboración Plan de Pruebas' || item.FS_SubEstado__c == 'Certificación Parche QA' ||
                          item.FS_SubEstado__c == 'Validación-Entrega de Fuentes' || item.FS_SubEstado__c == 'Entrega de Parche' ||
-                         item.FS_SubEstado__c == 'Paso a Producción' || item.FS_SubEstado__c == 'Paso a Producción No Confirmado' || item.FS_SubEstado__c == 'Paso a Producción Confirmado'){
+                         item.FS_SubEstado__c == 'Paso a Producción' || item.FS_SubEstado__c == 'Paso a Producción No Confirmado'
+                         || item.FS_SubEstado__c == 'Paso a Producción Confirmado' || item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo'){
                              casesNewUpdateID.add(item);
                              casesOldUpdateID.add(caso);
                          }
@@ -768,7 +770,7 @@ public without sharing class CaseTriggerHelper {
             createIssueJira(casesNewIP, casesOldIP);
         }
         if(casesNewUpdateIP.size() > 0){
-            createIssueJira(casesNewUpdateIP, casesOldUpdateIP);
+            updateIssueJira(casesNewUpdateIP, casesOldUpdateIP);
         }
         if(casesNewID.size() > 0){
             createIssueJira(casesNewID, casesOldID);
