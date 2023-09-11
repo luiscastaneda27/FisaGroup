@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>FS_CorreosNotificacionesServicios__c</fullName>
-    <externalId>false</externalId>
+   <externalId>false</externalId>
     <label>Correos Notificaciones Servicios</label>
-    <length>255</length>
-    <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
-    <type>Text</type>
-    <unique>false</unique>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
 </CustomField>
