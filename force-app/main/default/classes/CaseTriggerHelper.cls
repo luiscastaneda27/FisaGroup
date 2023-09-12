@@ -357,6 +357,8 @@ public without sharing class CaseTriggerHelper {
                 if(item.FS_AprobacionSolucionIPN2__c == 'Si'){
                     item.FS_AprobacionSolucionIPRelease__c = null;
                     item.FS_MotivoRechazoAprobacionIPRealease__c = null;
+                    item.FS_ComentariosAprobacionSolucinRelease__c = null;
+                    item.FS_UsuarioAprobacionSolucionRelease__c = null;
                     item.FS_SubEstado__c = 'Aprobación de Solución IP-Release';
                 }else if(item.FS_AprobacionSolucionIPN2__c == 'No'){
                     item.FS_URLResultadoAnalasis__c = null;
@@ -382,7 +384,7 @@ public without sharing class CaseTriggerHelper {
                     String descripcion = 'El Jefe de Release ' + item.FS_UsuarioAprobacionSolucionRelease__c + ' ha aprobado la Solución IP-Release para el caso número '+item.CaseNumber +'\nMuchas gracias.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                     envioCorreo(item, 'FS_ValidacionInformacion', true);
-                    descripcion = 'Estimado Cliente\n\n\nHemos entregado la respuesta al caso, la solución se encuentra disponible en la siguiente URL para su validación '+item.FS_URLResultadoAnalasis__c +'\n\nTus comentarios son importantes para nosotros.\n\nGracias\nCustomer Care Team\n\nSaludos';
+                    descripcion = 'Estimado Cliente\n\n\nHemos entregado la respuesta al caso, la solución se encuentra disponible en la siguiente URL para su validación '+item.FS_URLCodigoFuente__c +'\n\nTus comentarios son importantes para nosotros.\n\nGracias\nCustomer Care Team\n\nSaludos';
                     insert new FeedItem(ParentId = item.Id, Body = descripcion, Visibility = 'AllUsers');
                 }else if(item.FS_AprobacionSolucionIPRelease__c == 'No'){
                     item.FS_URLResultadoAnalasis__c = null;
