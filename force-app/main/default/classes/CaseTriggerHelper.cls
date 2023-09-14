@@ -253,7 +253,8 @@ public without sharing class CaseTriggerHelper {
                     if(item.RecordTypeId == INCIDENTE_TIPO_REGISTRO && item.FS_TipoIncidente__c == 'Puntual' ){
                         item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                         item.Status = 'En Desarrollo';
-                        item.FS_URLResultadoAnalasis__c = null;
+                        //item.FS_URLResultadoAnalasis__c = null;
+                        item.FS_EnviarAprobacionSolucionIPN2__c = null;
                     }else if (item.RecordTypeId == INCIDENTE_TIPO_REGISTRO && item.FS_TipoIncidente__c == 'Definitivo'){
                         item.FS_SubEstado__c = 'Elaboración Diseño Técnico';
                         item.Status = 'En Desarrollo';
@@ -338,7 +339,7 @@ public without sharing class CaseTriggerHelper {
     public static void validacionURLResultadoAnalasis(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_URLResultadoAnalasis__c != item.FS_URLResultadoAnalasis__c && String.isBlank(caso.FS_URLResultadoAnalasis__c)){
+            if(caso.FS_EnviarAprobacionSolucionIPN2__c != item.FS_EnviarAprobacionSolucionIPN2__c && item.FS_EnviarAprobacionSolucionIPN2__c == true){
                 item.FS_SubEstado__c = 'Aprobación Solución IP-N2';
                 item.FS_AprobacionSolucionIPN2__c = null;
                 item.FS_MotivosRechazoAprobacionIPN2__c = null;
@@ -361,7 +362,8 @@ public without sharing class CaseTriggerHelper {
                     item.FS_UsuarioAprobacionSolucionRelease__c = null;
                     item.FS_SubEstado__c = 'Aprobación de Solución IP-Release';
                 }else if(item.FS_AprobacionSolucionIPN2__c == 'No'){
-                    item.FS_URLResultadoAnalasis__c = null;
+                    //item.FS_URLResultadoAnalasis__c = null;
+                    item.FS_EnviarAprobacionSolucionIPN2__c = false;
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                     String titulo = 'Rechazo de Aprobación Solución IP-N2 para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+UserInfo.getFirstName() + ' ha rechzado la Aprobación de Solución IP-N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
@@ -387,7 +389,8 @@ public without sharing class CaseTriggerHelper {
                     descripcion = 'Estimado Cliente\n\n\nHemos entregado la respuesta al caso, la solución se encuentra disponible en la siguiente URL para su validación '+item.FS_URLCodigoFuente__c +'\n\nTus comentarios son importantes para nosotros.\n\nGracias\nCustomer Care Team\n\nSaludos';
                     insert new FeedItem(ParentId = item.Id, Body = descripcion, Visibility = 'AllUsers');
                 }else if(item.FS_AprobacionSolucionIPRelease__c == 'No'){
-                    item.FS_URLResultadoAnalasis__c = null;
+                    //item.FS_URLResultadoAnalasis__c = null;
+                    item.FS_EnviarAprobacionSolucionIPN2__c = false;
                     item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                     String titulo = 'Rechazo de Solución IP-Release para caso '+item.CaseNumber;
                     String descripcion = 'El Jefe de Release ' + item.FS_UsuarioAprobacionSolucionRelease__c + ' ha rechzado la Solución IP-Release para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
@@ -443,7 +446,7 @@ public without sharing class CaseTriggerHelper {
     public static void validacionURLDisenioTecnico(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_URLDisenioTecnico__c  != item.FS_URLDisenioTecnico__c  && String.isBlank(caso.FS_URLDisenioTecnico__c)){
+            if(caso.FS_EnviarAprobacionDisenioTecnico__c != item.FS_EnviarAprobacionDisenioTecnico__c && item.FS_EnviarAprobacionDisenioTecnico__c == true){
                 item.FS_SubEstado__c = 'Aprobación Diseño Técnico';
                 item.FS_AprobacionDisenioTecnico__c = null;
                 item.FS_MotivosRechazoDT__c = null;
@@ -463,7 +466,8 @@ public without sharing class CaseTriggerHelper {
                 if(item.FS_AprobacionDisenioTecnico__c == 'Si'){
                     item.FS_SubEstado__c = 'Validación-Entrega de Fuentes';
                 }else if(item.FS_AprobacionDisenioTecnico__c == 'No'){
-                    item.FS_URLDisenioTecnico__c = null;
+                    //item.FS_URLDisenioTecnico__c = null;
+                    item.FS_EnviarAprobacionDisenioTecnico__c = false;
                     item.FS_SubEstado__c = 'Elaboración Diseño Técnico';
                     String titulo = 'Rechazo Diseño Técnico para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado el diseño técnico para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
@@ -476,7 +480,7 @@ public without sharing class CaseTriggerHelper {
     public static void validacionURLCodigoFuente(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_URLCodigoFuente__c != item.FS_URLCodigoFuente__c  && String.isBlank(caso.FS_URLCodigoFuente__c)){
+            if(caso.FS_URLCodigoFuente__c != item.FS_URLCodigoFuente__c  && String.isBlank(caso.FS_URLCodigoFuente__c) && item.FS_TipoIncidente__c == 'Definitivo'){
                 item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
             }
         }
@@ -485,7 +489,7 @@ public without sharing class CaseTriggerHelper {
     public static void validacionURLSolucionDefinitiva(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_URLSolucionDefinitiva__c != item.FS_URLSolucionDefinitiva__c  && String.isBlank(caso.FS_URLSolucionDefinitiva__c)){
+            if(caso.FS_EnviarAprobacionSolucionDN2__c != item.FS_EnviarAprobacionSolucionDN2__c && item.FS_EnviarAprobacionSolucionDN2__c == true){
                 item.FS_SubEstado__c = 'Aprobación Solución Definitiva N2';
                 item.FS_AprobacionSolucionDefinitivaN2__c = null;
                 item.FS_MotivoRechazoSDN2__c = null;
@@ -503,8 +507,10 @@ public without sharing class CaseTriggerHelper {
                     item.FS_AprobacionSolucionDefinitivaRelease__c = null;
                     item.FS_MotivoRechazoSDRelease__c = null;
                     item.FS_ComentariosAprobacionSolucinRelease__c = null;
+                    item.FS_UsuarioAprobacionSolucionRelease__c = null;
                 }else if(item.FS_AprobacionSolucionDefinitivaN2__c == 'No'){
-                    item.FS_AprobacionSolucionDefinitivaRelease__c = null;
+                    item.FS_EnviarAprobacionSolucionDN2__c = false;
+                    //item.FS_AprobacionSolucionDefinitivaRelease__c = null;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
                     String titulo = 'Rechazo de Solución Definitiva N2 para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
@@ -532,7 +538,8 @@ public without sharing class CaseTriggerHelper {
                         item.FS_SubEstado__c = 'Escalado a QA';   
                     }
                 }else if(item.FS_AprobacionSolucionDefinitivaRelease__c == 'No'){
-                    item.FS_URLSolucionDefinitiva__c = null;
+                    //item.FS_URLSolucionDefinitiva__c = null;
+                    item.FS_EnviarAprobacionSolucionDN2__c = false;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
                     String titulo = 'Rechazo de Solución Definitiva N2 para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
@@ -545,7 +552,7 @@ public without sharing class CaseTriggerHelper {
     public static void validacionURLPlanPruebas(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_URLPlanPruebas__c != item.FS_URLPlanPruebas__c  && String.isBlank(caso.FS_URLPlanPruebas__c)){
+            if(caso.FS_EnviarAprobacionPlanPruebas__c != item.FS_EnviarAprobacionPlanPruebas__c  && item.FS_EnviarAprobacionPlanPruebas__c == true){
                 item.FS_SubEstado__c = 'Aprobación Plan de Pruebas';
                 item.FS_AprobacionPlanPruebas__c = null;
                 item.FS_MotivoRechazoPlanPruebas__c = null;
@@ -564,7 +571,8 @@ public without sharing class CaseTriggerHelper {
                 if(item.FS_AprobacionPlanPruebas__c == 'Si'){
                     item.FS_SubEstado__c = 'Aprobación Instalación Parche - Releases';
                 }else if(item.FS_AprobacionPlanPruebas__c == 'No'){
-                    item.FS_URLPlanPruebas__c = null;
+                    //item.FS_URLPlanPruebas__c = null;
+                    item.FS_EnviarAprobacionPlanPruebas__c = false;
                     item.FS_SubEstado__c = 'Elaboración Plan de Pruebas';
                     String titulo = 'Rechazo Plan de pruebas para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado el Plan de Pruebas para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
@@ -583,7 +591,9 @@ public without sharing class CaseTriggerHelper {
                 }else if(item.FS_AprobacionInstalacionParcheRelease__c == 'No'){
                     item.FS_SubEstadoAnterior__c = item.FS_SubEstado__c;
                     item.FS_UrlAmbientePruebas__c = null;
-                    item.FS_URLSolucionDefinitiva__c = null;
+                    //item.FS_URLSolucionDefinitiva__c = null;
+                    item.FS_EnviarAprobacionSolucionDN2__c = false;
+                    item.FS_EnviarAprobacionPlanPruebas__c = false;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
                     String titulo = 'Rechazo de Instalación Parche - Releases para caso '+item.CaseNumber;
                     String descripcion = 'El agente ' + item.FS_UsuarioAprobadorInstalacionParcheRele__c  + ' ha rechazado la Instalación Parche - Releases para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
@@ -621,7 +631,8 @@ public without sharing class CaseTriggerHelper {
                 if(item.FS_AprobacionCertificacionParcheQA__c  == 'Si'){
                     item.FS_SubEstado__c = 'Entrega de Parche';
                 }else if(item.FS_AprobacionCertificacionParcheQA__c  == 'No'){
-                    item.FS_URLSolucionDefinitiva__c = null;
+                    //item.FS_URLSolucionDefinitiva__c = null;
+                    item.FS_EnviarAprobacionSolucionDN2__c = false;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
                     String titulo = 'Rechazo de Certificación Parche QA para caso '+item.CaseNumber;
                     String descripcion = 'El agente ' + item.FS_UsuarioAprobadorInstalacionParcheRele__c  + ' ha rechazado la Certificación Parche QA para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';

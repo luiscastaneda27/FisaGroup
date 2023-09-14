@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>FS_AceptaPaseProducion__c</fullName>
     <externalId>false</externalId>
-    <label>Acepta Pase a Produción</label>
+    <label>Acepta Pase a Producción</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>

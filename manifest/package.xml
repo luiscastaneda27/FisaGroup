@@ -71,6 +71,10 @@
 		<members>Case.FS_CorreosNotificacionesServicios__c</members>
 		<members>Case.FS_DescripcionCliente__c</members>
 		<members>Case.FS_EncuestaEnviada__c</members>
+		<members>Case.FS_EnviarAprobacionDisenioTecnico__c</members>
+		<members>Case.FS_EnviarAprobacionPlanPruebas__c</members>
+		<members>Case.FS_EnviarAprobacionSolucionDN2__c</members>
+		<members>Case.FS_EnviarAprobacionSolucionIPN2__c</members>
 		<members>Case.FS_FechaAprobacion1erCosto__c</members>
 		<members>Case.FS_FechaCompromisoEntrega__c</members>
 		<members>Case.FS_FechaContestacionEncuesta__c</members>
@@ -251,6 +255,10 @@
 		<name>RecordType</name>
 	</types>
 	<types>
+		<members>ServiceRocket</members>
+		<name>RemoteSiteSetting</name>
+	</types>
+	<types>
 		<members>FS_AgenteN1Core</members>
 		<members>FS_AgenteN1Omnia</members>
 		<members>FS_AgenteN2Core</members>
@@ -295,10 +303,6 @@
 		<members>Case.FS_ValidacionRechazoSolucionIPN2</members>
 		<members>Case.FS_ValidacionRespuestaCliente</members>
 		<name>ValidationRule</name>
-	</types>
-	<types>
-		<members>ServiceRocket</members>
-		<name>RemoteSiteSetting</name>
 	</types>
 	<version>55.0</version>
 </Package>
