@@ -629,7 +629,8 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_AprobacionCertificacionParcheQA__c != item.FS_AprobacionCertificacionParcheQA__c){
                 if(item.FS_AprobacionCertificacionParcheQA__c  == 'Si'){
-                    item.FS_SubEstado__c = 'Entrega de Parche';
+                    item.FS_SubEstado__c = String.isBlank(caso.FS_URLParcheCliente__c) ? 'Entrega de Parche' : 'Instalación de Parche';
+                    item.Status = String.isBlank(caso.FS_URLParcheCliente__c) ? item.Status : 'Validación de Respuesta (Cliente)';
                 }else if(item.FS_AprobacionCertificacionParcheQA__c  == 'No'){
                     //item.FS_URLSolucionDefinitiva__c = null;
                     item.FS_EnviarAprobacionSolucionDN2__c = false;
