@@ -964,15 +964,11 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord25</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.FS_SubEstado__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Aprobación Solución Definitiva N2</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.FS_URLSolucionDefinitiva__c}</leftValue>
-                        <operator>NE</operator>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.FS_AprobacionSolucionDefinitivaN2__c}</leftValue>

@@ -493,6 +493,9 @@ public without sharing class CaseTriggerHelper {
                 item.FS_SubEstado__c = 'Aprobación Solución Definitiva N2';
                 item.FS_AprobacionSolucionDefinitivaN2__c = null;
                 item.FS_MotivoRechazoSDN2__c = null;
+                String titulo = 'Aprobación Solución Definitiva N2 para caso '+item.CaseNumber;
+                String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                enviarNotificacion(item.FS_UsuarioAprobadorDT__c, item.Id, titulo, descripcion);
                 
             }
         }
@@ -782,8 +785,9 @@ public without sharing class CaseTriggerHelper {
                          item.FS_SubEstado__c == 'Escalado a QA' || item.FS_SubEstado__c == 'Instalación Parche Releases' ||
                          item.FS_SubEstado__c == 'Elaboración Plan de Pruebas' || item.FS_SubEstado__c == 'Certificación Parche QA' ||
                          item.FS_SubEstado__c == 'Validación-Entrega de Fuentes' || item.FS_SubEstado__c == 'Entrega de Parche' ||
-                         item.FS_SubEstado__c == 'Paso a Producción' || item.FS_SubEstado__c == 'Paso a Producción No Confirmado'
-                         || item.FS_SubEstado__c == 'Paso a Producción Confirmado' || item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo'){
+                         item.FS_SubEstado__c == 'Paso a Producción' || item.FS_SubEstado__c == 'Paso a Producción No Confirmado' ||
+                         item.FS_SubEstado__c == 'Paso a Producción Confirmado' || item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo' ||
+                         item.FS_SubEstado__c == 'Aprobación Diseño Técnico' || item.FS_SubEstado__c =='Aprobación Solución Definitiva N2'){
                              casesNewUpdateID.add(item);
                              casesOldUpdateID.add(caso);
                          }
