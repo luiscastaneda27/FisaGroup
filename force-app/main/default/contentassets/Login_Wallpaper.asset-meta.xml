@@ -18,7 +18,7 @@
     <versions>
         <version>
             <number>1</number>
-            <pathOnClient>Login Wallpaper.png</pathOnClient>
+            <pathOnClient>Login_Wallpaper.jpg</pathOnClient>
         </version>
     </versions>
 </ContentAsset>

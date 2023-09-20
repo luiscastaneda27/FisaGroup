@@ -5,6 +5,5 @@
     <fields>FS_NombreTipoRegistro__c</fields>
     <fields>Status</fields>
     <fields>AccountId</fields>
-    <fields>Reason</fields>
     <label>Casos</label>
 </CompactLayout>

@@ -12,13 +12,13 @@
     "components" : [ {
       "componentAttributes" : {
         "enableInlineEdit" : true,
-        "filterName" : "{!filterId}",
+        "filterName" : "Miscasosabiertos",
         "layout" : "FULL",
         "pageSize" : 25,
-        "scope" : "{!objectName}",
+        "scope" : "Case",
         "showActionBar" : true,
         "showChartsPanel" : true,
-        "showDisplay" : "showall",
+        "showDisplay" : "grid",
         "showFilterPanel" : true,
         "showImageIcon" : true,
         "showManualRefreshButton" : true,
