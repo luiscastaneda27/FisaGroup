@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
-	<types>
-		<members>*</members>
+		<members>Encuestas_Servicio_al_Cliente</members>
+		<members>Portal_para_Servicio_al_Cliente</members>
 		<name>CustomSite</name>
 	</types>
 	<types>
-		<members>*</members>
+		<members>Encuestas_Servicio_al_Cliente1</members>
+		<members>Portal_para_Servicio_al_Cliente1</members>
 		<name>ExperienceBundle</name>
 	</types>
 	<types>
-		<members>*</members>
+		<members>Encuestas Servicio al Cliente%2E</members>
+		<members>Portal para Servicio al Cliente</members>
 		<name>Network</name>
 	</types>
 	<types>
-		<members>*</members>
+		<members>Encuestas_Servicio_al_Cliente1</members>
+		<members>Portal_para_Servicio_al_Cliente1</members>
 		<name>SiteDotCom</name>
 	</types>
 	<types>
