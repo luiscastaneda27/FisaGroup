@@ -1,0 +1,38 @@
+<template>
+    <lightning-tabset>
+        <lightning-tab label="Destacado">
+            <lightning-layout vertical-align="stretch" multiple-rows="true">
+                <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                    <iframe width="350" height="220" src={data.urlVideo1} title={data.tituloVideo1} frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <h2></b>{data.tituloVideo1}</b></h2>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                    <iframe width="350" height="220" src={data.urlVideo2} title={data.tituloVideo2} frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <h2></b>{data.tituloVideo2}</b></h2>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                    <iframe width="350" height="220" src={data.urlVideo3} title={data.tituloVideo3} frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <h2></b>{data.tituloVideo3}</b></h2>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto" padding="around-small" size="6">
+                    <iframe width="350" height="220" src={data.urlVideo4} title={data.tituloVideo4} frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <h2></b>{data.tituloVideo4}</b></h2>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-tab>
+        <lightning-tab label="Noticias">
+            <iframe src="https://www.fisagrp.com/recursos-de-actualidad"></iframe>
+        </lightning-tab>
+        <!--lightning-tab label="Base de Conocimiento">
+            <h1>Pendiente</h1>
+        </lightning-tab-->
+    </lightning-tabset>
+</template>

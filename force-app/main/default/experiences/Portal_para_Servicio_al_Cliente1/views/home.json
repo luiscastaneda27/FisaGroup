@@ -14,6 +14,13 @@
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
+    }, {
+      "componentAttributes" : { },
+      "componentName" : "c:fs_Inicio",
+      "id" : "357d20c8-b557-40f3-b147-b45a26634a1d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
     } ],
     "id" : "3e456a86-8ce9-46ca-aba4-641ca291ae26",
     "regionName" : "header",
@@ -24,30 +31,6 @@
     "type" : "region"
   }, {
     "components" : [ {
-      "componentAttributes" : {
-        "defaultSortOrderCompactFeed" : "Relevance",
-        "defaultSortOrderFullFeed" : "Relevance",
-        "discussionTabLabel" : "Debate",
-        "featuredTabLabel" : "Destacado",
-        "maxWidth" : 100,
-        "myFeedTabLabel" : "Noticias",
-        "overlayColor" : "rgba(0,0,0,0.4)",
-        "overlayHoverColor" : "",
-        "radius" : 0,
-        "showCompactFeedInDiscussion" : true,
-        "textAlignment" : "center",
-        "textBgColor" : "rgba(0,0,0,0)",
-        "textBgHoverColor" : "rgba(0,0,0,0)",
-        "textColor" : "",
-        "textHoverColor" : "",
-        "textPosition" : "center center"
-      },
-      "componentName" : "forceCommunity:homeTabs",
-      "id" : "901750ec-426e-4d7b-bfc5-5a2a4ef00ab4",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
       "componentAttributes" : {
         "channel" : "DefaultChannel",
         "title" : ""

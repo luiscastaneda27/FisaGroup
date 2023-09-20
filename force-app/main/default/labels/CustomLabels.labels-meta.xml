@@ -43,6 +43,34 @@
         <value>14035</value>
     </labels>
     <labels>
+        <fullName>FS_TituloVideoDestacado1</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_TituloVideoDestacado1</shortDescription>
+        <value>Webinar Prevención de Fraudes en Tarjetas</value>
+    </labels>
+    <labels>
+        <fullName>FS_TituloVideoDestacado2</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_TituloVideoDestacado2</shortDescription>
+        <value>La evolución de la Banca Corporativa, cómo liderar el cambio con Business Banking</value>
+    </labels>
+    <labels>
+        <fullName>FS_TituloVideoDestacado3</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_TituloVideoDestacado3</shortDescription>
+        <value>De la Banca Tradicional a la Banca Digital ¿Cómo transformar la industria con Banking as a Service?</value>
+    </labels>
+    <labels>
+        <fullName>FS_TituloVideoDestacado4</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_TituloVideoDestacado4</shortDescription>
+        <value>Fisa Group - Soluciones de Software para Banca y Retail en América Latina</value>
+    </labels>
+    <labels>
         <fullName>FS_UrlPortalEncuestas</fullName>
         <language>es</language>
         <protected>false</protected>
@@ -55,5 +83,33 @@
         <protected>false</protected>
         <shortDescription>Url Portal Servicios</shortDescription>
         <value>https://fisagrp--qafs.sandbox.my.site.com/servicios/s</value>
+    </labels>
+    <labels>
+        <fullName>FS_UrlVideoDestacado1</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_UrlVideoDestacado1</shortDescription>
+        <value>https://www.youtube.com/embed/p22-01TUPr8</value>
+    </labels>
+    <labels>
+        <fullName>FS_UrlVideoDestacado2</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_UrlVideoDestacado2</shortDescription>
+        <value>https://www.youtube.com/embed/212f9KX6ZsA</value>
+    </labels>
+    <labels>
+        <fullName>FS_UrlVideoDestacado3</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_UrlVideoDestacado3</shortDescription>
+        <value>https://www.youtube.com/embed/KSPs9Fk15E8</value>
+    </labels>
+    <labels>
+        <fullName>FS_UrlVideoDestacado4</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_UrlVideoDestacado4</shortDescription>
+        <value>https://www.youtube.com/embed/_kWzU5MNtWc</value>
     </labels>
 </CustomLabels>
