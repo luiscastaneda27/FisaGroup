@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "5b50b1dc-7d47-44d0-947a-0c56a7a9a820",
+  "appPageId" : "5959cd04-3037-4fd3-86b9-fedae5f19946",
+  "configurationTags" : [ ],
+  "id" : "07c96ea0-681f-4eca-86de-dc8465c14f90",
+  "label" : "Encuesta",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-encuesta",
+  "type" : "route",
+  "urlPrefix" : "encuesta"
+}
