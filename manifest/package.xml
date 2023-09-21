@@ -36,7 +36,7 @@
 		<name>CompactLayout</name>
 	</types>
 	<types>
-		<members>Login_Wallpaper</members>
+		<members>Login_Wallpaper_New</members>
 		<name>ContentAsset</name>
 	</types>
 	<types>
@@ -44,6 +44,8 @@
 		<members>Account.FS_ColaAtencion__c</members>
 		<members>Account.FS_CorreosNotificacionesServicios__c</members>
 		<members>Account.FS_ServicioRemoto__c</members>
+		<members>Activity.FS_NumeroTareaLink__c</members>
+		<members>Activity.FS_NumeroTarea__c</members>
 		<members>Case.FS_1erCostoAprobado__c</members>
 		<members>Case.FS_Acepta1erCosto__c</members>
 		<members>Case.FS_AceptaInstalacionParche__c</members>
@@ -184,6 +186,7 @@
 		<members>FS_AceptacionRechazoCaso__c-Formato Aceptación %2F Rechazo de Caso</members>
 		<members>FS_HistorialDescripcionCaso__c-Formato Historial de Descripción</members>
 		<members>FS_ProductoAdquirido__c-Formato Producto Adquirido</members>
+		<members>Task-Formato Tareas Casos</members>
 		<name>Layout</name>
 	</types>
 	<types>
@@ -194,7 +197,12 @@
 		<members>fs_CampoPendienteCaso</members>
 		<members>fs_CrearCaso</members>
 		<members>fs_Encuesta</members>
+		<members>fs_Inicio</members>
 		<name>LightningComponentBundle</name>
+	</types>
+	<types>
+		<members>Task.FS_VistaTareasCasos</members>
+		<name>ListView</name>
 	</types>
 	<types>
 		<members>*</members>
@@ -252,6 +260,7 @@
 		<members>Case.FS_Consulta</members>
 		<members>Case.FS_Incidente</members>
 		<members>Case.FS_Solicitud</members>
+		<members>Task.FS_Casos</members>
 		<name>RecordType</name>
 	</types>
 	<types>
@@ -277,6 +286,8 @@
 		<members>CasePriority</members>
 		<members>CaseStatus</members>
 		<members>CaseType</members>
+		<members>TaskStatus</members>
+		<members>TaskType</members>
 		<name>StandardValueSet</name>
 	</types>
 	<types>

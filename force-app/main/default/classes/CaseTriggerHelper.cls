@@ -102,6 +102,7 @@ public without sharing class CaseTriggerHelper {
                         Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
                         item.FS_Area__c = esCore ? 'N1. CORE' : 'N1. OMNIA';
                         item.OwnerId = [Select Id from Group Where DeveloperName = :(esCore ? COLA_ATENCION_N1_CORE : COLA_ATENCION_N1_OMNIA) and Type = 'Queue'].Id;
+                        validarTareas(item);
                     }
                 }
             }
@@ -195,6 +196,7 @@ public without sharing class CaseTriggerHelper {
                         item.FS_AceptaRespuesta__c = null;
                         envioCorreo(item, 'FS_ValidacionInformacion', true);
                     }
+                    validarTareas(item);
                 }else if(item.FS_PudeSolventarPregunta__c == 'No'){
                     Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
                     item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_N2_CORE : COLA_ATENCION_N2_OMNIA);
@@ -202,6 +204,7 @@ public without sharing class CaseTriggerHelper {
                     item.FS_SubEstado__c = 'Escalado a N2';
                     item.IsEscalated = true;
                     item.FS_InformacionCompleta__c = null;
+                    validarTareas(item);
                 }
                 
             }
@@ -411,6 +414,7 @@ public without sharing class CaseTriggerHelper {
                 item.FS_SubEstado__c = 'Escalado a N2';
                 item.IsEscalated = true;
                 item.FS_InformacionCompleta__c = null;
+                validarTareas(item);
             }
         }
     }
@@ -538,7 +542,8 @@ public without sharing class CaseTriggerHelper {
                         Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
                         item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_QA_CORE : COLA_ATENCION_QA_OMNIA);
                         item.FS_Area__c =  esCore ? 'QA CC-CORE' : 'QA CC-OMNIA';
-                        item.FS_SubEstado__c = 'Escalado a QA';   
+                        item.FS_SubEstado__c = 'Escalado a QA';  
+                        validarTareas(item);
                     }
                 }else if(item.FS_AprobacionSolucionDefinitivaRelease__c == 'No'){
                     //item.FS_URLSolucionDefinitiva__c = null;
@@ -876,6 +881,12 @@ public without sharing class CaseTriggerHelper {
     public static void crearEncuesta(Case caso){
         FS_Encuesta__c encuesta = new FS_Encuesta__c (FS_Caso__c = Caso.Id, FS_CreadoPor__c = UserInfo.getUserId());
         insert encuesta;
+    }
+    
+    public static void validarTareas(Case caso){
+        if([Select count() from Task where WhatId = :caso.Id and Status != 'Finalizada'] > 0){
+            caso.addError('El caso no se puede escalar ya que tiene tareas pendiente por cerrar.');
+        }
     }
     
     public static String getLogoImagen(){
