@@ -138,12 +138,9 @@
     </relatedContent>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
-        <fields>TASK.WHO_NAME</fields>
-        <fields>ACTIVITY.TASK</fields>
-        <fields>TASK.DUE_DATE</fields>
-        <fields>TASK.STATUS</fields>
-        <fields>TASK.PRIORITY</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
+        <fields>FS_NumeroTareaLink__c</fields>
+        <fields>TASK.STATUS</fields>
         <relatedList>RelatedActivityList</relatedList>
     </relatedLists>
     <relatedLists>

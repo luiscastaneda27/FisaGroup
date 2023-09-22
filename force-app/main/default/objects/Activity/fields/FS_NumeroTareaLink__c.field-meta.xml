@@ -4,7 +4,7 @@
     <externalId>false</externalId>
     <formula>HYPERLINK(&quot;/&quot; +  Id ,  FS_NumeroTarea__c,  &quot;_self&quot;)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Número de Tarea Link</label>
+    <label>Número de Tarea</label>
     <required>false</required>
     <type>Text</type>
     <unique>false</unique>

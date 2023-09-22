@@ -28,18 +28,42 @@ public without sharing class ControladorCrearCaso {
     @AuraEnabled
     public static CasoWrapper getCaso(String casoId){
         CasoWrapper respuesta = new CasoWrapper();
+        respuesta.caso = DataBase.query(getQueryCaso() + ' Where Id = :casoId');
+        respuesta.listAceptaRespuesta = getPickListOption('Case', 'FS_AceptaRespuesta__c');
+        respuesta.listMotivosRechazo = getPickListOption('Case', 'FS_MotivoRechazo__c');
+        respuesta.listMotivosRechazoParche = getPickListOption('Case', 'FS_MotivosRechazoInstalacionParche__c');
+        return respuesta;
+    }
+    
+    @AuraEnabled
+    public static ListCasos getCasos(){
+        ListCasos lista = new ListCasos ();
+        user usuario = [Select ContactId, Contact.AccountId from User  Where Id = :userInfo.getUserId()];
+        lista.casosAbiertos = new List<Case>();
+        lista.casosCerrados = new List<Case>();
+        lista.casosMostrados = new List<Case>();
+        DateTime hoy = DateTime.now().addDays(-5);
+        for(Case item: DataBase.query(getQueryCaso() + ' Where AccountId = \'' + usuario.Contact.AccountId + '\' order By CaseNumber')){
+            if(item.IsClosed && lista.casosCerrados.size() < 25){
+                lista.casosCerrados.add(item);
+            }else if(!item.IsClosed && lista.casosAbiertos.size() < 25){
+                lista.casosAbiertos.add(item);
+            }
+            if(item.LastModifiedDate > hoy && lista.casosMostrados.size() < 25){
+                lista.casosMostrados.add(item);
+            }
+        }
+        return lista;
+    }
+    
+    public static String getQueryCaso(){
         Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Case').getDescribe().fields.getMap();
         String query = 'Select ';
         for(Schema.SObjectField sfield : fieldMap.Values()){
             schema.describefieldresult dfield = sfield.getDescribe();
             query += dfield.getName() + ',';
         }
-        query =  query.substring(0, query.length() - 1) + ' From Case Where Id = :casoId';
-        respuesta.caso = DataBase.query(query);
-        respuesta.listAceptaRespuesta = getPickListOption('Case', 'FS_AceptaRespuesta__c');
-        respuesta.listMotivosRechazo = getPickListOption('Case', 'FS_MotivoRechazo__c');
-        respuesta.listMotivosRechazoParche = getPickListOption('Case', 'FS_MotivosRechazoInstalacionParche__c');
-        return respuesta;
+        return  query.substring(0, query.length() - 1) + ' From Case ';
     }
     
     @AuraEnabled
@@ -121,6 +145,12 @@ public without sharing class ControladorCrearCaso {
         @AuraEnabled public List<PickListOption> listAceptaRespuesta {get;set;}
         @AuraEnabled public List<PickListOption> listMotivosRechazo {get;set;}
         @AuraEnabled public List<PickListOption> listMotivosRechazoParche {get;set;}
+    }
+    
+    public class ListCasos{
+        @AuraEnabled public List<Case> casosAbiertos {get;set;}
+        @AuraEnabled public List<Case> casosCerrados {get;set;}
+        @AuraEnabled public List<Case> casosMostrados {get;set;}
     }
     
     public class Producto{

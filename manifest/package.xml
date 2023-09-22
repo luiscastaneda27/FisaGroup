@@ -198,6 +198,7 @@
 		<members>fs_CrearCaso</members>
 		<members>fs_Encuesta</members>
 		<members>fs_Inicio</members>
+		<members>fs_ListaVistaCaso</members>
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
