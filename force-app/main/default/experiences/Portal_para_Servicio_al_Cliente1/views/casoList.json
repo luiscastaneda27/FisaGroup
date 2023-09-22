@@ -10,24 +10,9 @@
     "type" : "region"
   }, {
     "components" : [ {
-      "componentAttributes" : {
-        "enableInlineEdit" : true,
-        "filterName" : "Miscasosabiertos",
-        "layout" : "FULL",
-        "pageSize" : 25,
-        "scope" : "Case",
-        "showActionBar" : true,
-        "showChartsPanel" : true,
-        "showDisplay" : "grid",
-        "showFilterPanel" : true,
-        "showImageIcon" : true,
-        "showManualRefreshButton" : true,
-        "showObjectName" : true,
-        "showPinnedList" : true,
-        "showSearchBar" : true
-      },
-      "componentName" : "forceCommunity:objectHome",
-      "id" : "7fbd3a3f-2bda-4535-8e4e-610ee069b56c",
+      "componentAttributes" : { },
+      "componentName" : "c:fs_ListaVistaCaso",
+      "id" : "36ba2382-78ed-466e-9d81-fbde8a0bdd27",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
