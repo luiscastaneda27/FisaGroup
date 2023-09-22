@@ -43,27 +43,41 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void validacionSubEstado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        if(validacionUser()){
+            return;
+        }
         for(Case item: newCaseList){
-            if(item.FS_SubEstado__c == 'Aprobación Solución IP-N2' && item.FS_UsuarioAprobadorSolucionIPN2__c != UserInfo.getUserId() ){
+            if(!item.FS_SubEstado__c.contains('Aprobación') && item.OwnerId != UserInfo.getUserId()){
+                item.addError('Solo el propietario del caso puede modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Solución IP-N2' && item.FS_UsuarioAprobadorSolucionIPN2__c != UserInfo.getUserId() ){
                 item.addError('El caso se encuentra en Aprobación de Solución IP-N2 y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación de Solución IP-Release' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c) ){
+            }/*else if(item.FS_SubEstado__c == 'Aprobación de Solución IP-Release' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c) ){
                 item.addError('El caso se encuentra en Aprobación de Solución IP-Release y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Elaboración Diseño Técnico' && item.FS_FechaEntregaDesarrollo__c == null){
+            }*/else if(item.FS_SubEstado__c == 'Elaboración Diseño Técnico' && item.FS_FechaEntregaDesarrollo__c == null){
                 item.addError('El caso se encuentra en Elaboración Diseño Técnico y no tiene permisos para modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación Diseño Técnico' && item.FS_UsuarioAprobadorDT__c != UserInfo.getUserId()){
                 item.addError('El caso se encuentra en Aprobación de Diseño Técnico y no tiene permisos para modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva N2' && item.FS_UsuarioAprobadorDT__c != UserInfo.getUserId()){
                 item.addError('El caso se encuentra en Aprobación Solución Definitiva N2 y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva Releases' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c)){
+            }/*else if(item.FS_SubEstado__c == 'Aprobación Solución Definitiva Releases' && String.isBlank(item.FS_UsuarioAprobacionSolucionRelease__c)){
                 item.addError('El caso se encuentra en Aprobación de Solución Definitiva Releases y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación Plan de Pruebas' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
+            }*/else if(item.FS_SubEstado__c == 'Aprobación Plan de Pruebas' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
                 item.addError('El caso se encuentra en Aprobación Plan de Pruebas y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación Instalación Parche - Releases' && String.isBlank(item.FS_UsuarioAprobadorInstalacionParcheRele__c)){
+            }/*else if(item.FS_SubEstado__c == 'Aprobación Instalación Parche - Releases' && String.isBlank(item.FS_UsuarioAprobadorInstalacionParcheRele__c)){
                 item.addError('El caso se encuentra en Aprobación Instalación Parche - Releases y no tiene permisos para modificarlo.');
-            }else if(item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
+            }*/else if(item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
                 item.addError('El caso se encuentra en Aprobación Certificación Parche QA y no tiene permisos para modificarlo.');
             }
         }
+    }
+    
+    public static Boolean validacionUser(){
+        User u = [Select Profile.Name, UserRole.Name From User where Id = :UserInfo.getUserId()];
+        Boolean flagPerfil = u.Profile.Name == 'Administrador del sistema' || u.Profile.Name == 'System Administrator';
+        flagPerfil = flagPerfil || (u.UserRole.Name != null || u.UserRole.Name.contains('FS_Jefe'));
+        flagPerfil = flagPerfil || Label.FS_IdUsuarioJira == u.Id || u.Profile.Name == 'Customer Community User';
+        return flagPerfil;
+        
     }
     
     public static void validacionCorreoNuevo(List<Case> newCaseList){

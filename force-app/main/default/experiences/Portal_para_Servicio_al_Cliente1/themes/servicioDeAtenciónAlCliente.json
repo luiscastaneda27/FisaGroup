@@ -1,6 +1,6 @@
 {
   "activeBrandingSetId" : "d1ef2384-05b0-43e2-8010-dffc869118a3",
-  "customCSS" : "",
+  "customCSS" : "#header-overlay {\n    background: #1F2B51;\n}\n\n.profileName {\n    color: white;\n}\n\n.headerButtonBody{\n    color: white;\n}",
   "developerName" : "service",
   "id" : "c90b81b6-beb8-4866-bb6e-22518f877e08",
   "label" : "Servicio de atención al cliente",

@@ -112,4 +112,18 @@
         <shortDescription>FS_UrlVideoDestacado4</shortDescription>
         <value>https://www.youtube.com/embed/_kWzU5MNtWc</value>
     </labels>
+    <labels>
+        <fullName>FS_IdUsuarioJira</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_IdUsuarioJira</shortDescription>
+        <value>005040000047bXQAAY</value>
+    </labels>
+    <labels>
+        <fullName>FS_UrlPaginaNoticias</fullName>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>FS_UrlPaginaNoticias</shortDescription>
+        <value>https://www.fisagrp.com/recursos-de-actualidad</value>
+    </labels>
 </CustomLabels>
