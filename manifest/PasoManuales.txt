@@ -3,3 +3,4 @@
 3. Asignación de páginas
 4. Activación de Omnichanel
 5. Habilitar api para comunidades
+6. Perfil activar editar tareas
