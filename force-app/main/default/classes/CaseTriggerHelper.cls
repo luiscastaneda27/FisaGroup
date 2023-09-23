@@ -67,6 +67,10 @@ public without sharing class CaseTriggerHelper {
                 item.addError('El caso se encuentra en Aprobación Instalación Parche - Releases y no tiene permisos para modificarlo.');
             }*/else if(item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
                 item.addError('El caso se encuentra en Aprobación Certificación Parche QA y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Consulta N2' && item.FS_UsuarioAprobadorSolucion__c != UserInfo.getUserId()){
+                item.addError('El caso se encuentra en Aprobación Consulta N2 y no tiene permisos para modificarlo.');
+            }else if(item.FS_SubEstado__c == 'Aprobación Solicitud N2' && item.FS_UsuarioAprobadorSolucion__c != UserInfo.getUserId()){
+                item.addError('El caso se encuentra en Aprobación Solicitud N2 y no tiene permisos para modificarlo.');
             }
         }
     }
@@ -74,7 +78,7 @@ public without sharing class CaseTriggerHelper {
     public static Boolean validacionUser(){
         User u = [Select Profile.Name, UserRole.Name From User where Id = :UserInfo.getUserId()];
         Boolean flagPerfil = u.Profile.Name == 'Administrador del sistema' || u.Profile.Name == 'System Administrator';
-        flagPerfil = flagPerfil || (u.UserRole.Name != null || u.UserRole.Name.contains('FS_Jefe'));
+        flagPerfil = flagPerfil || (u.UserRole.Name != null && u.UserRole.Name.contains('FS_Jefe'));
         flagPerfil = flagPerfil || Label.FS_IdUsuarioJira == u.Id || u.Profile.Name == 'Customer Community User';
         return flagPerfil;
         

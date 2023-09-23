@@ -252,6 +252,7 @@
 		<members>Case.FS_DatosRespuesta</members>
 		<members>Case.FS_Descripcion</members>
 		<members>Case.FS_DetalleCaso</members>
+		<members>Case.FS_DetalleCasoConsulta</members>
 		<members>Case.FS_ElaboracinDisenioTecnico</members>
 		<members>Case.FS_ElaboracionPlanPruebas</members>
 		<members>Case.FS_EntregaParche</members>
