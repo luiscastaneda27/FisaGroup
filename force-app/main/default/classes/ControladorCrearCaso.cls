@@ -43,7 +43,7 @@ public without sharing class ControladorCrearCaso {
         lista.casosCerrados = new List<Case>();
         lista.casosMostrados = new List<Case>();
         DateTime hoy = DateTime.now().addDays(-5);
-        for(Case item: DataBase.query(getQueryCaso() + ' Where AccountId = \'' + usuario.Contact.AccountId + '\' order By CaseNumber')){
+        for(Case item: DataBase.query(getQueryCaso() + ' Where AccountId = \'' + usuario.Contact.AccountId + '\' order By CreatedDate desc ')){
             if(item.IsClosed && lista.casosCerrados.size() < 25){
                 lista.casosCerrados.add(item);
             }else if(!item.IsClosed && lista.casosAbiertos.size() < 25){

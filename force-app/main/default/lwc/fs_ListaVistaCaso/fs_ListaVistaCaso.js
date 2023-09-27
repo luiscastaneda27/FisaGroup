@@ -5,9 +5,9 @@ const columns = [
     { label: 'Número del Caso', fieldName: 'casoLink', type: 'url', hideDefaultActions: true , typeAttributes: { label: { fieldName: 'CaseNumber' }, target: '_self' }},
     { label: 'Nombre del Contacto', fieldName: 'FS_NombreContacto__c', type: 'text', hideDefaultActions: true },
     { label: 'Nombre de Tipo de Registro', fieldName: 'FS_NombreTipoRegistro__c', type: 'text', hideDefaultActions: true },
+    { label: 'Asunto', fieldName: 'casoLink', type: 'url', hideDefaultActions: true , typeAttributes: { label: { fieldName: 'Subject' }, target: '_self' }},
     { label: 'Estado', fieldName: 'Status', type: 'text', hideDefaultActions: true },
-    { label: 'Prioridad', fieldName: 'Priority', type: 'text', hideDefaultActions: true },
-    { label: 'Fecha de Apertura', fieldName: 'CreatedDate', type: 'text', hideDefaultActions: true },
+    { label: 'Fecha de Apertura', fieldName: 'CreatedDate', type: 'date', typeAttributes: {day: "numeric", month: "numeric",year: "numeric", hour: "2-digit", minute: "2-digit", day: "2-digit",} },
 ];
  
 const filterOptions = [
