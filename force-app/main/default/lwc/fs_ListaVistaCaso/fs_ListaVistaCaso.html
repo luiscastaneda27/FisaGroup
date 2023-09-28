@@ -37,6 +37,12 @@
                             </div>
                         </div>
                     </div>
+                    <span>
+                        <div style="margin-left: 600px;" class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                            <lightning-icon size="x-small" class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default" icon-name="utility:search"></lightning-icon>
+                            <input type="text" id="text-input-id-1" placeholder="Buscar en esta lista.." class="slds-input" onchange={onchangeFilter} onclick={onchangeFilter} />
+                        </div>
+                    </span>
                 </div>
             </div>
         </lightning-tile>
@@ -51,4 +57,13 @@
         <lightning-datatable key-field="Id" data={itemsForCurrentView} columns={columns}>
         </lightning-datatable>
     </lightning-card>
+    <template if:true={showSpinner}>
+        <div id="activityIndicator" class="slds-spinner_container">
+            <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">
+                <span class="slds-assistive-text">Loading, Please Wait...</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </template>
 </template>
