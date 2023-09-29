@@ -30,6 +30,9 @@ public without sharing class CaseTriggerHelper {
     
     
     public static void validacionEstado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        if(validacionUser()){
+            return;
+        }
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.Status  != item.Status){
@@ -76,10 +79,11 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static Boolean validacionUser(){
-        User u = [Select Profile.Name, UserRole.Name From User where Id = :UserInfo.getUserId()];
+        User u = [Select Name, Profile.Name, UserRole.Name From User where Id = :UserInfo.getUserId()];
         Boolean flagPerfil = u.Profile.Name == 'Administrador del sistema' || u.Profile.Name == 'System Administrator';
         flagPerfil = flagPerfil || (u.UserRole.Name != null && u.UserRole.Name.contains('FS_Jefe'));
         flagPerfil = flagPerfil || Label.FS_IdUsuarioJira == u.Id || u.Profile.Name == 'Customer Community User';
+        flagPerfil = flagPerfil || u.Name.contains('invitado al sitio Web');
         return flagPerfil;
         
     }
@@ -241,9 +245,6 @@ public without sharing class CaseTriggerHelper {
                     String titulo = 'Aprobación de solución para caso '+item.CaseNumber;
                     String descripcion = 'El agente ' + UserInfo.getUserName() + ' ha aprobado de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
-                    if(item.RecordTypeId == CONSULTA_TIPO_REGISTRO){
-                        insert new FeedItem(ParentId = item.Id, Body = item.FS_RespuestaCliente__c, Visibility = 'AllUsers');
-                    }
                 }else if(item.FS_AprobacionSolucion__c == 'No'){
                     item.FS_SubEstado__c = item.RecordTypeId == CONSULTA_TIPO_REGISTRO ? 'Información validada' : 'Análisis Falla Operativa';
                     String titulo = 'Rechazo de solución para caso '+item.CaseNumber;
@@ -338,7 +339,6 @@ public without sharing class CaseTriggerHelper {
         String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita la aprobación de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
         enviarNotificacion(item.FS_UsuarioAprobadorSolucion__c, item.Id, titulo, descripcion);
         item.FS_AprobacionSolucion__c = null;
-        item.FS_RespuestaCliente__c = null;
         item.FS_ComentariosRechazoSolucion__c = null;
     }
     
@@ -732,6 +732,30 @@ public without sharing class CaseTriggerHelper {
             }
         }
     }
+    public static void validacionChatter(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        List<String> listCasos = new List<String>();
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(item.Status != caso.Status || item.OwnerId != caso.OwnerId){
+                listCasos.add(item.Id);
+            }
+        }
+        if(listCasos.size() > 0){
+            borrarChatter(JSON.serialize(listCasos));
+        }
+    }
+    
+    @future
+    public static void borrarChatter(String jsonString){
+        List<FeedItem> itemDelete = new List<FeedItem>();
+        List<String> listCasos = (List<String>) JSON.deserialize(jsonString, List<String>.class);
+        for(FeedItem item: [Select Id, ParentId, Body, (SELECT ID FROM FeedTrackedChanges) from FeedItem where ParentId in :listCasos]){
+            if(item.FeedTrackedChanges != null && item.FeedTrackedChanges.size() > 0){
+                itemDelete.add(item);
+            }
+        }
+        delete itemDelete;
+    }
 	
     public static void historialCaso(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Case').getDescribe().fields.getMap();
@@ -767,6 +791,25 @@ public without sharing class CaseTriggerHelper {
         DataBase.insert(listHistorial, false);
         
     }
+
+    public static void historialCaso(List<Case> newCaseList){
+        Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Case').getDescribe().fields.getMap();
+        List<FS_HistorialCampos__c > listHistorial = new List<FS_HistorialCampos__c >();
+        for(Case item: newCaseList){
+            listHistorial.add(new FS_HistorialCampos__c(
+                FS_Caso__c = item.Id,
+                FS_NombreCampo__c  = 'Fecha de creación',
+                FS_NombreApiCampo__c  = 'CreatedDate',
+                FS_ValorOriginal__c  = null,
+                FS_ValorNuevo__c = String.valueOf( DateTime.valueOf( item.CreatedDate ).format() )));
+            
+        }
+        
+        DataBase.insert(listHistorial, false);
+        
+    }
+    
+
     public static Id getUsuario(Case caso){
         Id userId;
         for(User usuario : [Select Id, FS_FechaUltimaAprobacion__c from User where UserRoleId = :caso.FS_RolPropietario__c And Id != :caso.OwnerId and IsActive = true Order by FS_FechaUltimaAprobacion__c asc limit 1]){
@@ -810,9 +853,7 @@ public without sharing class CaseTriggerHelper {
                          item.FS_SubEstado__c == 'Validación-Entrega de Fuentes' || item.FS_SubEstado__c == 'Entrega de Parche' ||
                          item.FS_SubEstado__c == 'Paso a Producción' || item.FS_SubEstado__c == 'Paso a Producción No Confirmado' ||
                          item.FS_SubEstado__c == 'Paso a Producción Confirmado' || item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo' ||
-                         item.FS_SubEstado__c == 'Aprobación Diseño Técnico' || item.FS_SubEstado__c =='Aprobación Solución Definitiva N2' ||
-                         item.FS_SubEstado__c == 'Aprobación Instalación Parche - Releases' || item.FS_SubEstado__c == 'Aprobación Plan de Pruebas' ||
-                         item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' || item.FS_SubEstado__c == 'Instalación de Parche'){
+                         item.FS_SubEstado__c == 'Aprobación Diseño Técnico' || item.FS_SubEstado__c =='Aprobación Solución Definitiva N2'){
                              casesNewUpdateID.add(item);
                              casesOldUpdateID.add(caso);
                          }

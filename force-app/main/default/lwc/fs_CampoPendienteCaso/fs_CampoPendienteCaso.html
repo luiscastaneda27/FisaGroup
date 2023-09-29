@@ -33,10 +33,6 @@
                                     <lightning-layout-item flexibility="auto" padding="around-small" size="12">
                                         <lightning-card icon-name="standard:answer_best" title="Aceptación de Respuesta">
                                             <lightning-layout vertical-align="stretch" multiple-rows="true">
-                                                <lightning-layout-item if:true={data.esConsulta} flexibility="auto" padding="around-small" size="12">
-                                                    <p>{data.caso.FS_RespuestaCliente__c}</b>
-                                                    </p>
-                                                </lightning-layout-item>
                                                 <lightning-layout-item if:true={data.esSolicitud} flexibility="auto" padding="around-small" size="12">
                                                     <p>En relación con tu caso N° {data.caso.CaseNumber} hemos finalizado con el requerimiento solicitado, 
                                                         el cual tuvo una duración de <b> {data.caso.FS_NumeroHorasSolicitud__c} horas</b>.

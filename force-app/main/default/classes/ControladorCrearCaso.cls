@@ -44,12 +44,15 @@ public without sharing class ControladorCrearCaso {
         lista.casosMostrados = new List<Case>();
         DateTime hoy = DateTime.now().addDays(-5);
         for(Case item: DataBase.query(getQueryCaso() + ' Where AccountId = \'' + usuario.Contact.AccountId + '\' order By CreatedDate desc ')){
-            if(item.IsClosed && lista.casosCerrados.size() < 25){
+            item.FS_DescripcionCLiente__c = String.isNotBlank(item.FS_DescripcionCLiente__c) ? item.FS_DescripcionCLiente__c.replace('<p>','') : '';
+            item.FS_DescripcionCLiente__c = item.FS_DescripcionCLiente__c.replace('</p>','');
+            item.Status = item.FS_SubEstado__c == 'En Espera de Respuesta del Cliente' ? 'Pendiente Respuesta' : item.Status;
+            if(item.IsClosed && lista.casosCerrados.size() < 50){
                 lista.casosCerrados.add(item);
-            }else if(!item.IsClosed && lista.casosAbiertos.size() < 25){
+            }else if(!item.IsClosed && lista.casosAbiertos.size() < 50){
                 lista.casosAbiertos.add(item);
             }
-            if(item.LastModifiedDate > hoy && lista.casosMostrados.size() < 25){
+            if(item.LastModifiedDate > hoy && lista.casosMostrados.size() < 50){
                 lista.casosMostrados.add(item);
             }
         }

@@ -115,7 +115,6 @@
 		<members>Case.FS_Proyecto__c</members>
 		<members>Case.FS_PudeSolventarPregunta__c</members>
 		<members>Case.FS_Referencia__c</members>
-		<members>Case.FS_RespuestaCliente__c</members>
 		<members>Case.FS_ResultadoEncuesta__c</members>
 		<members>Case.FS_ReunionCSAT__c</members>
 		<members>Case.FS_ReunionesCliente__c</members>
@@ -206,6 +205,12 @@
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
+		<members>Case.AtencionN1Core</members>
+		<members>Case.AtencionN1Omnia</members>
+		<members>Case.AtencionN2Core</members>
+		<members>Case.AtencionN2Omnia</members>
+		<members>Case.AtencionQaCore</members>
+		<members>Case.AtencionQaOmnia</members>
 		<members>Case.Miscasos</members>
 		<members>Case.Miscasosabiertos</members>
 		<members>Case.Todosloscasosabiertos</members>

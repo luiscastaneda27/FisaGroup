@@ -3,7 +3,6 @@
     <emailDefault>false</emailDefault>
     <excludeButtons>AddToActionableList</excludeButtons>
     <excludeButtons>CaseHierarchy</excludeButtons>
-    <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>CloseCase</excludeButtons>
     <excludeButtons>CreateGroupAction</excludeButtons>

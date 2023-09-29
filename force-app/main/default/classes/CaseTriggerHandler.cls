@@ -5,6 +5,7 @@ public without sharing class CaseTriggerHandler {
     
     public static void afterInsert(List<Case> newCaseList, List<Case> oldCaseList){
         CaseTriggerHelper.validacionCorreoNuevo(newCaseList);
+         CaseTriggerHelper.historialCaso(newCaseList);
     }
     
     public static void beforeUpdate(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
@@ -47,6 +48,7 @@ public without sharing class CaseTriggerHandler {
     public static void afterUpdate(List<Case> newCaseList, Map<Id, Case> oldCaseMap) {
         CaseTriggerHelper.historialCaso(newCaseList, oldCaseMap);
         CaseTriggerHelper.upsertCaseJira(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionChatter(newCaseList, oldCaseMap);
     }
     
     

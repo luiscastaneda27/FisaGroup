@@ -13,7 +13,7 @@
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>FS_UsuarioAprobadorDT__c</field>
-                <uiBehavior>Readonly</uiBehavior>
+                <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
         <quickActionLayoutColumns>

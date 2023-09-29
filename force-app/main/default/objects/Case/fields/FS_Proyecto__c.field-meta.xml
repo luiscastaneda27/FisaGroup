@@ -52,6 +52,11 @@
                 <default>false</default>
                 <label>PNSO046 - Soporte remoto Online Banking</label>
             </value>
+            <value>
+                <fullName>FSDE257 - HD33196 PRECONTRATADOS 150 D/H</fullName>
+                <default>false</default>
+                <label>FSDE257 - HD33196 PRECONTRATADOS 150 D/H</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
