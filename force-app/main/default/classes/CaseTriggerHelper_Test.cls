@@ -142,7 +142,7 @@ public class CaseTriggerHelper_Test {
         
         
         caso.FS_AprobacionSolucionDefinitivaRelease__c = 'No';
-        caso.FS_MotivoRechazoSDRelease__c = 'Inconsitencia en parche';
+        caso.FS_MotivoRechazoSDRelease__c = 'Inconsistencia en parche';
         update caso;
         
         caso.FS_AprobacionSolucionDefinitivaRelease__c = 'Si';

@@ -13,14 +13,14 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Falta de aprobanción PR</fullName>
+                <fullName>Falta de aprobación PR</fullName>
                 <default>false</default>
-                <label>Falta de aprobanción PR</label>
+                <label>Falta de aprobación PR</label>
             </value>
             <value>
-                <fullName>Inconsitencia en parche</fullName>
+                <fullName>Inconsistencia en parche</fullName>
                 <default>false</default>
-                <label>Inconsitencia en parche</label>
+                <label>Inconsistencia en parche</label>
             </value>
             <value>
                 <fullName>Documentación incompleta</fullName>

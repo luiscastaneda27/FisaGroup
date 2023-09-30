@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, track } from 'lwc';
 
 import urlVideo1 from '@salesforce/label/c.FS_UrlVideoDestacado1';
 import tituloVideo1 from '@salesforce/label/c.FS_TituloVideoDestacado1';
@@ -10,8 +10,10 @@ import urlVideo4 from '@salesforce/label/c.FS_UrlVideoDestacado4';
 import tituloVideo4 from '@salesforce/label/c.FS_TituloVideoDestacado4';
 import urlPaginaNoticias from '@salesforce/label/c.FS_UrlPaginaNoticias';
 
+import gatListaBase from "@salesforce/apex/ControladorBaseConocimientos.gatListaBase";
+
 export default class Fs_Inicio extends LightningElement {
-    data = {
+   @track data = {
         urlVideo1 : urlVideo1,
         urlVideo2 : urlVideo2,
         urlVideo3 : urlVideo3,
@@ -20,6 +22,44 @@ export default class Fs_Inicio extends LightningElement {
         tituloVideo2: tituloVideo2,
         tituloVideo3: tituloVideo3,
         tituloVideo4: tituloVideo4,
-        urlPaginaNoticias: urlPaginaNoticias
+        urlPaginaNoticias: urlPaginaNoticias,
+        listBase: [],
+        listBaseShow: [],
+        mostrarBaseCon: false
+    }
+    showSpinner = true;
+
+
+    connectedCallback() {
+        this.showSpinner = true;
+        gatListaBase({}).then(response => {
+            this.data.listBase = response;
+            this.data.mostrarBaseCon = response.length > 0;
+            for(let i=0; i < response.length; i++){
+                if(this.data.listBaseShow.length < 3){
+                    this.data.listBaseShow.push(response[i]);
+                }
+            }
+            this.showSpinner = false;
+        }).catch(error => {
+            this.showSpinner = false;
+            console.log("Error: "+JSOn.stringify(error));
+        });
+    }
+
+    onchangeSearch(event){
+        let value = event.target.value;
+        if(value.length > 2){
+            this.data.listBaseShow = this.data.listBase.filter(item => item.contenido.toUpperCase().includes(value.toUpperCase() ) || item.nombre.toUpperCase().includes(value.toUpperCase()) ||
+            item.producto.toUpperCase().includes(value.toUpperCase()) || item.modulo.toUpperCase().includes(value.toUpperCase()) ||
+            (item.subModulo != null && item.subModulo.toUpperCase().includes(value.toUpperCase())));
+        }else if(value.length === 0){
+            this.data.listBaseShow = [];
+            for(let i=0; i < this.data.listBase.length; i++){
+                if(this.data.listBaseShow.length < 3){
+                    this.data.listBaseShow.push(this.data.listBase[i]);
+                }
+            }
+        }
     }
 }

@@ -468,11 +468,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Falta de aprobanción PR</fullName>
+            <fullName>Falta de aprobación PR</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Inconsitencia en parche</fullName>
+            <fullName>Inconsistencia en parche</fullName>
             <default>false</default>
         </values>
     </picklistValues>
