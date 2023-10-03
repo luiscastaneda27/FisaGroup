@@ -209,8 +209,8 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_PudeSolventarPregunta__c != item.FS_PudeSolventarPregunta__c){
                 if(item.FS_PudeSolventarPregunta__c == 'Si'){
-                    if(item.FS_Area__c == 'N1. CORE' || item.FS_Area__c == 'N1. OMNIA'){ 
-                        aprobacionConsSolic(item); 
+                    if(item.FS_Area__c == 'N1. CORE' || item.FS_Area__c == 'N1. OMNIA'){
+                        aprobacionConsSolic(item);
                         item.FS_SubEstado__c = item.recordTypeId == CONSULTA_TIPO_REGISTRO ? 'Aprobación Consulta N2' : 'Aprobación Solicitud N2';
                     }else{
                         item.FS_SubEstado__c = 'Envío de respuesta';
@@ -243,12 +243,12 @@ public without sharing class CaseTriggerHelper {
                     item.FS_AceptaRespuesta__c = null;
                     envioCorreo(item, 'FS_ValidacionInformacion', true);
                     String titulo = 'Aprobación de solución para caso '+item.CaseNumber;
-                    String descripcion = 'El agente ' + UserInfo.getUserName() + ' ha aprobado de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    String descripcion = 'El agente ' + UserInfo.getName() + ' ha aprobado de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }else if(item.FS_AprobacionSolucion__c == 'No'){
                     item.FS_SubEstado__c = item.RecordTypeId == CONSULTA_TIPO_REGISTRO ? 'Información validada' : 'Análisis Falla Operativa';
                     String titulo = 'Rechazo de solución para caso '+item.CaseNumber;
-                    String descripcion = 'El agente ' + UserInfo.getUserName() + ' ha rechazado de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    String descripcion = 'El agente ' + UserInfo.getName() + ' ha rechazado de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                     item.FS_PudeSolventarPregunta__c = null;
                 }
@@ -312,7 +312,7 @@ public without sharing class CaseTriggerHelper {
     public static void horasSolicitud(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_NumeroHorasSolicitud__c  != item.FS_NumeroHorasSolicitud__c){
+            if(caso.FS_NumeroHorasSolicitud__c  != item.FS_NumeroHorasSolicitud__c && item.FS_NumeroHorasSolicitud__c != null){
                 if(item.FS_Area__c == 'N1. CORE' || item.FS_Area__c == 'N1. OMNIA'){
                     aprobacionConsSolic(item);
                     item.FS_SubEstado__c = 'Aprobación Solicitud N2';
@@ -458,7 +458,7 @@ public without sharing class CaseTriggerHelper {
                     insert casoHijo;
                     casoHijo = [Select Id, CaseNumber From Case where Id =: casoHijo.Id];
                     String titulo = 'Asignación de caso No. '+casoHijo.CaseNumber;
-                    String descripcion = 'El agente ' + userInfo.getUserName()  + ' ha creado el caso '+casoHijo.CaseNumber +' como solución a corto plazo del caso ' + item.CaseNumber + '\nPor favor dar seguimiento.';
+                    String descripcion = 'El agente ' + UserInfo.getName()  + ' ha creado el caso '+casoHijo.CaseNumber +' como solución a corto plazo del caso ' + item.CaseNumber + '\nPor favor dar seguimiento.';
                     enviarNotificacion(item.FS_PropietarioCasoSolucionCortoPlazo__c, casoHijo.Id, titulo, descripcion);
                 }
                 item.FS_SubEstado__c = 'Elaboración Diseño Técnico';
@@ -493,7 +493,7 @@ public without sharing class CaseTriggerHelper {
                     item.FS_EnviarAprobacionDisenioTecnico__c = false;
                     item.FS_SubEstado__c = 'Elaboración Diseño Técnico';
                     String titulo = 'Rechazo Diseño Técnico para caso '+item.CaseNumber;
-                    String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado el diseño técnico para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    String descripcion = 'El agente '+UserInfo.getName() + ' ha rechazado el diseño técnico para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
             }
@@ -539,7 +539,7 @@ public without sharing class CaseTriggerHelper {
                     //item.FS_AprobacionSolucionDefinitivaRelease__c = null;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
                     String titulo = 'Rechazo de Solución Definitiva N2 para caso '+item.CaseNumber;
-                    String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    String descripcion = 'El agente '+UserInfo.getName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
             }
@@ -569,7 +569,7 @@ public without sharing class CaseTriggerHelper {
                     item.FS_EnviarAprobacionSolucionDN2__c = false;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
                     String titulo = 'Rechazo de Solución Definitiva N2 para caso '+item.CaseNumber;
-                    String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    String descripcion = 'El agente '+UserInfo.getName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
             }
@@ -598,11 +598,10 @@ public without sharing class CaseTriggerHelper {
                 if(item.FS_AprobacionPlanPruebas__c == 'Si'){
                     item.FS_SubEstado__c = 'Aprobación Instalación Parche - Releases';
                 }else if(item.FS_AprobacionPlanPruebas__c == 'No'){
-                    //item.FS_URLPlanPruebas__c = null;
                     item.FS_EnviarAprobacionPlanPruebas__c = false;
                     item.FS_SubEstado__c = 'Elaboración Plan de Pruebas';
                     String titulo = 'Rechazo Plan de pruebas para caso '+item.CaseNumber;
-                    String descripcion = 'El agente '+UserInfo.getUserName() + ' ha rechazado el Plan de Pruebas para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    String descripcion = 'El agente '+UserInfo.getName() + ' ha rechazado el Plan de Pruebas para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
             }
@@ -726,7 +725,7 @@ public without sharing class CaseTriggerHelper {
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             String titulo = 'Asignación de caso No. '+item.CaseNumber;
-            String descripcion = 'El agente ' + userInfo.getUserName()  + ' le ha asignado el caso '+item.CaseNumber +' \nPor favor dar seguimiento.';
+            String descripcion = 'El agente ' + UserInfo.getName()  + ' le ha asignado el caso '+item.CaseNumber +' \nPor favor dar seguimiento.';
             if(caso.FS_IngenieroProducto__c  != item.FS_IngenieroProducto__c && caso.FS_IngenieroProducto__c != null){
                 item.OwnerId = caso.FS_IngenieroProducto__c;
                 enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
@@ -858,7 +857,7 @@ public without sharing class CaseTriggerHelper {
                          item.FS_SubEstado__c == 'Validación-Entrega de Fuentes' || item.FS_SubEstado__c == 'Entrega de Parche' ||
                          item.FS_SubEstado__c == 'Paso a Producción' || item.FS_SubEstado__c == 'Paso a Producción No Confirmado' ||
                          item.FS_SubEstado__c == 'Paso a Producción Confirmado' || item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo' ||
-                         item.FS_SubEstado__c == 'Aprobación Diseño Técnico' || item.FS_SubEstado__c =='Aprobación Solución Definitiva N2' ||
+                         item.FS_SubEstado__c == 'Aprobación Diseño Técnico' || item.FS_SubEstado__c == 'Aprobación Solución Definitiva N2'||
                          item.FS_SubEstado__c == 'Aprobación Instalación Parche - Releases' || item.FS_SubEstado__c == 'Aprobación Plan de Pruebas' ||
                          item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' || item.FS_SubEstado__c == 'Instalación de Parche'){
                              casesNewUpdateID.add(item);
