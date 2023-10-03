@@ -555,7 +555,7 @@
     <picklistValues>
         <picklist>FS_MotivosRechazoInstalacionParche__c</picklist>
         <values>
-            <fullName>Error en copilación</fullName>
+            <fullName>Error en compilación</fullName>
             <default>false</default>
         </values>
         <values>

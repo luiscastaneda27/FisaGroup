@@ -209,9 +209,9 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_PudeSolventarPregunta__c != item.FS_PudeSolventarPregunta__c){
                 if(item.FS_PudeSolventarPregunta__c == 'Si'){
-                    if(item.FS_Area__c == 'N1. CORE' || item.FS_Area__c == 'N1. OMNIA'){
-                        aprobacionConsSolic(item);
-                        item.FS_SubEstado__c = 'Aprobación Consulta N2';
+                    if(item.FS_Area__c == 'N1. CORE' || item.FS_Area__c == 'N1. OMNIA'){ 
+                        aprobacionConsSolic(item); 
+                        item.FS_SubEstado__c = item.recordTypeId == CONSULTA_TIPO_REGISTRO ? 'Aprobación Consulta N2' : 'Aprobación Solicitud N2';
                     }else{
                         item.FS_SubEstado__c = 'Envío de respuesta';
                         item.Status = 'Validación de Respuesta (Cliente)';
@@ -271,6 +271,7 @@ public without sharing class CaseTriggerHelper {
                 }else if(item.FS_AceptaRespuesta__c == 'No'){
                     item.FS_SubEstado__c = 'Respuesta rechazada';
                     item.FS_PudeSolventarPregunta__c = null;
+                    item.FS_NumeroHorasSolicitud__c = null;
                     envioCorreo(item, 'FS_RechazoRespuesta', false);
                     if(item.RecordTypeId == INCIDENTE_TIPO_REGISTRO && item.FS_TipoIncidente__c == 'Puntual' ){
                         item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';

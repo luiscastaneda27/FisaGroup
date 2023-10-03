@@ -14,9 +14,9 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Error en copilación</fullName>
+                <fullName>Error en compilación</fullName>
                 <default>false</default>
-                <label>Error en copilación</label>
+                <label>Error en compilación</label>
             </value>
             <value>
                 <fullName>Error en scripts</fullName>
