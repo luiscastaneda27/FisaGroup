@@ -30,6 +30,11 @@ public class CaseTriggerHelper_Test {
         
         caso.FS_PudeSolventarPregunta__c = 'Si';
         update caso;
+        caso.FS_AprobacionSolucion__c = 'Si';
+        update caso;
+        caso.FS_AprobacionSolucion__c = 'No';
+        caso.FS_ComentariosRechazoSolucion__c = 'No';
+        update caso;
         actualizarCasoError(caso);
         caso.FS_Producto__c = null;
         actualizarCasoError(caso);
@@ -46,6 +51,7 @@ public class CaseTriggerHelper_Test {
         caso.FS_AceptaRespuesta__c = 'No';
         update caso;
         
+        caso.FS_Area__c = 'N1. CORE';
         caso.FS_PudeSolventarPregunta__c = 'Si';
         caso.FS_AceptaRespuesta__c = 'Si';
         update caso;
@@ -92,6 +98,7 @@ public class CaseTriggerHelper_Test {
         update caso;
         
         caso.FS_URLResultadoAnalasis__c = 'https://fisagrp.com';
+        caso.FS_EnviarAprobacionSolucionIPN2__c = true;
         update caso;
         caso.FS_AprobacionSolucionIPN2__c = 'Si';
         update caso;
@@ -116,6 +123,7 @@ public class CaseTriggerHelper_Test {
         update caso;
         
         caso.FS_URLDisenioTecnico__c = 'https://fisagrp.com';
+        caso.FS_EnviarAprobacionDisenioTecnico__c = true;
         update caso;
         actualizarCasoError(caso);
         
@@ -129,6 +137,7 @@ public class CaseTriggerHelper_Test {
         
         caso.FS_URLCodigoFuente__c = 'https://fisagrp.com';
         caso.FS_URLSolucionDefinitiva__c = 'https://fisagrp.com';
+        caso.FS_EnviarAprobacionSolucionDN2__c = true;
         update caso;
         
         
@@ -136,11 +145,16 @@ public class CaseTriggerHelper_Test {
         caso.FS_MotivoRechazoSDN2__c = 'Desarrollo incompleto';
         update caso;
         
-        caso.FS_AprobacionSolucionDefinitivaN2__c = 'Si';
+    }
+    
+    @isTest
+    static void CasoIncidentePuntualOtrosEscenarios() {
+        Case caso =  [Select Id, RecordType.DeveloperName from Case Where RecordTypeId = :CaseTriggerHelper.INCIDENTE_TIPO_REGISTRO];
+        
+        caso.FS_InformacionCompleta__c = 'Si';
+        caso.FS_Proyecto__c = 'FSHD001 - Fisa System Help desk';
+        caso.FS_FechaCompromisoEntrega__c = Date.today();
         update caso;
-        actualizarCasoError(caso);
-        
-        
         caso.FS_AprobacionSolucionDefinitivaRelease__c = 'No';
         caso.FS_MotivoRechazoSDRelease__c = 'Inconsistencia en parche';
         update caso;
@@ -150,7 +164,6 @@ public class CaseTriggerHelper_Test {
         
         caso.FS_URLPlanPruebas__c = 'https://fisagrp.com';
         update caso;
-        actualizarCasoError(caso);
         
         caso.FS_UsuarioAprobadorPlanPruebas__c = userInfo.getUserId();
         caso.FS_AprobacionPlanPruebas__c = 'No';
