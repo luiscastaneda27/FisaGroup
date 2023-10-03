@@ -276,7 +276,7 @@ public without sharing class CaseTriggerHelper {
                         item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                         item.Status = 'En Desarrollo';
                         //item.FS_URLResultadoAnalasis__c = null;
-                        item.FS_EnviarAprobacionSolucionIPN2__c = null;
+                        item.FS_EnviarAprobacionSolucionIPN2__c = false;
                     }else if (item.RecordTypeId == INCIDENTE_TIPO_REGISTRO && item.FS_TipoIncidente__c == 'Definitivo'){
                         item.FS_SubEstado__c = 'Elaboración Diseño Técnico';
                         item.Status = 'En Desarrollo';
@@ -693,6 +693,10 @@ public without sharing class CaseTriggerHelper {
                 }else if(item.FS_AceptaInstalacionParche__c == 'No'){
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva'; 
                     item.Status = 'En Análisis';
+                    item.FS_EnviarAprobacionDisenioTecnico__c = false;
+                    item.FS_EnviarAprobacionSolucionDN2__c = false;
+                    item.FS_EnviarAprobacionPlanPruebas__c = false;
+                    item.FS_EnviarAprobacionSolucionIPN2__c  = false;
                 }
             }
         }
@@ -855,7 +859,7 @@ public without sharing class CaseTriggerHelper {
                          item.FS_SubEstado__c == 'Paso a Producción Confirmado' || item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo' ||
                          item.FS_SubEstado__c == 'Aprobación Diseño Técnico' || item.FS_SubEstado__c =='Aprobación Solución Definitiva N2' ||
                          item.FS_SubEstado__c == 'Aprobación Instalación Parche - Releases' || item.FS_SubEstado__c == 'Aprobación Plan de Pruebas' ||
-                         item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' || item.FS_SubEstado__c =='Instalación de Parche'){
+                         item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' || item.FS_SubEstado__c == 'Instalación de Parche'){
                              casesNewUpdateID.add(item);
                              casesOldUpdateID.add(caso);
                          }
