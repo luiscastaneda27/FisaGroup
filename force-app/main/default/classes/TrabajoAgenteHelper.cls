@@ -34,9 +34,11 @@ public class TrabajoAgenteHelper {
                         listCasosActualizar.add(item);
                     }else if(item.FS_SubEstado__c == 'Escalado a N2'){
                         item.FS_SubEstado__c = 'Revisión Documentación N2';
+                        item.FS_AgenteN2__c = userInfo.getUserId();
                         listCasosActualizar.add(item);
                     }else if(item.FS_SubEstado__c == 'Escalado a QA'){
                         item.FS_SubEstado__c = 'Elaboración Plan de Pruebas';
+                        item.FS_AgenteQA__c = userInfo.getUserId();
                         listCasosActualizar.add(item);
                     } 
                 }

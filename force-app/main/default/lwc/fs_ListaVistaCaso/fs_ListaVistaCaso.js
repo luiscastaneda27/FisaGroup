@@ -56,7 +56,7 @@ export default class Fs_ListaVistaCaso extends LightningElement {
         if(filter.length > 2){
             this.itemsForCurrentView = this.itemsForCurrentView.filter(record => record.CaseNumber.includes(filter) || record.FS_NombreTipoRegistro__c.toUpperCase().includes(filter.toUpperCase()) ||
             record.Subject.toUpperCase().includes(filter.toUpperCase()) || record.FS_DescripcionCliente__c.toUpperCase().includes(filter.toUpperCase()) ||
-            record.Status.toUpperCase().includes(filter.toUpperCase()));
+            record.Status.toUpperCase().includes(filter.toUpperCase()) || record.FS_NombreContacto__c.toUpperCase().includes(filter.toUpperCase()));
         }else{
             this.itemsForCurrentView = this.currentFilter === 'Todos los Casos Cerrado' ? this.data.casosCerrados : this.currentFilter === 'Mostrados Recientemente' ? this.data.casosMostrados : this.data.casosAbiertos;
         }

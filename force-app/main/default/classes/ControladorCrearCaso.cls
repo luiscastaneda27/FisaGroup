@@ -61,7 +61,7 @@ public without sharing class ControladorCrearCaso {
     
     public static String getQueryCaso(){
         Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Case').getDescribe().fields.getMap();
-        String query = 'Select ';
+        String query = 'Select Contact.Name,';
         for(Schema.SObjectField sfield : fieldMap.Values()){
             schema.describefieldresult dfield = sfield.getDescribe();
             query += dfield.getName() + ',';

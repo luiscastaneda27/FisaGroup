@@ -538,6 +538,7 @@ public without sharing class CaseTriggerHelper {
                     item.FS_EnviarAprobacionSolucionDN2__c = false;
                     //item.FS_AprobacionSolucionDefinitivaRelease__c = null;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
+                    item.OwnerId = item.FS_AgenteN2__c;
                     String titulo = 'Rechazo de Solución Definitiva N2 para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+UserInfo.getName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
@@ -561,13 +562,15 @@ public without sharing class CaseTriggerHelper {
                         Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
                         item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_QA_CORE : COLA_ATENCION_QA_OMNIA);
                         item.FS_Area__c =  esCore ? 'QA CC-CORE' : 'QA CC-OMNIA';
-                        item.FS_SubEstado__c = 'Escalado a QA';  
+                        item.FS_SubEstado__c = String.isBlank(item.FS_AgenteQA__c) ? 'Escalado a QA' : 'Elaboración Plan de Pruebas';
+                        item.OwnerId = String.isBlank(item.FS_AgenteQA__c) ? item.OwnerId : item.FS_AgenteQA__c;
                         validarTareas(item);
                     }
                 }else if(item.FS_AprobacionSolucionDefinitivaRelease__c == 'No'){
                     //item.FS_URLSolucionDefinitiva__c = null;
                     item.FS_EnviarAprobacionSolucionDN2__c = false;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
+                    item.OwnerId = item.FS_AgenteN2__c;
                     String titulo = 'Rechazo de Solución Definitiva N2 para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+UserInfo.getName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
@@ -616,11 +619,11 @@ public without sharing class CaseTriggerHelper {
                     item.FS_SubEstado__c = 'Instalación Parche Releases';
                 }else if(item.FS_AprobacionInstalacionParcheRelease__c == 'No'){
                     item.FS_SubEstadoAnterior__c = item.FS_SubEstado__c;
-                    item.FS_UrlAmbientePruebas__c = null;
+                    //item.FS_UrlAmbientePruebas__c = null;
                     //item.FS_URLSolucionDefinitiva__c = null;
                     item.FS_EnviarAprobacionSolucionDN2__c = false;
-                    item.FS_EnviarAprobacionPlanPruebas__c = false;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
+                    item.OwnerId = item.FS_AgenteN2__c;
                     String titulo = 'Rechazo de Instalación Parche - Releases para caso '+item.CaseNumber;
                     String descripcion = 'El agente ' + item.FS_UsuarioAprobadorInstalacionParcheRele__c  + ' ha rechazado la Instalación Parche - Releases para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
@@ -661,6 +664,7 @@ public without sharing class CaseTriggerHelper {
                     //item.FS_URLSolucionDefinitiva__c = null;
                     item.FS_EnviarAprobacionSolucionDN2__c = false;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
+                    item.OwnerId = item.FS_AgenteN2__c;
                     String titulo = 'Rechazo de Certificación Parche QA para caso '+item.CaseNumber;
                     String descripcion = 'El agente ' + item.FS_UsuarioAprobadorInstalacionParcheRele__c  + ' ha rechazado la Certificación Parche QA para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
@@ -692,11 +696,12 @@ public without sharing class CaseTriggerHelper {
                     envioCorreo(item, 'FS_PaseProduccion', true);
                 }else if(item.FS_AceptaInstalacionParche__c == 'No'){
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva'; 
-                    item.Status = 'En Análisis';
+                    item.Status = 'En Desarrollo';
                     item.FS_EnviarAprobacionDisenioTecnico__c = false;
                     item.FS_EnviarAprobacionSolucionDN2__c = false;
                     item.FS_EnviarAprobacionPlanPruebas__c = false;
                     item.FS_EnviarAprobacionSolucionIPN2__c  = false;
+                    item.OwnerId = item.FS_AgenteN2__c;
                 }
             }
         }
