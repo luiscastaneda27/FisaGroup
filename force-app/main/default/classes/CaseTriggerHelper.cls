@@ -221,12 +221,17 @@ public without sharing class CaseTriggerHelper {
                     validarTareas(item);
                 }else if(item.FS_PudeSolventarPregunta__c == 'No'){
                     Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
-                    item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_N2_CORE : COLA_ATENCION_N2_OMNIA);
+                    item.OwnerId =  String.isBlank(item.FS_UsuarioAprobadorSolucion__c) ? mapColas.get(esCore ? COLA_ATENCION_N2_CORE : COLA_ATENCION_N2_OMNIA) : item.FS_UsuarioAprobadorSolucion__c;
                     item.FS_Area__c =  esCore ? 'N2- CORE' : 'N2-OMNIA';
-                    item.FS_SubEstado__c = 'Escalado a N2';
+                    item.FS_SubEstado__c = String.isBlank(item.FS_UsuarioAprobadorSolucion__c) ? 'Escalado a N2' : 'Análisis N2'; 
                     item.IsEscalated = true;
                     item.FS_InformacionCompleta__c = null;
                     validarTareas(item);
+                    if(item.FS_UsuarioAprobadorSolucion__c != null){
+                        String titulo = 'Asignación de caso No '+item.CaseNumber;
+                        String descripcion = 'El agente ' + UserInfo.getName() + ' ha escalado el caso '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                        enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
+                    }
                 }
                 
             }
@@ -269,7 +274,8 @@ public without sharing class CaseTriggerHelper {
                     envioCorreo(item, 'FS_Encuesta', true);
                     crearEncuesta(item);
                 }else if(item.FS_AceptaRespuesta__c == 'No'){
-                    item.FS_SubEstado__c = 'Respuesta rechazada';
+                    item.FS_SubEstado__c = item.FS_Area__c == 'N2- CORE' || item.FS_Area__c == 'N2-OMNIA' ? 'Análisis N2' : 'Análisis N1';
+                        item.Status = 'En Análisis';
                     item.FS_PudeSolventarPregunta__c = null;
                     item.FS_NumeroHorasSolicitud__c = null;
                     envioCorreo(item, 'FS_RechazoRespuesta', false);
@@ -352,6 +358,9 @@ public without sharing class CaseTriggerHelper {
                     item.FS_SubEstado__c = 'Análisis Falla Operativa';
                 }else if(item.RecordTypeId == INCIDENTE_TIPO_REGISTRO){
                     item.Status = 'En Análisis';                    
+                }else if(item.RecordTypeId == CONSULTA_TIPO_REGISTRO){
+                    item.Status = 'En Análisis';        
+                    item.FS_SubEstado__c = item.FS_Area__c == 'N2- CORE' || item.FS_Area__c == 'N2-OMNIA' ? 'Análisis N2' : 'Análisis N1';
                 }
                 
             }
