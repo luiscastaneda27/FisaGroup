@@ -86,7 +86,6 @@ public without sharing class ControladorCrearCaso {
             }else{
                 caso.OwnerId = [Select Id from Group Where DeveloperName = :(esCore ? CaseTriggerHelper.COLA_ATENCION_N1_CORE : CaseTriggerHelper.COLA_ATENCION_N1_OMNIA) and Type = 'Queue'].Id;
             }
-            caso.FS_SubEstado__c = 'Apertura de caso';
             for(PickListOption item: (List<PickListOption>) JSON.deserialize(archivosJSON, List<PickListOption>.class)){
                 listContentDocumentId.add(item.value);
             }

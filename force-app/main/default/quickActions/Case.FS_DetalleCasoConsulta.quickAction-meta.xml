@@ -17,7 +17,7 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Origin</field>
+                <field>FS_OrigenCaso__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>

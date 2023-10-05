@@ -275,7 +275,7 @@ public without sharing class CaseTriggerHelper {
                     crearEncuesta(item);
                 }else if(item.FS_AceptaRespuesta__c == 'No'){
                     item.FS_SubEstado__c = item.FS_Area__c == 'N2- CORE' || item.FS_Area__c == 'N2-OMNIA' ? 'Análisis N2' : 'Análisis N1';
-                        item.Status = 'En Análisis';
+                    item.Status = 'En Análisis';
                     item.FS_PudeSolventarPregunta__c = null;
                     item.FS_NumeroHorasSolicitud__c = null;
                     envioCorreo(item, 'FS_RechazoRespuesta', false);
@@ -547,7 +547,6 @@ public without sharing class CaseTriggerHelper {
                     item.FS_EnviarAprobacionSolucionDN2__c = false;
                     //item.FS_AprobacionSolucionDefinitivaRelease__c = null;
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
-                    item.OwnerId = item.FS_AgenteN2__c;
                     String titulo = 'Rechazo de Solución Definitiva N2 para caso '+item.CaseNumber;
                     String descripcion = 'El agente '+UserInfo.getName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
@@ -572,7 +571,7 @@ public without sharing class CaseTriggerHelper {
                         item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_QA_CORE : COLA_ATENCION_QA_OMNIA);
                         item.FS_Area__c =  esCore ? 'QA CC-CORE' : 'QA CC-OMNIA';
                         item.FS_SubEstado__c = String.isBlank(item.FS_AgenteQA__c) ? 'Escalado a QA' : 'Elaboración Plan de Pruebas';
-                        item.OwnerId = String.isBlank(item.FS_AgenteQA__c) ? item.OwnerId : item.FS_AgenteQA__c;
+                        item.OwnerId = String.isBlank(item.FS_AgenteQA__c) ? item.OwnerId : item.FS_AgenteQA__c;  
                         validarTareas(item);
                     }
                 }else if(item.FS_AprobacionSolucionDefinitivaRelease__c == 'No'){
@@ -773,6 +772,11 @@ public without sharing class CaseTriggerHelper {
             }
         }
         delete itemDelete;
+    }
+    public static void llenarOrigen(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            item.Origin = item.FS_SubEstado__c;
+        }
     }
 	
     public static void historialCaso(List<Case> newCaseList, Map<Id, Case> oldCaseMap){

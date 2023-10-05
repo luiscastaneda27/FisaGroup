@@ -121,7 +121,9 @@ export default class Fs_CrearCaso extends NavigationMixin(LightningElement) {
         caso.FS_Producto__c = this.data.productoSeleccionado;
         caso.FS_Modulo__c = this.data.moduloSeleccionado;
         caso.FS_SubModulo__c = this.data.subModuloSeleccionado;
-        caso.Origin = "Web";
+        caso.FS_OrigenCaso__c = "Web";
+        caso.FS_SubEstado__c = 'Apertura de caso';
+        caso.Origin = caso.FS_SubEstado__c;
         caso.FS_DescripcionCliente__c = this.data.descripcion;
         caso.Subject = this.data.asunto;
         caso.Status = "Nuevo";

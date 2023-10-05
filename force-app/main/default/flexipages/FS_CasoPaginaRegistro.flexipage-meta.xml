@@ -24,8 +24,8 @@
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Consulta</rightValue>
+                        <operator>NE</operator>
+                        <rightValue>Solicitud (Falla Operativa)</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -52,8 +52,8 @@
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.FS_NombreTipoRegistro__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Consulta</rightValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Solicitud (Falla Operativa)</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

@@ -567,6 +567,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>FS_OrigenCaso__c</picklist>
+        <values>
+            <fullName>Interno</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>FS_Producto__c</picklist>
         <values>
             <fullName>FISA - Business Platform</fullName>
@@ -1417,11 +1428,115 @@
     <picklistValues>
         <picklist>Origin</picklist>
         <values>
-            <fullName>Interno</fullName>
+            <fullName>Apertura de caso</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Web</fullName>
+            <fullName>Aprobación Certificación Parche QA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación Diseño Técnico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación Instalación Parche - Releases</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación Plan de Pruebas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación Solución Definitiva N2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación Solución Definitiva Releases</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación Solución IP-N2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprobación de Solución IP-Release</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Certificación Parche QA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desarrollo Incidente Puntual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Elaboración Diseño Técnico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Elaboración Plan de Pruebas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Elaboración Solución Definitiva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>En Espera de Respuesta del Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entrega 1a respuesta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entrega de Parche</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Envío de respuesta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escalado a N2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escalado a QA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Información validada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instalación Parche Releases</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instalación de Parche</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paso a Producción</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paso a Producción Confirmado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paso a Producción No Confirmado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Revisión Documentación N2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Validación-Entrega de Fuentes</fullName>
             <default>false</default>
         </values>
     </picklistValues>

@@ -112,6 +112,7 @@
 		<members>Case.FS_NotasReunionSatisfaccion__c</members>
 		<members>Case.FS_NumeroHorasSolicitud__c</members>
 		<members>Case.FS_NumeroRequerimientosNuevo__c</members>
+		<members>Case.FS_OrigenCaso__c</members>
 		<members>Case.FS_Producto__c</members>
 		<members>Case.FS_PropietarioCasoSolucionCortoPlazo__c</members>
 		<members>Case.FS_Proyecto__c</members>
