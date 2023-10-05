@@ -1010,59 +1010,72 @@ public without sharing class CaseTriggerHelper {
         JCFS.API.createJiraIssue(jiraProjectId, jiraIssueTypeId, newCaseList, oldCaseList);
     }
     
-    public static void updateIssueJira(List<Case> newCaseList, List<Case> oldCaseList) {   
+    public static void updateIssueJira(List<Case> newCaseList, List<Case> oldCaseList) {       
         JCFS.API.pushUpdatesToJira(newCaseList, oldCaseList);
     }
     
-    public static void MilestoneCalculator(List<Case> newCaseList){
-        
-        /*List<MT001__mdt> ltsMT01 = new List<MT001__mdt>();
-        ltsMT01 = [select MasterLabel, FS_Activo__c, FS_NombreTipoRegistro__c, FS_SubEstado__c, FS_SLA__c 
-                   FROM MT001__mdt WHERE FS_Activo__c = true];
-        
-        Decimal timer;
-        for(Case ltsCase : newCaseList){
-            for(MT001__mdt ltsMT : ltsMT01){
-                if(ltsCase.RecordType.Name == ltsMT.FS_NombreTipoRegistro__c && ltsCase.FS_SubEstado__c == ltsMT.FS_SubEstado__c){
-                    timer = ltsMT.FS_SLA__c * 60;
-                }
-            }   
-        }*/
+    public static Id entitlementCaseId(string recordTypeName){
         
         List<Entitlement> ltsEntitlement = new List<Entitlement>();
+        List<recordtype> ltsrecordtype = new List<recordtype>();
+        
         ltsEntitlement = [select id, name from Entitlement];
+        ltsrecordtype = [select id, name from recordtype where id =: recordTypeName];
         
         String Consulta;
-        String IncidenteD;
-        String IncidenteP;
+        String Incidente;
+        id entitlementId;
+        String nameRT;
+        
+        for(recordtype recordTypeList: ltsrecordtype){
+            nameRT = recordTypeList.Name;
+        }
         
         for(Entitlement lstEMT: ltsEntitlement){
-            if(lstEMT.Name == 'SLA Consulta - Interno'){
+            if(lstEMT.Name == 'SLA Consulta'){
                 Consulta = lstEMT.id;
-            }else if(lstEMT.Name == 'SLA Incidente definitivo - Interno'){
-                IncidenteD = lstEMT.id;
-            }else if(lstEMT.Name == 'SLA Incidente puntual - Interno'){
-                IncidenteP = lstEMT.id;
+            }else if(lstEMT.Name == 'SLA Incidente'){
+                Incidente = lstEMT.id;
             }
         }
         
-        //List<Case> newCase = new List<Case>();
-        Case myAccount=newCaseList[0];
-        Case newCase = [select id, EntitlementId from Case where id =: myAccount.id];
-        
-        for(Case ltsCase : newCaseList){
-            if(ltsCase.RecordType.Name == 'Consulta' && ltsCase.FS_SubEstado__c != 'En Espera de Respuesta del Cliente'){
-                newCase.EntitlementId = Consulta;
-            }else if(ltsCase.RecordType.Name == 'Incidente' && ltsCase.FS_SubEstado__c != 'En Espera de Respuesta del Cliente'){
-                newCase.EntitlementId = IncidenteD;
-            }else if(ltsCase.RecordType.Name == 'Solicitud (Falla Operativa)' && ltsCase.FS_SubEstado__c != 'En Espera de Respuesta del Cliente'){
-                newCase.EntitlementId = IncidenteP;
-            }
-            //newCase.add(ltsCase);
+        if(nameRT == 'Consulta'){
+            entitlementId = Consulta;
+        }else if(nameRT == 'Incidente'){
+            entitlementId = Incidente;
         }
+        
+        /*for(Case ltsCase : ltsCases){
+            if(ltsCase.RecordType.Name == 'Consulta'){
+                entitlementId = Consulta;
+            }else if(ltsCase.RecordType.Name == 'Incidente'){
+                entitlementId = Incidente;
+            }
+        }*/
+        //retornamos el id de la asignacion
+        //entitlementId = '5506C000000BEJGQA4';
+        return entitlementId;
+  
+    }//fin proceso entitlementCaseId
     
-        update newCase;
-          
-    }//fin proceso
+    public static void esCliente(List<Case> newCaseList) {       
+        set<Id> caseId = new set<id>();
+        //List<FS_ConfiguracionSLA__c> slaLs = new List<FS_ConfiguracionSLA__c>();
+        for(Case lstCase: newCaseList){
+            caseId.add(lstCase.Id);
+        }
+        
+        Case c = [SELECT Priority, RecordType.Name, FS_SubEstado__c, AccountId FROM Case WHERE Id =:caseId];
+        FS_ConfiguracionSLA__c slaLs = [select id, FS_NombreDeCuenta__c, FS_NombreTipoRegistro__c, FS_SLA__c, FS_SubEstado__c, FS_EsCliente__c, 
+                 FS_Activo__c from FS_ConfiguracionSLA__c where FS_Activo__c = true AND FS_NombreTipoRegistro__c =: c.RecordType.Name
+                 AND FS_SubEstado__c INCLUDES(:c.FS_SubEstado__c) limit 1];
+        for(Case lstCase: newCaseList){
+            if(slaLs.FS_EsCliente__c == true){
+                lstCase.FS_Es_cliente__c = true;
+            }else if(slaLs.FS_EsCliente__c == false){
+                lstCase.FS_Es_cliente__c = false;
+            }
+        }
+    }//fin proceso esCliente
     
 }
