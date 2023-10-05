@@ -121,7 +121,7 @@ public without sharing class CaseTriggerHelper {
                 }else{
                      Case caso = oldCaseMap.get(item.Id);
                     if(caso.FS_Producto__c != item.FS_Producto__c){
-                        Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
+                        Boolean esCore = productoCore(item) ;
                         item.FS_Area__c = esCore ? 'N1. CORE' : 'N1. OMNIA';
                         item.OwnerId = [Select Id from Group Where DeveloperName = :(esCore ? COLA_ATENCION_N1_CORE : COLA_ATENCION_N1_OMNIA) and Type = 'Queue'].Id;
                         validarTareas(item);
@@ -221,7 +221,7 @@ public without sharing class CaseTriggerHelper {
                     }
                     validarTareas(item);
                 }else if(item.FS_PudeSolventarPregunta__c == 'No'){
-                    Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
+                    Boolean esCore = productoCore(item) ;
                     item.OwnerId =  String.isBlank(item.FS_UsuarioAprobadorSolucion__c) ? mapColas.get(esCore ? COLA_ATENCION_N2_CORE : COLA_ATENCION_N2_OMNIA) : item.FS_UsuarioAprobadorSolucion__c;
                     item.FS_Area__c =  esCore ? 'N2- CORE' : 'N2-OMNIA';
                     item.FS_SubEstado__c = String.isBlank(item.FS_UsuarioAprobadorSolucion__c) ? 'Escalado a N2' : 'Análisis N2'; 
@@ -311,6 +311,7 @@ public without sharing class CaseTriggerHelper {
                 }else if(item.FS_Acepta1erCosto__c == 'No'){
                     item.Status = 'En Análisis';
                     item.FS_SubEstado__c = 'Análisis N1';
+                    item.FS_InformacionCompleta__c = null;
                     String titulo = 'Rechazo de primer costo para caso '+item.CaseNumber;
                     String descripcion = 'El cliente '+UserInfo.getFirstName() + ' ha rechazo el primer costo '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
@@ -440,7 +441,7 @@ public without sharing class CaseTriggerHelper {
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_TipoIncidente__c != item.FS_TipoIncidente__c){
                 item.Status = 'En Análisis';
-                Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
+                Boolean esCore = productoCore(item) ;
                 item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_N2_CORE : COLA_ATENCION_N2_OMNIA);
                 item.FS_Area__c =  esCore ? 'N2- CORE' : 'N2-OMNIA';
                 item.FS_SubEstado__c = 'Escalado a N2';
@@ -571,7 +572,7 @@ public without sharing class CaseTriggerHelper {
                         item.FS_MotivosRechazoInstalacionParche__c = null;
                         item.FS_ComentariosAprobacionInstalacionParch__c = null;
                     }else{
-                        Boolean esCore = item.FS_Producto__c == 'FISA System' || item.FS_Producto__c == 'FISA Credit Card' ;
+                        Boolean esCore = productoCore(item) ;
                         item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_QA_CORE : COLA_ATENCION_QA_OMNIA);
                         item.FS_Area__c =  esCore ? 'QA CC-CORE' : 'QA CC-OMNIA';
                         item.FS_SubEstado__c = String.isBlank(item.FS_AgenteQA__c) ? 'Escalado a QA' : 'Elaboración Plan de Pruebas';
@@ -845,6 +846,9 @@ public without sharing class CaseTriggerHelper {
         }
         return userId;
     }
+    public static Boolean productoCore(Case caso){
+        return caso.FS_Producto__c == 'FISA System' || caso.FS_Producto__c == 'FISA Credit Card';
+    }
      
     public static void upsertCaseJira(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         List<Case> casesNewIP = new List<Case>();
@@ -879,7 +883,7 @@ public without sharing class CaseTriggerHelper {
                          item.FS_SubEstado__c == 'Validación-Entrega de Fuentes' || item.FS_SubEstado__c == 'Entrega de Parche' ||
                          item.FS_SubEstado__c == 'Paso a Producción' || item.FS_SubEstado__c == 'Paso a Producción No Confirmado' ||
                          item.FS_SubEstado__c == 'Paso a Producción Confirmado' || item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo' ||
-                         item.FS_SubEstado__c == 'Aprobación Diseño Técnico' || item.FS_SubEstado__c == 'Aprobación Solución Definitiva N2' ||
+                         item.FS_SubEstado__c == 'Aprobación Diseño Técnico' || item.FS_SubEstado__c == 'Aprobación Solución Definitiva N2'||
                          item.FS_SubEstado__c == 'Aprobación Instalación Parche - Releases' || item.FS_SubEstado__c == 'Aprobación Plan de Pruebas' ||
                          item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' || item.FS_SubEstado__c == 'Instalación de Parche'){
                              casesNewUpdateID.add(item);
@@ -1057,7 +1061,7 @@ public without sharing class CaseTriggerHelper {
         return entitlementId;
   
     }//fin proceso entitlementCaseId
-    
+
     public static void esCliente(List<Case> newCaseList) {       
         set<Id> caseId = new set<id>();
         //List<FS_ConfiguracionSLA__c> slaLs = new List<FS_ConfiguracionSLA__c>();
