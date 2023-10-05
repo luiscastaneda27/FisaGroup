@@ -32,9 +32,7 @@ export default class Fs_ListaVistaCaso extends LightningElement {
             console.log(JSON.stringify(response))
             this.data = response;
             this.itemsForCurrentView = response.casosAbiertos;
-            this.itemsForCurrentView.forEach(item => {
-                item.casoLink = '/case/' + item.Id;
-            });
+            this.addLinkCase();
             this.showSpinner = false;
          })
     }
@@ -53,13 +51,13 @@ export default class Fs_ListaVistaCaso extends LightningElement {
 
     onchangeFilter(event){
         let filter = event.target.value;
+        this.itemsForCurrentView = this.currentFilter === 'Todos los Casos Cerrado' ? this.data.casosCerrados : this.currentFilter === 'Mostrados Recientemente' ? this.data.casosMostrados : this.data.casosAbiertos;
         if(filter.length > 2){
             this.itemsForCurrentView = this.itemsForCurrentView.filter(record => record.CaseNumber.includes(filter) || record.FS_NombreTipoRegistro__c.toUpperCase().includes(filter.toUpperCase()) ||
             record.Subject.toUpperCase().includes(filter.toUpperCase()) || record.FS_DescripcionCliente__c.toUpperCase().includes(filter.toUpperCase()) ||
             record.Status.toUpperCase().includes(filter.toUpperCase()) || record.FS_NombreContacto__c.toUpperCase().includes(filter.toUpperCase()));
-        }else{
-            this.itemsForCurrentView = this.currentFilter === 'Todos los Casos Cerrado' ? this.data.casosCerrados : this.currentFilter === 'Mostrados Recientemente' ? this.data.casosMostrados : this.data.casosAbiertos;
         }
+        this.addLinkCase();
     }
  
     handleFilterChangeButton(event) {
@@ -77,12 +75,16 @@ export default class Fs_ListaVistaCaso extends LightningElement {
             this.itemsForCurrentView = this.data.casosAbiertos;
             this.currentFilter = 'Todos los Casos Abiertos';
         }
-        this.itemsForCurrentView.forEach(item => {
-            item.casoLink = '/case/' + item.Id;
-        });
+        this.addLinkCase();
     }
  
     handleClickExtend() {
         this.isExpanded = !this.isExpanded;
+    }
+    addLinkCase(){
+        this.itemsForCurrentView.forEach(item => {
+            item.casoLink = '/case/' + item.Id;
+            item.FS_NombreContacto__c = item.Contact.Name;
+        });
     }
 }

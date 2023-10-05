@@ -164,6 +164,7 @@ public without sharing class CaseTriggerHelper {
                     }else if(item.FS_NombreTipoRegistro__c  == 'Solicitud (Falla Operativa)'){
                         item.FS_SubEstado__c = 'En Espera de Respuesta del Cliente';
                         item.Status = 'En Análisis';
+                        item.FS_Acepta1erCosto__c = null;
                         envioCorreo(item, 'FS_AprobacionPrimerCosto', true);
                     }else{
                         item.FS_SubEstado__c = 'Información validada';
@@ -308,8 +309,11 @@ public without sharing class CaseTriggerHelper {
                     String descripcion = 'El cliente '+UserInfo.getFirstName() + ' ha aceptado el 1er costo para el caso '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }else if(item.FS_Acepta1erCosto__c == 'No'){
-                    item.Status = 'Dado de baja';
-                    item.FS_SubEstado__c = 'Costo Rechazado';
+                    item.Status = 'En Análisis';
+                    item.FS_SubEstado__c = 'Análisis N1';
+                    String titulo = 'Rechazo de primer costo para caso '+item.CaseNumber;
+                    String descripcion = 'El cliente '+UserInfo.getFirstName() + ' ha rechazo el primer costo '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
             }
         }
