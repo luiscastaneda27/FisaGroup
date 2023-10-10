@@ -21,4 +21,13 @@ public class FeedCommentTriggerHelper {
         update listCasosUpdate;
         
     }
+    
+    public static void validacionBorrado(List<FeedComment> newFeedCommentList){
+        if(FeedItemTriggerHelper.validacionUser() || System.isFuture()){
+            return;
+        }
+        for(FeedComment item: newFeedCommentList){
+            item.addError('Privilegios insuficiente');
+        } 
+    }
 }

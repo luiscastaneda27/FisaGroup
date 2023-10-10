@@ -4,9 +4,9 @@ trigger FeedCommentTrigger on FeedComment (before insert, before update, before 
         }else if(trigger.isAfter){
             FeedCommentTriggerHandler.afterInsert(trigger.new);
         }
-    }else if(trigger.isUpdate){
+    }else if(trigger.isDelete){
         if(trigger.isBefore){
-        }else if(trigger.isAfter){
+            FeedCommentTriggerHandler.beforeDelete(trigger.old);
         }
     }
 }
