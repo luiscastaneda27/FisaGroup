@@ -12,7 +12,7 @@ public class FeedCommentTriggerHelper {
         for(FeedItem item: [Select ParentId From FeedItem Where Id in :listFeedItemids]){
             listCasosIds.add(item.ParentId);
         }
-        for(Case item: [Select FS_SubEstado__c, FS_SubEstadoQueSePideInformacion__c, FS_InformacionCompleta__c from case Where Id in :listCasosIds ]){
+        for(Case item: [Select FS_SubEstado__c, FS_SubEstadoQueSePideInformacion__c, FS_InformacionCompleta__c from case Where Id in :listCasosIds and FS_SubEstadoQueSePideInformacion__c != null]){
             item.FS_SubEstado__c = item.FS_SubEstadoQueSePideInformacion__c;
             item.FS_SubEstadoQueSePideInformacion__c = null;
             item.FS_InformacionCompleta__c = null;

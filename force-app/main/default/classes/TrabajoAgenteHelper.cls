@@ -45,5 +45,6 @@ public class TrabajoAgenteHelper {
             }
         }
         update listCasosActualizar;
+        CaseTriggerHelper.borrarChatter(JSON.serialize(recordIds));
     }
 }

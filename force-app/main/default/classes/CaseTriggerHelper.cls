@@ -357,7 +357,7 @@ public without sharing class CaseTriggerHelper {
     public static void validacionFechaEntrega(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_FechaCompromisoEntrega__c != item.FS_FechaCompromisoEntrega__c && caso.FS_FechaCompromisoEntrega__c == null){
+            if(caso.FS_FechaCompromisoEntrega__c != item.FS_FechaCompromisoEntrega__c && (caso.FS_FechaCompromisoEntrega__c == null || item.FS_SubEstado__c == 'Información validada')){
                 if(item.RecordTypeId == SOLICITUD_TIPO_REGISTRO){
                     item.Status = 'Análisis Falla Operativa';
                     item.FS_SubEstado__c = 'Análisis Falla Operativa';
@@ -782,6 +782,7 @@ public without sharing class CaseTriggerHelper {
         for(Case item: newCaseList){
             item.Origin = item.FS_SubEstado__c;
         }
+        esCliente(newCaseList);
     }
 	
     public static void historialCaso(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
@@ -1027,6 +1028,7 @@ public without sharing class CaseTriggerHelper {
         ltsrecordtype = [select id, name from recordtype where id =: recordTypeName];
         
         String Consulta;
+        String consultaCliente;
         String Incidente;
         id entitlementId;
         String nameRT;
@@ -1040,6 +1042,8 @@ public without sharing class CaseTriggerHelper {
                 Consulta = lstEMT.id;
             }else if(lstEMT.Name == 'SLA Incidente'){
                 Incidente = lstEMT.id;
+            }else if(lstEMT.Name == 'SLA Consulta - Cliente'){
+                consultaCliente = lstEMT.id;
             }
         }
         
@@ -1064,22 +1068,27 @@ public without sharing class CaseTriggerHelper {
 
     public static void esCliente(List<Case> newCaseList) {       
         set<Id> caseId = new set<id>();
-        //List<FS_ConfiguracionSLA__c> slaLs = new List<FS_ConfiguracionSLA__c>();
+        String SubEstado;
+        List<Entitlement> ltsEntitlement = new List<Entitlement>();
+        ltsEntitlement = [select id, name from Entitlement];
         for(Case lstCase: newCaseList){
             caseId.add(lstCase.Id);
+            SubEstado = lstCase.FS_SubEstado__c;
         }
         
         Case c = [SELECT Priority, RecordType.Name, FS_SubEstado__c, AccountId FROM Case WHERE Id =:caseId];
         FS_ConfiguracionSLA__c slaLs = [select id, FS_NombreDeCuenta__c, FS_NombreTipoRegistro__c, FS_SLA__c, FS_SubEstado__c, FS_EsCliente__c, 
                  FS_Activo__c from FS_ConfiguracionSLA__c where FS_Activo__c = true AND FS_NombreTipoRegistro__c =: c.RecordType.Name
-                 AND FS_SubEstado__c INCLUDES(:c.FS_SubEstado__c) limit 1];
+                 AND FS_SubEstado__c INCLUDES(:SubEstado) limit 1];
         for(Case lstCase: newCaseList){
             if(slaLs.FS_EsCliente__c == true){
-                lstCase.FS_Es_cliente__c = true;
+                lstCase.FS_Es_cliente__c = true;  
             }else if(slaLs.FS_EsCliente__c == false){
                 lstCase.FS_Es_cliente__c = false;
             }
+            
         }
+
     }//fin proceso esCliente
     
 }

@@ -9,6 +9,7 @@
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
+        <controllingField>FS_AprobacionPlanPruebas__c</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
@@ -18,5 +19,9 @@
                 <label>Incosistencia en plan de pruebas</label>
             </value>
         </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Incosistencia en plan de pruebas</valueName>
+        </valueSettings>
     </valueSet>
 </CustomField>

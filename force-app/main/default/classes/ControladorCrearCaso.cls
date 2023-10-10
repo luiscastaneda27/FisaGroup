@@ -43,7 +43,7 @@ public without sharing class ControladorCrearCaso {
         lista.casosCerrados = new List<Case>();
         lista.casosMostrados = new List<Case>();
         DateTime hoy = DateTime.now().addDays(-5);
-        for(Case item: DataBase.query(getQueryCaso() + ' Where AccountId = \'' + usuario.Contact.AccountId + '\' order By CreatedDate desc ')){
+        for(Case item: DataBase.query(getQueryCaso() + ' Where AccountId = \'' + usuario.Contact.AccountId + '\'  and FS_OrigenCaso__c = \'Web\' order By CreatedDate desc ')){
             item.FS_DescripcionCLiente__c = String.isNotBlank(item.FS_DescripcionCLiente__c) ? item.FS_DescripcionCLiente__c.replace('<p>','') : '';
             item.FS_DescripcionCLiente__c = item.FS_DescripcionCLiente__c.replace('</p>','');
             item.Status = item.FS_SubEstado__c == 'En Espera de Respuesta del Cliente' ? 'Pendiente Respuesta' : item.Status;
