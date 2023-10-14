@@ -30,7 +30,7 @@ public without sharing class CaseTriggerHelper {
     
     
     public static void validacionEstado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-        if(validacionUser()){
+        if(validacionUser(false)){
             return;
         }
         for(Case item: newCaseList){
@@ -46,7 +46,7 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void validacionSubEstado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
-        if(validacionUser()){
+        if(validacionUser(true)){
             return;
         }
         for(Case item: newCaseList){
@@ -78,11 +78,11 @@ public without sharing class CaseTriggerHelper {
         }
     }
     
-    public static Boolean validacionUser(){
+    public static Boolean validacionUser(Boolean userComunity){
         User u = [Select Name, Profile.Name, UserRole.Name From User where Id = :UserInfo.getUserId()];
         Boolean flagPerfil = u.Profile.Name == 'Administrador del sistema' || u.Profile.Name == 'System Administrator';
         flagPerfil = flagPerfil || (u.UserRole.Name != null && u.UserRole.Name.contains('FS_Jefe'));
-        flagPerfil = flagPerfil || Label.FS_IdUsuarioJira == u.Id || u.Profile.Name == 'Customer Community User';
+        flagPerfil = flagPerfil || Label.FS_IdUsuarioJira == u.Id || (u.Profile.Name == 'Customer Community User' && userComunity);
         flagPerfil = flagPerfil || u.Name.contains('invitado al sitio Web');
         return flagPerfil;
         
@@ -469,6 +469,7 @@ public without sharing class CaseTriggerHelper {
                     casoHijo.ParentId = item.Id;
                     casoHijo.FS_TipoIncidente__c = 'Puntual';
                     casoHijo.FS_SolucionCortoPlazo__c = null;
+                    casoHijo.FS_InformacionCOmpleta__c = null;
                     insert casoHijo;
                     casoHijo = [Select Id, CaseNumber From Case where Id =: casoHijo.Id];
                     String titulo = 'Asignación de caso No. '+casoHijo.CaseNumber;
@@ -909,6 +910,9 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void envioCorreo(Case caso, String nombrePlantilla, Boolean esContacto){
+        if(esContacto && caso.FS_OrigenCaso__c != 'Web'){
+            return;
+        }
         List<Messaging.SingleEmailMessage> MessageList = new List<Messaging.SingleEmailMessage>();
         EmailTemplate plantilla = [Select Id, Subject, HTMLValue from EmailTemplate Where DeveloperName = :nombrePlantilla limit 1];
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
