@@ -50,7 +50,7 @@ public without sharing class CaseTriggerHelper {
             return;
         }
         for(Case item: newCaseList){
-            if(!item.FS_SubEstado__c.contains('Aprobación') && item.OwnerId != UserInfo.getUserId()){
+            if(item.FS_SubEstado__c != null && !item.FS_SubEstado__c.contains('Aprobación') && item.OwnerId != UserInfo.getUserId()){
                 item.addError('Solo el propietario del caso puede modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación Solución IP-N2' && item.FS_UsuarioAprobadorSolucionIPN2__c != UserInfo.getUserId() ){
                 item.addError('El caso se encuentra en Aprobación de Solución IP-N2 y no tiene permisos para modificarlo.');
@@ -257,6 +257,7 @@ public without sharing class CaseTriggerHelper {
                     String descripcion = 'El agente ' + UserInfo.getName() + ' ha rechazado de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                     item.FS_PudeSolventarPregunta__c = null;
+                    item.FS_NumeroHorasSolicitud__c = null;
                 }
             }
         }        
