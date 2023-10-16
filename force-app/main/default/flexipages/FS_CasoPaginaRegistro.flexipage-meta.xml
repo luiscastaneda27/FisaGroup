@@ -870,7 +870,12 @@
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord16</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
+                    <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.FS_TipoIncidente__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Definitivo</rightValue>
+                    </criteria>
                     <criteria>
                         <leftValue>{!Record.FS_SubEstado__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -1486,6 +1491,39 @@
                         <leftValue>{!Record.FS_AprobacionSolucionIPRelease__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>No</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>NewCommunityCase</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Case.FS_ValidacinEntregaFuentes</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord12</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.FS_TipoIncidente__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Puntual</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.FS_URLCodigoFuente__c}</leftValue>
+                        <operator>NE</operator>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
