@@ -20,8 +20,18 @@
                 <field>FS_InformacionCompleta__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>FS_PudeSolventarPregunta__c</field>
+                <uiBehavior>Readonly</uiBehavior>
+            </quickActionLayoutItems>
         </quickActionLayoutColumns>
         <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>FS_CasoRQOrigenNovedad__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>FS_FechaCompromisoEntrega__c</field>
@@ -31,11 +41,6 @@
                 <emptySpace>false</emptySpace>
                 <field>FS_Referencia__c</field>
                 <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>FS_PudeSolventarPregunta__c</field>
-                <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
     </quickActionLayout>

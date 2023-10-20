@@ -341,6 +341,7 @@ public without sharing class CaseTriggerHelper {
             if(caso.FS_NumeroHorasSolicitud__c  != item.FS_NumeroHorasSolicitud__c && item.FS_NumeroHorasSolicitud__c != null){
                 if(item.FS_Area__c == 'N1. CORE' || item.FS_Area__c == 'N1. OMNIA'){
                     aprobacionConsSolic(item);
+                    validarTareas(item);
                     item.FS_SubEstado__c = 'Aprobación Solicitud N2';
                 }else{
                     item.FS_SubEstado__c = 'Envío de respuesta';
@@ -462,6 +463,7 @@ public without sharing class CaseTriggerHelper {
                 item.FS_SubEstado__c = 'Escalado a N2';
                 item.IsEscalated = true;
                 item.FS_InformacionCompleta__c = null;
+                item.Type = item.FS_TipoIncidente__c;
                 validarTareas(item);
             }
         }
@@ -491,7 +493,7 @@ public without sharing class CaseTriggerHelper {
                     String descripcion = 'El agente ' + UserInfo.getName()  + ' ha creado el caso '+casoHijo.CaseNumber +' como solución a corto plazo del caso ' + item.CaseNumber + '\nPor favor dar seguimiento.';
                     enviarNotificacion(item.FS_PropietarioCasoSolucionCortoPlazo__c, casoHijo.Id, titulo, descripcion);
                 }
-                item.FS_SubEstado__c = 'Elaboración Diseño Técnico';
+                item.FS_SubEstado__c = item.FS_SubEstado__c == 'Revisión de Documentación N2' ? 'Elaboración Diseño Técnico' : item.FS_SubEstado__c;
             }
         }
     }

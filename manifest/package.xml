@@ -338,6 +338,7 @@
 		<members>Case.FS_ValidacionRechazoSolucionIPN2</members>
 		<members>Case.FS_ValidacionRespuestaCliente</members>
 		<members>Case.FS_validacionCasoNuevoAgente</members>
+		<members>Case.FS_ValidacionTipoIncidente</members>
 		<name>ValidationRule</name>
 	</types>
 	<version>58.0</version>

@@ -22,12 +22,12 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>FS_SolucionCortoPlazo__c</field>
+                <field>FS_CasoRQOrigenNovedad__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>FS_CasoRQOrigenNovedad__c</field>
+                <field>FS_SolucionCortoPlazo__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
@@ -45,6 +45,11 @@
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>FS_MotivoCambioFechaEntrega__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>FS_NumeroRequerimientosNuevo__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
