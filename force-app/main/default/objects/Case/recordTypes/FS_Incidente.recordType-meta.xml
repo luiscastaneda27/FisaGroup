@@ -3,6 +3,7 @@
     <fullName>FS_Incidente</fullName>
     <active>true</active>
     <businessProcess>FS_CasoIncidente</businessProcess>
+    <compactLayoutAssignment>FS_Casos</compactLayoutAssignment>
     <label>Incidente</label>
     <picklistValues>
         <picklist>FS_Acepta1erCosto__c</picklist>
@@ -570,7 +571,7 @@
         <picklist>FS_OrigenCaso__c</picklist>
         <values>
             <fullName>Interno</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Web</fullName>

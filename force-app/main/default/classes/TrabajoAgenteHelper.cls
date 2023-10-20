@@ -33,8 +33,9 @@ public class TrabajoAgenteHelper {
                         CaseTriggerHelper.envioCorreo(item, 'FS_AsignacionCaso', true);
                         listCasosActualizar.add(item);
                     }else if(item.FS_SubEstado__c == 'Escalado a N2'){
-                        item.FS_SubEstado__c = 'Revisión Documentación N2';
+                        item.FS_SubEstado__c = item.FS_NombreTipoRegistro__c == 'Incidente' ? 'Revisión Documentación N2' : 'Análisis N2';
                         item.FS_AgenteN2__c = userInfo.getUserId();
+                        item.IsEscalated = true;
                         listCasosActualizar.add(item);
                     }else if(item.FS_SubEstado__c == 'Escalado a QA'){
                         item.FS_SubEstado__c = 'Elaboración Plan de Pruebas';

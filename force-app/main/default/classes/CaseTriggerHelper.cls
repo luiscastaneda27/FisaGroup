@@ -36,11 +36,7 @@ public without sharing class CaseTriggerHelper {
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.Status  != item.Status){
-                if(item.Status == 'Dado de baja'){
-                    envioCorreo(item, 'FS_CasoCancelado', true);
-                }else if (caso.FS_FechaContestacionEncuesta__c == item.FS_FechaContestacionEncuesta__c){
-                    item.Status.addError('Privilegios insuficiente para modificar el estado del caso');   
-                }
+                item.Status.addError('Privilegios insuficiente para modificar el estado del caso');
             }
         }
     }
@@ -68,7 +64,7 @@ public without sharing class CaseTriggerHelper {
                 item.addError('El caso se encuentra en Aprobación Plan de Pruebas y no tiene permisos para modificarlo.');
             }/*else if(item.FS_SubEstado__c == 'Aprobación Instalación Parche - Releases' && String.isBlank(item.FS_UsuarioAprobadorInstalacionParcheRele__c)){
                 item.addError('El caso se encuentra en Aprobación Instalación Parche - Releases y no tiene permisos para modificarlo.');
-            }*/else if(item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' && item.FS_UsuarioAprobadorPlanPruebas__c != UserInfo.getUserId()){
+            }*/else if(item.FS_SubEstado__c == 'Aprobación Certificación Parche QA' && item.OwnerId != UserInfo.getUserId()){
                 item.addError('El caso se encuentra en Aprobación Certificación Parche QA y no tiene permisos para modificarlo.');
             }else if(item.FS_SubEstado__c == 'Aprobación Consulta N2' && item.FS_UsuarioAprobadorSolucion__c != UserInfo.getUserId()){
                 item.addError('El caso se encuentra en Aprobación Consulta N2 y no tiene permisos para modificarlo.');
@@ -78,10 +74,28 @@ public without sharing class CaseTriggerHelper {
         }
     }
     
+    public static void validacionCamposAporbacion(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        if(validacionUser(true) ){
+            return;
+        }
+        List<String> camposAprobacion = Label.FS_CamposProtegidosAprobacion.split(',');
+        for(Case item : newCaseList){
+            if(item.FS_SubEstado__c != null && !item.FS_SubEstado__c.contains('Aprobación')){
+                Case caso = oldCaseMap.get(item.Id);
+                for(String campo : camposAprobacion){
+                    if(item.get(campo) != caso.get(campo)){
+                        item.addError('No tiene permisos para modificar la información de aprobación');
+                    }
+                }
+            }
+            
+        }    
+    }
+    
     public static Boolean validacionUser(Boolean userComunity){
-        User u = [Select Name, Profile.Name, UserRole.Name From User where Id = :UserInfo.getUserId()];
+        User u = [Select Name, Profile.Name, UserRole.DeveloperName From User where Id = :UserInfo.getUserId()];
         Boolean flagPerfil = u.Profile.Name == 'Administrador del sistema' || u.Profile.Name == 'System Administrator';
-        flagPerfil = flagPerfil || (u.UserRole.Name != null && u.UserRole.Name.contains('FS_Jefe'));
+        flagPerfil = flagPerfil || (u.UserRole.DeveloperName != null && u.UserRole.DeveloperName.contains('FS_Jefe'));
         flagPerfil = flagPerfil || Label.FS_IdUsuarioJira == u.Id || (u.Profile.Name == 'Customer Community User' && userComunity);
         flagPerfil = flagPerfil || u.Name.contains('invitado al sitio Web');
         return flagPerfil;
@@ -662,8 +676,8 @@ public without sharing class CaseTriggerHelper {
             if(caso.FS_UrlEvidenciaPruebas__c != item.FS_UrlEvidenciaPruebas__c && String.isBlank(caso.FS_UrlEvidenciaPruebas__c)){
                 item.FS_SubEstado__c = 'Aprobación Certificación Parche QA';
                 String titulo = 'Aprobación Certificación Parche QA para caso '+item.CaseNumber;
-                String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación Certificación Parche QA para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
-                enviarNotificacion(item.FS_UsuarioAprobadorPlanPruebas__c, item.Id, titulo, descripcion);
+                String descripcion = 'Se necesita Aprobación Certificación Parche QA para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
             }
         }
     }

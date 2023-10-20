@@ -11,6 +11,7 @@ public without sharing class CaseTriggerHandler {
     public static void beforeUpdate(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         CaseTriggerHelper.validacionEstado(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionSubEstado(newCaseList, oldCaseMap);
+        CaseTriggerHelper.validacionCamposAporbacion(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionProducto(newCaseList, oldCaseMap);
         CaseTriggerHelper.informacionCompleta(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionTipo(newCaseList, oldCaseMap);
