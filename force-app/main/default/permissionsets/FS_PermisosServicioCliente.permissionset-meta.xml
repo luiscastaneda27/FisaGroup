@@ -9,6 +9,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ControladorBaseConocimientos</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ControladorCrearCaso</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -714,17 +718,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Event.IsAllDayEvent</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Event.IsVisibleInSelfService</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Event.Location</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -754,12 +748,52 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>FS_AceptacionRechazoCaso__c.FS_Horas__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>FS_AceptacionRechazoCaso__c.FS_MotivoRechazo__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>FS_AceptacionRechazoCaso__c.FS_Tipo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>FS_BaseConocimiento__c.FS_Activo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>FS_BaseConocimiento__c.FS_Contenido__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>FS_BaseConocimiento__c.FS_Cuenta__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>FS_BaseConocimiento__c.FS_Modulo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>FS_BaseConocimiento__c.FS_ProductoAdquirido__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>FS_BaseConocimiento__c.FS_Producto__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>FS_BaseConocimiento__c.FS_SubModulo__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -936,6 +970,15 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>FS_BaseConocimiento__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
         <allowEdit>false</allowEdit>
@@ -989,6 +1032,10 @@
     </recordTypeVisibilities>
     <tabSettings>
         <tab>standard-Case</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>standard-report</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>

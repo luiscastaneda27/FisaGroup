@@ -181,7 +181,7 @@ public without sharing class CaseTriggerHelper {
                         item.FS_Acepta1erCosto__c = null;
                         envioCorreo(item, 'FS_AprobacionPrimerCosto', true);
                     }else{
-                        item.FS_SubEstado__c = 'Información validada';
+                        item.FS_SubEstado__c = item.FS_Area__c == 'N2- CORE' || item.FS_Area__c == 'N2-OMNIA' ? 'Análisis N2' : 'Análisis N1';
                         item.Status = 'En Análisis';
                     }
                 }else if(item.FS_InformacionCompleta__c == 'No'){
@@ -266,7 +266,7 @@ public without sharing class CaseTriggerHelper {
                     String descripcion = 'El agente ' + UserInfo.getName() + ' ha aprobado de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }else if(item.FS_AprobacionSolucion__c == 'No'){
-                    item.FS_SubEstado__c = item.RecordTypeId == CONSULTA_TIPO_REGISTRO ? 'Información validada' : 'Análisis Falla Operativa';
+                    item.FS_SubEstado__c = item.RecordTypeId == CONSULTA_TIPO_REGISTRO ? 'Análisis N1' : 'Análisis Falla Operativa';
                     String titulo = 'Rechazo de solución para caso '+item.CaseNumber;
                     String descripcion = 'El agente ' + UserInfo.getName() + ' ha rechazado de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
@@ -291,7 +291,9 @@ public without sharing class CaseTriggerHelper {
                     crearEncuesta(item);
                 }else if(item.FS_AceptaRespuesta__c == 'No'){
                     item.FS_SubEstado__c = item.FS_Area__c == 'N2- CORE' || item.FS_Area__c == 'N2-OMNIA' ? 'Análisis N2' : 'Análisis N1';
-                    item.Status = 'En Análisis';
+                    item.Status = item.RecordTypeId == SOLICITUD_TIPO_REGISTRO ? 'Análisis Falla Operativa' : 'En Análisis';
+                    item.FS_SubEstado__c = item.RecordTypeId == SOLICITUD_TIPO_REGISTRO ? 'Análisis Falla Operativa' : item.FS_SubEstado__c ;
+
                     item.FS_PudeSolventarPregunta__c = null;
                     item.FS_NumeroHorasSolicitud__c = null;
                     envioCorreo(item, 'FS_RechazoRespuesta', false);
@@ -373,7 +375,7 @@ public without sharing class CaseTriggerHelper {
     public static void validacionFechaEntrega(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_FechaCompromisoEntrega__c != item.FS_FechaCompromisoEntrega__c && (caso.FS_FechaCompromisoEntrega__c == null || item.FS_SubEstado__c == 'Información validada')){
+            if(caso.FS_FechaCompromisoEntrega__c != item.FS_FechaCompromisoEntrega__c && (caso.FS_FechaCompromisoEntrega__c == null || item.FS_SubEstado__c == 'Análisis N1')){
                 if(item.RecordTypeId == SOLICITUD_TIPO_REGISTRO){
                     item.Status = 'Análisis Falla Operativa';
                     item.FS_SubEstado__c = 'Análisis Falla Operativa';
@@ -982,6 +984,7 @@ public without sharing class CaseTriggerHelper {
         aceptacion.FS_Tipo__c = caso.FS_AceptaRespuesta__c == 'Si' ? 'Aceptación' : 'Rechazo'; 
         aceptacion.FS_MotivoRechazo__c = caso.FS_MotivoRechazo__c;
         aceptacion.FS_Comentarios__c = caso.FS_ComentariosRespuesta__c;
+        aceptacion.FS_Horas__c = caso.FS_NumeroHorasSolicitud__c;
         insert aceptacion;
     }
     

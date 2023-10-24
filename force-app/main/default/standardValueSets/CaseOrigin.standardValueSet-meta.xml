@@ -12,11 +12,6 @@
         <label>Entrega 1a respuesta</label>
     </standardValue>
     <standardValue>
-        <fullName>Información validada</fullName>
-        <default>false</default>
-        <label>Información validada</label>
-    </standardValue>
-    <standardValue>
         <fullName>Análisis N1</fullName>
         <default>false</default>
         <label>Análisis N1</label>

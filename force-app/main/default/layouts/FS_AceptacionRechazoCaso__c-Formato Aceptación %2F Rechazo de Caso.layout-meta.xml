@@ -15,6 +15,10 @@
                 <behavior>Readonly</behavior>
                 <field>FS_Tipo__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>FS_Horas__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

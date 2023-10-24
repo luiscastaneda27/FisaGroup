@@ -792,10 +792,6 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Información validada</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Instalación Parche Releases</fullName>
             <default>false</default>
         </values>
@@ -1506,10 +1502,6 @@
         </values>
         <values>
             <fullName>Escalado a QA</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Información validada</fullName>
             <default>false</default>
         </values>
         <values>

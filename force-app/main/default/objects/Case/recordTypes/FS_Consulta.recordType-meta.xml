@@ -728,10 +728,6 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Información validada</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Respuesta aceptada</fullName>
             <default>false</default>
         </values>
@@ -1362,10 +1358,6 @@
         </values>
         <values>
             <fullName>Escalado a N2</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Información validada</fullName>
             <default>false</default>
         </values>
         <values>

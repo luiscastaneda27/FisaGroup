@@ -196,6 +196,7 @@
         <fields>FS_Tipo__c</fields>
         <fields>FS_MotivoRechazo__c</fields>
         <fields>FS_Comentarios__c</fields>
+        <fields>FS_Horas__c</fields>
         <fields>CREATEDBY_USER</fields>
         <fields>CREATED_DATE</fields>
         <relatedList>FS_AceptacionRechazoCaso__c.FS_Caso__c</relatedList>
@@ -229,7 +230,7 @@
     <showRunAssignmentRulesCheckbox>true</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>true</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6C000000HM3s</masterLabel>
+        <masterLabel>00h7d0000020ZsD</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

@@ -728,10 +728,6 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Información validada</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Respuesta aceptada</fullName>
             <default>false</default>
         </values>
@@ -1366,10 +1362,6 @@
         </values>
         <values>
             <fullName>Envío de respuesta</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Información validada</fullName>
             <default>false</default>
         </values>
         <values>

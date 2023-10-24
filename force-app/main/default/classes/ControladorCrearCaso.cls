@@ -47,9 +47,9 @@ public without sharing class ControladorCrearCaso {
             item.FS_DescripcionCLiente__c = String.isNotBlank(item.FS_DescripcionCLiente__c) ? item.FS_DescripcionCLiente__c : '';
             item.FS_DescripcionCLiente__c = item.FS_DescripcionCLiente__c.stripHtmlTags();
             item.Status = item.FS_SubEstado__c == 'En Espera de Respuesta del Cliente' ? 'Pendiente Respuesta' : item.Status;
-            if(item.IsClosed && lista.casosCerrados.size() < 50){
+            if(item.IsClosed){
                 lista.casosCerrados.add(item);
-            }else if(!item.IsClosed && lista.casosAbiertos.size() < 50){
+            }else if(!item.IsClosed){
                 lista.casosAbiertos.add(item);
             }
             if(item.LastModifiedDate > hoy && lista.casosMostrados.size() < 50){
