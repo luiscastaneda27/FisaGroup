@@ -293,7 +293,6 @@ public without sharing class CaseTriggerHelper {
                     item.FS_SubEstado__c = item.FS_Area__c == 'N2- CORE' || item.FS_Area__c == 'N2-OMNIA' ? 'Análisis N2' : 'Análisis N1';
                     item.Status = item.RecordTypeId == SOLICITUD_TIPO_REGISTRO ? 'Análisis Falla Operativa' : 'En Análisis';
                     item.FS_SubEstado__c = item.RecordTypeId == SOLICITUD_TIPO_REGISTRO ? 'Análisis Falla Operativa' : item.FS_SubEstado__c ;
-
                     item.FS_PudeSolventarPregunta__c = null;
                     item.FS_NumeroHorasSolicitud__c = null;
                     envioCorreo(item, 'FS_RechazoRespuesta', false);
@@ -867,8 +866,9 @@ public without sharing class CaseTriggerHelper {
         }
         return userId;
     }
+    
     public static Boolean productoCore(Case caso){
-        return caso.FS_Producto__c == 'FISA System' || caso.FS_Producto__c == 'FISA Credit Card';
+        return caso.FS_Producto__c == 'Fisa System' || caso.FS_Producto__c == 'Fisa CreditCard' || caso.FS_Producto__c == 'FISA FISS';
     }
      
     public static void upsertCaseJira(List<Case> newCaseList, Map<Id, Case> oldCaseMap){

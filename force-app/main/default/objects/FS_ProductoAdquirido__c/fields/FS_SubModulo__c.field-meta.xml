@@ -12,69 +12,79 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Parametrización</fullName>
+                <fullName>Clientes (Módulo 2)</fullName>
                 <default>false</default>
-                <label>Parametrización</label>
+                <label>Clientes (Módulo 2)</label>
             </value>
             <value>
-                <fullName>ACH</fullName>
+                <fullName>Parametros Generales (Módulo 1)</fullName>
                 <default>false</default>
-                <label>ACH</label>
+                <label>Parametros Generales (Módulo 1)</label>
             </value>
             <value>
-                <fullName>Ajustes</fullName>
+                <fullName>Seguridades (Modulo 90)</fullName>
                 <default>false</default>
-                <label>Ajustes</label>
+                <label>Seguridades (Modulo 90)</label>
             </value>
             <value>
-                <fullName>Apertura caja</fullName>
+                <fullName>Cuentas de Ahorro</fullName>
                 <default>false</default>
-                <label>Apertura caja</label>
+                <label>Cuentas de Ahorro</label>
             </value>
             <value>
-                <fullName>Auxiliares</fullName>
+                <fullName>Cuentas Corrientes</fullName>
                 <default>false</default>
-                <label>Auxiliares</label>
+                <label>Cuentas Corrientes</label>
             </value>
             <value>
-                <fullName>Bloqueos</fullName>
+                <fullName>Cuentas de Acumulación</fullName>
                 <default>false</default>
-                <label>Bloqueos</label>
+                <label>Cuentas de Acumulación</label>
             </value>
             <value>
-                <fullName>Bloqueos/Desbloqueos</fullName>
+                <fullName>Cuentas Nostro</fullName>
                 <default>false</default>
-                <label>Bloqueos/Desbloqueos</label>
+                <label>Cuentas Nostro</label>
             </value>
             <value>
-                <fullName>Cancelación</fullName>
+                <fullName>Cuentas Líneas de Crédito</fullName>
                 <default>false</default>
-                <label>Cancelación</label>
+                <label>Cuentas Líneas de Crédito</label>
             </value>
             <value>
-                <fullName>Carga de Información</fullName>
+                <fullName>Depositos a Plazo Fijo</fullName>
                 <default>false</default>
-                <label>Carga de Información</label>
+                <label>Depositos a Plazo Fijo</label>
             </value>
             <value>
-                <fullName>Cargos/Comisiones/Impuestos</fullName>
+                <fullName>Créditos de Consumo/Comerciales/Personales</fullName>
                 <default>false</default>
-                <label>Cargos/Comisiones/Impuestos</label>
+                <label>Créditos de Consumo/Comerciales/Personales</label>
             </value>
             <value>
-                <fullName>Cartas de Crédito</fullName>
+                <fullName>Crédito Automotriz</fullName>
                 <default>false</default>
-                <label>Cartas de Crédito</label>
+                <label>Crédito Automotriz</label>
             </value>
             <value>
-                <fullName>Cierre</fullName>
+                <fullName>Líneas de Crédito</fullName>
                 <default>false</default>
-                <label>Cierre</label>
+                <label>Líneas de Crédito</label>
             </value>
             <value>
-                <fullName>Clientes</fullName>
+                <fullName>Crédito Hipotecario</fullName>
                 <default>false</default>
-                <label>Clientes</label>
+                <label>Crédito Hipotecario</label>
+            </value>
+            <value>
+                <fullName>Crédito Hipotecario con Letras</fullName>
+                <default>false</default>
+                <label>Crédito Hipotecario con Letras</label>
+            </value>
+            <value>
+                <fullName>Cartas de crédito</fullName>
+                <default>false</default>
+                <label>Cartas de crédito</label>
             </value>
             <value>
                 <fullName>Cobranzas</fullName>
@@ -82,34 +92,19 @@
                 <label>Cobranzas</label>
             </value>
             <value>
-                <fullName>Comprobantes Fiscales</fullName>
+                <fullName>Avales</fullName>
                 <default>false</default>
-                <label>Comprobantes Fiscales</label>
+                <label>Avales</label>
             </value>
             <value>
-                <fullName>Compromisos/Líneas de Crédito</fullName>
+                <fullName>Boletas de garantía</fullName>
                 <default>false</default>
-                <label>Compromisos/Líneas de Crédito</label>
+                <label>Boletas de garantía</label>
             </value>
             <value>
-                <fullName>Consulta</fullName>
+                <fullName>Títulos y valores</fullName>
                 <default>false</default>
-                <label>Consulta</label>
-            </value>
-            <value>
-                <fullName>Contabilidad</fullName>
-                <default>false</default>
-                <label>Contabilidad</label>
-            </value>
-            <value>
-                <fullName>Convenios</fullName>
-                <default>false</default>
-                <label>Convenios</label>
-            </value>
-            <value>
-                <fullName>Cuadre</fullName>
-                <default>false</default>
-                <label>Cuadre</label>
+                <label>Títulos y valores</label>
             </value>
             <value>
                 <fullName>Cupones</fullName>
@@ -117,1324 +112,103 @@
                 <label>Cupones</label>
             </value>
             <value>
-                <fullName>Desembolso</fullName>
+                <fullName>Tarjetas Nominadas</fullName>
                 <default>false</default>
-                <label>Desembolso</label>
-            </value>
-            <value>
-                <fullName>Estados de Cuenta</fullName>
-                <default>false</default>
-                <label>Estados de Cuenta</label>
-            </value>
-            <value>
-                <fullName>Facturación</fullName>
-                <default>false</default>
-                <label>Facturación</label>
-            </value>
-            <value>
-                <fullName>Facturas</fullName>
-                <default>false</default>
-                <label>Facturas</label>
-            </value>
-            <value>
-                <fullName>Garantias</fullName>
-                <default>false</default>
-                <label>Garantias</label>
-            </value>
-            <value>
-                <fullName>Generación de Comprobantes</fullName>
-                <default>false</default>
-                <label>Generación de Comprobantes</label>
-            </value>
-            <value>
-                <fullName>Incrementos</fullName>
-                <default>false</default>
-                <label>Incrementos</label>
-            </value>
-            <value>
-                <fullName>Inicio/Fin de día</fullName>
-                <default>false</default>
-                <label>Inicio/Fin de día</label>
-            </value>
-            <value>
-                <fullName>Integración</fullName>
-                <default>false</default>
-                <label>Integración</label>
-            </value>
-            <value>
-                <fullName>Manejo Bóveda</fullName>
-                <default>false</default>
-                <label>Manejo Bóveda</label>
-            </value>
-            <value>
-                <fullName>Manejo Cuentas Ahorro</fullName>
-                <default>false</default>
-                <label>Manejo Cuentas Ahorro</label>
-            </value>
-            <value>
-                <fullName>Manejo Cuentas Corrientes</fullName>
-                <default>false</default>
-                <label>Manejo Cuentas Corrientes</label>
-            </value>
-            <value>
-                <fullName>Manejo Cuentas de Acumulación</fullName>
-                <default>false</default>
-                <label>Manejo Cuentas de Acumulación</label>
-            </value>
-            <value>
-                <fullName>Manejo de Lineas de Crédito</fullName>
-                <default>false</default>
-                <label>Manejo de Lineas de Crédito</label>
-            </value>
-            <value>
-                <fullName>Mantenimiento</fullName>
-                <default>false</default>
-                <label>Mantenimiento</label>
-            </value>
-            <value>
-                <fullName>Mayorización</fullName>
-                <default>false</default>
-                <label>Mayorización</label>
-            </value>
-            <value>
-                <fullName>Monitor</fullName>
-                <default>false</default>
-                <label>Monitor</label>
-            </value>
-            <value>
-                <fullName>Negociación de Divisas/Compra/Venta</fullName>
-                <default>false</default>
-                <label>Negociación de Divisas/Compra/Venta</label>
-            </value>
-            <value>
-                <fullName>Pagos Masivos</fullName>
-                <default>false</default>
-                <label>Pagos Masivos</label>
-            </value>
-            <value>
-                <fullName>Pagos en Batch</fullName>
-                <default>false</default>
-                <label>Pagos en Batch</label>
-            </value>
-            <value>
-                <fullName>Pagos en Línea</fullName>
-                <default>false</default>
-                <label>Pagos en Línea</label>
-            </value>
-            <value>
-                <fullName>Pagos</fullName>
-                <default>false</default>
-                <label>Pagos</label>
-            </value>
-            <value>
-                <fullName>Pignoración</fullName>
-                <default>false</default>
-                <label>Pignoración</label>
-            </value>
-            <value>
-                <fullName>Planillas</fullName>
-                <default>false</default>
-                <label>Planillas</label>
-            </value>
-            <value>
-                <fullName>Plataforma de Ventas</fullName>
-                <default>false</default>
-                <label>Plataforma de Ventas</label>
-            </value>
-            <value>
-                <fullName>Prevención Lavado de dinero</fullName>
-                <default>false</default>
-                <label>Prevención Lavado de dinero</label>
-            </value>
-            <value>
-                <fullName>Proceso Fin de Día</fullName>
-                <default>false</default>
-                <label>Proceso Fin de Día</label>
-            </value>
-            <value>
-                <fullName>Proceso Primera Camara</fullName>
-                <default>false</default>
-                <label>Proceso Primera Camara</label>
-            </value>
-            <value>
-                <fullName>Proceso Segunda Camara</fullName>
-                <default>false</default>
-                <label>Proceso Segunda Camara</label>
-            </value>
-            <value>
-                <fullName>Proceso de Fin de Día</fullName>
-                <default>false</default>
-                <label>Proceso de Fin de Día</label>
-            </value>
-            <value>
-                <fullName>Procesos de Afectacion</fullName>
-                <default>false</default>
-                <label>Procesos de Afectacion</label>
-            </value>
-            <value>
-                <fullName>Recepción de dinero</fullName>
-                <default>false</default>
-                <label>Recepción de dinero</label>
-            </value>
-            <value>
-                <fullName>Reestructuración</fullName>
-                <default>false</default>
-                <label>Reestructuración</label>
-            </value>
-            <value>
-                <fullName>Renegociaciones</fullName>
-                <default>false</default>
-                <label>Renegociaciones</label>
-            </value>
-            <value>
-                <fullName>Renovación</fullName>
-                <default>false</default>
-                <label>Renovación</label>
-            </value>
-            <value>
-                <fullName>Reportes</fullName>
-                <default>false</default>
-                <label>Reportes</label>
-            </value>
-            <value>
-                <fullName>Reprogramaciones</fullName>
-                <default>false</default>
-                <label>Reprogramaciones</label>
-            </value>
-            <value>
-                <fullName>Retenciones Judiciales</fullName>
-                <default>false</default>
-                <label>Retenciones Judiciales</label>
-            </value>
-            <value>
-                <fullName>Reversos</fullName>
-                <default>false</default>
-                <label>Reversos</label>
-            </value>
-            <value>
-                <fullName>Sincronización</fullName>
-                <default>false</default>
-                <label>Sincronización</label>
-            </value>
-            <value>
-                <fullName>Sistema</fullName>
-                <default>false</default>
-                <label>Sistema</label>
-            </value>
-            <value>
-                <fullName>Sobregiros</fullName>
-                <default>false</default>
-                <label>Sobregiros</label>
-            </value>
-            <value>
-                <fullName>Solicitudes</fullName>
-                <default>false</default>
-                <label>Solicitudes</label>
-            </value>
-            <value>
-                <fullName>Switch</fullName>
-                <default>false</default>
-                <label>Switch</label>
+                <label>Tarjetas Nominadas</label>
             </value>
             <value>
                 <fullName>Tarjetas Innominadas</fullName>
                 <default>false</default>
                 <label>Tarjetas Innominadas</label>
             </value>
-            <value>
-                <fullName>Tramas Transaccionales</fullName>
-                <default>false</default>
-                <label>Tramas Transaccionales</label>
-            </value>
-            <value>
-                <fullName>Transferencias</fullName>
-                <default>false</default>
-                <label>Transferencias</label>
-            </value>
-            <value>
-                <fullName>Traspasos</fullName>
-                <default>false</default>
-                <label>Traspasos</label>
-            </value>
-            <value>
-                <fullName>Títulos y Valores</fullName>
-                <default>false</default>
-                <label>Títulos y Valores</label>
-            </value>
-            <value>
-                <fullName>Flujo Prestamos Personales</fullName>
-                <default>false</default>
-                <label>Flujo Prestamos Personales</label>
-            </value>
-            <value>
-                <fullName>Flujo Cuentas Vista</fullName>
-                <default>false</default>
-                <label>Flujo Cuentas Vista</label>
-            </value>
-            <value>
-                <fullName>Flujo Tarjeta de Crédito</fullName>
-                <default>false</default>
-                <label>Flujo Tarjeta de Crédito</label>
-            </value>
-            <value>
-                <fullName>Flujo venta cruzada</fullName>
-                <default>false</default>
-                <label>Flujo venta cruzada</label>
-            </value>
-            <value>
-                <fullName>Mantenimiento de Clientes</fullName>
-                <default>false</default>
-                <label>Mantenimiento de Clientes</label>
-            </value>
-            <value>
-                <fullName>Catalogos y Mapeos</fullName>
-                <default>false</default>
-                <label>Catalogos y Mapeos</label>
-            </value>
-            <value>
-                <fullName>Documentos</fullName>
-                <default>false</default>
-                <label>Documentos</label>
-            </value>
-            <value>
-                <fullName>Jerarquías</fullName>
-                <default>false</default>
-                <label>Jerarquías</label>
-            </value>
-            <value>
-                <fullName>Configuración de servidores</fullName>
-                <default>false</default>
-                <label>Configuración de servidores</label>
-            </value>
-            <value>
-                <fullName>Correos de notificación</fullName>
-                <default>false</default>
-                <label>Correos de notificación</label>
-            </value>
-            <value>
-                <fullName>Autorizaciones</fullName>
-                <default>false</default>
-                <label>Autorizaciones</label>
-            </value>
-            <value>
-                <fullName>Definición de aplicaciones</fullName>
-                <default>false</default>
-                <label>Definición de aplicaciones</label>
-            </value>
-            <value>
-                <fullName>Wizard BT</fullName>
-                <default>false</default>
-                <label>Wizard BT</label>
-            </value>
-            <value>
-                <fullName>Wizard QT</fullName>
-                <default>false</default>
-                <label>Wizard QT</label>
-            </value>
-            <value>
-                <fullName>Render Browser (Incl Skin)</fullName>
-                <default>false</default>
-                <label>Render Browser (Incl Skin)</label>
-            </value>
-            <value>
-                <fullName>Render Web Mobile (Incl Skin)</fullName>
-                <default>false</default>
-                <label>Render Web Mobile (Incl Skin)</label>
-            </value>
-            <value>
-                <fullName>Render Mobile (Incl Skin)</fullName>
-                <default>false</default>
-                <label>Render Mobile (Incl Skin)</label>
-            </value>
-            <value>
-                <fullName>Campaign Management</fullName>
-                <default>false</default>
-                <label>Campaign Management</label>
-            </value>
-            <value>
-                <fullName>Business Rule Engine - BRE</fullName>
-                <default>false</default>
-                <label>Business Rule Engine - BRE</label>
-            </value>
-            <value>
-                <fullName>Analizer Monitor</fullName>
-                <default>false</default>
-                <label>Analizer Monitor</label>
-            </value>
-            <value>
-                <fullName>Formalizar Prestamos Personales</fullName>
-                <default>false</default>
-                <label>Formalizar Prestamos Personales</label>
-            </value>
-            <value>
-                <fullName>Formalizar Cuentas Vista</fullName>
-                <default>false</default>
-                <label>Formalizar Cuentas Vista</label>
-            </value>
-            <value>
-                <fullName>Formalizar Tarjeta de Crédito</fullName>
-                <default>false</default>
-                <label>Formalizar Tarjeta de Crédito</label>
-            </value>
-            <value>
-                <fullName>Formalizar venta cruzada</fullName>
-                <default>false</default>
-                <label>Formalizar venta cruzada</label>
-            </value>
-            <value>
-                <fullName>Formalizar Data de Clientes</fullName>
-                <default>false</default>
-                <label>Formalizar Data de Clientes</label>
-            </value>
-            <value>
-                <fullName>Balances</fullName>
-                <default>false</default>
-                <label>Balances</label>
-            </value>
-            <value>
-                <fullName>Transferencias Propias</fullName>
-                <default>false</default>
-                <label>Transferencias Propias</label>
-            </value>
-            <value>
-                <fullName>Transferencias a Terceros</fullName>
-                <default>false</default>
-                <label>Transferencias a Terceros</label>
-            </value>
-            <value>
-                <fullName>Transferencias Internacionales</fullName>
-                <default>false</default>
-                <label>Transferencias Internacionales</label>
-            </value>
-            <value>
-                <fullName>Transferencias Recurrentes</fullName>
-                <default>false</default>
-                <label>Transferencias Recurrentes</label>
-            </value>
-            <value>
-                <fullName>Emisión de Giros</fullName>
-                <default>false</default>
-                <label>Emisión de Giros</label>
-            </value>
-            <value>
-                <fullName>Pago Tarjeta</fullName>
-                <default>false</default>
-                <label>Pago Tarjeta</label>
-            </value>
-            <value>
-                <fullName>Pago de Servicios</fullName>
-                <default>false</default>
-                <label>Pago de Servicios</label>
-            </value>
-            <value>
-                <fullName>Pago de Obligaciones Propias</fullName>
-                <default>false</default>
-                <label>Pago de Obligaciones Propias</label>
-            </value>
-            <value>
-                <fullName>Pago de Obligaciones a Terceros</fullName>
-                <default>false</default>
-                <label>Pago de Obligaciones a Terceros</label>
-            </value>
-            <value>
-                <fullName>Cambio de Clave</fullName>
-                <default>false</default>
-                <label>Cambio de Clave</label>
-            </value>
-            <value>
-                <fullName>Adminstración usuario</fullName>
-                <default>false</default>
-                <label>Adminstración usuario</label>
-            </value>
-            <value>
-                <fullName>Ingreso – Posición Consolidada</fullName>
-                <default>false</default>
-                <label>Ingreso – Posición Consolidada</label>
-            </value>
-            <value>
-                <fullName>Mobile Banking</fullName>
-                <default>false</default>
-                <label>Mobile Banking</label>
-            </value>
-            <value>
-                <fullName>Transferencias múltiples</fullName>
-                <default>false</default>
-                <label>Transferencias múltiples</label>
-            </value>
-            <value>
-                <fullName>Pagos múltiples</fullName>
-                <default>false</default>
-                <label>Pagos múltiples</label>
-            </value>
-            <value>
-                <fullName>Calendarización Y Procesos Masivos</fullName>
-                <default>false</default>
-                <label>Calendarización Y Procesos Masivos</label>
-            </value>
-            <value>
-                <fullName>Administración multicanal</fullName>
-                <default>false</default>
-                <label>Administración multicanal</label>
-            </value>
-            <value>
-                <fullName>Seguridad</fullName>
-                <default>false</default>
-                <label>Seguridad</label>
-            </value>
-            <value>
-                <fullName>Límites</fullName>
-                <default>false</default>
-                <label>Límites</label>
-            </value>
-            <value>
-                <fullName>Componente generales</fullName>
-                <default>false</default>
-                <label>Componente generales</label>
-            </value>
-            <value>
-                <fullName>SFTP</fullName>
-                <default>false</default>
-                <label>SFTP</label>
-            </value>
-            <value>
-                <fullName>Carga de archivos</fullName>
-                <default>false</default>
-                <label>Carga de archivos</label>
-            </value>
-            <value>
-                <fullName>Carga manual</fullName>
-                <default>false</default>
-                <label>Carga manual</label>
-            </value>
-            <value>
-                <fullName>SPI/SCI</fullName>
-                <default>false</default>
-                <label>SPI/SCI</label>
-            </value>
-            <value>
-                <fullName>Beneficiarios</fullName>
-                <default>false</default>
-                <label>Beneficiarios</label>
-            </value>
-            <value>
-                <fullName>Reporteria</fullName>
-                <default>false</default>
-                <label>Reporteria</label>
-            </value>
-            <value>
-                <fullName>Reintentos</fullName>
-                <default>false</default>
-                <label>Reintentos</label>
-            </value>
-            <value>
-                <fullName>Cobros</fullName>
-                <default>false</default>
-                <label>Cobros</label>
-            </value>
-            <value>
-                <fullName>Recaudaciones</fullName>
-                <default>false</default>
-                <label>Recaudaciones</label>
-            </value>
-            <value>
-                <fullName>Confirming</fullName>
-                <default>false</default>
-                <label>Confirming</label>
-            </value>
-            <value>
-                <fullName>Notificaciones</fullName>
-                <default>false</default>
-                <label>Notificaciones</label>
-            </value>
-            <value>
-                <fullName>Tarifas /Comisiones</fullName>
-                <default>false</default>
-                <label>Tarifas /Comisiones</label>
-            </value>
-            <value>
-                <fullName>Teller</fullName>
-                <default>false</default>
-                <label>Teller</label>
-            </value>
-            <value>
-                <fullName>Cuentas electrónicas</fullName>
-                <default>false</default>
-                <label>Cuentas electrónicas</label>
-            </value>
-            <value>
-                <fullName>Parametrizacion, Plantillas Genericas y anexos</fullName>
-                <default>false</default>
-                <label>Parametrizacion, Plantillas Genericas y anexos</label>
-            </value>
-            <value>
-                <fullName>Parametrización de Transacciones y Subtransacciones</fullName>
-                <default>false</default>
-                <label>Parametrización de Transacciones y Subtransacciones</label>
-            </value>
-            <value>
-                <fullName>Afiliaciones</fullName>
-                <default>false</default>
-                <label>Afiliaciones</label>
-            </value>
-            <value>
-                <fullName>Transferencias al Exterior</fullName>
-                <default>false</default>
-                <label>Transferencias al Exterior</label>
-            </value>
-            <value>
-                <fullName>Posición Consolidada</fullName>
-                <default>false</default>
-                <label>Posición Consolidada</label>
-            </value>
-            <value>
-                <fullName>Soft Token</fullName>
-                <default>false</default>
-                <label>Soft Token</label>
-            </value>
-            <value>
-                <fullName>Originación-Flujo Automotriz</fullName>
-                <default>false</default>
-                <label>Originación-Flujo Automotriz</label>
-            </value>
-            <value>
-                <fullName>Originación-Flujo Consumo</fullName>
-                <default>false</default>
-                <label>Originación-Flujo Consumo</label>
-            </value>
-            <value>
-                <fullName>Originación-Flujo AMICAR</fullName>
-                <default>false</default>
-                <label>Originación-Flujo AMICAR</label>
-            </value>
-            <value>
-                <fullName>Integración FISA System</fullName>
-                <default>false</default>
-                <label>Integración FISA System</label>
-            </value>
-            <value>
-                <fullName>Integración Servicios Terceros</fullName>
-                <default>false</default>
-                <label>Integración Servicios Terceros</label>
-            </value>
-            <value>
-                <fullName>Flujos-Camunda</fullName>
-                <default>false</default>
-                <label>Flujos-Camunda</label>
-            </value>
-            <value>
-                <fullName>Documentos-Alfresco</fullName>
-                <default>false</default>
-                <label>Documentos-Alfresco</label>
-            </value>
-            <value>
-                <fullName>Carga de Documentos</fullName>
-                <default>false</default>
-                <label>Carga de Documentos</label>
-            </value>
-            <value>
-                <fullName>Procesos-lentitud-herramientas</fullName>
-                <default>false</default>
-                <label>Procesos-lentitud-herramientas</label>
-            </value>
         </valueSetDefinition>
         <valueSettings>
-            <controllingFieldValue>Business Support Aplication</controllingFieldValue>
-            <valueName>Campaign Management</valueName>
+            <controllingFieldValue>Núcleo del Sistema</controllingFieldValue>
+            <valueName>Clientes (Módulo 2)</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Support Aplication</controllingFieldValue>
-            <valueName>Business Rule Engine - BRE</valueName>
+            <controllingFieldValue>Núcleo del Sistema</controllingFieldValue>
+            <valueName>Parametros Generales (Módulo 1)</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Support Aplication</controllingFieldValue>
-            <valueName>Analizer Monitor</valueName>
+            <controllingFieldValue>Núcleo del Sistema</controllingFieldValue>
+            <valueName>Seguridades (Modulo 90)</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Integration Service FSY</controllingFieldValue>
-            <valueName>Formalizar Prestamos Personales</valueName>
+            <controllingFieldValue>Captaciones a la Vista (Módulo 4)</controllingFieldValue>
+            <valueName>Cuentas de Ahorro</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Integration Service FSY</controllingFieldValue>
-            <valueName>Formalizar Cuentas Vista</valueName>
+            <controllingFieldValue>Captaciones a la Vista (Módulo 4)</controllingFieldValue>
+            <valueName>Cuentas Corrientes</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Integration Service FSY</controllingFieldValue>
-            <valueName>Formalizar Tarjeta de Crédito</valueName>
+            <controllingFieldValue>Captaciones a la Vista (Módulo 4)</controllingFieldValue>
+            <valueName>Cuentas de Acumulación</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Integration Service FSY</controllingFieldValue>
-            <valueName>Formalizar venta cruzada</valueName>
+            <controllingFieldValue>Captaciones a la Vista (Módulo 4)</controllingFieldValue>
+            <valueName>Cuentas Nostro</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Integration Service FSY</controllingFieldValue>
-            <valueName>Formalizar Data de Clientes</valueName>
+            <controllingFieldValue>Captaciones a la Vista (Módulo 4)</controllingFieldValue>
+            <valueName>Cuentas Líneas de Crédito</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Aplication</controllingFieldValue>
-            <valueName>Originación-Flujo Automotriz</valueName>
+            <controllingFieldValue>Captaciones a Plazo (Módulo 5)</controllingFieldValue>
+            <valueName>Depositos a Plazo Fijo</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Aplication</controllingFieldValue>
-            <valueName>Originación-Flujo Consumo</valueName>
+            <controllingFieldValue>Colocaciones (Módulo 6)</controllingFieldValue>
+            <valueName>Créditos de Consumo/Comerciales/Personales</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Aplication</controllingFieldValue>
-            <valueName>Originación-Flujo AMICAR</valueName>
+            <controllingFieldValue>Colocaciones (Módulo 6)</controllingFieldValue>
+            <valueName>Crédito Automotriz</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Aplication</controllingFieldValue>
-            <valueName>Integración FISA System</valueName>
+            <controllingFieldValue>Colocaciones (Módulo 6)</controllingFieldValue>
+            <valueName>Líneas de Crédito</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Aplication</controllingFieldValue>
-            <valueName>Integración Servicios Terceros</valueName>
+            <controllingFieldValue>Colocaciones (Módulo 6)</controllingFieldValue>
+            <valueName>Crédito Hipotecario</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Aplication</controllingFieldValue>
-            <valueName>Flujos-Camunda</valueName>
+            <controllingFieldValue>Colocaciones (Módulo 6)</controllingFieldValue>
+            <valueName>Crédito Hipotecario con Letras</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Aplication</controllingFieldValue>
-            <valueName>Documentos-Alfresco</valueName>
+            <controllingFieldValue>Comercio Exterior (Módulo 10)</controllingFieldValue>
+            <valueName>Cartas de crédito</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Aplication</controllingFieldValue>
-            <valueName>Carga de Documentos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Business Aplication</controllingFieldValue>
-            <valueName>Procesos-lentitud-herramientas</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <valueName>ACH</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <controllingFieldValue>Móvil</controllingFieldValue>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
-            <valueName>Pagos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <controllingFieldValue>Móvil</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <valueName>Transferencias</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <valueName>Transferencias Propias</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <valueName>Transferencias a Terceros</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <valueName>Transferencias Internacionales</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <valueName>Transferencias Recurrentes</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <valueName>Emisión de Giros</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <valueName>Pago Tarjeta</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <valueName>Pago de Servicios</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <valueName>Pago de Obligaciones Propias</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <valueName>Pago de Obligaciones a Terceros</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <valueName>Cambio de Clave</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>Móvil</controllingFieldValue>
-            <valueName>Ingreso – Posición Consolidada</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Homebanking</controllingFieldValue>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
-            <valueName>Transferencias al Exterior</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <valueName>Bloqueos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <valueName>Adminstración usuario</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>OLB-FT</controllingFieldValue>
-            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
-            <valueName>Posición Consolidada</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Móvil</controllingFieldValue>
-            <valueName>Mobile Banking</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Móvil</controllingFieldValue>
-            <valueName>Transferencias múltiples</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Móvil</controllingFieldValue>
-            <valueName>Pagos múltiples</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Kiosko</controllingFieldValue>
-            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
-            <controllingFieldValue>GARANTIAS</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
-            <valueName>Solicitudes</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Multichanel Management</controllingFieldValue>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Documentos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Multichanel Management</controllingFieldValue>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Autorizaciones</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Multichanel Management</controllingFieldValue>
-            <valueName>Calendarización Y Procesos Masivos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Multichanel Management</controllingFieldValue>
-            <valueName>Administración multicanal</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Multichanel Management</controllingFieldValue>
-            <valueName>Seguridad</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Multichanel Management</controllingFieldValue>
-            <valueName>Límites</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Multichanel Management</controllingFieldValue>
-            <valueName>Componente generales</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Multichanel Management</controllingFieldValue>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <valueName>Notificaciones</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <valueName>SFTP</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <valueName>Carga de archivos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <valueName>Carga manual</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <valueName>SPI/SCI</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <valueName>Beneficiarios</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <valueName>Reporteria</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <valueName>Reintentos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
-            <valueName>Cobros</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
-            <valueName>Recaudaciones</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <valueName>Confirming</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <valueName>Tarifas /Comisiones</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <valueName>Teller</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Motor Transaccional</controllingFieldValue>
-            <valueName>Cuentas electrónicas</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
-            <valueName>Parametrizacion, Plantillas Genericas y anexos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
-            <valueName>Parametrización de Transacciones y Subtransacciones</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
-            <valueName>Afiliaciones</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Enterprise Banking</controllingFieldValue>
-            <valueName>Soft Token</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
-            <controllingFieldValue>INF. MANAGEMEN SYST. (IMS)</controllingFieldValue>
-            <controllingFieldValue>CHECK CLEARING (ECCO)</controllingFieldValue>
-            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
-            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
-            <controllingFieldValue>REPORTES DEL SISTEMA</controllingFieldValue>
-            <controllingFieldValue>GARANTIAS</controllingFieldValue>
-            <controllingFieldValue>SEGURIDAD INTERNA</controllingFieldValue>
-            <controllingFieldValue>GENERALES</controllingFieldValue>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Parametrización</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
-            <controllingFieldValue>GARANTIAS</controllingFieldValue>
-            <controllingFieldValue>GENERALES</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
-            <valueName>Contabilidad</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
-            <valueName>Cupones</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
-            <controllingFieldValue>GARANTIAS</controllingFieldValue>
-            <controllingFieldValue>SEGURIDAD INTERNA</controllingFieldValue>
-            <controllingFieldValue>GENERALES</controllingFieldValue>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
-            <valueName>Mantenimiento</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
-            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
-            <valueName>Proceso Fin de Día</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
-            <controllingFieldValue>INF. MANAGEMEN SYST. (IMS)</controllingFieldValue>
-            <controllingFieldValue>CHECK CLEARING (ECCO)</controllingFieldValue>
-            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
-            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
-            <controllingFieldValue>REPORTES DEL SISTEMA</controllingFieldValue>
-            <controllingFieldValue>GARANTIAS</controllingFieldValue>
-            <controllingFieldValue>SEGURIDAD INTERNA</controllingFieldValue>
-            <controllingFieldValue>GENERALES</controllingFieldValue>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
-            <valueName>Reportes</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>MESA DE DINERO</controllingFieldValue>
-            <valueName>Títulos y Valores</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <valueName>Bloqueos/Desbloqueos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <valueName>Cancelación</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <valueName>Switch</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <valueName>Tarjetas Innominadas</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>TARJETA DE DEBITO</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <valueName>Tramas Transaccionales</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CHECK CLEARING (ECCO)</controllingFieldValue>
-            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
-            <valueName>Carga de Información</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CHECK CLEARING (ECCO)</controllingFieldValue>
-            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
-            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
-            <controllingFieldValue>GARANTIAS</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <valueName>Consulta</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CHECK CLEARING (ECCO)</controllingFieldValue>
-            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
-            <valueName>Inicio/Fin de día</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
-            <valueName>Proceso Primera Camara</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
-            <valueName>Proceso Segunda Camara</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>PROCESO DE DOCUMENTO (DIPS)</controllingFieldValue>
-            <valueName>Procesos de Afectacion</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
-            <valueName>Ajustes</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
-            <valueName>Auxiliares</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
-            <valueName>Generación de Comprobantes</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
-            <valueName>Mayorización</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CONTABILIDAD</controllingFieldValue>
-            <valueName>Balances</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>GARANTIAS</controllingFieldValue>
-            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
-            <valueName>Cierre</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>GENERALES</controllingFieldValue>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <valueName>Clientes</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>GENERALES</controllingFieldValue>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <valueName>Integración</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>GENERALES</controllingFieldValue>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <valueName>Sistema</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <valueName>Comprobantes Fiscales</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <valueName>Convenios</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <valueName>Facturas</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <valueName>Monitor</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <valueName>Planillas</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <valueName>Plataforma de Ventas</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <valueName>Retenciones Judiciales</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CLIENTES</controllingFieldValue>
-            <valueName>Sincronización</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
-            <valueName>Apertura caja</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <valueName>Cuadre</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
-            <valueName>Manejo Bóveda</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
-            <valueName>Negociación de Divisas/Compra/Venta</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
-            <valueName>Prevención Lavado de dinero</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
-            <valueName>Recepción de dinero</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAJA Y SERVICIOS</controllingFieldValue>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <valueName>Reversos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <valueName>Cargos/Comisiones/Impuestos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <valueName>Manejo Cuentas Ahorro</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <valueName>Manejo Cuentas Corrientes</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <valueName>Manejo Cuentas de Acumulación</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <valueName>Manejo de Lineas de Crédito</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
-            <valueName>Pignoración</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAPTACIONES VISTA</controllingFieldValue>
-            <valueName>Sobregiros</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CAPTACIONES A PLAZO</controllingFieldValue>
-            <valueName>Renovación</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <valueName>Compromisos/Líneas de Crédito</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <valueName>Desembolso</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <valueName>Incrementos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <valueName>Pagos Masivos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <valueName>Pagos en Batch</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <valueName>Pagos en Línea</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <valueName>Reestructuración</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>COLOCACIONES</controllingFieldValue>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <valueName>Traspasos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <valueName>Estados de Cuenta</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <valueName>Facturación</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <valueName>Proceso de Fin de Día</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <valueName>Renegociaciones</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>TARJETA DE CREDITO</controllingFieldValue>
-            <valueName>Reprogramaciones</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
-            <valueName>Cartas de Crédito</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
+            <controllingFieldValue>Comercio Exterior (Módulo 10)</controllingFieldValue>
             <valueName>Cobranzas</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>COMERCIO EXTERIOR</controllingFieldValue>
-            <valueName>Garantias</valueName>
+            <controllingFieldValue>Comercio Exterior (Módulo 10)</controllingFieldValue>
+            <valueName>Avales</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Application Products</controllingFieldValue>
-            <valueName>Flujo Prestamos Personales</valueName>
+            <controllingFieldValue>Comercio Exterior (Módulo 10)</controllingFieldValue>
+            <valueName>Boletas de garantía</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Application Products</controllingFieldValue>
-            <valueName>Flujo Cuentas Vista</valueName>
+            <controllingFieldValue>Tesorería (Módulo 12)</controllingFieldValue>
+            <valueName>Títulos y valores</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Application Products</controllingFieldValue>
-            <valueName>Flujo Tarjeta de Crédito</valueName>
+            <controllingFieldValue>Tesorería (Módulo 12)</controllingFieldValue>
+            <valueName>Cupones</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Application Products</controllingFieldValue>
-            <valueName>Flujo venta cruzada</valueName>
+            <controllingFieldValue>Tarjeta de Débito (Módulo 15)</controllingFieldValue>
+            <valueName>Tarjetas Nominadas</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Business Application Products</controllingFieldValue>
-            <valueName>Mantenimiento de Clientes</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Catalogos y Mapeos</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Jerarquías</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Configuración de servidores</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Correos de notificación</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Definición de aplicaciones</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Wizard BT</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Wizard QT</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Render Browser (Incl Skin)</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Render Web Mobile (Incl Skin)</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Business Application Generator</controllingFieldValue>
-            <valueName>Render Mobile (Incl Skin)</valueName>
+            <controllingFieldValue>Tarjeta de Débito (Módulo 15)</controllingFieldValue>
+            <valueName>Tarjetas Innominadas</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

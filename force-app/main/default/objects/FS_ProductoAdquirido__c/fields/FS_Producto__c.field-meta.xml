@@ -16,24 +16,19 @@
                 <label>FISA System</label>
             </value>
             <value>
-                <fullName>FISA - Business Platform</fullName>
+                <fullName>FISA CreditCard</fullName>
                 <default>false</default>
-                <label>FISA - Business Platform</label>
-            </value>
-            <value>
-                <fullName>FISA Credit Card</fullName>
-                <default>false</default>
-                <label>FISA Credit Card</label>
-            </value>
-            <value>
-                <fullName>FISA FISS</fullName>
-                <default>false</default>
-                <label>FISA FISS</label>
+                <label>FISA CreditCard</label>
             </value>
             <value>
                 <fullName>OMNIA</fullName>
                 <default>false</default>
                 <label>OMNIA</label>
+            </value>
+            <value>
+                <fullName>FISA FISS</fullName>
+                <default>false</default>
+                <label>FISA FISS</label>
             </value>
         </valueSetDefinition>
     </valueSet>
