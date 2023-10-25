@@ -35,6 +35,9 @@ public class DataFactory {
         caso.FS_Modulo__c = p.FS_Modulo__c;
         caso.FS_SubModulo__c = p.FS_SubModulo__c;
         caso.FS_DescripcionCliente__c = '<p>Test</p>';
+        caso.FS_TipoIncidente__c = 'Puntual';
+        caso.FS_AgenteQA__c = userInfo.getUserId();
+        caso.FS_AgenteN2__c = userInfo.getUserId();
         caso.RecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get(tipoRegistro).getRecordTypeId();
         insert caso;
         return caso;

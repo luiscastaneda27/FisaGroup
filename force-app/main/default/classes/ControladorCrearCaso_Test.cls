@@ -5,15 +5,15 @@ public class ControladorCrearCaso_Test {
     static void setup(){
         Account acc = DataFactory.insertAccount();
         Contact cont = DataFactory.insertContact(acc);
-        FS_ProductoAdquirido__c p = DataFactory.insertProduct(acc, 'FISA System', 'CLIENTES', 'Clientes');
+        FS_ProductoAdquirido__c p = DataFactory.insertProduct(acc, 'FISA System', 'Núcleo del Sistema', '');
         DataFactory.insertCase(acc, cont, p, 'FS_Consulta');
-        DataFactory.insertProduct(acc, 'FISA System', 'CLIENTES', 'Facturas');
+        DataFactory.insertProduct(acc, 'FISA System', 'Núcleo del Sistema', '');
     }
     
     
     @isTest
     static void ControladorCrearCaso() {
-        Case caso =  [Select Id, RecordType.DeveloperName, ContactId from Case Where RecordTypeId = :CaseTriggerHelper.CONSULTA_TIPO_REGISTRO];
+        Case caso =  [Select Id, RecordType.DeveloperName, ContactId, AccountId from Case Where RecordTypeId = :CaseTriggerHelper.CONSULTA_TIPO_REGISTRO];
         Blob fileBody = Blob.valueof('Test');
         String fileName = 'Test';
         
@@ -40,7 +40,10 @@ public class ControladorCrearCaso_Test {
         ControladorCrearCaso.getCaso(caso.Id);
         
         caso.Id = null;
+        caso.FS_TipoIncidente__c = 'Puntual';
         ControladorCrearCaso.guardarCaso(JSON.serialize(caso), JSON.serialize(listArchivos));
+        
+        ControladorCrearCaso.queyCasos(caso.AccountId);
        
     }
 

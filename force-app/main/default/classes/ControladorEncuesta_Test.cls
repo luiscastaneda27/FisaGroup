@@ -5,9 +5,9 @@ public class ControladorEncuesta_Test {
     static void setup(){
         Account acc = DataFactory.insertAccount();
         Contact cont = DataFactory.insertContact(acc);
-        FS_ProductoAdquirido__c p = DataFactory.insertProduct(acc, 'FISA System', 'CLIENTES', 'Clientes');
+        FS_ProductoAdquirido__c p = DataFactory.insertProduct(acc, 'FISA System', 'Núcleo del Sistema', '');
         DataFactory.insertCase(acc, cont, p, 'FS_Consulta');
-        DataFactory.insertProduct(acc, 'FISA System', 'CLIENTES', 'Facturas');
+        DataFactory.insertProduct(acc, 'FISA System', 'Núcleo del Sistema', '');
     }
     
     

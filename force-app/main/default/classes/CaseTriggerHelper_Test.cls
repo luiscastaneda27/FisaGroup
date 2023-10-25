@@ -5,11 +5,11 @@ public class CaseTriggerHelper_Test {
     static void setup(){
         Account acc = DataFactory.insertAccount();
         Contact cont = DataFactory.insertContact(acc);
-        FS_ProductoAdquirido__c p = DataFactory.insertProduct(acc, 'FISA System', 'CLIENTES', 'Clientes');
+        FS_ProductoAdquirido__c p = DataFactory.insertProduct(acc, 'FISA System', 'Núcleo del Sistema', '');
         DataFactory.insertCase(acc, cont, p, 'FS_Consulta');
         DataFactory.insertCase(acc, cont, p, 'FS_Solicitud');
         DataFactory.insertCase(acc, cont, p, 'FS_Incidente');
-        DataFactory.insertProduct(acc, 'FISA System', 'CLIENTES', 'Facturas');
+        DataFactory.insertProduct(acc, 'FISA System', 'Núcleo del Sistema', 'Seguridades (Modulo 90)');
     }
     
     @isTest
@@ -39,7 +39,7 @@ public class CaseTriggerHelper_Test {
         caso.FS_Producto__c = null;
         actualizarCasoError(caso);
         caso.FS_Producto__c = 'FISA System';
-        caso.FS_SubModulo__c = 'Facturas';
+        caso.FS_SubModulo__c = 'Seguridades (Modulo 90)';
         update caso;
         
         caso.FS_PudeSolventarPregunta__c = 'No';
@@ -101,6 +101,7 @@ public class CaseTriggerHelper_Test {
         caso.FS_EnviarAprobacionSolucionIPN2__c = true;
         update caso;
         caso.FS_AprobacionSolucionIPN2__c = 'Si';
+        caso.FS_MotivosRechazoAprobacionIPN2__c = null;
         update caso;
         
         actualizarCasoError(caso);
@@ -133,6 +134,7 @@ public class CaseTriggerHelper_Test {
         update caso;
         
         caso.FS_AprobacionDisenioTecnico__c = 'Si';
+         caso.FS_MotivosRechazoDT__c = null;
         update caso;
         
         caso.FS_URLCodigoFuente__c = 'https://fisagrp.com';
@@ -171,6 +173,7 @@ public class CaseTriggerHelper_Test {
         update caso;
         
         caso.FS_AprobacionPlanPruebas__c = 'Si';
+        caso.FS_MotivoRechazoPlanPruebas__c = null;
         update caso;
         
         caso.FS_UrlAmbientePruebas__c = 'https://fisagrp.com';
@@ -190,6 +193,7 @@ public class CaseTriggerHelper_Test {
         caso.FS_AprobacionCertificacionParcheQA__c = 'No';
         caso.FS_MotivoRechazoEntregaParche__c = 'Release plan';
         update caso;
+        caso.FS_MotivoRechazoEntregaParche__c = null;
         caso.FS_AprobacionCertificacionParcheQA__c = 'Si';
         update caso;
         

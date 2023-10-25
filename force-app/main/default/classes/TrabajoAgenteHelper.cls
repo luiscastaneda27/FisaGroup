@@ -27,8 +27,11 @@ public class TrabajoAgenteHelper {
         }
         for(Case item: listCasos){
             for(AgentWork aw: newAgentWork){
-                if(item.Id == aw.WorkItemId && listUser.contains(aw.UserId) && colasAtencion.contains(aw.OriginalQueueId)){
-                    if(item.FS_SubEstado__c == 'Apertura de caso'){
+                if(item.Id == aw.WorkItemId && 
+                   listUser.contains(aw.UserId) && 
+                   colasAtencion.contains(aw.OriginalQueueId)){
+                       listCasosActualizar.add(asignarcaso(item));
+                    /*if(item.FS_SubEstado__c == 'Apertura de caso'){
                         item.FS_SubEstado__c = 'Entrega 1a respuesta';
                         CaseTriggerHelper.envioCorreo(item, 'FS_AsignacionCaso', true);
                         listCasosActualizar.add(item);
@@ -41,11 +44,26 @@ public class TrabajoAgenteHelper {
                         item.FS_SubEstado__c = 'Elaboración Plan de Pruebas';
                         item.FS_AgenteQA__c = userInfo.getUserId();
                         listCasosActualizar.add(item);
-                    } 
+                    } */
                 }
             }
         }
         update listCasosActualizar;
         CaseTriggerHelper.borrarChatter(JSON.serialize(recordIds));
+    }
+    
+    public static Case asignarCaso(Case item){
+        if(item.FS_SubEstado__c == 'Apertura de caso'){
+            item.FS_SubEstado__c = 'Entrega 1a respuesta';
+            CaseTriggerHelper.envioCorreo(item, 'FS_AsignacionCaso', true);
+        }else if(item.FS_SubEstado__c == 'Escalado a N2'){
+            item.FS_SubEstado__c = item.FS_NombreTipoRegistro__c == 'Incidente' ? 'Revisión Documentación N2' : 'Análisis N2';
+            item.FS_AgenteN2__c = userInfo.getUserId();
+            item.IsEscalated = true;
+        }else if(item.FS_SubEstado__c == 'Escalado a QA'){
+            item.FS_SubEstado__c = 'Elaboración Plan de Pruebas';
+            item.FS_AgenteQA__c = userInfo.getUserId();
+        } 
+        return item;
     }
 }

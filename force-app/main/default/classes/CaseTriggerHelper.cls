@@ -797,6 +797,7 @@ public without sharing class CaseTriggerHelper {
         }
         delete itemDelete;
     }
+    
     public static void llenarOrigen(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             item.Origin = item.FS_SubEstado__c;
@@ -958,6 +959,9 @@ public without sharing class CaseTriggerHelper {
         }else{
             User usuario = [Select Email from user Where Id = :caso.OwnerId];
             mail.setBccAddresses( nombrePlantilla != 'FS_PaseProduccionAceptado' ? new List<String>{usuario.Email} : Label.FS_CorreosPaseProduccionAceptado.split(','));
+            String titulo = 'Cambio de Sub Estado para Caso No '+caso.CaseNumber;
+            String descripcion = 'El Caso ' + caso.CaseNumber + ' ha cambiado de sub Estado, Por favor dar seguimiento.';
+            enviarNotificacion(caso.OwnerId, caso.Id, titulo, descripcion);
         }
         MessageList.add(mail);
         try{
