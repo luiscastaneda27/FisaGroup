@@ -51,6 +51,7 @@
 		<members>Account.FS_ColaAtencion__c</members>
 		<members>Account.FS_CorreosNotificacionesServicios__c</members>
 		<members>Account.FS_ServicioRemoto__c</members>
+		<members>Activity.FS_Cuenta__c</members>
 		<members>Activity.FS_NumeroTareaLink__c</members>
 		<members>Activity.FS_NumeroTarea__c</members>
 		<members>Case.FS_1erCostoAprobado__c</members>

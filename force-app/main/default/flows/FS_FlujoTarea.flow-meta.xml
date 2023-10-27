@@ -38,10 +38,8 @@
                 <elementReference>FS_GetCaso.Id</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>customNotificationAction</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
-    <apiVersion>59.0</apiVersion>
+    <apiVersion>57.0</apiVersion>
     <assignments>
         <name>FS_Asignacion</name>
         <label>Asignamos Registros</label>
@@ -59,10 +57,10 @@
         </connector>
     </assignments>
     <decisions>
-        <description>Cambio de estado?</description>
+        <description>¿Cambio de estado?</description>
         <name>FS_CambioEstado</name>
-        <label>Cambio de estado?</label>
-        <locationX>182</locationX>
+        <label>¿Cambio de estado?</label>
+        <locationX>314</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
         <rules>
@@ -93,6 +91,25 @@
                 <targetReference>FS_GetCaso</targetReference>
             </connector>
             <label>Cambio a Finalizada</label>
+        </rules>
+        <rules>
+            <name>FS_RelacionadoCaso</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.FS_Cuenta__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>FS_Casos</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FS_GetCasoRelacionado</targetReference>
+            </connector>
+            <label>¿Relacionado a Caso?</label>
         </rules>
     </decisions>
     <description>Flujo para el objeto de tareas</description>
@@ -148,6 +165,31 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>FS_GetCasoRelacionado</name>
+        <label>Get Casos Relacionado</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>FS_LlenarCuenta</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>OwnerId</queriedFields>
+        <queriedFields>CaseNumber</queriedFields>
+        <queriedFields>AccountId</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>FS_GetNotificacion</name>
         <label>Notificacion</label>
         <locationX>50</locationX>
@@ -168,8 +210,21 @@
         <object>CustomNotificationType</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordUpdates>
+        <name>FS_LlenarCuenta</name>
+        <label>Llenar Cuenta</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>FS_Cuenta__c</field>
+            <value>
+                <elementReference>FS_GetCasoRelacionado.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
     <start>
-        <locationX>56</locationX>
+        <locationX>188</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>FS_CambioEstado</targetReference>
