@@ -61,6 +61,7 @@
 		<members>Case.FS_AceptaRespuesta__c</members>
 		<members>Case.FS_AgenteN2__c</members>
 		<members>Case.FS_AgenteQA__c</members>
+		<members>Case.FS_AprobadorActual__c</members>
 		<members>Case.FS_AprobacionCertificacionParcheQA__c</members>
 		<members>Case.FS_AprobacionDisenioTecnico__c</members>
 		<members>Case.FS_AprobacionInstalacionParcheRelease__c</members>

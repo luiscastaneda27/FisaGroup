@@ -813,6 +813,22 @@ public without sharing class CaseTriggerHelper {
         }
         esCliente(newCaseList);
     }
+     public static void asignarAprobadorActual(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            item.FS_AprobadorActual__c = null;
+            if(item.FS_SubEstado__c == 'Aprobación Solución IP-N2'){
+                item.FS_AprobadorActual__c = item.FS_UsuarioAprobadorSolucionIPN2__c;
+            }else if(item.FS_SubEstado__c == 'Aprobación Diseño Técnico' || item.FS_SubEstado__c == 'Aprobación Solución Definitiva N2'){
+                item.FS_AprobadorActual__c = item.FS_UsuarioAprobadorDT__c;
+            }else if(item.FS_SubEstado__c == 'Aprobación Plan de Pruebas'){
+                item.FS_AprobadorActual__c = item.FS_UsuarioAprobadorPlanPruebas__c;
+            }else if(item.FS_SubEstado__c == 'Aprobación Certificación Parche QA'){
+                item.FS_AprobadorActual__c = item.OwnerId;
+            }else if(item.FS_SubEstado__c == 'Aprobación Consulta N2' || item.FS_SubEstado__c == 'Aprobación Solicitud N2'){
+                item.FS_AprobadorActual__c = item.FS_UsuarioAprobadorSolucion__c;
+            }
+        }
+    }
 	
     public static void historialCaso(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Case').getDescribe().fields.getMap();
