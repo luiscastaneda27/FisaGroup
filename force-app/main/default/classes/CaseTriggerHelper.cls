@@ -172,7 +172,7 @@ public without sharing class CaseTriggerHelper {
                     if(msjError.length() > 37){
                         item.addError(msjError.substring(0, msjError.length() - 2));
                     }
-                    if(item.FS_SubEstado__c == 'Revisión Documentación N2'){
+                    if(item.FS_TipoIncidente__c != null){
                         item.FS_SubEstado__c = item.FS_TipoIncidente__c == 'Puntual' ? 'Desarrollo Incidente Puntual' : 'Desarrollo Incidente Definitivo';
                         item.Status = 'En Desarrollo';
                     }else if(item.FS_NombreTipoRegistro__c  == 'Solicitud (Falla Operativa)'){
@@ -296,6 +296,11 @@ public without sharing class CaseTriggerHelper {
                     item.FS_PudeSolventarPregunta__c = null;
                     item.FS_NumeroHorasSolicitud__c = null;
                     envioCorreo(item, 'FS_RechazoRespuesta', false);
+                    
+                    String titulo = 'RECHAZO DEL CLIENTE PARA EL CASO NÚMERO '+item.CaseNumber;
+                    String descripcion = 'El caso '+ item.CaseNumber+' ha cambiado de estado, por favor dar seguimiento';
+                    enviarNotificacion(caso.OwnerId, caso.Id, titulo, descripcion);
+                    
                     if(item.RecordTypeId == INCIDENTE_TIPO_REGISTRO && item.FS_TipoIncidente__c == 'Puntual' ){
                         item.FS_SubEstado__c = 'Desarrollo Incidente Puntual';
                         item.Status = 'En Desarrollo';
@@ -494,7 +499,7 @@ public without sharing class CaseTriggerHelper {
                     String descripcion = 'El agente ' + UserInfo.getName()  + ' ha creado el caso '+casoHijo.CaseNumber +' como solución a corto plazo del caso ' + item.CaseNumber + '\nPor favor dar seguimiento.';
                     enviarNotificacion(item.FS_PropietarioCasoSolucionCortoPlazo__c, casoHijo.Id, titulo, descripcion);
                 }
-                item.FS_SubEstado__c = item.FS_SubEstado__c == 'Revisión de Documentación N2' ? 'Elaboración Diseño Técnico' : item.FS_SubEstado__c;
+                item.FS_SubEstado__c = item.FS_SubEstado__c == 'Desarrollo Incidente Definitivo' ? 'Elaboración Diseño Técnico' : item.FS_SubEstado__c;
             }
         }
     }
@@ -590,6 +595,10 @@ public without sharing class CaseTriggerHelper {
                         item.FS_AprobacionInstalacionParcheRelease__c = null;
                         item.FS_MotivosRechazoInstalacionParche__c = null;
                         item.FS_ComentariosAprobacionInstalacionParch__c = null;
+                        item.OwnerId = String.isBlank(item.FS_AgenteQA__c) ? item.OwnerId : item.FS_AgenteQA__c;
+                        String titulo = 'Instalación Parche Releases para caso No '+item.CaseNumber;
+                        String descripcion = 'El caso No '+item.CaseNumber + ' que anteriormente tenías se ha reasignado ya que llego a Sub Estado Instalación Parche Releases \nPor favor dar seguimiento.';
+                        enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                     }else{
                         Boolean esCore = productoCore(item) ;
                         item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_QA_CORE : COLA_ATENCION_QA_OMNIA);
@@ -959,9 +968,6 @@ public without sharing class CaseTriggerHelper {
         }else{
             User usuario = [Select Email from user Where Id = :caso.OwnerId];
             mail.setBccAddresses( nombrePlantilla != 'FS_PaseProduccionAceptado' ? new List<String>{usuario.Email} : Label.FS_CorreosPaseProduccionAceptado.split(','));
-            String titulo = 'Cambio de Sub Estado para Caso No '+caso.CaseNumber;
-            String descripcion = 'El Caso ' + caso.CaseNumber + ' ha cambiado de sub Estado, Por favor dar seguimiento.';
-            enviarNotificacion(caso.OwnerId, caso.Id, titulo, descripcion);
         }
         MessageList.add(mail);
         try{
