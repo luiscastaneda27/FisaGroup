@@ -464,10 +464,16 @@ public without sharing class CaseTriggerHelper {
             if(caso.FS_TipoIncidente__c != item.FS_TipoIncidente__c){
                 item.Status = 'En Análisis';
                 Boolean esCore = productoCore(item) ;
-                item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_N2_CORE : COLA_ATENCION_N2_OMNIA);
-                item.FS_Area__c =  esCore ? 'N2- CORE' : 'N2-OMNIA';
-                item.FS_SubEstado__c = 'Escalado a N2';
-                item.IsEscalated = true;
+                if(item.IsEscalated){
+                    item.FS_SubEstado__c = 'Revisión Documentación N2';
+                    item.FS_URLCodigoFuente__c = null;
+                }else{
+                    item.OwnerId = mapColas.get(esCore ? COLA_ATENCION_N2_CORE : COLA_ATENCION_N2_OMNIA);
+                    item.FS_Area__c =  esCore ? 'N2- CORE' : 'N2-OMNIA';
+                    item.FS_SubEstado__c = 'Escalado a N2';
+                    item.IsEscalated = true;
+                }
+                
                 item.FS_InformacionCompleta__c = null;
                 item.Type = item.FS_TipoIncidente__c;
                 validarTareas(item);

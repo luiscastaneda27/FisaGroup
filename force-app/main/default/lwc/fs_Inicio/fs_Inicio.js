@@ -25,7 +25,13 @@ export default class Fs_Inicio extends LightningElement {
         urlPaginaNoticias: urlPaginaNoticias,
         listBase: [],
         listBaseShow: [],
-        mostrarBaseCon: false
+        listProductos: [],
+        //listProductosM: [],
+        //listProductos: [],
+        //listProductos: [],
+        mostrarBaseCon: false,
+        hayResultado: false,
+        valorABuscar: ''
     }
     showSpinner = true;
 
@@ -33,11 +39,13 @@ export default class Fs_Inicio extends LightningElement {
     connectedCallback() {
         this.showSpinner = true;
         gatListaBase({}).then(response => {
-            this.data.listBase = response;
-            this.data.mostrarBaseCon = response.length > 0;
-            for(let i=0; i < response.length; i++){
+            this.data.listBase = response.listBaseConocimiento;
+            this.data.listProductos = response.listProducto;
+            this.data.mostrarBaseCon = this.data.listBase.length > 0;
+            this.data.hayResultado = this.data.mostrarBaseCon;
+            for(let i=0; i < this.data.listBase.length; i++){
                 if(this.data.listBaseShow.length < 3){
-                    this.data.listBaseShow.push(response[i]);
+                    this.data.listBaseShow.push(this.data.listBase[i]);
                 }
             }
             this.showSpinner = false;
@@ -49,6 +57,7 @@ export default class Fs_Inicio extends LightningElement {
 
     onchangeSearch(event){
         let value = event.target.value;
+        this.data.valorABuscar = value;
         if(value.length > 2){
             this.data.listBaseShow = this.data.listBase.filter(item => item.contenido.toUpperCase().includes(value.toUpperCase() ) || item.nombre.toUpperCase().includes(value.toUpperCase()) ||
             item.producto.toUpperCase().includes(value.toUpperCase()) || item.modulo.toUpperCase().includes(value.toUpperCase()) ||
@@ -61,5 +70,12 @@ export default class Fs_Inicio extends LightningElement {
                 }
             }
         }
+        this.data.hayResultado = this.data.listBaseShow.length > 0;
+    }
+
+    onclickAllShow(){
+        this.data.valorABuscar = null;
+        this.data.listBaseShow = this.data.listBase;
+        this.data.hayResultado = this.data.listBaseShow.length > 0;
     }
 }
