@@ -43,6 +43,7 @@ public without sharing class CaseTriggerHandler {
         CaseTriggerHelper.validacionAceptaInstalacionParche(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionAceptaPaseProduccion(newCaseList, oldCaseMap);
         CaseTriggerHelper.validacionIngProducto(newCaseList, oldCaseMap);
+        CaseTriggerHelper.asignarAprobadorActual(newCaseList, oldCaseMap);
         CaseTriggerHelper.llenarOrigen(newCaseList, oldCaseMap);
         
     }

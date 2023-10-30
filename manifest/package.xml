@@ -125,6 +125,7 @@
 		<members>Case.FS_Referencia__c</members>
 		<members>Case.FS_ResultadoEncuesta__c</members>
 		<members>Case.FS_ReunionCSAT__c</members>
+		<members>Case.FS_RespuestaCliente__c</members>
 		<members>Case.FS_ReunionesCliente__c</members>
 		<members>Case.FS_RolPropietario__c</members>
 		<members>Case.FS_SolucionCortoPlazo__c</members>

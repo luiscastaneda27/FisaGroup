@@ -5,6 +5,7 @@ public class FeedCommentTriggerHelper_Test {
     static void setup(){
         Account acc = DataFactory.insertAccount();
         Contact cont = DataFactory.insertContact(acc);
+        DataFactory.insertUserCommunity(cont);
         FS_ProductoAdquirido__c p = DataFactory.insertProduct(acc, 'FISA System', 'Núcleo del Sistema', '');
         DataFactory.insertCase(acc, cont, p, 'FS_Consulta');
         DataFactory.insertCase(acc, cont, p, 'FS_Solicitud');

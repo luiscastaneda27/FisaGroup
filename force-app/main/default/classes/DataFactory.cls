@@ -42,6 +42,22 @@ public class DataFactory {
         insert caso;
         return caso;
     }
+    
+    public static User insertUserCommunity(Contact cont){
+        User u = new User();
+        u.Alias = 'tes'; 
+        u.Email='test@myorg.com'; 
+        u.EmailEncodingKey='UTF-8'; 
+        u.LastName='Testing'; 
+        u.LanguageLocaleKey='en_US'; 
+        u.ContactId = cont.Id;
+        u.LocaleSidKey='en_US'; 
+        u.ProfileId = [Select Id from Profile Where Name = 'Customer Community User' limit 1].Id;
+        u.TimeZoneSidKey='America/New_York';
+        u.UserName= 'test@myorg.com';
+        insert u;
+        return u;
+    }
         
 
 }

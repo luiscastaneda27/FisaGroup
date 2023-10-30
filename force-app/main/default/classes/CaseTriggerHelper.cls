@@ -172,7 +172,7 @@ public without sharing class CaseTriggerHelper {
                     if(msjError.length() > 37){
                         item.addError(msjError.substring(0, msjError.length() - 2));
                     }
-                    if(item.FS_TipoIncidente__c != null){
+                    if(item.FS_TipoIncidente__c != null && item.RecordTypeId == INCIDENTE_TIPO_REGISTRO){
                         item.FS_SubEstado__c = item.FS_TipoIncidente__c == 'Puntual' ? 'Desarrollo Incidente Puntual' : 'Desarrollo Incidente Definitivo';
                         item.Status = 'En Desarrollo';
                     }else if(item.FS_NombreTipoRegistro__c  == 'Solicitud (Falla Operativa)'){
