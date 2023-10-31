@@ -405,6 +405,7 @@ public without sharing class CaseTriggerHelper {
                 String titulo = 'Aprobación Solución IP-N2 para caso '+item.CaseNumber;
                 String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación de Solución IP-N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                 enviarNotificacion(item.FS_UsuarioAprobadorSolucionIPN2__c, item.Id, titulo, descripcion);
+                validarTareas(item);
             }
         }
     }
@@ -521,7 +522,7 @@ public without sharing class CaseTriggerHelper {
                 String titulo = 'Aprobación Diseño Técnico para caso '+item.CaseNumber;
                 String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación Diseño Técnico para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                 enviarNotificacion(item.FS_UsuarioAprobadorDT__c, item.Id, titulo, descripcion);
-
+				validarTareas(item);
             }
         }
     }
@@ -563,7 +564,7 @@ public without sharing class CaseTriggerHelper {
                 String titulo = 'Aprobación Solución Definitiva N2 para caso '+item.CaseNumber;
                 String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                 enviarNotificacion(item.FS_UsuarioAprobadorDT__c, item.Id, titulo, descripcion);
-                
+				validarTareas(item);
             }
         }
     }
@@ -611,6 +612,7 @@ public without sharing class CaseTriggerHelper {
                         item.FS_Area__c =  esCore ? 'QA CC-CORE' : 'QA CC-OMNIA';
                         item.FS_SubEstado__c = String.isBlank(item.FS_AgenteQA__c) ? 'Escalado a QA' : 'Elaboración Plan de Pruebas';
                         item.OwnerId = String.isBlank(item.FS_AgenteQA__c) ? item.OwnerId : item.FS_AgenteQA__c;  
+                        item.FS_EnviarAprobacionPlanPruebas__c = false;
                         validarTareas(item);
                     }
                 }else if(item.FS_AprobacionSolucionDefinitivaRelease__c == 'No'){
@@ -619,7 +621,7 @@ public without sharing class CaseTriggerHelper {
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
                     item.OwnerId = item.FS_AgenteN2__c;
                     String titulo = 'Rechazo de Solución Definitiva N2 para caso '+item.CaseNumber;
-                    String descripcion = 'El agente '+UserInfo.getName() + ' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    String descripcion = 'El agente Release '+ item.FS_UsuarioAprobacionSolucionRelease__c +' ha rechazado la Solución Definitiva N2 para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
             }
@@ -637,6 +639,7 @@ public without sharing class CaseTriggerHelper {
                 String titulo = 'Aprobación Plan de pruebas para caso '+item.CaseNumber;
                 String descripcion = 'El agente '+item.FS_NombrePropietario__c + ' necesita Aprobación de Plan de pruebas para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                 enviarNotificacion(item.FS_UsuarioAprobadorPlanPruebas__c, item.Id, titulo, descripcion);
+				validarTareas(item);
             }
         }
     }
@@ -647,6 +650,10 @@ public without sharing class CaseTriggerHelper {
             if(caso.FS_AprobacionPlanPruebas__c != item.FS_AprobacionPlanPruebas__c){
                 if(item.FS_AprobacionPlanPruebas__c == 'Si'){
                     item.FS_SubEstado__c = 'Aprobación Instalación Parche - Releases';
+                    item.FS_AprobacionInstalacionParcheRelease__c = null;
+                    item.FS_MotivosRechazoInstalacionParche__c = null;
+                    item.FS_UsuarioAprobadorInstalacionParcheRele__c = null;
+                    item.FS_ComentariosAprobacionInstalacionParch__c = null;
                 }else if(item.FS_AprobacionPlanPruebas__c == 'No'){
                     item.FS_EnviarAprobacionPlanPruebas__c = false;
                     item.FS_SubEstado__c = 'Elaboración Plan de Pruebas';
@@ -696,6 +703,8 @@ public without sharing class CaseTriggerHelper {
                 String titulo = 'Aprobación Certificación Parche QA para caso '+item.CaseNumber;
                 String descripcion = 'Se necesita Aprobación Certificación Parche QA para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                 enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
+                item.FS_AprobacionCertificacionParcheQA__c = null;
+                item.FS_MotivoRechazoEntregaParche__c = null;
             }
         }
     }
@@ -703,7 +712,8 @@ public without sharing class CaseTriggerHelper {
     public static void validacionAprobacionCertificacionQA(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
-            if(caso.FS_AprobacionCertificacionParcheQA__c != item.FS_AprobacionCertificacionParcheQA__c){
+            if(caso.FS_AprobacionCertificacionParcheQA__c != item.FS_AprobacionCertificacionParcheQA__c && item.FS_AprobacionCertificacionParcheQA__c != null){
+                validarTareas(item);
                 if(item.FS_AprobacionCertificacionParcheQA__c  == 'Si'){
                     item.FS_SubEstado__c = String.isBlank(caso.FS_URLParcheCliente__c) ? 'Entrega de Parche' : 'Instalación de Parche';
                     item.Status = String.isBlank(caso.FS_URLParcheCliente__c) ? item.Status : 'Validación de Respuesta (Cliente)';
@@ -716,6 +726,7 @@ public without sharing class CaseTriggerHelper {
                     String descripcion = 'El agente ' + item.FS_UsuarioAprobadorInstalacionParcheRele__c  + ' ha rechazado la Certificación Parche QA para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
+                validarTareas(item);
             }
         }
     }
