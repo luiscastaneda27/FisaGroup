@@ -614,6 +614,11 @@ public without sharing class CaseTriggerHelper {
                         item.OwnerId = String.isBlank(item.FS_AgenteQA__c) ? item.OwnerId : item.FS_AgenteQA__c;  
                         item.FS_EnviarAprobacionPlanPruebas__c = false;
                         validarTareas(item);
+                        if(String.isNotBlank(item.FS_AgenteQA__c)){
+                            String titulo = 'Asígnación de caso No '+item.CaseNumber;
+                            String descripcion = 'Se ha reasignado el caso No '+item.CaseNumber + ' que anteriormente tenías se ha asigando. \nPor favor dar seguimiento.';
+                            enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
+                        }
                     }
                 }else if(item.FS_AprobacionSolucionDefinitivaRelease__c == 'No'){
                     //item.FS_URLSolucionDefinitiva__c = null;
@@ -723,7 +728,7 @@ public without sharing class CaseTriggerHelper {
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva';
                     item.OwnerId = item.FS_AgenteN2__c;
                     String titulo = 'Rechazo de Certificación Parche QA para caso '+item.CaseNumber;
-                    String descripcion = 'El agente ' + item.FS_UsuarioAprobadorInstalacionParcheRele__c  + ' ha rechazado la Certificación Parche QA para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    String descripcion = 'El agente ' + UserInfo.getName()  + ' ha rechazado la Certificación Parche QA para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
                 validarTareas(item);
@@ -779,6 +784,15 @@ public without sharing class CaseTriggerHelper {
                     envioCorreo(item, 'FS_PaseProduccionAceptado', false);
                 }else if(item.FS_AceptaPaseProducion__c == 'No'){
                     item.FS_SubEstado__c = 'Paso a Producción No Confirmado';
+                    List<String> listCorreos = new List<String>();
+                    String rollUsuario = productoCore(item) ? 'FS_JefeCore' : 'FS_JefeOmnia';
+                    String titulo = 'Pase a Producción rechazado para caso No '+item.CaseNumber;
+                    String descripcion = 'Buen día\n\n Se ha rechazado el pase a producción del caso No ' + item.CaseNumber +' \nPor favor dar seguimiento.';
+                    for(User u : [Select Email from User Where UserRole.DeveloperName = :rollUsuario]){
+                        listCorreos.add(u.Email);
+                        enviarNotificacion(u.Id, item.Id, titulo, descripcion);
+                    }
+                    
                 }
             }
         }
@@ -1018,6 +1032,24 @@ public without sharing class CaseTriggerHelper {
         notification.setNotificationTypeId(notificacionId);
         notification.setTargetId(recordId); 
         notification.send(new Set<String> { usuarioId }); 
+        
+        List<Messaging.SingleEmailMessage> MessageList = new List<Messaging.SingleEmailMessage>();
+        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+        mail.setSubject(titulo);
+        mail.setPlainTextBody(descripcion);
+        mail.saveAsActivity = false;
+        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = :Label.FS_CorreoElectronicoServicio];
+        mail.setOrgWideEmailAddressId(owea.get(0).Id);
+        
+        User usuario = [Select Email from user Where Id = :usuarioId];
+        mail.setBccAddresses(  new List<String>{usuario.Email});
+        
+        MessageList.add(mail);
+        try{
+            Messaging.SendEmailResult[] results = Messaging.sendEmail(MessageList);
+        }catch(Exception ex){
+            System.debug(ex.getMessage()+' ----- '+ex.getLineNumber());
+        }
     }
     
     public static void crearHistorialAprobaciones(Case caso){

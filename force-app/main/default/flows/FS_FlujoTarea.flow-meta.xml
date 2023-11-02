@@ -117,7 +117,7 @@
     <formulas>
         <name>FS_TextoNotificacion</name>
         <dataType>String</dataType>
-        <expression>&apos;Se notifica que el agente &apos; + {!$User.FirstName} +&apos; ha finalizado la tarea número &apos; + {!$Record.FS_NumeroTarea__c} +&apos; relacionada al caso &apos; + {!FS_GetCaso.CaseNumber} + &apos; por favor dar seguimiento&apos;</expression>
+        <expression>&apos;Se notifica que el agente &apos; + {!$User.FirstName} +&apos; &apos;+{!$User.LastName}+&apos; ha finalizado la tarea número &apos; + {!$Record.FS_NumeroTarea__c} +&apos; relacionada al caso &apos; + {!FS_GetCaso.CaseNumber} + &apos; por favor dar seguimiento&apos;</expression>
     </formulas>
     <interviewLabel>Flujo de Tarea {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Flujo de Tarea</label>
