@@ -1041,11 +1041,10 @@ public without sharing class CaseTriggerHelper {
         OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = :Label.FS_CorreoElectronicoServicio];
         mail.setOrgWideEmailAddressId(owea.get(0).Id);
         
-        User usuario = [Select Email from user Where Id = :usuarioId];
-        mail.setBccAddresses(  new List<String>{usuario.Email});
-        
-        MessageList.add(mail);
         try{
+            User usuario = [Select Email from user Where Id = :usuarioId];
+            mail.setBccAddresses(  new List<String>{usuario.Email});
+            MessageList.add(mail);          
             Messaging.SendEmailResult[] results = Messaging.sendEmail(MessageList);
         }catch(Exception ex){
             System.debug(ex.getMessage()+' ----- '+ex.getLineNumber());
