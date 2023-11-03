@@ -121,13 +121,13 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
         }else if(name === "aceptaHoras"){
             this.data.caso.FS_Acepta1erCosto__c = value;
         }else if(name === "motivoRechazoParche"){
-            this.data.caso.FS_MotivosRechazoInstalacionParche__c = value;
+            this.data.caso.FS_MotivoRechazo__c = value;
         }else if(name === "comentarioParch"){
-            this.data.caso.FS_ComentarioMotivoNoInstalacionParche__c = value;
+            this.data.caso.FS_ComentariosRespuesta__c = value;
         }else if(name === "aceptaParche"){
             this.data.caso.FS_AceptaInstalacionParche__c = value;
             this.data.mostrarRechazo = (value != "Si");
-            this.data.caso.FS_MotivosRechazoInstalacionParche__c = !this.data.mostrarRechazo ? null : this.data.caso.FS_MotivosRechazoInstalacionParche__c; 
+            this.data.caso.FS_MotivoRechazo__c = !this.data.mostrarRechazo ? null : this.data.caso.FS_MotivoRechazo__c; 
         }else if(name === "aceptaPase"){
             this.data.caso.FS_AceptaPaseProducion__c = value;
         }
@@ -163,7 +163,7 @@ export default class Fs_CampoPendienteCaso extends LightningElement {
             this.data.botonDeshabilitado = false;
         }else if(this.data.caso.FS_AceptaRespuesta__c === "No" && this.data.caso.FS_MotivoRechazo__c != null && this.data.caso.FS_ComentariosRespuesta__c != null){
             this.data.botonDeshabilitado = false;
-        }else if(this.data.caso.FS_AceptaInstalacionParche__c === "No" && this.data.caso.FS_MotivosRechazoInstalacionParche__c  != null && this.data.caso.FS_ComentarioMotivoNoInstalacionParche__c != null){
+        }else if(this.data.caso.FS_AceptaInstalacionParche__c === "No" && this.data.caso.FS_MotivoRechazo__c  != null && this.data.caso.FS_ComentariosRespuesta__c != null){
             this.data.botonDeshabilitado = false;
         }else if(this.data.caso.FS_Acepta1erCosto__c != null && this.data.caso.FS_SubEstado__c === "En Espera de Respuesta del Cliente"){
             this.data.botonDeshabilitado = false;

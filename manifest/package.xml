@@ -61,7 +61,6 @@
 		<members>Case.FS_AceptaRespuesta__c</members>
 		<members>Case.FS_AgenteN2__c</members>
 		<members>Case.FS_AgenteQA__c</members>
-		<members>Case.FS_AprobadorActual__c</members>
 		<members>Case.FS_AprobacionCertificacionParcheQA__c</members>
 		<members>Case.FS_AprobacionDisenioTecnico__c</members>
 		<members>Case.FS_AprobacionInstalacionParcheRelease__c</members>
@@ -71,6 +70,7 @@
 		<members>Case.FS_AprobacionSolucionIPN2__c</members>
 		<members>Case.FS_AprobacionSolucionIPRelease__c</members>
 		<members>Case.FS_AprobacionSolucion__c</members>
+		<members>Case.FS_AprobadorActual__c</members>
 		<members>Case.FS_Area__c</members>
 		<members>Case.FS_CSATCaso__c</members>
 		<members>Case.FS_Carterizacion__c</members>
@@ -123,9 +123,9 @@
 		<members>Case.FS_Proyecto__c</members>
 		<members>Case.FS_PudeSolventarPregunta__c</members>
 		<members>Case.FS_Referencia__c</members>
+		<members>Case.FS_RespuestaCliente__c</members>
 		<members>Case.FS_ResultadoEncuesta__c</members>
 		<members>Case.FS_ReunionCSAT__c</members>
-		<members>Case.FS_RespuestaCliente__c</members>
 		<members>Case.FS_ReunionesCliente__c</members>
 		<members>Case.FS_RolPropietario__c</members>
 		<members>Case.FS_SolucionCortoPlazo__c</members>
@@ -175,6 +175,7 @@
 		<members>FS_CorreosClientesCasos/FS_Encuesta</members>
 		<members>FS_CorreosClientesCasos/FS_EnvioPrimerCosto</members>
 		<members>FS_CorreosClientesCasos/FS_InformacionFaltante</members>
+		<members>FS_CorreosClientesCasos/FS_NotificacionInterna</members>
 		<members>FS_CorreosClientesCasos/FS_PaseProduccion</members>
 		<members>FS_CorreosClientesCasos/FS_PaseProduccionAceptado</members>
 		<members>FS_CorreosClientesCasos/FS_RechazoRespuesta</members>
@@ -328,6 +329,7 @@
 		<name>StaticResource</name>
 	</types>
 	<types>
+		<members>Case.FS_ValidacionFechaCompromiso</members>
 		<members>Case.FS_ValidacionFechaCompromisoDesarrollo</members>
 		<members>Case.FS_ValidacionFechaCompromisoEntrega</members>
 		<members>Case.FS_ValidacionRechazoCertificParcheQA</members>
@@ -340,8 +342,8 @@
 		<members>Case.FS_ValidacionRechazoSolucionDefinitivaN2</members>
 		<members>Case.FS_ValidacionRechazoSolucionIPN2</members>
 		<members>Case.FS_ValidacionRespuestaCliente</members>
-		<members>Case.FS_validacionCasoNuevoAgente</members>
 		<members>Case.FS_ValidacionTipoIncidente</members>
+		<members>Case.FS_validacionCasoNuevoAgente</members>
 		<name>ValidationRule</name>
 	</types>
 	<version>58.0</version>

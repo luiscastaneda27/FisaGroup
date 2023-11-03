@@ -7,21 +7,37 @@ public without sharing class CaseTriggerHelper {
     public static final String COLA_ATENCION_QA_OMNIA ='FS_AtencionQAOmnia';
     public static final String COLA_ATENCION_QA_CORE ='FS_AtencionQACore';
     public static Map<String, String> mapColas;
+    public static Map<String, User> mapUser;
+    public static OrgWideEmailAddress owea;
+    public static Map<String, EmailTemplate> mapPlantillas;
+    public static CustomNotificationType notificacion;
     
     static{
         mapColas = new Map<String, String>();
+        mapPlantillas = new Map<String, EmailTemplate>();
+        mapUser = new Map<String, User>();
+        
+        owea = [select Id from OrgWideEmailAddress where Address = :Label.FS_CorreoElectronicoServicio];
+        notificacion = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1];
+        
         for(Group item: [Select Id, DeveloperName from Group Where DeveloperName Like '%FS_%' and Type = 'Queue']){
             mapColas.put(item.DeveloperName, item.Id);
         }
+        for(User item: [Select Id, Email, Name, FirstName, Lastname, UserRole.DeveloperName, Profile.Name from User Where IsActive = true]){
+            mapUser.put(item.Id, item);
+        }
+        for(EmailTemplate plantilla :[Select Id, Subject, HTMLValue,DeveloperName from EmailTemplate Where DeveloperName Like '%FS_%']){
+            mapPlantillas.put(plantilla.DeveloperName, plantilla);
+        }
     }
     
-    public static Map<String, String> getColas(){
+    /*public static Map<String, String> getColas(){
         Map<String, String> mapColas = new Map<String, String>();
         for(Group item: [Select Id, DeveloperName from Group Where DeveloperName Like '%FS_%' and Type = 'Queue']){
             mapColas.put(item.DeveloperName, item.Id);
         }
         return mapColas;
-    } 
+    } */
     
     public static final String CONSULTA_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Consulta').getRecordTypeId();
     public static final String SOLICITUD_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Solicitud').getRecordTypeId();
@@ -93,7 +109,7 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static Boolean validacionUser(Boolean userComunity){
-        User u = [Select Name, Profile.Name, UserRole.DeveloperName From User where Id = :UserInfo.getUserId()];
+        User u = mapUser.get(UserInfo.getUserId());
         Boolean flagPerfil = u.Profile.Name == 'Administrador del sistema' || u.Profile.Name == 'System Administrator';
         flagPerfil = flagPerfil || (u.UserRole.DeveloperName != null && u.UserRole.DeveloperName.contains('FS_Jefe'));
         flagPerfil = flagPerfil || Label.FS_IdUsuarioJira == u.Id || (u.Profile.Name == 'Customer Community User' && userComunity);
@@ -743,6 +759,9 @@ public without sharing class CaseTriggerHelper {
                 item.FS_SubEstado__c = 'Instalación de Parche';
                 item.Status = 'Validación de Respuesta (Cliente)';
                 item.FS_AceptaRespuesta__c = null;
+                item.FS_AceptaInstalacionParche__c = null;
+                item.FS_MotivoRechazo__c = null;
+                item.FS_ComentariosRespuesta__c = null;
                 String descripcion = 'Estimado Cliente\n\n\nHemos entregado la respuesta al caso, la solución se encuentra disponible en la siguiente URL para su validación '+item.FS_URLParcheCliente__c +'\n\nTus comentarios son importantes para nosotros.\n\nGracias\nCustomer Care Team\n\nSaludos';
                 insert new FeedItem(ParentId = item.Id, Body = descripcion, Visibility = 'AllUsers');
                 envioCorreo(item, 'FS_ValidacionInformacion', true);
@@ -754,8 +773,11 @@ public without sharing class CaseTriggerHelper {
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.FS_AceptaInstalacionParche__c != item.FS_AceptaInstalacionParche__c && item.FS_AceptaInstalacionParche__c != null){
+                item.FS_AceptaRespuesta__c = item.FS_AceptaInstalacionParche__c;
+                crearHistorialAprobaciones(item);
                 if(item.FS_AceptaInstalacionParche__c == 'Si'){
                     item.FS_SubEstado__c = 'Paso a Producción';
+                    item.FS_AceptaPaseProducion__c = null;
                     envioCorreo(item, 'FS_PaseProduccion', true);
                 }else if(item.FS_AceptaInstalacionParche__c == 'No'){
                     item.FS_SubEstado__c = 'Elaboración Solución Definitiva'; 
@@ -765,6 +787,9 @@ public without sharing class CaseTriggerHelper {
                     item.FS_EnviarAprobacionPlanPruebas__c = false;
                     item.FS_EnviarAprobacionSolucionIPN2__c  = false;
                     item.OwnerId = item.FS_AgenteN2__c;
+                    String titulo = 'Rechazo de Instalación de Parche para caso No '+item.CaseNumber;
+                    String descripcion = 'El cliente ' + item.FS_NombreCuenta__c  + ' ha rechazado la Instalación de Parche para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
+                    enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
                 }
             }
         }
@@ -784,15 +809,16 @@ public without sharing class CaseTriggerHelper {
                     envioCorreo(item, 'FS_PaseProduccionAceptado', false);
                 }else if(item.FS_AceptaPaseProducion__c == 'No'){
                     item.FS_SubEstado__c = 'Paso a Producción No Confirmado';
-                    List<String> listCorreos = new List<String>();
+                    //List<String> listCorreos = new List<String>();
                     String rollUsuario = productoCore(item) ? 'FS_JefeCore' : 'FS_JefeOmnia';
                     String titulo = 'Pase a Producción rechazado para caso No '+item.CaseNumber;
                     String descripcion = 'Buen día\n\n Se ha rechazado el pase a producción del caso No ' + item.CaseNumber +' \nPor favor dar seguimiento.';
-                    for(User u : [Select Email from User Where UserRole.DeveloperName = :rollUsuario]){
-                        listCorreos.add(u.Email);
-                        enviarNotificacion(u.Id, item.Id, titulo, descripcion);
-                    }
-                    
+                    for(String userId: mapUser.keySet()){
+                        User u = mapUser.get(userId);
+                        if(u.UserRole.DeveloperName == rollUsuario){
+                            enviarNotificacion(u.Id, item.Id, titulo, descripcion);
+                        }
+                    }                    
                 }
             }
         }
@@ -990,7 +1016,7 @@ public without sharing class CaseTriggerHelper {
             return;
         }
         List<Messaging.SingleEmailMessage> MessageList = new List<Messaging.SingleEmailMessage>();
-        EmailTemplate plantilla = [Select Id, Subject, HTMLValue from EmailTemplate Where DeveloperName = :nombrePlantilla limit 1];
+        EmailTemplate plantilla = mapPlantillas.get(nombrePlantilla);
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         String asunnto = reemplazarCampos(caso, plantilla.Subject, 'Case');
         String html = reemplazarCampos(caso, plantilla.HTMLValue, 'Case');
@@ -1001,10 +1027,9 @@ public without sharing class CaseTriggerHelper {
         mail.setSubject(asunnto);
         mail.setHtmlBody(html);
         mail.saveAsActivity = esContacto;
-        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = :Label.FS_CorreoElectronicoServicio];
-        mail.setOrgWideEmailAddressId(owea.get(0).Id);
+        mail.setOrgWideEmailAddressId(owea.Id);
         if(esContacto){
-            User usuario = [Select Id, Profile.Name from user Where Id = :userInfo.getUserId()];
+            User usuario = mapUser.get(userInfo.getUserId());
             if(usuario.Profile.Name != 'Customer Community User'){
                 mail.setWhatId(caso.Id);
             }
@@ -1013,7 +1038,7 @@ public without sharing class CaseTriggerHelper {
                 mail.setCcAddresses(caso.FS_CorreosNotificacionesServicios__c.split(','));
             }
         }else{
-            User usuario = [Select Email from user Where Id = :caso.OwnerId];
+            User usuario = mapUser.get(caso.OwnerId);
             mail.setBccAddresses( nombrePlantilla != 'FS_PaseProduccionAceptado' ? new List<String>{usuario.Email} : Label.FS_CorreosPaseProduccionAceptado.split(','));
         }
         MessageList.add(mail);
@@ -1025,24 +1050,36 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static void enviarNotificacion(String usuarioId, String recordId, String titulo, String descripcion){
-        Id notificacionId = [SELECT Id FROM CUstomNotificationType Where DeveloperName = 'FS_NotificacionServicio' LIMIT 1].Id;
+        //Id notificacionId = .Id;
         Messaging.CustomNotification notification = new Messaging.CustomNotification();
         notification.setTitle(titulo);
         notification.setBody(descripcion);
-        notification.setNotificationTypeId(notificacionId);
+        notification.setNotificationTypeId(notificacion.Id);
         notification.setTargetId(recordId); 
         notification.send(new Set<String> { usuarioId }); 
         
         List<Messaging.SingleEmailMessage> MessageList = new List<Messaging.SingleEmailMessage>();
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+        EmailTemplate plantilla = mapPlantillas.get('FS_NotificacionInterna');
+        
+        String baseUrl = URL.getOrgDomainUrl().toExternalForm() + '/' + recordId;
+        String urlLogo = getLogoImagen();
+        String asunnto = titulo;
+        String html = plantilla.HTMLValue.replace('{contenido}', descripcion.replace('\n', '<br/>'));
+        html = html.replace('{linkRecord}', baseUrl);
+        html = getLogoImagen() + html;
+        
+        
+        html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
+        
         mail.setSubject(titulo);
-        mail.setPlainTextBody(descripcion);
+        mail.setHtmlBody(html);
         mail.saveAsActivity = false;
-        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = :Label.FS_CorreoElectronicoServicio];
-        mail.setOrgWideEmailAddressId(owea.get(0).Id);
+        mail.setOrgWideEmailAddressId(owea.Id);
         
         try{
-            User usuario = [Select Email from user Where Id = :usuarioId];
+            //Test.IsRunningTest
+            User usuario = !Test.isRunningTest() ? mapUser.get(usuarioId) : new User(Email = Label.FS_CorreoElectronicoServicio);
             mail.setBccAddresses(  new List<String>{usuario.Email});
             MessageList.add(mail);          
             Messaging.SendEmailResult[] results = Messaging.sendEmail(MessageList);
