@@ -25,10 +25,13 @@ export default class Fs_Inicio extends LightningElement {
         urlPaginaNoticias: urlPaginaNoticias,
         listBase: [],
         listBaseShow: [],
+        listTodosProductos: [],
         listProductos: [],
-        //listProductosM: [],
-        //listProductos: [],
-        //listProductos: [],
+        productoSelect: '--',
+        listModulos: [],
+        moduloSelect: '--',
+        listSubModulos: [],
+        subModuloSelect: '--',
         mostrarBaseCon: false,
         hayResultado: false,
         valorABuscar: ''
@@ -39,8 +42,9 @@ export default class Fs_Inicio extends LightningElement {
     connectedCallback() {
         this.showSpinner = true;
         gatListaBase({}).then(response => {
+            console.log("Respuesta: "+JSON.stringify(response))
             this.data.listBase = response.listBaseConocimiento;
-            this.data.listProductos = response.listProducto;
+            this.data.listTodosProductos = response.listProducto;
             this.data.mostrarBaseCon = this.data.listBase.length > 0;
             this.data.hayResultado = this.data.mostrarBaseCon;
             for(let i=0; i < this.data.listBase.length; i++){
@@ -48,11 +52,74 @@ export default class Fs_Inicio extends LightningElement {
                     this.data.listBaseShow.push(this.data.listBase[i]);
                 }
             }
+            let listItems = [];
+            this.data.listProductos.push({"value" : "--","label" : "--Ninguno--" });
+            for(let i=0; i < this.data.listTodosProductos.length; i++){
+                let prod = this.data.listTodosProductos[i].producto;
+                if(!listItems.includes(prod)){
+                    listItems.push(prod);
+                    this.data.listProductos.push({"value" : prod,"label" : prod });
+                }
+            }
             this.showSpinner = false;
         }).catch(error => {
             this.showSpinner = false;
             console.log("Error: "+JSOn.stringify(error));
         });
+    }
+    
+    onchangeProduct(event){
+        let value = event.target.value;
+        this.data.productoSelect = event.target.value;
+        this.data.listModulos = [];
+        this.data.listSubModulos = [];
+        this.data.moduloSelect = '--';
+        this.data.subModuloSelect = '--';
+
+        let listItems = [];
+        this.data.listModulos.push({"value" : "--","label" : "--Ninguno--" });
+        for(let i=0; i < this.data.listTodosProductos.length; i++){
+            let prod = this.data.listTodosProductos[i].producto;
+            let mod = this.data.listTodosProductos[i].modulo;
+            if(prod === value && !listItems.includes(mod)){
+                listItems.push(mod);
+                this.data.listModulos.push({"value" : mod,"label" : mod });
+            }
+        }
+        this.searchFilter();
+    }
+
+    onchangeModulo(event){
+        let value = event.target.value;
+        this.data.moduloSelect = event.target.value;
+        
+        this.data.listSubModulos = [];
+        this.data.subModuloSelect = '--';
+
+        let listItems = [];
+        this.data.listSubModulos.push({"value" : "--","label" : "--Ninguno--" });
+        for(let i=0; i < this.data.listTodosProductos.length; i++){
+            let prod = this.data.listTodosProductos[i].producto;
+            let mod = this.data.listTodosProductos[i].modulo;
+            let subMod = this.data.listTodosProductos[i].subModulo;
+            if(prod === this.data.productoSelect &&  mod === value && !listItems.includes(subMod)){
+                listItems.push(subMod);
+                this.data.listSubModulos.push({"value" : subMod,"label" : subMod });
+            }
+        }
+        this.searchFilter();
+    }
+
+    onchangeSubModulo(event){
+        let value = event.target.value;
+        this.data.subModuloSelect = value;
+        this.searchFilter();
+    }
+
+    searchFilter(){
+        this.data.listBaseShow = this.data.listBase.filter(item => item.producto === this.data.productoSelect && (this.data.moduloSelect === '--' || item.modulo === this.data.moduloSelect) &&
+        (this.data.subModuloSelect === '--' || item.subModulo === this.data.subModuloSelect));
+        this.data.hayResultado = this.data.listBaseShow.length > 0;
     }
 
     onchangeSearch(event){
@@ -77,5 +144,10 @@ export default class Fs_Inicio extends LightningElement {
         this.data.valorABuscar = null;
         this.data.listBaseShow = this.data.listBase;
         this.data.hayResultado = this.data.listBaseShow.length > 0;
+        this.data.listModulos = [];
+        this.data.listSubModulos = [];
+        this.data.moduloSelect = '--';
+        this.data.subModuloSelect = '--';
+        this.data.productoSelect = '--';
     }
 }

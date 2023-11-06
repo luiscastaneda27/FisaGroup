@@ -58,6 +58,15 @@ public class DataFactory {
         insert u;
         return u;
     }
+    
+    public static FS_BaseConocimiento__c inserBaseConocimientos(FS_ProductoAdquirido__c p){
+        FS_BaseConocimiento__c bc = new FS_BaseConocimiento__c();
+        bc.FS_Activo__c = true;
+        bc.FS_ProductoAdquirido__c = p.Id;
+        bc.Name = 'Test';
+        insert bc;
+        return bc;
+    }
         
 
 }
