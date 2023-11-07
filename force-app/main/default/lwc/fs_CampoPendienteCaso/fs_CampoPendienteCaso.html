@@ -276,12 +276,12 @@
                                                 </lightning-layout-item>
                                                 <lightning-layout-item flexibility="auto" padding="around-small" size="6" if:true={data.mostrarRechazo} >
                                                     <lightning-combobox name="motivoRechazoParche" label="Motivo Rechazo"
-                                                    value={data.caso.FS_MotivosRechazoInstalacionParche__c} options={data.listMotivosRechazoParche}
+                                                    value={data.caso.FS_MotivoRechazo__c} options={data.listMotivosRechazo}
                                                     onchange={handleChange} placeholder="Seleccione una Motivo">
                                                 </lightning-combobox>
                                                 </lightning-layout-item>
                                                 <lightning-layout-item flexibility="auto" padding="around-small" size="12">
-                                                    <lightning-textarea name="comentarioParch" label="Comentarios" vaue={data.caso.FS_ComentarioMotivoNoInstalacionParche__c}
+                                                    <lightning-textarea name="comentarioParch" label="Comentarios" vaue={data.caso.FS_ComentariosRespuesta__c}
                                                     onchange={handleChange}></lightning-textarea>
                                                 </lightning-layout-item>
                                             </lightning-layout>
@@ -343,10 +343,6 @@
                                                         onchange={handleChange} placeholder="Seleccione una Opción">
                                                     </lightning-combobox>
                                                 </lightning-layout-item>
-                                                <!--lightning-layout-item flexibility="auto" padding="around-small" size="12">
-                                                    <lightning-textarea name="comentarioParch" label="Comentarios" vaue={data.caso.FS_ComentarioMotivoNoInstalacionParche__c}
-                                                    onchange={handleChange}></lightning-textarea>
-                                                </lightning-layout-item-->
                                             </lightning-layout>
                                         </lightning-card>
                                     </lightning-layout-item>
