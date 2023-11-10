@@ -50,7 +50,7 @@ export default class Fs_Inicio extends LightningElement {
             this.data.mostrarBaseCon = this.data.listBase.length > 0;
             this.data.hayResultado = this.data.mostrarBaseCon;
             for(let i=0; i < this.data.listBase.length; i++){
-                if(this.data.listBaseShow.length < 3){
+                if(this.data.listBase[i].productoVacio  || this.data.listBaseShow.length < 3){
                     this.data.listBaseShow.push(this.data.listBase[i]);
                 }
             }
@@ -58,7 +58,7 @@ export default class Fs_Inicio extends LightningElement {
             this.data.listProductos.push({"value" : "--","label" : "--Ninguno--" });
             for(let i=0; i < this.data.listTodosProductos.length; i++){
                 let prod = this.data.listTodosProductos[i].producto;
-                if(!listItems.includes(prod)){
+                if(!listItems.includes(prod) && prod != null){
                     listItems.push(prod);
                     this.data.listProductos.push({"value" : prod,"label" : prod });
                 }
@@ -79,18 +79,21 @@ export default class Fs_Inicio extends LightningElement {
         this.data.moduloSelect = '--';
         this.data.subModuloSelect = '--';
         this.data.knowledgeSelect = '--'; 
-
-        let listItems = [];
-        this.data.listModulos.push({"value" : "--","label" : "--Ninguno--" });
-        for(let i=0; i < this.data.listTodosProductos.length; i++){
-            let prod = this.data.listTodosProductos[i].producto;
-            let mod = this.data.listTodosProductos[i].modulo;
-            if(prod === value && !listItems.includes(mod)){
-                listItems.push(mod);
-                this.data.listModulos.push({"value" : mod,"label" : mod });
+        if(this.data.productoSelect == '--'){
+            this.onclickAllShow();
+        }else{
+            let listItems = [];
+            this.data.listModulos.push({"value" : "--","label" : "--Ninguno--" });
+            for(let i=0; i < this.data.listTodosProductos.length; i++){
+                let prod = this.data.listTodosProductos[i].producto;
+                let mod = this.data.listTodosProductos[i].modulo;
+                if(prod === value && !listItems.includes(mod)){
+                    listItems.push(mod);
+                    this.data.listModulos.push({"value" : mod,"label" : mod });
+                }
             }
-        }
-        this.searchFilter();
+            this.searchFilter();
+    }
     }
 
     onchangeModulo(event){
@@ -147,13 +150,13 @@ export default class Fs_Inicio extends LightningElement {
         let value = event.target.value;
         this.data.valorABuscar = value;
         if(value.length > 2){
-            this.data.listBaseShow = this.data.listBase.filter(item => item.contenidoPlano.toUpperCase().includes(value.toUpperCase() ) || item.nombre.toUpperCase().includes(value.toUpperCase()) ||
+            this.data.listBaseShow = this.data.listBase.filter(item => !item.productoVacio && (item.contenidoPlano.toUpperCase().includes(value.toUpperCase() ) || item.nombre.toUpperCase().includes(value.toUpperCase()) ||
             item.producto.toUpperCase().includes(value.toUpperCase()) || item.modulo.toUpperCase().includes(value.toUpperCase()) ||
-            (item.subModulo != null && item.subModulo.toUpperCase().includes(value.toUpperCase())));
+            (item.subModulo != null && item.subModulo.toUpperCase().includes(value.toUpperCase()))));
         }else if(value.length === 0){
             this.data.listBaseShow = [];
             for(let i=0; i < this.data.listBase.length; i++){
-                if(this.data.listBaseShow.length < 3){
+                if(this.data.listBase[i].productoVacio || this.data.listBaseShow.length < 3){
                     this.data.listBaseShow.push(this.data.listBase[i]);
                 }
             }
