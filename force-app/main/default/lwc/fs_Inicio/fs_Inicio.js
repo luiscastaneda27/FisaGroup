@@ -34,7 +34,9 @@ export default class Fs_Inicio extends LightningElement {
         subModuloSelect: '--',
         mostrarBaseCon: false,
         hayResultado: false,
-        valorABuscar: ''
+        valorABuscar: '',
+        listPickListBase: [],
+        knowledgeSelect: '--',
     }
     showSpinner = true;
 
@@ -73,8 +75,10 @@ export default class Fs_Inicio extends LightningElement {
         this.data.productoSelect = event.target.value;
         this.data.listModulos = [];
         this.data.listSubModulos = [];
+        this.data.listPickListBase = [];
         this.data.moduloSelect = '--';
         this.data.subModuloSelect = '--';
+        this.data.knowledgeSelect = '--'; 
 
         let listItems = [];
         this.data.listModulos.push({"value" : "--","label" : "--Ninguno--" });
@@ -94,6 +98,8 @@ export default class Fs_Inicio extends LightningElement {
         this.data.moduloSelect = event.target.value;
         
         this.data.listSubModulos = [];
+        this.data.listPickListBase = [];
+        this.data.knowledgeSelect = '--'; 
         this.data.subModuloSelect = '--';
 
         let listItems = [];
@@ -102,7 +108,7 @@ export default class Fs_Inicio extends LightningElement {
             let prod = this.data.listTodosProductos[i].producto;
             let mod = this.data.listTodosProductos[i].modulo;
             let subMod = this.data.listTodosProductos[i].subModulo;
-            if(prod === this.data.productoSelect &&  mod === value && !listItems.includes(subMod)){
+            if(prod === this.data.productoSelect &&  mod === value && !listItems.includes(subMod) && subMod != null){
                 listItems.push(subMod);
                 this.data.listSubModulos.push({"value" : subMod,"label" : subMod });
             }
@@ -112,21 +118,36 @@ export default class Fs_Inicio extends LightningElement {
 
     onchangeSubModulo(event){
         let value = event.target.value;
+        this.data.listPickListBase = [];
+        this.data.knowledgeSelect = '--'; 
         this.data.subModuloSelect = value;
         this.searchFilter();
+    }
+    onchangeKnowledge(event){
+        this.data.knowledgeSelect = event.target.value;
+        if(this.data.knowledgeSelect != '--'){
+            this.data.listBaseShow = this.data.listBase.filter(item => item.id === this.data.knowledgeSelect);
+        }else{
+            this.searchFilter();
+        }
     }
 
     searchFilter(){
         this.data.listBaseShow = this.data.listBase.filter(item => item.producto === this.data.productoSelect && (this.data.moduloSelect === '--' || item.modulo === this.data.moduloSelect) &&
         (this.data.subModuloSelect === '--' || item.subModulo === this.data.subModuloSelect));
         this.data.hayResultado = this.data.listBaseShow.length > 0;
+        this.data.listPickListBase = [];
+        this.data.listPickListBase.push({"value" : "--","label" : "--Ninguno--" });
+        for(let i=0; i < this.data.listBaseShow.length; i++){
+            this.data.listPickListBase.push({"value" : this.data.listBase[i].id,"label" : this.data.listBase[i].nombre });
+        }
     }
 
     onchangeSearch(event){
         let value = event.target.value;
         this.data.valorABuscar = value;
         if(value.length > 2){
-            this.data.listBaseShow = this.data.listBase.filter(item => item.contenido.toUpperCase().includes(value.toUpperCase() ) || item.nombre.toUpperCase().includes(value.toUpperCase()) ||
+            this.data.listBaseShow = this.data.listBase.filter(item => item.contenidoPlano.toUpperCase().includes(value.toUpperCase() ) || item.nombre.toUpperCase().includes(value.toUpperCase()) ||
             item.producto.toUpperCase().includes(value.toUpperCase()) || item.modulo.toUpperCase().includes(value.toUpperCase()) ||
             (item.subModulo != null && item.subModulo.toUpperCase().includes(value.toUpperCase())));
         }else if(value.length === 0){
@@ -138,16 +159,22 @@ export default class Fs_Inicio extends LightningElement {
             }
         }
         this.data.hayResultado = this.data.listBaseShow.length > 0;
+        this.clearList();
     }
 
     onclickAllShow(){
         this.data.valorABuscar = null;
         this.data.listBaseShow = this.data.listBase;
         this.data.hayResultado = this.data.listBaseShow.length > 0;
+        this.clearList();
+    }
+    clearList(){
         this.data.listModulos = [];
         this.data.listSubModulos = [];
+        this.data.listPickListBase = [];
         this.data.moduloSelect = '--';
         this.data.subModuloSelect = '--';
         this.data.productoSelect = '--';
+        this.data.knowledgeSelect = '--';
     }
 }
