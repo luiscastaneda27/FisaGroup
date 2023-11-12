@@ -3,6 +3,7 @@
     <fullName>FS_ValidacionSolucionCortoPlazo</fullName>
     <active>true</active>
     <errorConditionFormula>AND( 
+  !ISNEW(),
   ISCHANGED(FS_SolucionCortoPlazo__c),
   ISCHANGED(FS_InformacionCompleta__c)  
 )</errorConditionFormula>

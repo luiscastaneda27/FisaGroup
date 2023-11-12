@@ -38,14 +38,14 @@
                 <label>Aprobación Solicitud N2</label>
             </value>
             <value>
-                <fullName>Desarrollo Incidente Definitivo</fullName>
-                <default>false</default>
-                <label>Desarrollo Incidente Definitivo</label>
-            </value>
-            <value>
                 <fullName>Revisión Documentación N2</fullName>
                 <default>false</default>
                 <label>Revisión Documentación N2</label>
+            </value>
+            <value>
+                <fullName>Desarrollo Incidente Definitivo</fullName>
+                <default>false</default>
+                <label>Desarrollo Incidente Definitivo</label>
             </value>
             <value>
                 <fullName>Desarrollo Incidente Puntual</fullName>

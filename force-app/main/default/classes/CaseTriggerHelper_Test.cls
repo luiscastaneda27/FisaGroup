@@ -64,6 +64,7 @@ public class CaseTriggerHelper_Test {
         caso.FS_InformacionCompleta__c = 'Si';
         actualizarCasoError(caso);
         caso.FS_Proyecto__c = 'FSHD001 - Fisa System Help desk';
+        caso.FS_FechaAprobacion1erCosto__c = DateTime.now();
         caso.FS_FechaCompromisoEntrega__c = Date.today();
         update caso;
         
@@ -134,18 +135,15 @@ public class CaseTriggerHelper_Test {
         update caso;
         
         caso.FS_AprobacionDisenioTecnico__c = 'Si';
-         caso.FS_MotivosRechazoDT__c = null;
+        caso.FS_MotivosRechazoDT__c = null;
         update caso;
         
         caso.FS_URLCodigoFuente__c = 'https://fisagrp.com';
         caso.FS_URLSolucionDefinitiva__c = 'https://fisagrp.com';
         caso.FS_EnviarAprobacionSolucionDN2__c = true;
-        update caso;
-        
-        
         caso.FS_AprobacionSolucionDefinitivaN2__c = 'No';
         caso.FS_MotivoRechazoSDN2__c = 'Desarrollo incompleto';
-        update caso;
+        //update caso;
         
     }
     

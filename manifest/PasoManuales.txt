@@ -5,3 +5,4 @@
 5. Habilitar api para comunidades
 6. Perfil activar editar tareas
 7. Eliminar del perfil  de comunidad los Siguientes campos, Description,Origin y SuppliedEmail
+8. Nombre del Job: Recordatorio Servicios

@@ -277,7 +277,8 @@ public without sharing class CaseTriggerHelper {
                     item.FS_SubEstado__c = 'Envío de respuesta';
                     item.Status = 'Validación de Respuesta (Cliente)';
                     item.FS_AceptaRespuesta__c = null;
-                    envioCorreo(item, 'FS_ValidacionInformacion', true);
+                    String nombrePlantilla = item.RecordTypeId == SOLICITUD_TIPO_REGISTRO ? 'FS_ValidacionInformacionSolicitud' : 'FS_ValidacionInformacion';
+                    envioCorreo(item, nombrePlantilla, true);
                     String titulo = 'Aprobación de solución para caso '+item.CaseNumber;
                     String descripcion = 'El agente ' + UserInfo.getName() + ' ha aprobado de solución para el caso número '+item.CaseNumber +' \nPor favor dar seguimiento.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
@@ -460,7 +461,7 @@ public without sharing class CaseTriggerHelper {
                     String titulo = 'Aprobación de Solución IP-Release para caso '+item.CaseNumber;
                     String descripcion = 'El Jefe de Release ' + item.FS_UsuarioAprobacionSolucionRelease__c + ' ha aprobado la Solución IP-Release para el caso número '+item.CaseNumber +'\nMuchas gracias.';
                     enviarNotificacion(item.OwnerId, item.Id, titulo, descripcion);
-                    envioCorreo(item, 'FS_ValidacionInformacion', true);
+                    envioCorreo(item, 'FS_ValidacionInformacionIncidentePuntual', true);
                     descripcion = 'Estimado Cliente\n\n\nHemos entregado la respuesta al caso, la solución se encuentra disponible en la siguiente URL para su validación '+item.FS_URLCodigoFuente__c +'\n\nTus comentarios son importantes para nosotros.\n\nGracias\nCustomer Care Team\n\nSaludos';
                     insert new FeedItem(ParentId = item.Id, Body = descripcion, Visibility = 'AllUsers');
                 }else if(item.FS_AprobacionSolucionIPRelease__c == 'No'){
@@ -764,7 +765,7 @@ public without sharing class CaseTriggerHelper {
                 item.FS_ComentariosRespuesta__c = null;
                 String descripcion = 'Estimado Cliente\n\n\nHemos entregado la respuesta al caso, la solución se encuentra disponible en la siguiente URL para su validación '+item.FS_URLParcheCliente__c +'\n\nTus comentarios son importantes para nosotros.\n\nGracias\nCustomer Care Team\n\nSaludos';
                 insert new FeedItem(ParentId = item.Id, Body = descripcion, Visibility = 'AllUsers');
-                envioCorreo(item, 'FS_ValidacionInformacion', true);
+                envioCorreo(item, 'FS_ValidacionInformacionIncidenteDefinitivo', true);
             }
         }
     }
