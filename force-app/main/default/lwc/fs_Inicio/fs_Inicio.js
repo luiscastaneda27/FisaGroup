@@ -142,7 +142,7 @@ export default class Fs_Inicio extends LightningElement {
         this.data.listPickListBase = [];
         this.data.listPickListBase.push({"value" : "--","label" : "--Ninguno--" });
         for(let i=0; i < this.data.listBaseShow.length; i++){
-            this.data.listPickListBase.push({"value" : this.data.listBase[i].id,"label" : this.data.listBase[i].nombre });
+            this.data.listPickListBase.push({"value" : this.data.listBaseShow[i].id,"label" : this.data.listBaseShow[i].nombre });
         }
     }
 
