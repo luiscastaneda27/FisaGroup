@@ -1024,11 +1024,13 @@ public without sharing class CaseTriggerHelper {
         String urlLogo = getLogoImagen();
         html = getLogoImagen() + html.replace('{urlSiteServicios}', Label.FS_UrlPortalServicios);
         html = html.replace('{urlSiteEncuestas}', Label.FS_UrlPortalEncuestas);
-        html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
+        html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table></body></html>';
+        html = html.replace('<![CDATA[', '');
         mail.setSubject(asunnto);
         mail.setHtmlBody(html);
         mail.saveAsActivity = esContacto;
         mail.setOrgWideEmailAddressId(owea.Id);
+        System.debug('html: '+html);
         if(esContacto){
             User usuario = mapUser.get(userInfo.getUserId());
             if(usuario.Profile.Name != 'Customer Community User'){
@@ -1071,8 +1073,8 @@ public without sharing class CaseTriggerHelper {
         html = getLogoImagen() + html;
         
         
-        html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
-        
+        html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table></body></html>';
+        html = html.replace('<![CDATA[', '');
         mail.setSubject(titulo);
         mail.setHtmlBody(html);
         mail.saveAsActivity = false;
@@ -1120,14 +1122,17 @@ public without sharing class CaseTriggerHelper {
     }
     
     public static String getLogoImagen(){
-        StaticResource staticResource = [SELECT Id, SystemModStamp, Name
+        StaticResource staticResource = [SELECT Id, SystemModStamp, Name, Body
                                          FROM StaticResource 
                                          WHERE Name = 'FS_FisaLogo'
                                          LIMIT 1];
-        String urlRecurso = '<table width="100%" ><td style="width: 25%;" /><td style="width: 50%;" ><table><tr><td><img src="';
-        urlRecurso += Label.FS_UrlPortalEncuestas.substring(0, Label.FS_UrlPortalEncuestas.length()- 1);
-        urlRecurso +='resource/' + String.valueOf(staticResource.SystemModStamp.getTime())+ '/' + staticResource.Name;
+        String urlRecurso = '<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta  name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0," /></head><body>';
+        urlRecurso += '<table width="100%" ><td style="width: 25%;" /><td style="width: 50%;" ><table><tr><td><img src="';
+        urlrecurso += 'data:image/png;base64,' + EncodingUtil.base64Encode(staticResource.Body);
         urlRecurso += '"/></td></tr></table>';
+         //String urlRecurso = '<table width="100%" ><td style="width: 25%;" /><td style="width: 50%;" ><table><tr><td><img src="';
+        //urlRecurso += Label.FS_UrlPortalEncuestas.substring(0, Label.FS_UrlPortalEncuestas.length()- 1);
+        //urlRecurso +='resource/' + String.valueOf(staticResource.SystemModStamp.getTime())+ '/' + staticResource.Name;
         return urlRecurso;
     }
     

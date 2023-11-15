@@ -25,7 +25,8 @@ global without sharing class JobValidacionRespuesta implements Schedulable {
                     String urlLogo = CaseTriggerHelper.getLogoImagen();
                     html = CaseTriggerHelper.getLogoImagen() + html.replace('{urlSiteServicios}', Label.FS_UrlPortalServicios);
                     html =html.replace('{urlSiteEncuestas}', Label.FS_UrlPortalEncuestas);
-                    html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
+                    html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table></body></html>';
+                    html = html.replace('<![CDATA[', '');
                     mail.setSubject(asunnto);
                     mail.setHtmlBody(html);
                     mail.saveAsActivity = true;
@@ -67,7 +68,8 @@ global without sharing class JobValidacionRespuesta implements Schedulable {
                     String urlLogo = CaseTriggerHelper.getLogoImagen();
                     html = CaseTriggerHelper.getLogoImagen() + html.replace('{urlSiteServicios}', Label.FS_UrlPortalServicios);
                     html =html.replace('{urlSiteEncuestas}', Label.FS_UrlPortalEncuestas);
-                    html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
+                    html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table></body></html>';
+                    html = html.replace('<![CDATA[', '');
                     mail.setSubject(asunnto);
                     mail.setHtmlBody(html);
                     mail.saveAsActivity = true;
@@ -109,7 +111,8 @@ global without sharing class JobValidacionRespuesta implements Schedulable {
                     String urlLogo = CaseTriggerHelper.getLogoImagen();
                     html = CaseTriggerHelper.getLogoImagen() + html.replace('{urlSiteServicios}', Label.FS_UrlPortalServicios);
                     html =html.replace('{urlSiteEncuestas}', Label.FS_UrlPortalEncuestas);
-                    html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table>';
+                    html = html.replace(']]>', '') + '</td><td style="width: 25%;" /></table></body></html>';
+                    html = html.replace('<![CDATA[', '');
                     mail.setSubject(asunnto);
                     mail.setHtmlBody(html);
                     mail.saveAsActivity = true;
