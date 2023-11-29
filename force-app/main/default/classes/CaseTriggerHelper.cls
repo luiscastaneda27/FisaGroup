@@ -922,7 +922,17 @@ public without sharing class CaseTriggerHelper {
         DataBase.insert(listHistorial, false);
         
     }
-
+    public static void mapeoFechaEstado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
+        for(Case item: newCaseList){
+            Case caso = oldCaseMap.get(item.Id);
+            if(item.Status != caso.Status){
+                item.FS_FechaEstadoActual__c = System.now();
+            }
+            if(item.FS_SubEstado__c != caso.FS_SubEstado__c){
+                item.FS_FechaSubEstadoActual__c = System.now();
+            }
+        }
+    }
     public static void historialCaso(List<Case> newCaseList){
         Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Case').getDescribe().fields.getMap();
         List<FS_HistorialCampos__c > listHistorial = new List<FS_HistorialCampos__c >();

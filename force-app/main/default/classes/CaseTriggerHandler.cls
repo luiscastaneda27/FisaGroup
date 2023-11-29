@@ -45,6 +45,7 @@ public without sharing class CaseTriggerHandler {
         CaseTriggerHelper.validacionIngProducto(newCaseList, oldCaseMap);
         CaseTriggerHelper.asignarAprobadorActual(newCaseList, oldCaseMap);
         CaseTriggerHelper.llenarOrigen(newCaseList, oldCaseMap);
+        CaseTriggerHelper.mapeoFechaEstado(newCaseList, oldCaseMap);
         
     }
     

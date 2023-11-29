@@ -85,6 +85,8 @@ public without sharing class ControladorCrearCaso {
             caso.FS_Carterizacion__c = usuario.Contact.Account.FS_Carterizacion__c;
             caso.FS_CorreosNotificacionesServicios__c = usuario.Contact.Account.FS_CorreosNotificacionesServicios__c;
             caso.EntitlementId = CaseTriggerHelper.entitlementCaseId(caso.RecordTypeId);
+            caso.FS_FechaEstadoActual__c = System.now();
+            caso.FS_FechaSubEstadoActual__c = System.now();
             if(usuario.Contact.Account.FS_ServicioRemoto__c){
                 caso.OwnerId = [Select Id from Group Where DeveloperName = :usuario.Contact.Account.FS_ColaAtencion__c and Type = 'Queue'].Id;
             }else{
