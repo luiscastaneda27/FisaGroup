@@ -4,6 +4,8 @@
 		<members>CaseTriggerHandler</members>
 		<members>CaseTriggerHelper</members>
 		<members>CaseTriggerHelper_Test</members>
+		<members>ControladorBaseConocimientos</members>
+		<members>ControladorBaseConocimientos_Test</members>
 		<members>ControladorCrearCaso</members>
 		<members>ControladorCrearCaso_Test</members>
 		<members>ControladorEncuesta</members>
@@ -158,6 +160,7 @@
 	</types>
 	<types>
 		<members>FS_AceptacionRechazoCaso__c</members>
+		<members>FS_BaseConocimiento__c</members>
 		<members>FS_Encuesta__c</members>
 		<members>FS_HistorialCampos__c</members>
 		<members>FS_HistorialDescripcionCaso__c</members>
@@ -203,6 +206,7 @@
 		<members>Case-Layout Interno Casos</members>
 		<members>Contact-Formato de contactos</members>
 		<members>FS_AceptacionRechazoCaso__c-Formato Aceptación %2F Rechazo de Caso</members>
+		<members>FS_BaseConocimiento__c-Formato Base de Conocimiento</members>
 		<members>FS_HistorialDescripcionCaso__c-Formato Historial de Descripción</members>
 		<members>FS_ProductoAdquirido__c-Formato Producto Adquirido</members>
 		<members>Task-Formato Tareas Casos</members>

@@ -388,6 +388,7 @@
         <relatedList>RelatedCaseList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>NAME</fields>
         <fields>FS_Producto__c</fields>
         <fields>FS_Modulo__c</fields>
         <fields>FS_SubModulo__c</fields>
