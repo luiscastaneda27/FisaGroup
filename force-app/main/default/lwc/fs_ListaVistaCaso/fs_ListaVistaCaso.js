@@ -84,7 +84,7 @@ export default class Fs_ListaVistaCaso extends LightningElement {
     addLinkCase(){
         this.itemsForCurrentView.forEach(item => {
             item.casoLink = '/case/' + item.Id;
-            item.FS_NombreContacto__c = item.Contact.Name;
+            item.FS_NombreContacto__c = item.ContactId != null ? item.Contact.Name : '';
         });
     }
 }
