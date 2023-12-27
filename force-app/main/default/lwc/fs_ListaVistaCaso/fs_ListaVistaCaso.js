@@ -31,9 +31,9 @@ export default class Fs_ListaVistaCaso extends LightningElement {
         getCasos({}).then(response => {
             console.log(JSON.stringify(response))
             this.data = response;
+            this.showSpinner = false;
             this.itemsForCurrentView = response.casosAbiertos;
             this.addLinkCase();
-            this.showSpinner = false;
          })
     }
 
@@ -83,8 +83,12 @@ export default class Fs_ListaVistaCaso extends LightningElement {
     }
     addLinkCase(){
         this.itemsForCurrentView.forEach(item => {
-            item.casoLink = '/case/' + item.Id;
-            item.FS_NombreContacto__c = item.ContactId != null ? item.Contact.Name : '';
+            try {
+                item.casoLink = '/case/' + item.Id;
+                item.FS_NombreContacto__c = item.ContactId != null ? item.Contact.Name : '';
+            } catch (e) {
+                console.log(JSON.stringify(e));
+            }
         });
     }
 }
