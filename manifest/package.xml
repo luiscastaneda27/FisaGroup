@@ -18,10 +18,28 @@
 		<members>FeedItemTriggerHelper</members>
 		<members>JobValidacionRespuesta</members>
 		<members>JobValidacionRespuesta_Test</members>
+		<members>MilestoneCalculator</members>
 		<members>TrabajoAgenteHandler</members>
 		<members>TrabajoAgenteHelper</members>
 		<members>TrabajoAgenteHelper_Test</members>
 		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>CasosAbiertos/FS_Historial_Caso_Agentes_FISA</members>
+		<members>CasosAbiertos/FS_Informe_Tickets_Creados</members>
+		<members>CasosAbiertos/FS_Informe_Validacion_de_Respuesta_Cliente</members>
+		<members>CasosAbiertos/FS_Informe_de_casos_creados_por_mes</members>
+		<members>CasosAbiertos/FS_Informe_de_satisfaccin_del_cliente</members>
+		<members>CasosAbiertos/FS_Informe_de_tiempo_promedio_de_respuesta</members>
+		<members>CasosAbiertos/FS_Informe_promedio_de_SLA_de_cliente_por_Mes</members>
+		<members>SLA/FS_Informe_Eventos_Claves</members>
+		<members>SLA/FS_Informe_Tiempo_promedio_para_cumplir_SLA</members>
+		<members>SLA/FS_Informe_tiempo_transcurrido</members>
+		<name>Report</name>
+	</types>
+	<types>
+		<members>Historial_caso_agentes_FISA</members>
+		<name>ReportType</name>
 	</types>
 	<types>
 		<members>CaseTrigger</members>
@@ -90,6 +108,7 @@
 		<members>Case.FS_EnviarAprobacionPlanPruebas__c</members>
 		<members>Case.FS_EnviarAprobacionSolucionDN2__c</members>
 		<members>Case.FS_EnviarAprobacionSolucionIPN2__c</members>
+		<members>Case.FS_Es_cliente__c</members>
 		<members>Case.FS_FechaAprobacion1erCosto__c</members>
 		<members>Case.FS_FechaCompromisoEntrega__c</members>
 		<members>Case.FS_FechaContestacionEncuesta__c</members>
@@ -161,6 +180,7 @@
 	<types>
 		<members>FS_AceptacionRechazoCaso__c</members>
 		<members>FS_BaseConocimiento__c</members>
+		<members>FS_ConfiguracionSLA__c</members>
 		<members>FS_Encuesta__c</members>
 		<members>FS_HistorialCampos__c</members>
 		<members>FS_HistorialDescripcionCaso__c</members>
@@ -196,8 +216,23 @@
 		<members>FS_CasoPaginaRegistro</members>
 		<name>FlexiPage</name>
 	</types>
+	    <types>
+		<members>Consultas - Cliente</members>
+		<members>Consultas - Interno</members>
+		<members>Incidente Definitivo - Cliente</members>
+		<members>Incidente Definitivo - Interno</members>
+		<members>Incidente Puntual - Cliente</members>
+		<members>Incidente Puntual - Interno</members>
+		<name>MilestoneType</name>
+	</types>
+    <types>
+		<members>caso de consulta</members>
+		<members>caso de incidente</members>
+		<name>EntitlementProcess</name>
+	</types>
 	<types>
 		<members>FS_FlujoTarea</members>
+		<members>Send_SLA_Notification</members>
 		<name>Flow</name>
 	</types>
 	<types>
