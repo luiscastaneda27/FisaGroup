@@ -25,7 +25,6 @@
 		<name>ApexClass</name>
 	</types>
 	<types>
-		<members>CasosAbiertos/FS_Historial_Caso_Agentes_FISA</members>
 		<members>CasosAbiertos/FS_Informe_Tickets_Creados</members>
 		<members>CasosAbiertos/FS_Informe_Validacion_de_Respuesta_Cliente</members>
 		<members>CasosAbiertos/FS_Informe_de_casos_creados_por_mes</members>
@@ -170,6 +169,7 @@
 		<members>Case.FS_UsuarioAprobadorPlanPruebas__c</members>
 		<members>Case.FS_UsuarioAprobadorSolucionIPN2__c</members>
 		<members>Case.FS_UsuarioAprobadorSolucion__c</members>
+		<members>FS_HistorialCampos__c.FS_FechaCreacion__c</members>
 		<members>User.FS_FechaUltimaAprobacion__c</members>
 		<name>CustomField</name>
 	</types>
@@ -391,6 +391,14 @@
 		<members>Case.FS_ValidacionTipoIncidente</members>
 		<members>Case.FS_validacionCasoNuevoAgente</members>
 		<name>ValidationRule</name>
+	</types>
+	<types>
+		<members>BusinessHours</members>
+		<name>Settings</name>
+	</types>
+	<types>
+		<members>FS_IncumplimientoSLA</members>
+		<name>CustomNotificationType</name>
 	</types>
 	<version>58.0</version>
 </Package>
