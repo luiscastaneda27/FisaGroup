@@ -189,6 +189,7 @@
 	</types>
 	<types>
 		<members>FS_BaseConocimiento__c</members>
+		<members>FS_ConfiguracionSLA__c</members>
 		<name>CustomTab</name>
 	</types>
 	<types>
@@ -210,6 +211,7 @@
 		<members>FS_CorreosClientesCasos/FS_ValidacionInformacionIncidenteDefinitivo</members>
 		<members>FS_CorreosClientesCasos/FS_ValidacionInformacionIncidentePuntual</members>
 		<members>FS_CorreosClientesCasos/FS_ValidacionInformacionSolicitud</members>
+		<members>unfiled$public/FS_TiempoEstimadoRespuesta</members>
 		<name>EmailTemplate</name>
 	</types>
 	<types>

@@ -1,3 +1,17 @@
+/**
+**************************************************************************************************************
+* @author           Intellect Systems href=<infor@intellectsystems.net>
+* @project          Fisa Ecuador - Implementación CRM
+* @name             ControladorCrearCaso
+* @description      Class to create case since community
+* @changes
+* ----------   ---------------------------   -----------------------------------------------------------------
+* Date         Author                        Description
+* ----------   ---------------------------   -----------------------------------------------------------------
+* 2023-18-07   Intellect Systems             Initial version.
+* 2024-26-01   Intellect Systems             Se añade el paso de los correos al campo en el caso , para el envio de los correos en la cuentas listadas.
+**************************************************************************************************************
+*/
 public without sharing class CaseTriggerHelper {
 
     public static final String COLA_ATENCION_N1_CORE ='FS_AtencionN1Core';
@@ -42,13 +56,13 @@ public without sharing class CaseTriggerHelper {
     public static final String CONSULTA_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Consulta').getRecordTypeId();
     public static final String SOLICITUD_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Solicitud').getRecordTypeId();
     public static final String INCIDENTE_TIPO_REGISTRO = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('FS_Incidente').getRecordTypeId();
-    
-    
-    
+
+
+       
     public static void validacionEstado(List<Case> newCaseList, Map<Id, Case> oldCaseMap){
         if(validacionUser(false)){
             return;
-        }
+        }                 
         for(Case item: newCaseList){
             Case caso = oldCaseMap.get(item.Id);
             if(caso.Status  != item.Status){
@@ -1217,28 +1231,36 @@ public without sharing class CaseTriggerHelper {
   
     }//fin proceso entitlementCaseId
 
-    public static void esCliente(List<Case> newCaseList) {       
-        set<Id> caseId = new set<id>();
-        String SubEstado;
-        List<Entitlement> ltsEntitlement = new List<Entitlement>();
-        ltsEntitlement = [select id, name from Entitlement];
-        for(Case lstCase: newCaseList){
-            caseId.add(lstCase.Id);
-            SubEstado = lstCase.FS_SubEstado__c;
-        }
-        
-        Case c = [SELECT Priority, RecordType.Name, FS_SubEstado__c, AccountId FROM Case WHERE Id =:caseId];
-        FS_ConfiguracionSLA__c slaLs = [select id, FS_NombreDeCuenta__c, FS_NombreTipoRegistro__c, FS_SLA__c, FS_SubEstado__c, FS_EsCliente__c, 
-                 FS_Activo__c from FS_ConfiguracionSLA__c where FS_Activo__c = true AND FS_NombreTipoRegistro__c =: c.RecordType.Name
-                 AND FS_SubEstado__c INCLUDES(:SubEstado) limit 1];
-        for(Case lstCase: newCaseList){
-            if(slaLs.FS_EsCliente__c == true){
-                lstCase.FS_Es_cliente__c = true;  
-            }else if(slaLs.FS_EsCliente__c == false){
-                lstCase.FS_Es_cliente__c = false;
+    public static void esCliente(List<Case> newCaseList) {
+        try{
+            set<Id> caseId = new set<id>();
+            set<Id> accId = new set<id>();
+            String SubEstado;
+            List<Entitlement> ltsEntitlement = new List<Entitlement>();
+            ltsEntitlement = [select id, name from Entitlement];
+            for(Case lstCase: newCaseList){
+                    caseId.add(lstCase.Id);
+                    accId.add(lstCase.AccountId);
+                    SubEstado = lstCase.FS_SubEstado__c;
             }
-            
-        }
+    
+            if(!caseId.isEmpty()) {    
+                Case c = [SELECT Priority, RecordType.Name, FS_SubEstado__c, AccountId FROM Case WHERE Id =:caseId];
+                FS_ConfiguracionSLA__c slaLs = [select id, FS_NombreDeCuenta__c, FS_NombreTipoRegistro__c, FS_SLA__c, FS_SubEstado__c, FS_EsCliente__c, 
+                         FS_Activo__c from FS_ConfiguracionSLA__c where FS_Activo__c = true AND FS_NombreTipoRegistro__c =: c.RecordType.Name
+                         AND FS_SubEstado__c INCLUDES(:SubEstado) AND FS_NombreDeCuenta__c =:accId limit 1];
+                for(Case lstCase: newCaseList){
+                    if(slaLs.FS_EsCliente__c == true){
+                        lstCase.FS_Es_cliente__c = true;  
+                    }else if(slaLs.FS_EsCliente__c == false){
+                        lstCase.FS_Es_cliente__c = false;
+                    }
+                    
+                }
+            }    
+        } catch(Exception ex) {
+            System.debug('Error en helper de casos: '+ex.getLineNumber());
+        }    
 
     }//fin proceso esCliente
     
