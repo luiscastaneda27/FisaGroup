@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>FS_ConfiguracionSLA__c.FS_SubEstado__c</members>
+		<name>CustomField</name>
+	</types>
+	<types>
+		<members>CaseTriggerHelper</members>
+		<members>SendMilestoneNotification</members>
+		<members>scheduledSendMilestoneNotification</members>
+		<name>ApexClass</name>
+	</types>
+	<version>58.0</version>
+</Package>
